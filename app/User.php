@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +20,8 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    // Parei em 7 min
+    
     /**
      * The attributes that should be hidden for arrays.
      *
