@@ -1,5 +1,8 @@
 <?php
 
+use App\User;
+use App\Models\Role;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +16,20 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// pegar o nome do usuario e sua politica
+
+Route::get('/user', function () {
+
+	$user = User::find(1)->with('roles')->get();
+
+	// dd($user);
+   	echo $user[0]->name.'<br />'.
+   	$user[0]->roles[0]->name;
+   	
 });
