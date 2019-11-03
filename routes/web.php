@@ -18,9 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+# Dashboard
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 // pegar o nome do usuario e sua politica
 
