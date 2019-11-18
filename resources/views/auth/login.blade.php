@@ -12,8 +12,8 @@
 
     <title>Login</title>
 
-    <link rel="stylesheet" href="{{ asset('template-dark/css/bracket.css') }}">
-    <link rel="stylesheet" href="{{ asset('template-dark/css/bracket.dark.css') }}">
+    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}">
+    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}">
   </head>
 
   <body>

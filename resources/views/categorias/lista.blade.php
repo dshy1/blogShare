@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', 'Dashboard')
+@section('title', 'Categorias')
 
 @section('content')
 
@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 com-padding-top">
-            <h1>Bem-vindo</h1>
+            <h1>Todas as Categorias</h1>
         </div>
     </div>
 </div>

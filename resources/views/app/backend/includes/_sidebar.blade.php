@@ -7,7 +7,7 @@
       <label class="sidebar-label">Navigation</label>
       <ul class="br-sideleft-menu">
         <li class="br-menu-item">
-          <a href="index.html" class="br-menu-link active">
+          <a href="#" class="br-menu-link active">
             <i class="fas fa-home"></i>
             <span class="menu-item-label">Dashboard</span>
           </a><!-- br-menu-link -->
@@ -19,9 +19,8 @@
             <span class="menu-item-label">Posts</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="card-dashboard.html" class="sub-link">Dashboard</a></li>
-            <li class="sub-item"><a href="card-social.html" class="sub-link">Blog &amp; Social Media</a></li>
-            <li class="sub-item"><a href="card-listing.html" class="sub-link">Shop &amp; Listing</a></li>
+            <li class="sub-item"><a href="#" class="sub-link">Novo Post</a></li>
+            <li class="sub-item"><a href="#" class="sub-link">Todos os Posts</a></li>
           </ul>
         </li>
 
@@ -33,20 +32,6 @@
           <ul class="br-menu-sub">
             <li class="sub-item"><a href="#" class="sub-link">Accordion</a></li>
             <li class="sub-item"><a href="#" class="sub-link">Alerts</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Buttons</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Cards</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Carousel</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Dropdowns</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Icons</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Images</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Lists</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Modal</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Media Object</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Pagination</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Tooltip &amp; Popover</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Progress</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Spinners</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Typography</a></li>
           </ul>
         </li><!-- br-menu-item -->
 
@@ -59,12 +44,6 @@
           <ul class="br-menu-sub">
             <li class="sub-item"><a href="#" class="sub-link">Morris Charts</a></li>
             <li class="sub-item"><a href="#" class="sub-link">Flot Charts</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Chart JS</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">ECharts</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Rickshaw</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Chartist</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Sparkline</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Peity</a></li>
           </ul>
         </li><!-- br-menu-item -->
 

@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>@yield('title')</title>
 
-     <!-- Styles -->
+    <!-- Styles -->
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="{{ asset('css/free.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}" />
    
-    <link rel="stylesheet" href="{{ asset('template-dark/lib/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('template-dark/lib/ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template-dark/lib/fontawesome-free/css/all.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('template-dark/lib/ionicons/css/ionicons.min.css') }}" />
     
     <!-- Bracket CSS -->
-    <link rel="stylesheet" href="{{ asset('template-dark/css/bracket.css') }}">
-    <link rel="stylesheet" href="{{ asset('template-dark/css/bracket.dark.css') }}">
+    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}" />
+    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}" />
 
 
  <!-- ########## START: HEAD PANEL ########## -->
@@ -179,7 +176,7 @@
               <div class="tx-center">
                 <span class="profile-earning-label">Earnings After Taxes</span>
                 <h3 class="profile-earning-amount">$13,230 <i class="icon ion-ios-arrow-thin-up tx-success"></i></h3>
-                <span class="profile-earning-text">Based on list price.</span>
+                <span class="profile-earning-text">Based on list price</span>
               </div>
               <hr>
               <ul class="list-unstyled user-profile-nav">

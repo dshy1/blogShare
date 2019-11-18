@@ -19,13 +19,23 @@ Route::get('/', function () {
 });
 
 
-# Dashboard
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+#### Rotas que precisam de autenticaçao
+Route::group(['middleware' => ['auth']], function () {
+    
+	#### Dashboard
+	Route::get('/dashboard', 'HomeController@index')->name('home');
+	### Categorias
+	Route::resource('/categorias', 'CategoriaController');
+
+
+});
+
+
+
 Auth::routes();
 
 
-// pegar o nome do usuario e sua politica
-
+#### Pegar o nome do usuario e sua politica
 Route::get('/user', function () {
 
 	$user = User::find(1)->with('roles')->get();
