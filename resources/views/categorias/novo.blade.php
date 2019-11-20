@@ -29,6 +29,16 @@
     </div>
   </div><!-- d-flex -->
 
+    @if(Session::has('error'))
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+       </div>
+    @endif
+
   <div class="br-pagebody">
     <div class="br-section-wrapper">
       <div class="form-layout form-layout-1">

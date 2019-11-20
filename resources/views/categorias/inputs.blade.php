@@ -5,7 +5,7 @@
       @isset($detalhe)
           <p id="nome" class="" >{{ $categoria['nome'] or 'Não Informado' }}</p>
       @else
-        		<input class="form-control form-control-dark" type="text" name="firstname" value="" placeholder="Ex: direito bancário" />
+        		<input class="form-control form-control-dark" type="text" name="nome" value="" placeholder="Ex: direito bancário" />
          @endif
       </div>
     </div><!-- col-8 -->
@@ -17,7 +17,7 @@
          @isset($detalhe)
           <p id="descricao" class="" >{{ $categoria['descricao'] or 'Não Informado' }}</p>
       @else
-         		<textarea class="form-control form-control-dark" placeholder="Se desejar, faça uma breve descrição"></textarea>
+         		<textarea class="form-control form-control-dark" name="descricao" placeholder="Se desejar, faça uma breve descrição"></textarea>
          @endif
       </div><!-- col-8 -->
  </div><!-- row -->

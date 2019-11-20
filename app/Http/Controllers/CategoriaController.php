@@ -3,14 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categoria;
+// use App\Models\Role;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Session;
+
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $request;
+    protected $categoria;
+
+    public function __construct(Request $request, Categoria $categoria){
+        $this->request = $request;
+        $this->categoria = $categoria;
+        $this->middleware('auth');
+        // $this->middleware('permission:lista-categoria');
+        // $this->middleware('permission:cria-categoria', ['only' => ['create','store']]);
+        // $this->middleware('permission:atualiza-categoria', ['only' => ['edit','update']]);
+        // $this->middleware('permission:deleta-categoria', ['only' => ['destroy']]);
+        
+    }
+
     public function index() {
        
        return view('categorias.lista');
@@ -33,9 +48,36 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        
+         try{
+
+            // validate
+            $validatedData = $request->validate([
+                'nome' => 'required|unique:categorias',
+            ]);
+
+            // request
+            $categoria = Categoria::create([
+                'nome'        => $request->get('nome'),
+                'descricao'   => $request->get('descricao')
+            ]);
+
+            # status de retorno
+            Session::flash('success', $request['nome'] . ' cadastrado com sucesso!');
+
+        }catch (\Exception $exception){
+
+            # status de retorno
+            Session::flash('error',' A categoria não pôde ser cadastrada!');
+            
+
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->route('categorias.index');
+
+
     }
 
     /**
