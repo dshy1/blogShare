@@ -31,7 +31,7 @@
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
             <li class="sub-item"><a href="{{ route('categorias.create') }}" class="sub-link">Nova Categoria</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Todas as Categorias</a></li>
+            <li class="sub-item"><a href="{{ route('categorias.index') }}" class="sub-link">Todas as Categorias</a></li>
           </ul>
         </li><!-- br-menu-item -->
 
