@@ -17,15 +17,15 @@
     <nav class="breadcrumb pd-0 mg-0 tx-12">
       <a class="breadcrumb-item" href="#">Home</a>
       <a class="breadcrumb-item" href="#">Categorias</a>
-      <span class="breadcrumb-item active">Nova Categoria</span>
+      <span class="breadcrumb-item active">Editar Categoria</span>
     </nav>
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
     <i class="icon ion-ios-gear-outline"></i>
     <div>
-      <h4>Nova Categoria</h4>
-      <p class="mg-b-0">Crie uma nova categoria para seus posts</p>
+      <h4>Editar {{ $categoria->nome }}</h4>
+      <p class="mg-b-0">Edite a categoria para utilizar nos seus posts</p>
     </div>
   </div><!-- d-flex -->
 
@@ -43,14 +43,15 @@
     <div class="br-section-wrapper">
       <div class="form-layout form-layout-1">
 		
-		<form id="form-categorias" name="form-categorias" action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data">
+		<form id="form-categorias-edit" name="form-categorias-edit" action="{{ route('categorias.update', $categoria->id) }}" method="POST" enctype="multipart/form-data">
 
-			@csrf
+			      @csrf
+            {{method_field('PATCH')}}
 
-            @include('categorias.inputs', ['categoria' => null, 'detalhe' => null])
+            @include('categorias.inputs', ['categoria' => $categoria, 'detalhe' => null])
 
 	        <div class="form-layout-footer">
-	          <button class="btn btn-primary">Adicionar Nova Categoria</button>
+	          <button class="btn btn-primary" type="submit">Salvar Alterações</button>
 	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
 	        </div><!-- form-layout-footer -->
 		 </form>

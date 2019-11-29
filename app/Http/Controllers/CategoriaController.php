@@ -51,19 +51,23 @@ class CategoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        
-         try{
 
-            // validate
+         
+          // validate
             $validatedData = $request->validate([
                 'nome' => 'required|unique:categorias',
             ]);
 
+
+         try{
+
             // request
             $categoria = Categoria::create([
                 'nome'        => $request->get('nome'),
-                'descricao'   => $request->get('descricao')
+                'descricao'   => $request->get('descricao'),
             ]);
+
+              // dd($categoria);
 
             # status de retorno
             Session::flash('success', $request['nome'] . ' cadastrado com sucesso!');
@@ -99,21 +103,39 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+      
+         $categoria = Categoria::find($id);
+         return view('categorias.edit', compact('categoria'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+            
+         try{
+
+            $categoria = Categoria::find($id);
+            $categoria->fill($request->all());
+            $categoria->save();
+
+            # status de retorno
+            Session::flash('success', $request['nome'] . ' editado com sucesso!');
+
+            return redirect()->route('categorias.index');
+
+        }catch (\Exception $exception){
+
+            # status de retorno
+            Session::flash('error',' A categoria não pôde ser editada!');;
+
+            return redirect()->back()->withInput();
+        }
     }
 
     /**

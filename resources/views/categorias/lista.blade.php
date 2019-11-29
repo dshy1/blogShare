@@ -8,13 +8,19 @@
     .com-padding-top {
         padding-top: 100px;
     }
+
+    .alert-success {
+        width: 325px;
+        position: absolute;
+        top: 80px;
+    }
 </style>
 
 
 @if(Session::has('success'))
 	<div class="row justify-content-center">
         <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
-            <strong><i class="fas fa-check-circle"></i></strong>{{Session::get('success')}}
+            <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
             <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick=""><strong>&times;</strong></span></button>
         </div>
     </div>
@@ -54,7 +60,7 @@
             <table class="table table-striped mg-b-0">
               <thead class="thead-colored thead-info">
                 <tr>
-                  <th>ID</th>
+                  <th>#</th>
                   <th>Nome</th>
                   <th>Descrição</th>
                   <th>Ações</th>
@@ -63,10 +69,12 @@
               <tbody>
                 @foreach($categorias as $categoria)
                     <tr>
-                      <td># {{ $categoria->id }}</td>
+                      <td>{{ $categoria->id }}</td>
                       <td>{{ $categoria->nome }}</td>
                       <td>{{ $categoria->descricao }}</td>
-                      <td>Editar | Deletar</td>
+                      <td><a href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
+                       | Deletar
+                      </td>
                     </tr>
                 @endforeach
               </tbody>
