@@ -10,9 +10,16 @@
     }
 
     .alert-success {
-        width: 325px;
+        width: 420px;
         position: absolute;
         top: 80px;
+    }
+    .sem-padding {
+        padding: 0 4px;
+    }
+
+    .d-flex {
+        display: flex;
     }
 </style>
 
@@ -21,7 +28,7 @@
 	<div class="row justify-content-center">
         <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
             <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
-            <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick=""><strong>&times;</strong></span></button>
+            <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
         </div>
     </div>
 
@@ -71,9 +78,15 @@
                     <tr>
                       <td>{{ $categoria->id }}</td>
                       <td>{{ $categoria->nome }}</td>
-                      <td>{{ $categoria->descricao }}</td>
-                      <td><a href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
-                       | Deletar
+                      <td>{{ $categoria->descricao ?? 'Não Informado' }}</td>
+                      <td class="d-flex">
+                        <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-link sem-padding">Editar</a>
+                        |
+                        <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="delete">
+                           @method('DELETE')
+                           @csrf
+                           <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
+                        </form>
                       </td>
                     </tr>
                 @endforeach
@@ -83,6 +96,25 @@
     </div>
   </div>
 </div><!--  end mainpanel -->
+
+
+<!-- Script JS -->
+<script type="text/javascript">
+
+  function confirmDelete() {
+      if (confirm("Deseja realmente deletar essa categoria?")) {
+         return true;
+      } else {
+        return false;
+      }
+  }
+
+   function fecharAlert() {
+    
+    document.getElementById("close").style.display = "none";
+ }
+
+</script>
 
 
 @endsection

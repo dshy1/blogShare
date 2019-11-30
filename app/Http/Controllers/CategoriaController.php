@@ -63,11 +63,10 @@ class CategoriaController extends Controller
 
             // request
             $categoria = Categoria::create([
-                'nome'        => $request->get('nome'),
+                // 'nome'     =>ucwords($request->get('nome')),// salvar com letras maiúsculas
+                'nome'        =>$request->get('nome'),
                 'descricao'   => $request->get('descricao'),
             ]);
-
-              // dd($categoria);
 
             # status de retorno
             Session::flash('success', $request['nome'] . ' cadastrado com sucesso!');
@@ -122,6 +121,7 @@ class CategoriaController extends Controller
 
             $categoria = Categoria::find($id);
             $categoria->fill($request->all());
+
             $categoria->save();
 
             # status de retorno
@@ -132,7 +132,7 @@ class CategoriaController extends Controller
         }catch (\Exception $exception){
 
             # status de retorno
-            Session::flash('error',' A categoria não pôde ser editada!');;
+            Session::flash('error',' A categoria não pôde ser editada!');
 
             return redirect()->back()->withInput();
         }
@@ -144,8 +144,23 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        
+        try{
+            $categoria = Categoria::findOrFail($id);
+            $categoria->delete();
+
+            # status de retorno
+            Session::flash('success',' A categoria foi deletada com sucesso!');
+
+            return redirect()->route('categorias.index');
+
+        } catch (\Exception $exception){
+            # status de retorno
+            Session::flash('error',' A categoria não pôde ser deletada!');
+            
+            return redirect()->route('categorias.index');
+        }
+
     }
 }
