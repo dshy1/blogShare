@@ -10,7 +10,9 @@ class Role extends Model
         'name', 'guard_name'
     ];
 
-    // Many to Many
+    // *** Relacionamentos ///////////////////////
+
+    // Many to Many - politicas de acesso
     public function users() {
 
         return $this->belongsToMany('App\User');

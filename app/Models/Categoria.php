@@ -10,7 +10,10 @@ class Categoria extends Model
         'nome', 'descricao'
     ];
 
-    // many to many com posts
+
+    // *** Relacionamentos ///////////////////////
+
+    // Many to Many - posts( uma categoria pode pertencer a vários posts )
     public function posts() {
 
         return $this->belongsToMany('App\Models\Post');

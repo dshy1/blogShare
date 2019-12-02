@@ -8,8 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+    
     use Notifiable;
     use HasRoles;
 
@@ -45,10 +45,16 @@ class User extends Authenticatable
 
     // *** Relacionamentos ///////////////////////
 
-    // Many to Many - politicas de acesso
+    // Many to Many - politicas de acesso( um usuário pode ter várias politicas )
     public function roles() {
 
-        return $this->belongsToMany('App\Models\Role');
+        return $this->hasMany('App\Models\Role');
+    }
+
+    // Many to Many - posts( um usuário pode ter vários posts )
+    public function posts() {
+
+        return $this->hasMany('App\Models\Post');
     }
     
 } // end class
