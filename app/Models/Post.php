@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Categoria;
 
 
+
 class Post extends Model {
 
 	// use Notifiable;

@@ -2,6 +2,7 @@
 
 use App\User;
 use App\Models\Role;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,17 @@ Route::get('/user', function () {
    	$user[0]->roles[0]->name;
    	
 });
+
+#### Pegar um post
+Route::get('/post/{id}', function($id) {
+
+	$post = Post::find($id);
+
+	// dd($user);
+   	echo $post->titulo.'<br />'.
+   	$post->texto;
+   	
+});
+
+
+// Fazer CRUD Posts

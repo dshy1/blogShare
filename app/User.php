@@ -46,9 +46,10 @@ class User extends Authenticatable {
     // *** Relacionamentos ///////////////////////
 
     // Many to Many - politicas de acesso( um usuário pode ter várias politicas )
+    // Qdo tiver Pivot table tem que usar belongsToMany nos dois Models
     public function roles() {
 
-        return $this->hasMany('App\Models\Role');
+        return $this->belongsToMany('App\Models\Role');
     }
 
     // Many to Many - posts( um usuário pode ter vários posts )
