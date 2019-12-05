@@ -20,7 +20,7 @@
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
             <li class="sub-item"><a href="#" class="sub-link">Novo Post</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Todos os Posts</a></li>
+            <li class="sub-item"><a href="{{ route('posts.index') }}" class="sub-link">Todos os Posts</a></li>
           </ul>
         </li>
 

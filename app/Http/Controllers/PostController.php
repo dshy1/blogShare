@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
@@ -22,6 +25,15 @@ class PostController extends Controller
     }
 
     public function index() {
+
+        // $posts = Post::with('autor')->with('categorias')->get();
+
+        $post = Post::find(2)->with('categorias')->get()->first();
+
+        dd($post);
+
+        return view('posts.lista', compact('posts'));
+
     
     }
 
@@ -41,6 +53,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
+
         
     }
 

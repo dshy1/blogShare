@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Categoria;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class Post extends Model {
@@ -24,13 +24,13 @@ class Post extends Model {
     // Many to Many - autor( um post pertence a um usuário )
       public function autor() {
 
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(\App\User::class);
     }
 
     // Many to Many - categorias( um post pode ter várias categorias )
      public function categorias() {
 
-        return $this->belongsToMany('App\Models\Categoria');
+        return $this->belongsToMany(\App\Models\Categoria::class);
     }
 
 }  // end class
