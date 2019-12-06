@@ -26,11 +26,9 @@ class PostController extends Controller
 
     public function index() {
 
-        // $posts = Post::with('autor')->with('categorias')->get();
+        $posts = Post::with('autor')->with('categorias')->get();
 
-        $post = Post::find(2)->with('categorias')->get()->first();
-
-        dd($post);
+        // dd($posts);
 
         return view('posts.lista', compact('posts'));
 
@@ -66,6 +64,7 @@ class PostController extends Controller
      */
     public function show($id) {
         
+
     }
 
     /**

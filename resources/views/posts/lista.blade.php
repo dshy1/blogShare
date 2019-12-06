@@ -47,7 +47,7 @@
     <i class="icon ion-ios-gear-outline"></i>
     <div>
       <h4>Posts</h4>
-      <p class="mg-b-0">Aqui você pode ver seus posts cadastrados no sistema</p>
+      <p class="mg-b-0">Aqui você pode ver os posts cadastrados no sistema</p>
     </div>
   </div><!-- d-flex -->
 
@@ -68,21 +68,24 @@
               <thead class="thead-colored thead-info">
                 <tr>
                   <th>#</th>
-                  <th>Nome</th>
-                  <th>Descrição</th>
+                  <th>Título</th>
+                  <th>Texto</th>
+                  <th>Autor</th>
+                  <th>Imagem</th>
                   <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($categorias as $categoria)
+                @foreach($posts as $post)
                     <tr>
-                      <td>{{ $categoria->id }}</td>
-                      <td>{{ $categoria->nome }}</td>
-                      <td>{{ $categoria->descricao ?? 'Não Informado' }}</td>
+                      <td>{{ $post->id }}</td>
+                      <td>{{ $post->titulo }}</td>
+                      <td>{{ $post->texto ?? 'Não Informado' }}</td>
+                      <td>{{ $post->autor->name }}</td>
                       <td class="d-flex">
-                        <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-link sem-padding">Editar</a>
+                        <a href="#" class="btn btn-link sem-padding">Editar</a>
                         |
-                        <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="delete">
+                        <form action="#" method="POST" id="delete">
                            @method('DELETE')
                            @csrf
                            <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
