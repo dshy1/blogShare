@@ -5,7 +5,7 @@
 @section('content')
 
 <style type="text/css">
-  
+
     .com-padding-top {
         padding-top: 100px;
     }
@@ -73,7 +73,14 @@
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="form-control-label">Texto: <span class="tx-danger">*</span></label>
-                    <textarea name="texto" id="editor" >{{ old('texto') }}</textarea>
+                    <div id="editor">
+                        @if(old('texto'))
+                            old('texto')
+                        @else
+                            <br/><br/><br/>
+                        @endif
+
+                    </div>
                   </div>
                 </div><!-- col-12 -->
 
@@ -111,23 +118,19 @@
 </div><!--  end mainpanel -->
 
 
+@endsection
 
-<!-- Script JS -->
+
+@section('scripts')
+    <!-- Script JS -->
 <script type="text/javascript">
 
- // Ckeditor
- ClassicEditor
-  .create( document.querySelector( '#editor' ), {
-    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-  } )
-  .then( editor => {
-    window.editor = editor;
-  } )
-  .catch( err => {
-    console.error( err.stack );
-  } );
+var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+
+$(".select2").select2();
+
 
 </script>
-
-
 @endsection

@@ -16,7 +16,7 @@
     </div><!-- br-mainpanel -->
 <!-- ########## END: FOOTER ########## -->
 
-    <script src="{{ asset('template-dark/lib/jquery/jquery.min.js') }}"></script>
+
     <script src="{{ asset('template-dark/lib/jquery-ui/ui/widgets/datepicker.js') }}"></script>
     <script src="{{ asset('template-dark/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('template-dark/lib/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
@@ -38,8 +38,9 @@
     <script src="{{ asset('template-dark/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('template-dark/js/dashboard.dark.js') }}"></script>
 
-    <!-- <script src="{{ asset('js/jquery.min.js') }}"></script> -->
-    <script src="{{ asset('js/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/quilljs.js') }}"></script>
+
+    @yield('scripts')
 
   </body>
 

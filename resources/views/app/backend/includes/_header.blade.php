@@ -8,17 +8,24 @@
 
     <!-- Styles -->
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}" />
-   
-    <link rel="stylesheet" href="{{ asset('template-dark/lib/fontawesome-free/css/all.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('template-dark/lib/ionicons/css/ionicons.min.css') }}" />
-    
+    {{-- <link rel="stylesheet" href="{{ asset('css/all.min.css') }}" />icon ion-ios-bell-outline tx-24 --}}
+
+    {{-- <link rel="stylesheet" href="{{ asset('template-dark/lib/fontawesome-free/css/all.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('template-dark/lib/ionicons/css/ionicons.min.css') }}" /> --}}
+
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}" />
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}" />
 
     <!-- Multi select -->
-    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" /> 
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/quilljs.css') }}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+
+
 
 
  <!-- ########## START: HEAD PANEL ########## -->
@@ -37,7 +44,7 @@
         <nav class="nav">
           <div class="dropdown">
             <a href="#" class="nav-link pd-x-7 pos-relative" data-toggle="dropdown">
-              <i class="icon ion-ios-email-outline tx-24"></i>
+              <i class="material-icons">markunread</i>
               <!-- start: if statement -->
               <span class="square-8 bg-danger pos-absolute t-15 r-0 rounded-circle"></span>
               <!-- end: if statement -->
@@ -107,7 +114,7 @@
           </div><!-- dropdown -->
           <div class="dropdown">
             <a href="#" class="nav-link pd-x-7 pos-relative" data-toggle="dropdown">
-              <i class="icon ion-ios-bell-outline tx-24"></i>
+              <i class="material-icons">notifications</i>
               <!-- start: if statement -->
               <span class="square-8 bg-danger pos-absolute t-15 r-5 rounded-circle"></span>
               <!-- end: if statement -->
@@ -200,7 +207,7 @@
         </nav>
         <div class="navicon-right">
           <a id="btnRightMenu" href="#" class="pos-relative">
-            <i class="icon ion-ios-chatboxes-outline"></i>
+            <i class="material-icons">message</i>
             <!-- start: if statement -->
             <span class="square-8 bg-danger pos-absolute t-10 r--5 rounded-circle"></span>
             <!-- end: if statement -->
@@ -209,5 +216,5 @@
       </div><!-- br-header-right -->
     </div><!-- br-header -->
     <!-- ########## END: HEAD PANEL ########## -->
-    
+
 
