@@ -13266,19 +13266,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child::
   @media screen and (prefers-reduced-motion: reduce) {
     .br-menu-link {
       transition: none; } }
-  .br-menu-link.with-sub::after {
-    content: '\f123';
-    font-family: 'Ionicons';
-    font-weight: 400;
-    position: absolute;
-    font-size: 9px;
-    top: calc(50% - 6px);
-    right: 10px;
-    color: #6c757d;
-    transition: all 0.2s ease-in-out; }
-    @media screen and (prefers-reduced-motion: reduce) {
-      .br-menu-link.with-sub::after {
-        transition: none; } }
+
   .br-menu-link:hover, .br-menu-link:focus {
     color: #fff;
     background-color: #18222f; }

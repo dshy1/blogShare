@@ -15,12 +15,12 @@ class CreateCategoriaPostTable extends Migration
 
         Schema::create('categoria_post', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('post_id')->unsigned();
-            $table->unsignedBigInteger('categoria_id')->unsigned();
+            $table->integer('post_id')->unsigned();
+            $table->integer('categoria_id')->unsigned();
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
-            
+
             $table->timestamps();
         });
     }
@@ -31,7 +31,7 @@ class CreateCategoriaPostTable extends Migration
      * @return void
      */
     public function down() {
-        
+
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('categoria_post');
         Schema::enableForeignKeyConstraints();
