@@ -26,7 +26,7 @@ class PostController extends Controller
 
     public function index() {
 
-        $posts = Post::with('autor')->with('categorias')->get();
+        $posts = Post::with('autor')->with('categorias')->orderBy('id','desc')->paginate(6);
 
         // dd($posts);
 
@@ -42,6 +42,7 @@ class PostController extends Controller
      */
     public function create() {
         
+          return view('posts.novo');
     }
 
     /**

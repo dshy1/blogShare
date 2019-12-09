@@ -44,7 +44,8 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <i class="icon ion-ios-gear-outline"></i>
+    <img src="svg/settings.svg" alt="Logo" width="70" />
+    <!-- <i class="icon ion-ios-gear-outline"></i> -->
     <div>
       <h4>Posts</h4>
       <p class="mg-b-0">Aqui você pode ver os posts cadastrados no sistema</p>
@@ -80,9 +81,12 @@
                     <tr>
                       <td>{{ $post->id }}</td>
                       <td>{{ $post->titulo }}</td>
-                      <td>{{ $post->texto ?? 'Não Informado' }}</td>
+                      <td>{{substr(strip_tags($post->texto), 0, 40) . '...' ?? 'Não Informado'}}</td>
                       <td>{{ $post->autor->name }}</td>
+                      <td>{{ $post->image ?? 'Não Informado'}}</td>
                       <td class="d-flex">
+                        <a href="#" class="btn btn-link sem-padding">Ver</a>
+                        |
                         <a href="#" class="btn btn-link sem-padding">Editar</a>
                         |
                         <form action="#" method="POST" id="delete">
@@ -96,8 +100,11 @@
               </tbody>
             </table>
           </div><!-- bd -->
+
+            {{ $posts->links() }}
     </div>
   </div>
+
 </div><!--  end mainpanel -->
 
 
@@ -105,7 +112,7 @@
 <script type="text/javascript">
 
   function confirmDelete() {
-      if (confirm("Deseja realmente deletar essa categoria?")) {
+      if (confirm("Deseja realmente deletar esse post?")) {
          return true;
       } else {
         return false;

@@ -31,11 +31,16 @@
     <script src="{{ asset('template-dark/lib/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('template-dark/lib/echarts/echarts.min.js') }}"></script>
     <script src="{{ asset('template-dark/lib/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('template-dark/lib/summernote/summernote-bs4.min.js') }}"></script>
 
     <script src="{{ asset('template-dark/js/bkt.js') }}"></script>
     <script src="{{ asset('template-dark/js/map.shiftworker.js') }}"></script>
     <script src="{{ asset('template-dark/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('template-dark/js/dashboard.dark.js') }}"></script>
+
+    <!-- <script src="{{ asset('js/jquery.min.js') }}"></script> -->
+    <script src="{{ asset('js/ckeditor.js') }}"></script>
+
   </body>
 
 </html>

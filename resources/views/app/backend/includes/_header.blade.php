@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}" />
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}" />
 
+    <!-- Multi select -->
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" /> 
+
 
  <!-- ########## START: HEAD PANEL ########## -->
     <div class="br-header">
