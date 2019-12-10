@@ -43,17 +43,17 @@
     <div class="br-section-wrapper">
       <div class="form-layout form-layout-1">
 		
-		<form id="form-categorias" name="form-categorias" action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data">
+      		<form id="form-categorias" name="form-categorias" action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data">
 
-			@csrf
+      			@csrf
 
-            @include('categorias.inputs', ['categoria' => null, 'detalhe' => null])
+                @include('categorias.inputs', ['categoria' => null, 'detalhe' => null])
 
-	        <div class="form-layout-footer">
-	          <button class="btn btn-primary">Adicionar Nova Categoria</button>
-	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
-	        </div><!-- form-layout-footer -->
-		 </form>
+      	        <div class="form-layout-footer">
+      	          <button class="btn btn-primary">Adicionar Nova Categoria</button>
+      	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
+      	        </div><!-- form-layout-footer -->
+      		 </form>
 
       </div><!-- form-layout -->
     </div>

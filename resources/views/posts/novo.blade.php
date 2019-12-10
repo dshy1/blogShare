@@ -26,6 +26,10 @@
       width: 50%;
     }
 
+    .custom-file-label {
+      margin-top: 25px;
+    }
+
 </style>
 
 
@@ -62,54 +66,17 @@
     <div class="br-section-wrapper">
         <div class="bd bd-white-1 rounded table-responsive">
             <div class="form-layout form-layout-1">
-              <div class="row mg-b-25">
-                <div class="col-lg-12">
-                  <div class="form-group">
-                    <label class="form-control-label">Título: <span class="tx-danger">*</span></label>
-                    <input class="form-control form-control-dark" type="text" name="titulo" value="" placeholder="Enter firstname">
-                  </div>
-                </div><!-- col-12 -->
+              <form id="form-categorias" name="form-posts" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
 
-                <div class="col-lg-12">
-                  <div class="form-group">
-                    <label class="form-control-label">Texto: <span class="tx-danger">*</span></label>
-                    <div id="editor">
-                        @if(old('texto'))
-                            old('texto')
-                        @else
-                            <br/><br/><br/>
-                        @endif
+                  @csrf
 
-                    </div>
-                  </div>
-                </div><!-- col-12 -->
+                  @include('posts.inputs', ['post' => null, 'detalhe' => null])
 
-                <div class="col-lg-12">
-                  <div class="form-group mg-b-10-force form-categorias">
-                    <label class="form-control-label">Categorias: <span class="tx-danger">*</span></label>
-                    <select class="form-control select2" data-placeholder="Choose country" multiple="multiple">
-                      <option label="Choose country"></option>
-                      <option value="USA">United States of America</option>
-                      <option value="UK">United Kingdom</option>
-                      <option value="China">China</option>
-                      <option value="Japan">Japan</option>
-                    </select>
-                  </div>
-                </div><!-- col-4 -->
-
-                <div class="col-lg-8">
-                  <div class="form-group mg-b-10-force">
-                    <input type="file" class="custom-file-input"  id="validatedCustomFile" aria-describedby="inputGroupFileAddon04" name="image" value="{{ old('image') }}" />
-                    <label class="custom-file-label" for="validatedCustomFile">Selecione uma imagem</label>
-                  </div>
-                </div><!-- col-8 -->
-
-              </div><!-- row -->
-
-              <div class="form-layout-footer">
-                <button class="btn btn-primary">Salvar post</button>
-                <button class="btn btn-secondary">Cancelar</button>
-              </div><!-- form-layout-footer -->
+                <div class="form-layout-footer">
+                  <button class="btn btn-primary">Salvar Post</button>
+                  <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
+                </div><!-- form-layout-footer -->
+              </form>
             </div><!-- form-layout -->
         </div><!-- bd -->
     </div>
@@ -117,20 +84,18 @@
 
 </div><!--  end mainpanel -->
 
-
 @endsection
 
 
 @section('scripts')
-    <!-- Script JS -->
-<script type="text/javascript">
+  <!-- Script JS -->
+  <script type="text/javascript">
 
-var quill = new Quill('#editor', {
-    theme: 'snow'
-  });
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+      });
 
-$(".select2").select2();
+    $(".select2").select2();
 
-
-</script>
+  </script> 
 @endsection

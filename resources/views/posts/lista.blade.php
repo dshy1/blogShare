@@ -5,6 +5,7 @@
 @section('content')
 
 <style type="text/css">
+  
     .com-padding-top {
         padding-top: 100px;
     }
@@ -21,6 +22,11 @@
     .d-flex {
         display: flex;
     }
+
+    .large {
+      font-size: 50px;
+    }
+
 </style>
 
 
@@ -44,11 +50,13 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <img src="svg/settings.svg" alt="Logo" width="70" />
+    <!-- <img src="svg/settings.svg" alt="Logo" width="70" /> -->
+    <i class="large material-icons">bookmark_border</i>
+
     <!-- <i class="icon ion-ios-gear-outline"></i> -->
     <div>
       <h4>Posts</h4>
-      <p class="mg-b-0">Aqui você pode ver os posts cadastrados no sistema</p>
+      <p class="mg-b-0">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>
     </div>
   </div><!-- d-flex -->
 

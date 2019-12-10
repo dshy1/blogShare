@@ -85,25 +85,23 @@ Route::get('/user', function() {
 // });
 
 #### Criar um post
-// ***obs: qdo aparece a mensagem de erro NO MESSAGE significa que o método está errado (se estiver, Get
-// trocar por Post, etc)
-Route::get('/novopost', function() {
+// ***obs: qdo aparece a mensagem de erro NO MESSAGE significa que o método está errado (se estiver, Get trocar por Post, etc)
 
-	$post = new Post;
+// Route::get('/novopost', function() {
 
-	$post->user_id = \Auth::user()->id;
-	$post->titulo = 'Testando o novo post';
-	$post->slug = 'Testando o novo post';
-	$post->texto = 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book';
-	$post->image = 0;
+// 	$post = new Post;
+
+// 	$post->user_id = \Auth::user()->id;
+// 	$post->titulo = 'Testando o novo post';
+// 	$post->slug = 'Testando o novo post';
+// 	$post->texto = 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book';
+// 	$post->image = 0;
 
 
-    $post->save();
+//     $post->save();
 
-    return "Post salvo com sucesso!";
+//     return "Post salvo com sucesso!";
    	
-});
+// });
 
 
-
-// Fazer CRUD Posts
