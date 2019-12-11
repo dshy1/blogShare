@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Session;
 
 
 class PostController extends Controller
@@ -42,7 +46,8 @@ class PostController extends Controller
      */
     public function create() {
         
-          return view('posts.novo');
+        $categorias = Categoria::all();
+        return view('posts.novo', compact('categorias'));
     }
 
     /**
@@ -53,7 +58,51 @@ class PostController extends Controller
      */
     public function store(Request $request) {
 
+        dd($request);
+        // validate
+        $validatedData = $request->validate([
+            'titulo'     => 'required|unique:posts',
+            'texto'      => 'required',
+            'categorias' => 'required',
+            'image'      => 'required'
+        ]);
 
+         try{
+
+            \DB::beginTransaction();
+
+            $post = new Post();
+
+            $post->titulo = $request->get('titulo');
+            $post->slug = Str::slug($post->titulo, '-');
+            $post->texto  = $request->get('texto');
+            $post->categorias()->attach($request->get('categorias'));
+            $post->image  = $request->get('image');
+
+            if($request->file('image')) { 
+                // ** Imagem Upload
+                $path = Storage::disk('public')->put('images', $request->file('image'));
+                $post->fill(['image' => asset('public/' . $path)])->save();
+            }  
+
+            $post->save();
+
+            \DB::commit();
+
+            # status de retorno
+            Session::flash('success', $request['titulo'] . ' cadastrado com sucesso!');
+            return redirect()->route('posts.show', $post->id); 
+
+        }catch(\Exception $exception) {
+
+            \DB::rollBack();
+            # status de retorno
+            Session::flash('error',' O post não pôde ser cadastrado!');
+
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->route('posts.index');
         
     }
 

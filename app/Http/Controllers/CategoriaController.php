@@ -9,8 +9,8 @@ use Spatie\Permission\Models\Permission;
 use Session;
 
 
-class CategoriaController extends Controller
-{
+class CategoriaController extends Controller {
+
     protected $request;
     protected $categoria;
 
@@ -52,10 +52,10 @@ class CategoriaController extends Controller
     public function store(Request $request) {
 
          
-          // validate
-            $validatedData = $request->validate([
-                'nome' => 'required|unique:categorias',
-            ]);
+        // validate
+        $validatedData = $request->validate([
+            'nome' => 'required|unique:categorias',
+        ]);
 
 
          try{

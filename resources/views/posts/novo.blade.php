@@ -89,13 +89,20 @@
 
 @section('scripts')
   <!-- Script JS -->
-  <script type="text/javascript">
 
+  <script type="text/javascript">
+    // --- Editor Texto -->
     var quill = new Quill('#editor', {
         theme: 'snow'
       });
 
-    $(".select2").select2();
+    // ---  Multi select-->
+    $(".select2").select2({
+        maximumSelectionLength: 3
+    });
 
   </script> 
+
 @endsection
+
+
