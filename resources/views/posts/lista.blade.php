@@ -91,7 +91,8 @@
                       <td>{{ $post->titulo }}</td>
                       <td>{{substr(strip_tags($post->texto), 0, 40) . '...' ?? 'Não Informado'}}</td>
                       <td>{{ $post->autor->name }}</td>
-                      <td>{{ $post->image ?? 'Não Informado'}}</td>
+                      <td><img src="{{ $post->image }}" alt="Imagem do Cliente"></td>
+
                       <td class="d-flex">
                         <a href="#" class="btn btn-link sem-padding">Ver</a>
                         |

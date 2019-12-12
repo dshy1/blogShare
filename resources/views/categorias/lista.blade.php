@@ -31,7 +31,6 @@
             <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
         </div>
     </div>
-
 @endif
 
 <!-- ########## START: MAIN PANEL ########## -->
@@ -97,24 +96,29 @@
   </div>
 </div><!--  end mainpanel -->
 
+@endsection
 
-<!-- Script JS -->
-<script type="text/javascript">
+@section('scripts')
 
-  function confirmDelete() {
-      if (confirm("Deseja realmente deletar essa categoria?")) {
-         return true;
-      } else {
-        return false;
-      }
-  }
+  <!-- Script JS -->
+  <script type="text/javascript">
 
-   function fecharAlert() {
-    
-    document.getElementById("close").style.display = "none";
- }
+    function confirmDelete() {
+        if (confirm("Deseja realmente deletar essa categoria?")) {
+           return true;
+        } else {
+          return false;
+        }
+    }
 
-</script>
+     function fecharAlert() {
+      
+      document.getElementById("close").style.display = "none";
+   }
 
+  </script>
 
 @endsection
+
+
+

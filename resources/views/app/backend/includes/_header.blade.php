@@ -19,7 +19,8 @@
 
     <!-- Multi select -->
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/quilljs.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/samples.css') }}" />
+    <!-- <link rel="stylesheet" href="{{ asset('css/quilljs.css') }}"> -->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 

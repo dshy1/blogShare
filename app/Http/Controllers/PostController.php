@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function store(Request $request) {
 
-        dd($request);
+        // dd($request);
         // validate
         $validatedData = $request->validate([
             'titulo'     => 'required|unique:posts',
@@ -76,13 +76,23 @@ class PostController extends Controller
             $post->titulo = $request->get('titulo');
             $post->slug = Str::slug($post->titulo, '-');
             $post->texto  = $request->get('texto');
+            $post->save();
+
             $post->categorias()->attach($request->get('categorias'));
             $post->image  = $request->get('image');
 
             if($request->file('image')) { 
-                // ** Imagem Upload
+                // ** salvar normal
+                // $path = Storage::disk('public')->put('images', $request->file('image'));
+                // $post->fill( ['image'=> asset($path)] )->save();
+
+                // ** Imagem Upload - salvar no host compartilhado
+                // $path = Storage::disk('public')->put('images', $request->file('image'));
+                // $post->fill(['image' => asset('public/' . $path)])->save();
+
                 $path = Storage::disk('public')->put('images', $request->file('image'));
                 $post->fill(['image' => asset('public/' . $path)])->save();
+
             }  
 
             $post->save();

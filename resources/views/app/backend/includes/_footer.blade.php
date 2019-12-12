@@ -38,7 +38,7 @@
     <script src="{{ asset('template-dark/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('template-dark/js/dashboard.dark.js') }}"></script>
 
-    <script src="{{ asset('js/quilljs.js') }}"></script>
+    <script src="{{ asset('js/ckeditor.js') }}"></script>
 
     @yield('scripts')
 

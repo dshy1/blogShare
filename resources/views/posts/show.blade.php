@@ -52,33 +52,21 @@
     </div>
   </div><!-- d-flex -->
 
-    @if($errors->any())
-      <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-       </div>
-    @endif
+  @if(Session::has('success'))
+    <div class="row justify-content-center">
+      <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
+          <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
+          <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
+      </div>
+    </div>
+  @endif
 
   <div class="br-pagebody">
     <div class="br-section-wrapper">
         <div class="bd bd-white-1 rounded table-responsive">
             <div class="form-layout form-layout-1">
 
-              <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
-
-                  @csrf
-                  {{ method_field('POST') }}
-
-                  @include('posts.inputs', ['post' => null, 'detalhe' => null])
-
-                <div class="form-layout-footer">
-                  <input type="submit" class="btn btn-primary" value="Salvar Post" />
-                  <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
-                </div><!-- form-layout-footer -->
-              </form>
+              <h1>Post salvo com sucesso!</h1>
 
             </div><!-- form-layout -->
         </div><!-- bd -->
@@ -91,30 +79,19 @@
 
 
 @section('scripts')
+
   <!-- Script JS -->
-
   <script type="text/javascript">
-  
-    // ---  Multi select-->
-    $(".select2").select2({
-        maximumSelectionLength: 3
-    });
+    
+     function fecharAlert() {
+      
+      document.getElementById("close").style.display = "none";
+   }
 
-    // --- Editor Texto -->
-    ClassicEditor.create( document.querySelector( '#editor' ), {
-          // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-    } )
-      .then( editor => {
-          window.editor = editor;
-    } )
-      .catch( err => {
-          console.error( err.stack );
-    } );
-
-    // initSample();
-
-  </script> 
+  </script>
 
 @endsection
+
+
 
 

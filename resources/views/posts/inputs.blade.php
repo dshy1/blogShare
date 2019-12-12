@@ -10,19 +10,26 @@
     </div>
   </div><!-- col-12 -->
 
+  <div class="form-group">
+      <input type="hidden" class="form-control" name="slug" />
+  </div>  
+
   <div class="col-lg-12">
     <div class="form-group">
       <label class="form-control-label">Texto: <span class="tx-danger">*</span></label>
       @isset($detalhe)
         <p id="texto" class="" >{{ $post['texto'] or 'Não Informado' }}</p>
       @else
-        <div id="editor">
+        <!-- <div id="editor">
             @if(old('texto'))
                 old('texto')
             @else
                 <br/><br/><br/>
             @endif
-        </div>
+        </div> -->
+        <main>
+            <textarea name="texto" id="editor">{{ old('texto') }}</textarea>
+        </main>
 
       @endif
     </div>
@@ -41,7 +48,7 @@
         </select>
       @endif
     </div>
-  </div><!-- col-4 -->
+  </div><!-- col-12 -->
 
   <div class="col-lg-8">
     <div class="custom-file">
@@ -51,8 +58,8 @@
       @else
         <input type="file" class="custom-file-input"  id="validatedCustomFile" aria-describedby="inputGroupFileAddon04" name="image" value="{{ old('image') }}" />
         <label class="custom-file-label" for="validatedCustomFile">Selecione uma imagem</label>
-
       @endif
     </div>
   </div><!-- col-8 -->
 </div><!-- row -->
+
