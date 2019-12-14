@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Session;
+use DB;
+
 
 
 class PostController extends Controller
@@ -33,7 +35,6 @@ class PostController extends Controller
         $posts = Post::with('autor')->with('categorias')->orderBy('id','desc')->paginate(6);
 
         // dd($posts);
-
         return view('posts.lista', compact('posts'));
 
     
@@ -47,6 +48,7 @@ class PostController extends Controller
     public function create() {
         
         $categorias = Categoria::all();
+        
         return view('posts.novo', compact('categorias'));
     }
 
@@ -59,62 +61,60 @@ class PostController extends Controller
     public function store(Request $request) {
 
         // dd($request);
-        // validate
-        $validatedData = $request->validate([
-            'titulo'     => 'required|unique:posts',
-            'texto'      => 'required',
-            'categorias' => 'required',
-            'image'      => 'required'
-        ]);
 
-         try{
+        try{
 
-            \DB::beginTransaction();
+            # caminho das pastas de arquivos
+            $pasta_post = 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'posts';
 
-            $post = new Post();
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-            $post->titulo = $request->get('titulo');
-            $post->slug = Str::slug($post->titulo, '-');
-            $post->texto  = $request->get('texto');
-            $post->save();
+                $arquivo_post = $request->file('image');
+                $extensao  = $arquivo_post->getClientOriginalExtension();
+                $nome_arquivo = 'post_' . '.' . $extensao;
+                $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
+            
+            }
 
-            $post->categorias()->attach($request->get('categorias'));
-            $post->image  = $request->get('image');
+            // validate
+            $validator = $this->validate($request, [
+                'titulo'     => 'required|unique:posts',
+                'texto'      => 'required|',
+                'categorias' => 'required',
+                'image'      => 'required',
 
-            if($request->file('image')) { 
-                // ** salvar normal
-                // $path = Storage::disk('public')->put('images', $request->file('image'));
-                // $post->fill( ['image'=> asset($path)] )->save();
+            ]);
 
-                // ** Imagem Upload - salvar no host compartilhado
-                // $path = Storage::disk('public')->put('images', $request->file('image'));
-                // $post->fill(['image' => asset('public/' . $path)])->save();
+           \DB::beginTransaction();
 
-                $path = Storage::disk('public')->put('images', $request->file('image'));
-                $post->fill(['image' => asset('public/' . $path)])->save();
+            $post = Post::create([
+                'titulo' => $request->get('titulo'),
+                'slug'   => Str::slug($post->titulo, '-'),
+                'texto'  => $request->get('texto'),
+               
+            ]);
 
-            }  
-
-            $post->save();
-
+            $post->categorias()->sync($request->get('categorias'));
+                
             \DB::commit();
 
             # status de retorno
-            Session::flash('success', $request['titulo'] . ' cadastrado com sucesso!');
-            return redirect()->route('posts.show', $post->id); 
+            Session::flash('success',' O post foi salvo com sucesso!');
+            return redirect()->route('posts.show', $post->id);  
 
-        }catch(\Exception $exception) {
+        }catch (\Exception $exception){
 
-            \DB::rollBack();
+            \DB::rollback();
             # status de retorno
-            Session::flash('error',' O post não pôde ser cadastrado!');
+            Session::flash('error',' O post não pôde ser cadastrado!'); 
 
             return redirect()->back()->withInput();
         }
 
         return redirect()->route('posts.index');
-        
-    }
+
+
+    } // end store
 
     /**
      * Display the specified resource.

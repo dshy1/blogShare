@@ -73,8 +73,7 @@ class CategoriaController extends Controller {
         }catch (\Exception $exception){
 
             # status de retorno
-            Session::flash('error',' A categoria não pôde ser cadastrada!');
-            
+            Session::flash('error',' A categoria não pôde ser cadastrada!'); 
 
             return redirect()->back()->withInput();
         }
