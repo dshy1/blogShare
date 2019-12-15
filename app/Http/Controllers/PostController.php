@@ -15,13 +15,12 @@ use DB;
 
 
 
-class PostController extends Controller
-{
+class PostController extends Controller {
+
     protected $request;
     protected $post;
 
-    public function __construct(Request $request, Post $post)
-    {
+    public function __construct(Request $request, Post $post) {
 
         $this->request = $request;
         $this->post = $post;
@@ -33,8 +32,7 @@ class PostController extends Controller
 
     }
 
-    public function index()
-    {
+    public function index() {
 
         $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);
 
@@ -43,8 +41,7 @@ class PostController extends Controller
     }
 
 
-    public function create()
-    {
+    public function create() {
 
         $categorias = Categoria::all();
 
@@ -52,10 +49,9 @@ class PostController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
 
-        //validate
+        // validate
         $validator = $this->validate($request, [
             'titulo'     => 'required|unique:posts',
             'texto'      => 'required',
@@ -64,17 +60,19 @@ class PostController extends Controller
 
         ]);
 
-        try {
+        try{
+
             # caminho das pastas de arquivos
-            $pasta_post = 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'posts';
+            $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
 
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
-
                 $arquivo_post = $request->file('image');
                 $extensao  = $arquivo_post->getClientOriginalExtension();
                 $nome_arquivo = 'post_' . rand(11111111, 99999999) . '.' . $extensao;
                 $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
             }
+
+            // \DB::beginTransaction();
 
             $post = Post::create([
                 'titulo' => $request->get('titulo'),
@@ -83,34 +81,69 @@ class PostController extends Controller
                 'image' =>  $nome_arquivo,
             ]);
 
+            # Vincula as categorias
             $post->categorias()->sync($request->get('categorias'));
+
+            // \DB::commit();
+
             # status de retorno
             Session::flash('success', ' O post foi salvo com sucesso!');
             return redirect()->route('posts.show', $post->id);
-        } catch (\Exception $exception) {
 
+
+        }catch (\Exception $exception) {
+
+            // \DB::rollback();
             # status de retorno
             Session::flash('error', ' O post não pôde ser cadastrado!');
-
             return redirect()->back()->withInput();
         }
 
         return redirect()->route('posts.index');
+       
     } // end store
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) {
+        
 
-    public function show($id)
-    { }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id) {
+        
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id) {
+        
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id) {
+        
+    }
 
 
-    public function edit($id)
-    { }
-
-
-    public function update(Request $request, $id)
-    { }
-
-
-    public function destroy($id)
-    { }
-}
+} // end class
