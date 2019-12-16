@@ -50,7 +50,7 @@
                 @include('categorias.inputs', ['categoria' => null, 'detalhe' => null])
 
       	        <div class="form-layout-footer">
-      	          <button class="btn btn-primary">Adicionar Nova Categoria</button>
+      	          <button class="btn btn-primary">Adicionar Categoria</button>
       	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
       	        </div><!-- form-layout-footer -->
       		 </form>

@@ -3,7 +3,7 @@
     <div class="form-group">
       <label class="form-control-label">Título: <span class="tx-danger">*</span></label>
       @isset($detalhe)
-        <p id="titulo" class="" >{{ $post['titulo'] or 'Não Informado' }}</p>
+        <p id="titulo" class="" >{{ $post->titulo or 'Não Informado' }}</p>
       @else
         <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo  ?? old('titulo') }}" placeholder="Enter firstname" />
       @endif
@@ -18,15 +18,8 @@
     <div class="form-group">
       <label class="form-control-label">Texto: <span class="tx-danger">*</span></label>
       @isset($detalhe)
-        <p id="texto" class="" >{{ $post['texto'] or 'Não Informado' }}</p>
+        <p id="texto" class="" >{{ $post->texto or 'Não Informado' }}</p>
       @else
-        <!-- <div id="editor">
-            @if(old('texto'))
-                old('texto')
-            @else
-                <br/><br/><br/>
-            @endif
-        </div> -->
         <main>
             <textarea name="texto" id="editor">{{ old('texto') }}</textarea>
         </main>
@@ -56,7 +49,7 @@
       @isset($detalhe)
         <p id="imagem" class="">Detalhes da Imagem</p>
       @else
-        <input type="file" class="custom-file-input"  id="validatedCustomFile" aria-describedby="inputGroupFileAddon04" name="image" value="{{ old('image') }}" />
+        <input type="file" accept="image/png, image/jpeg" class="custom-file-input"  id="validatedCustomFile" aria-describedby="inputGroupFileAddon04" name="image" value="{{ old('image') }}" placeholder="Tamanho recomendado: 100X100px" />
         <label class="custom-file-label" for="validatedCustomFile">Selecione uma imagem</label>
       @endif
     </div>

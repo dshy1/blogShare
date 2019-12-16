@@ -53,10 +53,10 @@ class CategoriaController extends Controller {
 
          
         // validate
-        $validatedData = $request->validate([
-            'nome' => 'required|unique:categorias',
-        ]);
+        $validator = $this->validate($request, [
+            'nome' => 'required|unique:categorias'
 
+        ]);
 
          try{
 

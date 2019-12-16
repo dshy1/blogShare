@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Post extends Model {
 
-	use Notifiable;
+	  use Notifiable;
     use HasRoles;
 
     protected $fillable = [

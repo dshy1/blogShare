@@ -66,7 +66,7 @@
         <div class="bd bd-white-1 rounded table-responsive">
             <div class="form-layout form-layout-1">
 
-              <h1>Post salvo com sucesso!</h1>
+              <h1>OK!</h1>
 
             </div><!-- form-layout -->
         </div><!-- bd -->

@@ -8,6 +8,8 @@ use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Session;
 use DB;
 
@@ -48,7 +50,7 @@ class PostController extends Controller
     public function create() {
         
         $categorias = Categoria::all();
-        
+
         return view('posts.novo', compact('categorias'));
     }
 
@@ -62,8 +64,16 @@ class PostController extends Controller
 
         // dd($request);
 
-        try{
+        // validate
+        $validator = $this->validate($request, [
+            'titulo'     => 'required|unique:posts',
+            'texto'      => 'required',
+            'categorias' => 'required',
+            'image'      => 'required'
 
+        ]);
+
+        try{
             # caminho das pastas de arquivos
             $pasta_post = 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'posts';
 
@@ -76,35 +86,25 @@ class PostController extends Controller
             
             }
 
-            // validate
-            $validator = $this->validate($request, [
-                'titulo'     => 'required|unique:posts',
-                'texto'      => 'required|',
-                'categorias' => 'required',
-                'image'      => 'required',
-
-            ]);
-
-           \DB::beginTransaction();
-
             $post = Post::create([
                 'titulo' => $request->get('titulo'),
                 'slug'   => Str::slug($post->titulo, '-'),
-                'texto'  => $request->get('texto'),
+                'texto'  => $request->get('texto')
                
             ]);
 
             $post->categorias()->sync($request->get('categorias'));
-                
-            \DB::commit();
 
+            dd($post);
+                
             # status de retorno
             Session::flash('success',' O post foi salvo com sucesso!');
             return redirect()->route('posts.show', $post->id);  
 
         }catch (\Exception $exception){
 
-            \DB::rollback();
+            eg: Log::debug($exception->getMessage());
+
             # status de retorno
             Session::flash('error',' O post não pôde ser cadastrado!'); 
 
