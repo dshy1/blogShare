@@ -1,4 +1,8 @@
-@extends('layouts.main02') @section('title', 'Posts') @section('content')
+@extends('layouts.main02')
+
+@section('title', 'Posts')
+
+@section('content')
 
 <style type="text/css">
     .com-padding-top {
@@ -29,8 +33,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
         <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
-        <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true"
-                onclick="fecharAlert();"><strong>&times;</strong></span></button>
+        <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
     </div>
 </div>
 
@@ -89,7 +92,7 @@
                             <td>{{ $post->titulo }}</td>
                             <td>{{substr(strip_tags($post->texto), 0, 40) . '...' ?? 'Não Informado'}}</td>
                             <td>{{ $post->autor->name }}</td>
-                            <td><img src="{{ asset('storage/public/images/posts/'.$post->image) }}" alt="Post image" style="width: 100px; height: 70px;">
+                            <td><img src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 100px; height: 70px;">
                             </td>
 
                             <td class="d-flex">
@@ -126,10 +129,8 @@
     }
 
     function fecharAlert() {
-
         document.getElementById("close").style.display = "none";
     }
 </script>
-
 
 @endsection
