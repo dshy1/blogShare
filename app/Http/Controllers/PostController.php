@@ -73,45 +73,42 @@ class PostController extends Controller
 
         ]);
 
-        try{
-            # caminho das pastas de arquivos
-            $pasta_post = 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'posts';
+      
+        # caminho das pastas de arquivos
+        $pasta_post = 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'posts';
 
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-                $arquivo_post = $request->file('image');
-                $extensao  = $arquivo_post->getClientOriginalExtension();
-                $nome_arquivo = 'post_' . '.' . $extensao;
-                $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
-            
-            }
-
-            $post = Post::create([
-                'titulo' => $request->get('titulo'),
-                'slug'   => Str::slug($post->titulo, '-'),
-                'texto'  => $request->get('texto')
-               
-            ]);
-
-            $post->categorias()->sync($request->get('categorias'));
-
-            dd($post);
-                
-            # status de retorno
-            Session::flash('success',' O post foi salvo com sucesso!');
-            return redirect()->route('posts.show', $post->id);  
-
-        }catch (\Exception $exception){
-
-            eg: Log::debug($exception->getMessage());
-
-            # status de retorno
-            Session::flash('error',' O post não pôde ser cadastrado!'); 
-
-            return redirect()->back()->withInput();
+            $arquivo_post = $request->file('image');
+            $extensao  = $arquivo_post->getClientOriginalExtension();
+            $nome_arquivo = 'post_' . '.' . $extensao;
+            $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
+        
         }
 
-        return redirect()->route('posts.index');
+        $post = Post::create([
+            'titulo' => $request->get('titulo'),
+            'slug'   => Str::slug($request->get('titulo'), '-'),
+            'texto'  => $request->get('texto')
+           
+        ]);
+
+        # Vincula as categorias
+        $post->categorias()->attach($request->get('categorias'));
+
+        dd($post);
+                
+        # status de retorno
+        Session::flash('success',' O post foi salvo com sucesso!');
+        return redirect()->route('posts.show', $post->id);  
+
+
+        # status de retorno
+        // Session::flash('error',' O post não pôde ser cadastrado!'); 
+
+        // return redirect()->back()->withInput();
+        
+        // return redirect()->route('posts.index');
 
 
     } // end store
