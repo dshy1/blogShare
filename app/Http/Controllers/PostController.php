@@ -88,7 +88,7 @@ class PostController extends Controller {
 
             # status de retorno
             Session::flash('success', ' O post foi salvo com sucesso!');
-            return redirect()->route('posts.show', $post->id);
+            return redirect()->route('posts.show')->with($post->id);
 
 
         }catch (\Exception $exception) {
@@ -109,8 +109,13 @@ class PostController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        
+    public function show(Post $post) {
+
+        $post  = Post::with('categorias')->get()->find($post);
+
+        // dd($post->titulo);
+
+        return view('posts.show', compact('post')); 
 
     }
 

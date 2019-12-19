@@ -24,7 +24,8 @@
     }
     
     .large {
-        font-size: 50px;
+        font-size: 75px;
+        color: #18a4b4;
     }
 </style>
 
@@ -96,7 +97,7 @@
                             </td>
 
                             <td class="d-flex">
-                                <a href="#" class="btn btn-link sem-padding">Ver</a> |
+                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |
                                 <a href="#" class="btn btn-link sem-padding">Editar</a> |
                                 <form action="#" method="POST" id="delete">
                                     @method('DELETE') @csrf

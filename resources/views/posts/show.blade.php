@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', 'Novo Post')
+@section('title', 'Detalhes do Post')
 
 @section('content')
 
@@ -29,6 +29,18 @@
     .custom-file-label {
       margin-top: 25px;
     }
+    .txt-gray {
+      color: #868ba1;
+    }
+    .no-padding {
+      padding: 0;
+    }
+    .height-50 {
+      max-height: 50%;
+    }
+    hr {
+      background: gray;
+    }
 
 </style>
 
@@ -39,7 +51,7 @@
     <nav class="breadcrumb pd-0 mg-0 tx-12">
       <a class="breadcrumb-item" href="#">Home</a>
       <a class="breadcrumb-item" href="#">Posts</a>
-      <span class="breadcrumb-item active">Novo Post</span>
+      <span class="breadcrumb-item active">Detalhes do Post</span>
     </nav>
   </div><!-- br-pageheader -->
 
@@ -47,8 +59,8 @@
 
     <!-- <i class="icon ion-ios-gear-outline"></i> -->
     <div>
-      <h4>Posts</h4>
-      <p class="mg-b-0">Vamos criar um novo post</p>
+      <h4>Detalhes do Post</h4>
+      <p class="mg-b-0">Veja e atualize seus posts</p>
     </div>
   </div><!-- d-flex -->
 
@@ -61,16 +73,72 @@
     </div>
   @endif
 
-  <div class="br-pagebody">
-    <div class="br-section-wrapper">
-        <div class="bd bd-white-1 rounded table-responsive">
-            <div class="form-layout form-layout-1">
+  <div class="br-pagebody pd-x-20 pd-sm-x-30 mx-wd-1350">
+    <div class="row row-sm mg-t-20">
+        <div class="col-lg-8">
+          <div class="card card-inverse bd-0 mg-b-20 ht-400 ht-xs-350 ht-lg-100p height-50">
+              <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Image">
+              <div class="pos-absolute a-0 pd-b-30 bg-black-1 rounded d-flex align-items-sm-center justify-content-center">
+              </div><!-- pos-absolute d-flex -->
 
-              <h1>OK!</h1>
+              <div class="card bd-gray-400 pd-25 ht-100p ">
+                <div class="d-sm-flex justify-content-between align-items-left tx-14 txt-gray" style="flex-direction: column;">
+                  <h1>{{ $post->titulo }}</h1>
+                  <p>{{ strip_tags($post->texto) }}</p>
+                   <h2>Categorias:</h2>
+                    <ul>
+                      @foreach($post->categorias as $categoria)
+                       <li> 
+                        {{ $categoria->nome }} 
+                      </li>
+                      @endforeach
+                    </ul>
+                </div><!-- d-flex -->
+              </div><!-- pos-absolute-bottom -->
+          </div><!-- card -->
+        </div><!-- col-8 -->
+        
+        <!-- Informaçoes de data e botoes -->
+        <div class="col-lg-4">
+          <div class="card bd-gray-400 pd-25 ht-100p ">
+            <div class="media mg-b-25">
+              <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+              <div class="media-body mg-t-2">
+                <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
+              </div><!-- media-body -->
+            </div><!-- media -->
+            <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">Data de Criação:</a></h5>
+            <p class="tx-14 mg-b-25 txt-gray">{{ date('j M, Y', strtotime($post->created_at)) }}</p>
+            <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">Última Atualização:</a></h5>
+            <p class="tx-14 mg-b-25 txt-gray">{{ date('j M, Y', strtotime($post->updated_at)) }}</p>
+            <hr>
+            
+            <!-- Botoes de Açao -->
+            <div class="media mg-b-25">
+              <div class="col-sm-3 no-padding">
+                  <a href="#" class="btn btn-warning bt-editar">Editar</a>
+              </div>
 
-            </div><!-- form-layout -->
-        </div><!-- bd -->
-    </div>
+              <div class="col-sm-3 no-padding">
+                <form action="#" method="POST" id="delete">
+                   {{ method_field('POST') }}
+                   @csrf
+                  <input type="submit" value="Deletar" class="btn btn-danger bt-deletar" onclick="return myFunction();" />
+                </form>
+              </div>
+
+              <div class="col-sm-3 no-padding">
+                  <a href="#" class="btn btn-light bt-voltar">Voltar</a>
+              </div>
+            </div><!-- media -->
+
+            <p class="mg-t-auto mg-b-0 tx-13">
+              <a href="#" class="tx-info">18 Likes</a>
+              <a href="#" class="tx-info mg-l-20">1 Comment</a>
+            </p>
+          </div><!-- card -->
+        </div><!-- col-4 -->
+    </div><!-- row -->
   </div>
 
 </div><!--  end mainpanel -->
