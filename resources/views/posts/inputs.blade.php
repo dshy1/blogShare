@@ -5,7 +5,7 @@
       @isset($detalhe)
         <p id="titulo" class="" >{{ $post->titulo or 'Não Informado' }}</p>
       @else
-        <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo  ?? old('titulo') }}" placeholder="Enter firstname" />
+        <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo ?? old('titulo') }}" placeholder="Enter firstname" />
       @endif
     </div>
   </div><!-- col-12 -->
@@ -18,12 +18,11 @@
     <div class="form-group">
       <label class="form-control-label">Texto: <span class="tx-danger">*</span></label>
       @isset($detalhe)
-        <p id="texto" class="" >{{ $post->texto or 'Não Informado' }}</p>
+        <p id="texto" class="">{{ $post->texto or 'Não Informado' }}</p>
       @else
         <main>
-            <textarea name="texto" id="editor">{{ old('texto') }}</textarea>
+            <textarea name="texto" id="editor" value="{{ $post->texto ?? old('texto') }}">{{ $post['texto'] ?? old('texto') }}</textarea>
         </main>
-
       @endif
     </div>
   </div><!-- col-12 -->
@@ -34,7 +33,7 @@
       @isset($detalhe)
         <p id="categorias" class="">Detalhes Categorias</p>
       @else
-        <select class="form-control select2" data-placeholder="Choose country" multiple="multiple" name="categorias[]" >
+        <select class="form-control select2" data-placeholder="Choose country" multiple="multiple" name="categorias[]">
            @foreach($categorias as $categoria)
               <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
            @endforeach

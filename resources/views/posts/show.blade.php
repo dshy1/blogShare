@@ -30,7 +30,7 @@
       margin-top: 25px;
     }
     .txt-gray {
-      color: #868ba1;
+      color: #a6aabf;
     }
     .no-padding {
       padding: 0;
@@ -40,6 +40,10 @@
     }
     hr {
       background: gray;
+    }
+    .large {
+        font-size: 78px;
+        color: #18a4b4;
     }
 
 </style>
@@ -56,10 +60,9 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-
-    <!-- <i class="icon ion-ios-gear-outline"></i> -->
+    <i class="large material-icons">bookmark_border</i>
     <div>
-      <h4>Detalhes do Post</h4>
+      <h2 class="tx-white">Post {{ $post->id }}</h2>
       <p class="mg-b-0">Veja e atualize seus posts</p>
     </div>
   </div><!-- d-flex -->
@@ -100,7 +103,7 @@
         
         <!-- Informaçoes de data e botoes -->
         <div class="col-lg-4">
-          <div class="card bd-gray-400 pd-25 ht-100p ">
+          <div class="card bd-gray-400 pd-25">
             <div class="media mg-b-25">
               <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
               <div class="media-body mg-t-2">

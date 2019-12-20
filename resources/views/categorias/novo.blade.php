@@ -1,13 +1,19 @@
 @extends('layouts.main02')
 
-@section('title', 'Criar Categoria')
+@section('title', 'Nova Categoria')
 
 @section('content')
 
 <style type="text/css">
+
     .com-padding-top {
-        padding-top: 100px;
+      padding-top: 100px;
     }
+    .large {
+      font-size: 78px;
+      color: #18a4b4;
+    }
+
 </style>
 
 
@@ -22,9 +28,9 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <i class="icon ion-ios-gear-outline"></i>
+      <i class="large material-icons">bookmark_border</i>
     <div>
-      <h4>Nova Categoria</h4>
+      <h2 class="tx-white">Nova Categoria</h2>
       <p class="mg-b-0">Crie uma nova categoria para seus posts</p>
     </div>
   </div><!-- d-flex -->

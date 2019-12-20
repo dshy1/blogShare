@@ -5,22 +5,30 @@
 @section('content')
 
 <style type="text/css">
+
     .com-padding-top {
-        padding-top: 100px;
+      padding-top: 100px;
     }
 
     .alert-success {
-        width: 420px;
-        position: absolute;
-        top: 80px;
+      width: 420px;
+      position: absolute;
+      top: 80px;
     }
     .sem-padding {
-        padding: 0 4px;
+      padding: 0 4px;
+    }
+    .d-flex {
+      display: flex;
+    }
+    .large {
+      font-size: 78px;
+      color: #18a4b4;
+    }
+    #form-delete-categorias {
+      margin-top: -3px;
     }
 
-    .d-flex {
-        display: flex;
-    }
 </style>
 
 
@@ -43,9 +51,9 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <i class="icon ion-ios-gear-outline"></i>
+    <i class="large material-icons">bookmark_border</i>
     <div>
-      <h4>Categorias</h4>
+      <h2 class="tx-white">Categorias</h2>
       <p class="mg-b-0">Categorias cadastradas no sistema</p>
     </div>
   </div><!-- d-flex -->
@@ -81,7 +89,7 @@
                       <td class="d-flex">
                         <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-link sem-padding">Editar</a>
                         |
-                        <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="delete">
+                        <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="form-delete-categorias">
                            @method('DELETE')
                            @csrf
                            <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />

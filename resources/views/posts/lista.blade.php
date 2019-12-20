@@ -5,28 +5,29 @@
 @section('content')
 
 <style type="text/css">
+
     .com-padding-top {
         padding-top: 100px;
     }
-    
     .alert-success {
         width: 420px;
         position: absolute;
         top: 80px;
     }
-    
     .sem-padding {
         padding: 0 4px;
     }
-    
     .d-flex {
         display: flex;
     }
-    
     .large {
-        font-size: 75px;
+        font-size: 78px;
         color: #18a4b4;
     }
+    #form-delete-posts {
+        margin-top: -3px;
+    }
+
 </style>
 
 
@@ -51,12 +52,9 @@
     <!-- br-pageheader -->
 
     <div class="br-pagetitle">
-        <!-- <img src="svg/settings.svg" alt="Logo" width="70" /> -->
         <i class="large material-icons">bookmark_border</i>
-
-        <!-- <i class="icon ion-ios-gear-outline"></i> -->
         <div>
-            <h4>Posts</h4>
+            <h2 class="tx-white">Posts</h2>
             <p class="mg-b-0">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>
         </div>
     </div>
@@ -98,8 +96,8 @@
 
                             <td class="d-flex">
                                 <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |
-                                <a href="#" class="btn btn-link sem-padding">Editar</a> |
-                                <form action="#" method="POST" id="delete">
+                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link sem-padding">Editar</a> |
+                                <form action="#" method="POST" id="form-delete-posts">
                                     @method('DELETE') @csrf
                                     <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
                                 </form>

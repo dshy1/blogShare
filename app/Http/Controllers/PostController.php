@@ -126,7 +126,11 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        
+       
+        $post = Post::find($id)->first();
+        $categorias = Categoria::all();
+
+        return view('posts.edit', compact('post', 'categorias')); 
     }
 
     /**
@@ -138,7 +142,55 @@ class PostController extends Controller {
      */
     public function update(Request $request, $id) {
         
-    }
+        // validate
+        $validator = $this->validate($request, [
+            'titulo'     => 'required|unique:posts',
+            'texto'      => 'required',
+            'categorias' => 'required|array|min:1',
+            'image'      => 'required'
+
+        ]);
+
+        try{
+            
+            # caminho das pastas de arquivos
+            $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
+
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $arquivo_post = $request->file('image');
+                $extensao  = $arquivo_post->getClientOriginalExtension();
+                $nome_arquivo = 'post_' . rand(11111111, 99999999) . '.' . $extensao;
+                $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
+            }
+
+            // \DB::beginTransaction();
+            $post->titulo = $request->input('titulo');
+            $post->slug   = Str::slug($post->titulo, '-');
+            $post->texto  = $request->input('texto');
+            $post->image  = $nome_arquivo;
+
+            $post->save();
+
+            $post->categories()->sync($request->get('categorias'));
+
+            // \DB::commit();
+
+            # status de retorno
+            Session::flash('success', ' O post foi atualizado com sucesso!');
+            return redirect()->route('posts.show')->with($post->id);
+
+
+        }catch (\Exception $exception) {
+
+            // \DB::rollback();
+            # status de retorno
+            Session::flash('error', ' O post não pôde ser atualizado!');
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->route('posts.index');
+
+    } // end update
 
     /**
      * Remove the specified resource from storage.
