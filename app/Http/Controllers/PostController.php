@@ -78,7 +78,7 @@ class PostController extends Controller {
                 'titulo' => $request->get('titulo'),
                 'slug'   => Str::slug($request->get('titulo'), '-'),
                 'texto'  => $request->get('texto'),
-                'image' =>  $nome_arquivo,
+                'image'  =>  $nome_arquivo,
             ]);
 
             # Vincula as categorias
@@ -127,10 +127,12 @@ class PostController extends Controller {
      */
     public function edit($id) {
        
-        $post = Post::find($id)->first();
+        $post  = Post::find($id);
         $categorias = Categoria::all();
 
-        return view('posts.edit', compact('post', 'categorias')); 
+        // dd($post);
+
+        return view('posts.edit', compact('post', 'categorias', 'teste')); 
     }
 
     /**
@@ -152,7 +154,7 @@ class PostController extends Controller {
         ]);
 
         try{
-            
+
             # caminho das pastas de arquivos
             $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
 
