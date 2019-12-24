@@ -132,7 +132,7 @@ class PostController extends Controller {
 
         // dd($post);
 
-        return view('posts.edit', compact('post', 'categorias', 'teste')); 
+        return view('posts.edit', compact('post', 'categorias')); 
     }
 
     /**
