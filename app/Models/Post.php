@@ -35,6 +35,7 @@ class Post extends Model {
 
      public function categorias() {
 
+        // é belongsToMany porque tem uma pivot table categoria_post
         return $this->belongsToMany(\App\Models\Categoria::class);
     }
 

@@ -62,13 +62,19 @@ class PostController extends Controller {
 
         try{
 
-            # caminho das pastas de arquivos
+            // Salvar as imagens na pasta storage
+            // cria a pasta images e dentro dela a pasta posts
             $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
 
+            // Verifica se houve um upload de uma imagem válida
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                // pega a imagem
                 $arquivo_post = $request->file('image');
+                // pega a extensao da imagem
                 $extensao  = $arquivo_post->getClientOriginalExtension();
+                // cria um novo nome pra imagem com a extensao
                 $nome_arquivo = 'post_' . rand(11111111, 99999999) . '.' . $extensao;
+                // salva a imagem
                 $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
             }
 
@@ -78,7 +84,7 @@ class PostController extends Controller {
                 'titulo' => $request->get('titulo'),
                 'slug'   => Str::slug($request->get('titulo'), '-'),
                 'texto'  => $request->get('texto'),
-                'image'  =>  $nome_arquivo,
+                'image'  =>  $nome_arquivo
             ]);
 
             # Vincula as categorias
