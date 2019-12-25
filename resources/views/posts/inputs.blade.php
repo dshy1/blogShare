@@ -5,7 +5,7 @@
       @isset($detalhe)
         <p id="titulo" class="" >{{ $post->titulo or 'Não Informado' }}</p>
       @else
-        <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo ?? old('titulo') }}" placeholder="Enter firstname" />
+        <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo ?? old('titulo') }}" placeholder="Digite o título do post" />
       @endif
     </div>
   </div><!-- col-12 -->

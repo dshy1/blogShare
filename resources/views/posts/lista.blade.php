@@ -91,7 +91,7 @@
                             <td>{{ $post->titulo }}</td>
                             <td>{{substr(strip_tags($post->texto), 0, 40) . '...' ?? 'Não Informado'}}</td>
                             <td>{{ $post->autor->name }}</td>
-                            <td><img src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 100px; height: 70px;">
+                            <td><img src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 80px; height: 70px;">
                             </td>
 
                             <td class="d-flex">

@@ -25,10 +25,10 @@ class PostController extends Controller {
         $this->request = $request;
         $this->post = $post;
         $this->middleware('auth');
-        // $this->middleware('permission:lista-categoria');
-        // $this->middleware('permission:cria-categoria', ['only' => ['create','store']]);
-        // $this->middleware('permission:atualiza-categoria', ['only' => ['edit','update']]);
-        // $this->middleware('permission:deleta-categoria', ['only' => ['destroy']]);
+        // $this->middleware('permission:lista-posts');
+        // $this->middleware('permission:cria-posts', ['only' => ['create','store']]);
+        // $this->middleware('permission:atualiza-posts', ['only' => ['edit','update']]);
+        // $this->middleware('permission:deleta-posts', ['only' => ['destroy']]);
 
     }
 

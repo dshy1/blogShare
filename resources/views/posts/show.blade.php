@@ -62,8 +62,7 @@
   <div class="br-pagetitle">
     <i class="large material-icons">bookmark_border</i>
     <div>
-      <h2 class="tx-white">Post {{ $post->id }}</h2>
-      <p class="mg-b-0">Veja e atualize seus posts</p>
+      <h2 class="tx-white">{{ $post->titulo }}</h2>
     </div>
   </div><!-- d-flex -->
 
@@ -131,7 +130,7 @@
               </div>
 
               <div class="col-sm-3 no-padding">
-                  <a href="#" class="btn btn-light bt-voltar">Voltar</a>
+                  <a href="{{ route('posts.index') }}" class="btn btn-light bt-voltar">Voltar</a>
               </div>
             </div><!-- media -->
 
