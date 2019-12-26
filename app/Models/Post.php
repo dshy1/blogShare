@@ -16,14 +16,14 @@ class Post extends Model {
     use HasRoles;
 
     protected $fillable = [
-        'titulo', 'slug', 'texto', 'image','user_id'
+        'titulo', 'slug', 'texto', 'image'
     ];
 
 
 
      // *** Relacionamentos ///////////////////////
 
-    // Many to Many - autor( o post pertence a um usuário )
+    // One to Many - autor( o post pertence a um usuário )
     // Depois do ::class coloca virgula. O primeiro parâmetro é o da tabela users que seria id e depois outra virgula e segundo parâmetro qual campo da sua tabela ele relaciona.
 
       public function autor() {
