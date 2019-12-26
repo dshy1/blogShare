@@ -94,7 +94,7 @@ class PostController extends Controller {
 
             # status de retorno
             Session::flash('success', ' O post foi salvo com sucesso!');
-            return redirect()->route('posts.show')->with($post->id);
+            return redirect()->route('posts.index');
 
 
         }catch (\Exception $exception) {

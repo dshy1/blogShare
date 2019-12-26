@@ -68,10 +68,10 @@
 
   @if(Session::has('success'))
     <div class="row justify-content-center">
-      <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
-          <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
-          <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
-      </div>
+        <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
+            <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
+            <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
+        </div>
     </div>
   @endif
 
@@ -147,20 +147,6 @@
 
 @endsection
 
-
-@section('scripts')
-
-  <!-- Script JS -->
-  <script type="text/javascript">
-    
-     function fecharAlert() {
-      
-      document.getElementById("close").style.display = "none";
-   }
-
-  </script>
-
-@endsection
 
 
 

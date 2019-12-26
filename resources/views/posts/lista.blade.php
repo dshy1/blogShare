@@ -38,7 +38,6 @@
         <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
     </div>
 </div>
-
 @endif
 
 <!-- ########## START: MAIN PANEL ########## -->
