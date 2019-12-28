@@ -38,8 +38,8 @@
  <!-- ########## START: HEAD PANEL ########## -->
     <div class="br-header">
       <div class="br-header-left">
-        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href="#"><i class="fas fa-home"></i></a></div>
-        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href="#"><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href="#"><i class="material-icons">subject</i></a></div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href="#"><i class="material-icons">subject</i></a></div>
         <div class="input-group hidden-xs-down wd-170 transition">
           <input id="searchbox" type="text" class="form-control" placeholder="Pesquisar" />
           <span class="input-group-btn">
@@ -181,7 +181,7 @@
           </div><!-- dropdown -->
           <div class="dropdown">
             <a href="#" class="nav-link nav-link-profile" data-toggle="dropdown">
-              <span class="logged-name hidden-md-down">nome</span>
+              <span class="logged-name hidden-md-down">{{ Auth::user()->name }}</span>
               <img src="{{ asset('template-dark/img/img8.jpg')}}" class="wd-32 rounded-circle" alt="">
               <span class="square-10 bg-success"></span>
             </a>

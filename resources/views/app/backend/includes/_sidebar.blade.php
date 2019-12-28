@@ -35,6 +35,16 @@
           </ul>
         </li><!-- br-menu-item -->
 
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="material-icons">group</i>
+            <span class="menu-item-label">Membros</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            <li class="sub-item"><a href="#" class="sub-link">Novo Membro</a></li>
+            <li class="sub-item"><a href="#" class="sub-link">Todos os Membros</a></li>
+          </ul>
+        </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">

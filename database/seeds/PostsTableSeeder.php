@@ -14,8 +14,8 @@ class PostsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
+        
     	for ($i=0; $i < 10 ; $i++) { 
 
 	       DB::table('posts')->insert([

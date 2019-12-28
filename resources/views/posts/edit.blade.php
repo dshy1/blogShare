@@ -52,32 +52,32 @@
     </div>
   </div><!-- d-flex -->
 
-    @if($errors->any())
-      <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-       </div>
-    @endif
+  @if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+           @endforeach
+        </ul>
+    </div>
+  @endif
 
   <div class="br-pagebody">
     <div class="br-section-wrapper">
         <div class="bd bd-white-1 rounded table-responsive">
             <div class="form-layout form-layout-1">
-              <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                <form id="form-posts-edit" name="form-posts-edit" action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
 
-                  @csrf
-                  {{ method_field('POST') }}
+                    @csrf
+                    {{method_field('PATCH')}}
 
-                  @include('posts.inputs', ['post' => $post, 'detalhe' => null])
+                    @include('posts.inputs', ['post' => $post, 'detalhe' => null])
 
-                <div class="form-layout-footer">
-                  <input type="submit" class="btn btn-primary" value="Atualizar Post" />
-                  <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
-                </div><!-- form-layout-footer -->
-              </form>
+                  <div class="form-layout-footer">
+                    <input type="submit" class="btn btn-primary" value="Atualizar Post" />
+                    <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
+                  </div><!-- form-layout-footer -->
+                </form>
             </div><!-- form-layout -->
         </div><!-- bd -->
     </div>

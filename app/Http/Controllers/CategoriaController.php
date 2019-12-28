@@ -114,7 +114,13 @@ class CategoriaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-            
+
+        // validate
+        $validator = $this->validate($request, [
+            'nome' => 'required|unique:categorias'
+
+        ]);
+
          try{
 
             $categoria = Categoria::find($id);
@@ -134,6 +140,8 @@ class CategoriaController extends Controller {
 
             return redirect()->back()->withInput();
         }
+
+        return redirect()->route('categorias.index');
     }
 
     /**

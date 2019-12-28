@@ -10,13 +10,14 @@ class RolesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
+        
+        // cria as políticas no DB, na tabela roles
          Role::create([
             // 'name' => 'Admin',
             // 'guard_name' => 'web'
 
-            'name' => 'Author',
+            'name' => 'Autor',
             'guard_name' => 'web'
         ]);
     }

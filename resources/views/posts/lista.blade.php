@@ -27,6 +27,10 @@
     #form-delete-posts {
         margin-top: -3px;
     }
+    .bt-novo {
+      float: right;
+      margin-right: 32px;
+    }
 
 </style>
 
@@ -69,30 +73,31 @@
     </div>
     @endif
 
+    <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo post">Novo</a>
+
     <div class="br-pagebody">
         <div class="br-section-wrapper">
             <div class="bd bd-white-1 rounded table-responsive">
                 <table class="table table-striped mg-b-0">
                     <thead class="thead-colored thead-info">
                         <tr>
-                            <th>#</th>
-                            <th>Título</th>
-                            <th>Texto</th>
-                            <th>Autor</th>
-                            <th>Imagem</th>
-                            <th>Ações</th>
+                            <th class="titulo-tabela">#</th>
+                            <th class="titulo-tabela">Título</th>
+                            <th class="titulo-tabela">Texto</th>
+                            <th class="titulo-tabela">Autor</th>
+                            <th class="titulo-tabela">Thumb</th>
+                            <th class="titulo-tabela">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($posts as $post)
                         <tr>
-                            <td>{{ $post->id }}</td>
-                            <td>{{ $post->titulo }}</td>
+                            <td><a href="{{ route('posts.show', $post->id) }}">{{ $post->id }}</a></td>
+                            <td><a href="{{ route('posts.show', $post->id) }}">{{ $post->titulo }}</a></td>
                             <td>{{substr(strip_tags($post->texto), 0, 40) . '...' ?? 'Não Informado'}}</td>
                             <td>{{ $post->autor->name }}</td>
                             <td><img src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 80px; height: 70px;">
                             </td>
-
                             <td class="d-flex">
                                 <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |
                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link sem-padding">Editar</a> |

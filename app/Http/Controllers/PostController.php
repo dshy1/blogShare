@@ -51,6 +51,8 @@ class PostController extends Controller {
 
     public function store(Request $request) {
 
+        // dd($request);
+
         // validate
         $validator = $this->validate($request, [
             'titulo'     => 'required|unique:posts',
@@ -117,9 +119,9 @@ class PostController extends Controller {
      */
     public function show(Post $post) {
 
-        $post  = Post::with('categorias')->get()->find($post);
+        $post  = Post::with('categorias')->with('autor')->get()->find($post);
 
-        // dd($post->titulo);
+        // dd($post);
 
         return view('posts.show', compact('post')); 
 
@@ -179,14 +181,14 @@ class PostController extends Controller {
 
             $post->save();
 
-            $post->categories()->sync($request->get('categorias'));
+            # Vincula as categorias
+            $post->categories()->sync($request->input('categorias'));
 
             // \DB::commit();
 
             # status de retorno
             Session::flash('success', ' O post foi atualizado com sucesso!');
-            return redirect()->route('posts.show')->with($post->id);
-
+            return redirect()->route('posts.index');
 
         }catch (\Exception $exception) {
 

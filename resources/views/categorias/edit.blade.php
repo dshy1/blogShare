@@ -24,8 +24,8 @@
   <div class="br-pagetitle">
     <i class="icon ion-ios-gear-outline"></i>
     <div>
-      <h4>Editar {{ $categoria->nome }}</h4>
-      <p class="mg-b-0">Edite a categoria para utilizar nos seus posts</p>
+      <h2 class="tx-white">Editar {{ $categoria->nome }}</h2>
+      <p class="mg-b-0 cinza-claro">Edite a categoria para utilizar nos seus posts</p>
     </div>
   </div><!-- d-flex -->
 
@@ -42,20 +42,18 @@
   <div class="br-pagebody">
     <div class="br-section-wrapper">
       <div class="form-layout form-layout-1">
-		
-		<form id="form-categorias-edit" name="form-categorias-edit" action="{{ route('categorias.update', $categoria->id) }}" method="POST" enctype="multipart/form-data">
+    		<form id="form-categorias-edit" name="form-categorias-edit" action="{{ route('categorias.update', $categoria->id) }}" method="POST" enctype="multipart/form-data">
 
-			      @csrf
-            {{method_field('PATCH')}}
+    			      @csrf
+                {{method_field('PATCH')}}
 
-            @include('categorias.inputs', ['categoria' => $categoria, 'detalhe' => null])
+                @include('categorias.inputs', ['categoria' => $categoria, 'detalhe' => null])
 
-	        <div class="form-layout-footer">
-	          <button class="btn btn-primary" type="submit">Salvar Alterações</button>
-	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
-	        </div><!-- form-layout-footer -->
-		 </form>
-
+    	        <div class="form-layout-footer">
+    	          <button class="btn btn-primary" type="submit">Salvar Alterações</button>
+    	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
+    	        </div><!-- form-layout-footer -->
+    		 </form>
       </div><!-- form-layout -->
     </div>
   </div>

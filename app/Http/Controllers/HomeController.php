@@ -29,6 +29,7 @@ class HomeController extends Controller
     public function index() {
 
         $user = Auth::user();
+        // dd($user->name);
 
          // Mostra os jobs de acordo com o usuário logado
         // $coordenando  = \Auth::user()->coordenando()->orderBy('created_at', 'desc')->get();

@@ -28,6 +28,10 @@
     #form-delete-categorias {
       margin-top: -3px;
     }
+    .bt-novo {
+      float: right;
+      margin-right: 32px;
+    }
 
 </style>
 
@@ -54,7 +58,7 @@
     <i class="large material-icons">bookmark_border</i>
     <div>
       <h2 class="tx-white">Categorias</h2>
-      <p class="mg-b-0">Categorias cadastradas no sistema</p>
+      <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todas as categorias cadastradas no sistema</p>
     </div>
   </div><!-- d-flex -->
 
@@ -67,17 +71,19 @@
           </ul>
        </div>
     @endif
-
+ 
+  <a href="{{ route('categorias.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar nova categoria">Novo</a>
+  
   <div class="br-pagebody">
     <div class="br-section-wrapper">
         <div class="bd bd-white-1 rounded table-responsive">
             <table class="table table-striped mg-b-0">
-              <thead class="thead-colored thead-info">
+              <thead class="thead-colored thead-teal">
                 <tr>
-                  <th>#</th>
-                  <th>Nome</th>
-                  <th>Descrição</th>
-                  <th>Ações</th>
+                  <th class="titulo-tabela">#</th>
+                  <th class="titulo-tabela">Nome</th>
+                  <th class="titulo-tabela">Descrição</th>
+                  <th class="titulo-tabela">Ações</th>
                 </tr>
               </thead>
               <tbody>

@@ -10,8 +10,8 @@ class PermissionsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
+      
         $permissions = [
 
         	// can: Admin / Autor
@@ -36,8 +36,11 @@ class PermissionsTableSeeder extends Seeder
           'deleta-autor',
         ];
 
-         foreach ($permissions as $permission) {
-             Permission::create(['name' => $permission]);
+        // cria as permissões acima no DB, na tabela permissions
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
         }
     }
 }
+
+// pivot table: role_has_permissions

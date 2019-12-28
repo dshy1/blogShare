@@ -31,7 +31,7 @@
       <i class="large material-icons">bookmark_border</i>
     <div>
       <h2 class="tx-white">Nova Categoria</h2>
-      <p class="mg-b-0">Crie uma nova categoria para seus posts</p>
+      <p class="mg-b-0 cinza-claro">Crie uma nova categoria para seus posts</p>
     </div>
   </div><!-- d-flex -->
 
