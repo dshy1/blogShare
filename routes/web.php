@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 #### Rotas que precisam de autenticaçao
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth']], function() {
     
 	#### Dashboard
 	Route::get('/dashboard', 'HomeController@index')->name('home');
@@ -33,7 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 	### Post Resource
 	Route::resource('/posts', 'PostController');
-
 
 });
 

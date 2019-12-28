@@ -45,6 +45,12 @@
         font-size: 78px;
         color: #18a4b4;
     }
+    .margin-right-neg {
+      margin-right: -15px;
+    }
+    .margin-left-neg {
+      margin-left: -8px;
+    }
 
 </style>
 
@@ -62,9 +68,10 @@
   <div class="br-pagetitle">
     <i class="large material-icons">bookmark_border</i>
     <div>
-      <h2 class="tx-white">{{ $post->titulo }}</h2>
+        <h2 class="tx-white">{{ $post->titulo }}</h2>
+        <p class="mg-b-0 cinza-claro">Aqui você pode ver todos os detalhes do seu post</p>
     </div>
-  </div><!-- d-flex -->
+  </div>
 
   @if(Session::has('success'))
     <div class="row justify-content-center">
@@ -85,9 +92,9 @@
 
               <div class="card bd-gray-400 pd-25 ht-100p ">
                 <div class="d-sm-flex justify-content-between align-items-left tx-14 txt-gray" style="flex-direction: column;">
-                  <h1>{{ $post->titulo }}</h1>
+                  <h4 class="branco">{{ $post->titulo }}</h4>
                   <p>{{ strip_tags($post->texto) }}</p>
-                   <h2>Categorias:</h2>
+                   <h4 class="branco">Categorias:</h4>
                     <ul>
                       @foreach($post->categorias as $categoria)
                        <li> 
@@ -106,31 +113,31 @@
             <div class="media mg-b-25">
               <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
               <div class="media-body mg-t-2">
-                <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
+                <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white hover-info">{{ $post->autor->name }}</a></h6>
               </div><!-- media-body -->
             </div><!-- media -->
-            <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">Data de Criação:</a></h5>
+            <h6 class="tx-normal tx-roboto mg-b-15 lh-4 cinza-claro">Data de Criação:</h6>
             <p class="tx-14 mg-b-25 txt-gray">{{ date('j M, Y', strtotime($post->created_at)) }}</p>
-            <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">Última Atualização:</a></h5>
+            <h6 class="tx-normal tx-roboto mg-b-15 lh-4 cinza-claro">Última Atualização:</h6>
             <p class="tx-14 mg-b-25 txt-gray">{{ date('j M, Y', strtotime($post->updated_at)) }}</p>
             <hr>
             
             <!-- Botoes de Açao -->
             <div class="media mg-b-25">
-              <div class="col-sm-3 no-padding">
-                  <a href="#" class="btn btn-warning bt-editar">Editar</a>
+              <div class="col-sm-3 no-padding margin-right-neg">
+                  <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm bt-editar">Editar</a>
               </div>
 
               <div class="col-sm-3 no-padding">
                 <form action="#" method="POST" id="delete">
                    {{ method_field('POST') }}
                    @csrf
-                  <input type="submit" value="Deletar" class="btn btn-danger bt-deletar" onclick="return myFunction();" />
+                  <input type="submit" value="Deletar" class="btn btn-danger btn-sm bt-deletar" onclick="return myFunction();" />
                 </form>
               </div>
 
-              <div class="col-sm-3 no-padding">
-                  <a href="{{ route('posts.index') }}" class="btn btn-light bt-voltar">Voltar</a>
+              <div class="col-sm-3 no-padding margin-left-neg">
+                  <a href="{{ route('posts.index') }}" class="btn btn-light btn-sm bt-voltar">Voltar</a>
               </div>
             </div><!-- media -->
 

@@ -13,17 +13,19 @@
     {{-- <link rel="stylesheet" href="{{ asset('template-dark/lib/fontawesome-free/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('template-dark/lib/ionicons/css/ionicons.min.css') }}" /> --}}
 
-    <!-- Bracket CSS -->
+    <!-- Template Bkt CSS -->
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}" />
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}" />
 
     <!-- Multi select -->
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/samples.css') }}" />
-    <!-- <link rel="stylesheet" href="{{ asset('css/quilljs.css') }}"> -->
-
+    <link rel="stylesheet" href="{{ asset('css/cores.css') }}" />
+    
+    <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- Jquery -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 
     <style type="text/css">
@@ -39,9 +41,11 @@
         <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href="#"><i class="fas fa-home"></i></a></div>
         <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href="#"><i class="icon ion-navicon-round"></i></a></div>
         <div class="input-group hidden-xs-down wd-170 transition">
-          <input id="searchbox" type="text" class="form-control" placeholder="Search">
+          <input id="searchbox" type="text" class="form-control" placeholder="Pesquisar" />
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
+            <button class="btn btn-secondary" type="button">
+              <i class="material-icons">search</i>
+            </button>
           </span>
         </div><!-- input-group -->
       </div><!-- br-header-left -->

@@ -9,7 +9,6 @@
     .com-padding-top {
       padding-top: 100px;
     }
-
     .alert-success {
       width: 420px;
       position: absolute;
@@ -18,14 +17,12 @@
     .sem-padding {
       padding: 0 4px;
     }
-
     .d-flex {
       display: flex;
     }
     .form-categorias {
       width: 50%;
     }
-
     .custom-file-label {
       margin-top: 25px;
     }
@@ -51,7 +48,7 @@
     <i class="large material-icons">bookmark_border</i>
     <div>
       <h2 class="tx-white">Editar Post</h2>
-      <p class="mg-b-0">Edite seu post e deixe-o mais lindo ainda</p>
+      <p class="mg-b-0 cinza-claro">Edite seu post e deixe-o mais incrível ainda</p>
     </div>
   </div><!-- d-flex -->
 

@@ -9,7 +9,6 @@
     .com-padding-top {
         padding-top: 100px;
     }
-
     .alert-success {
         width: 420px;
         position: absolute;
@@ -18,7 +17,6 @@
     .sem-padding {
         padding: 0 4px;
     }
-
     .d-flex {
         display: flex;
     }
@@ -50,7 +48,7 @@
     <i class="large material-icons">bookmark_border</i>
     <div>
       <h2 class="tx-white">Novo Post</h2>
-      <p class="mg-b-0">Vamos criar um novo post</p>
+      <p class="mg-b-0 cinza-claro">Crie um novo post incrível :)</p>
     </div>
   </div><!-- d-flex -->
 

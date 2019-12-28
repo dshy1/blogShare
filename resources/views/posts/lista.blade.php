@@ -54,7 +54,7 @@
         <i class="large material-icons">bookmark_border</i>
         <div>
             <h2 class="tx-white">Posts</h2>
-            <p class="mg-b-0">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>
+            <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>
         </div>
     </div>
     <!-- d-flex -->

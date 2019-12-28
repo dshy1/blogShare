@@ -45,7 +45,7 @@ class PostController extends Controller {
 
         $categorias = Categoria::all();
 
-        return view('posts.novo', compact('categorias'));
+        return view('posts.novo', compact('categorias', 'catgs_post'));
     }
 
 
@@ -131,14 +131,14 @@ class PostController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit(Post $post) {
        
-        $post  = Post::find($id);
-        $categorias = Categoria::all();
+        $post  = Post::with('categorias')->get()->find($post);
+        $catgs_post  = $post->categorias->pluck('id', 'id')->all();
+        $categorias   = Categoria::all();
 
-        // dd($post);
 
-        return view('posts.edit', compact('post', 'categorias')); 
+        return view('posts.edit', compact('post', 'catgs_post', 'categorias')); 
     }
 
     /**

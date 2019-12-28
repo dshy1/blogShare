@@ -35,7 +35,7 @@
       @else
         <select class="form-control select2" data-placeholder="Choose country" multiple="multiple" name="categorias[]">
            @foreach($categorias as $categoria)
-              <option value="{{ $categoria->id }}">{{ $categoria->nome }}
+              <option value="{{ $categoria->id }}" {{ isset($catgs_post) && in_array($categoria->id, $catgs_post) ? 'selected="selected"' : '' }} >{{ $categoria->nome }}
               </option>
            @endforeach
         </select>
