@@ -74,7 +74,7 @@
 
         <label for='input-file' id="teste">Selecionar Arquivo &#187;</label>
         <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" value="{{ old('image') }}" />
-        <span id='file-name'></span>
+        <span id='file-name' class="cinza-claro"></span>
       @endif
     </div>
   </div><!-- col-8 -->
@@ -85,11 +85,12 @@
   <!-- Script JS -->
   <script type="text/javascript">
   
-      // ---  Multi select-->
-      var $input    = document.getElementById('input-file'),
-      $fileName = document.getElementById('file-name');
+    // Mostrar o path da imagem no span ao selecionar o arquivo
+    var $input = document.getElementById('input-file'),
+    $fileName  = document.getElementById('file-name');
 
-      $input.addEventListener('change', function(){
+    $input.addEventListener('change', function() {
+
       $fileName.textContent = this.value;
 
     });
