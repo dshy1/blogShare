@@ -89,6 +89,7 @@
 
 
 @section('scripts')
+
   <!-- Script JS -->
 
   <script type="text/javascript">

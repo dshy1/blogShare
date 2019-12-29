@@ -101,7 +101,7 @@
                             <td class="d-flex">
                                 <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |
                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link sem-padding">Editar</a> |
-                                <form action="#" method="POST" id="form-delete-posts">
+                                <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
                                     @method('DELETE') @csrf
                                     <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
                                 </form>
@@ -122,7 +122,11 @@
 
 
 <!-- Script JS -->
+
+
 <script type="text/javascript">
+
+    // Funçao para confirmar deletar 
     function confirmDelete() {
         if (confirm("Deseja realmente deletar esse post?")) {
             return true;
@@ -131,6 +135,7 @@
         }
     }
 
+    // Funçao para fechar div de msg de alerta
     function fecharAlert() {
         document.getElementById("close").style.display = "none";
     }

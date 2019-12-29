@@ -36,7 +36,6 @@ class PostController extends Controller {
 
         $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);
 
-        // dd($posts);
         return view('posts.lista', compact('posts'));
     }
 
@@ -121,8 +120,6 @@ class PostController extends Controller {
 
         $post  = Post::with('categorias')->with('autor')->get()->find($post);
 
-        // dd($post);
-
         return view('posts.show', compact('post')); 
 
     }
@@ -139,7 +136,6 @@ class PostController extends Controller {
         $catgs_post  = $post->categorias->pluck('id', 'id')->all();
         $categorias   = Categoria::all();
 
-
         return view('posts.edit', compact('post', 'catgs_post', 'categorias')); 
     }
 
@@ -154,7 +150,7 @@ class PostController extends Controller {
         
         // validate
         $validator = $this->validate($request, [
-            'titulo'     => 'required|unique:posts',
+            'titulo'     => 'required',
             'texto'      => 'required',
             'categorias' => 'required|array|min:1',
             'image'      => 'required'
@@ -210,6 +206,24 @@ class PostController extends Controller {
      */
     public function destroy($id) {
         
+        try{
+
+            $post = Post::findOrFail($id);
+            $post->delete();
+
+            # status de retorno
+            Session::flash('success', ' O post foi deletado com sucesso!');
+
+            return redirect()->route('posts.index');
+
+        }catch (\Exception $exception){
+
+            # status de retorno
+            Session::flash('error', 'Falha ao deletar o post!');
+
+            return redirect()->route('posts.index');
+
+        }
     }
 
 
