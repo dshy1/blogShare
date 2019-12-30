@@ -74,7 +74,7 @@
 
         <label for='input-file' id="teste">Selecionar Arquivo &#187;</label>
         <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" value="{{ old('image') }}" />
-        <span id='file-name' class="cinza-claro"></span>
+        <span id='file-name' class="cinza-claro">{{ $post->image ?? old('image') }}</span>
       @endif
     </div>
   </div><!-- col-8 -->

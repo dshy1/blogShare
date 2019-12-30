@@ -136,6 +136,8 @@ class PostController extends Controller {
         $catgs_post  = $post->categorias->pluck('id', 'id')->all();
         $categorias   = Categoria::all();
 
+        // dd($post->image);
+
         return view('posts.edit', compact('post', 'catgs_post', 'categorias')); 
     }
 
