@@ -177,6 +177,8 @@ class PostController extends Controller {
             $post->texto  = $request->input('texto');
             $post->image  = $nome_arquivo;
 
+            dd($post);
+
             $post->save();
 
             # Vincula as categorias
