@@ -50,14 +50,12 @@ class PostController extends Controller {
 
     public function store(Request $request) {
 
-        // dd($request);
-
         // validate
         $validator = $this->validate($request, [
-            'titulo'     => 'required|unique:posts',
+            'titulo'     => 'required|unique:posts|max:255',
             'texto'      => 'required',
             'categorias' => 'required|array|min:1',
-            'image'      => 'required'
+            'image'      => 'mimes:jpeg,jpg,png,gif|required|max:10000'// max 10000kb
 
         ]);
 
@@ -130,13 +128,13 @@ class PostController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post) {
+    public function edit($id) {
        
-        $post  = Post::with('categorias')->get()->find($post);
+        $post  = Post::with('categorias')->find($id);
         $catgs_post  = $post->categorias->pluck('id', 'id')->all();
         $categorias   = Categoria::all();
 
-        // dd($post->image);
+        // dd($post);
 
         return view('posts.edit', compact('post', 'catgs_post', 'categorias')); 
     }
@@ -152,14 +150,16 @@ class PostController extends Controller {
         
         // validate
         $validator = $this->validate($request, [
-            'titulo'     => 'required',
+            'titulo'     => 'required|max:255',
             'texto'      => 'required',
             'categorias' => 'required|array|min:1',
-            'image'      => 'required'
+            'image'      => 'mimes:jpeg,jpg,png,gif|required|max:10000'// max 10000kb
 
         ]);
 
         try{
+
+            $post = Post::find($id);
 
             # caminho das pastas de arquivos
             $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
@@ -175,14 +175,14 @@ class PostController extends Controller {
             $post->titulo = $request->input('titulo');
             $post->slug   = Str::slug($post->titulo, '-');
             $post->texto  = $request->input('texto');
-            $post->image  = $nome_arquivo;
+            $post->image  = $request->input('image');
 
-            dd($post);
+             dd($post);
 
             $post->save();
 
             # Vincula as categorias
-            $post->categories()->sync($request->input('categorias'));
+            $post->categorias()->sync($request->get('categorias'));
 
             // \DB::commit();
 

@@ -15,8 +15,8 @@
 <div class="br-mainpanel">
   <div class="br-pageheader">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
-      <a class="breadcrumb-item" href="#">Home</a>
-      <a class="breadcrumb-item" href="#">Categorias</a>
+      <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
+      <a class="breadcrumb-item" href="{{ route('categorias.index') }}">Categorias</a>
       <span class="breadcrumb-item active">Editar Categoria</span>
     </nav>
   </div><!-- br-pageheader -->

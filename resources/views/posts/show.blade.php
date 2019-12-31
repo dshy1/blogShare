@@ -59,8 +59,8 @@
 <div class="br-mainpanel">
   <div class="br-pageheader">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
-      <a class="breadcrumb-item" href="#">Home</a>
-      <a class="breadcrumb-item" href="#">Posts</a>
+      <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
+      <a class="breadcrumb-item" href="{{ route('posts.index') }}">Posts</a>
       <span class="breadcrumb-item active">Detalhes do Post</span>
     </nav>
   </div><!-- br-pageheader -->

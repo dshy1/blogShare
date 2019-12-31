@@ -48,7 +48,7 @@
 <div class="br-mainpanel">
     <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-            <a class="breadcrumb-item" href="#">Home</a>
+            <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
             <span class="breadcrumb-item active">Posts</span>
         </nav>
     </div>
@@ -119,26 +119,26 @@
 
 </div>
 <!--  end mainpanel -->
-
-
-<!-- Script JS -->
-
-
-<script type="text/javascript">
-
-    // Funçao para confirmar deletar 
-    function confirmDelete() {
-        if (confirm("Deseja realmente deletar esse post?")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // Funçao para fechar div de msg de alerta
-    function fecharAlert() {
-        document.getElementById("close").style.display = "none";
-    }
-</script>
-
 @endsection
+
+@section('scripts')
+
+    <!-- Script JS -->
+    <script type="text/javascript">
+
+        // Funçao para confirmar deletar 
+        function confirmDelete() {
+            if (confirm("Deseja realmente deletar esse post?")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Funçao para fechar div de msg de alerta
+        function fecharAlert() {
+            document.getElementById("close").style.display = "none";
+        }
+    </script>
+
+@stop

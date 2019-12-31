@@ -38,8 +38,8 @@
 <div class="br-mainpanel">
   <div class="br-pageheader">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
-      <a class="breadcrumb-item" href="#">Home</a>
-      <a class="breadcrumb-item" href="#">Posts</a>
+      <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
+      <a class="breadcrumb-item" href="{{ route('posts.index') }}">Posts</a>
       <span class="breadcrumb-item active">Editar Post</span>
     </nav>
   </div><!-- br-pageheader -->
@@ -84,36 +84,34 @@
   </div>
 
 </div><!--  end mainpanel -->
-
 @endsection
-
 
 @section('scripts')
 
-  <!-- Script JS -->
+    <!-- Script JS -->
+    <script type="text/javascript">
+    
+        // ---  Multi select-->
+        $(".select2").select2({
+            maximumSelectionLength: 3
+        });
 
-  <script type="text/javascript">
-  
-    // ---  Multi select-->
-    $(".select2").select2({
-        maximumSelectionLength: 3
-    });
+        // --- Editor Texto -->
+        ClassicEditor.create( document.querySelector( '#editor' ), {
+              // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+        } )
+          .then( editor => {
+              window.editor = editor;
+        } )
+          .catch( err => {
+              console.error( err.stack );
+        } );
 
-    // --- Editor Texto -->
-    ClassicEditor.create( document.querySelector( '#editor' ), {
-          // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-    } )
-      .then( editor => {
-          window.editor = editor;
-    } )
-      .catch( err => {
-          console.error( err.stack );
-    } );
+        // initSample();
 
-    // initSample();
+    </script> 
 
-  </script> 
+@stop
 
-@endsection
 
 
