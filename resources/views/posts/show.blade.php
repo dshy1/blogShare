@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', 'Detalhes do Post')
+@section('title', $cliente . ' | Exibir Post')
 
 @section('content')
 

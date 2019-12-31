@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', $cliente . ' | Cadastro de Posts')
+@section('title', $cliente . ' | Cadastro de Usuários')
 
 @section('content')
 
@@ -24,7 +24,7 @@
         font-size: 78px;
         color: #18a4b4;
     }
-    #form-delete-posts {
+    #form-delete-users {
         margin-top: -3px;
     }
     .bt-novo {
@@ -49,7 +49,7 @@
     <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
             <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
-            <span class="breadcrumb-item active">Posts</span>
+            <span class="breadcrumb-item active">Usuários</span>
         </nav>
     </div>
     <!-- br-pageheader -->
@@ -57,8 +57,8 @@
     <div class="br-pagetitle">
         <i class="large material-icons">bookmark_border</i>
         <div>
-            <h2 class="tx-white">Posts</h2>
-            <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>
+            <h2 class="tx-white">Usuários</h2>
+            <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os usuários cadastrados no sistema</p>
         </div>
     </div>
     <!-- d-flex -->
@@ -73,35 +73,32 @@
     </div>
     @endif
 
-    <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo post">Novo</a>
+    <a href="{{ route('users.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo usuário">Novo</a>
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
             <div class="bd bd-white-1 rounded table-responsive">
                 <table class="table table-striped mg-b-0">
-                    <thead class="thead-colored thead-info">
+                    <thead class="thead-colored thead-purple">
                         <tr>
                             <th class="titulo-tabela">#</th>
-                            <th class="titulo-tabela">Título</th>
-                            <th class="titulo-tabela">Texto</th>
-                            <th class="titulo-tabela">Autor</th>
+                            <th class="titulo-tabela">Nome</th>
+                            <th class="titulo-tabela">E-mail</th>
                             <th class="titulo-tabela">Thumb</th>
                             <th class="titulo-tabela">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($posts as $post)
+                        @foreach($users as $user)
                         <tr>
-                            <td><a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{ $post->id }}</a></td>
-                            <td><a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{ $post->titulo }}</a></td>
-                            <td>{{substr(strip_tags($post->texto), 0, 40) . '...' ?? 'Não Informado'}}</td>
-                            <td>{{ $post->autor->name }}</td>
-                            <td><img src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 80px; height: 70px;">
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td><img src="" alt="user image" style="width: 80px; height: 70px;">
                             </td>
                             <td class="d-flex">
-                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |
-                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link sem-padding">Editar</a> |
-                                <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
+                                <a href="#" class="btn btn-link sem-padding">Editar</a> |
+                                <form action="#" method="POST" id="form-delete-users">
                                     @method('DELETE') @csrf
                                     <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
                                 </form>
@@ -113,7 +110,7 @@
             </div>
             <!-- bd -->
 
-            {{ $posts->links() }}
+            {{ $users->links() }}
         </div>
     </div>
 

@@ -22,8 +22,16 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
+    public function boot() {
+
+            Schema::defaultStringLength(191);
+
+            view()->composer('*', function($view){
+
+                $cliente = "Magazine Domino";
+
+                $view->with('cliente', $cliente);
+  
+        });
     }
 }

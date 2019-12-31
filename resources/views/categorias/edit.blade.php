@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', 'Criar Categoria')
+@section('title', $cliente . ' | Editar Categoria')
 
 @section('content')
 

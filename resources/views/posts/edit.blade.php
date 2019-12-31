@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', 'Editar Post')
+@section('title', $cliente . ' | Editar Post')
 
 @section('content')
 

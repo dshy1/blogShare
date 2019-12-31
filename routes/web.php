@@ -28,11 +28,14 @@ Route::group(['middleware' => ['auth']], function() {
 	#### Dashboard
 	Route::get('/dashboard', 'HomeController@index')->name('home');
 
-	### Categorias Resource
+	### Categoria Resource
 	Route::resource('/categorias', 'CategoriaController');
 
 	### Post Resource
 	Route::resource('/posts', 'PostController');
+
+	### User Resource
+	Route::resource('/users', 'UserController');
 
 });
 

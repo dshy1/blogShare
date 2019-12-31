@@ -24,3 +24,11 @@ th.titulo-tabela {
 .marginT70 {
 	margin-top: 70px;
 }
+
+a.link-branco {
+	color: #868ba1;
+}
+
+a.link-branco:hover {
+	text-decoration: underline;
+}

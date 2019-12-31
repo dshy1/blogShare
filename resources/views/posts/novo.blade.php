@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', 'Novo Post')
+@section('title', $cliente . ' | Novo Post')
 
 @section('content')
 
