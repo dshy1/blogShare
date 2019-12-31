@@ -175,9 +175,9 @@ class PostController extends Controller {
             $post->titulo = $request->input('titulo');
             $post->slug   = Str::slug($post->titulo, '-');
             $post->texto  = $request->input('texto');
-            $post->image  = $request->input('image');
+            $post->image  = $nome_arquivo;
 
-             dd($post);
+             // dd($post);
 
             $post->save();
 

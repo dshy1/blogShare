@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Post;
+use App\Models\Categoria;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +31,11 @@ class HomeController extends Controller
     public function index() {
 
         $user = Auth::user();
-        // dd($user->name);
+        $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->limit(3)->get();
+        $categorias = Categoria::orderBy('id', 'desc')->limit(5)->get();
+
+
+        // dd($posts[0]->categorias[0]);
 
          // Mostra os jobs de acordo com o usuário logado
         // $coordenando  = \Auth::user()->coordenando()->orderBy('created_at', 'desc')->get();
@@ -39,6 +45,6 @@ class HomeController extends Controller
 
         // return view('home', compact('executando', 'avaliando', 'coordenando', 'cliente', 'projetos'));
 
-        return view('home');
+        return view('home', compact('posts', 'categorias'));
     }
 }

@@ -7,7 +7,7 @@
       <label class="sidebar-label">Navegação</label>
       <ul class="br-sideleft-menu">
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link active">
+          <a href="{{ route('home') }}" class="{{ (request()->is('/dashboard')) ? 'active' : 'br-menu-link' }}"> 
             <i class="material-icons">dashboard</i>
             <span class="menu-item-label">Dashboard</span>
           </a><!-- br-menu-link -->
