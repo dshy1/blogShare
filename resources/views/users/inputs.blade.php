@@ -48,7 +48,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <label class="form-control-label cinza-claro">Confirmar Senha: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="password" name="password" value="{{ $user->password  ?? old('password') }}" placeholder="" />
+            <input class="form-control form-control-dark" type="password" name="password-confirm" value="{{ $user->password  ?? old('password') }}" placeholder="" />
         </div>
       </div><!-- col-8 -->
    </div><!-- row -->

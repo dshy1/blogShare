@@ -32,3 +32,7 @@ a.link-branco {
 a.link-branco:hover {
 	text-decoration: underline;
 }
+
+.padding12 {
+	padding: 12px;
+}

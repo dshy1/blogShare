@@ -48,57 +48,38 @@
     <!-- d-flex -->
 	
 	<!-- Lista dos 3 posts mais recentes -->
-	<div class="br-pagebody pd-x-20 pd-sm-x-30 mx-wd-1350">
-	   <div class="card-deck card-deck-sm mg-x-0">
-	      <div class="card bd-0 mg-0">
-	        <figure class="card-item-img bg-mantle rounded-top">
-	          <img class="img-fluid rounded-top" src="{{ asset('storage/images/posts/'.$posts[0]->image) }}" alt="post image">
-	        </figure>
-	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
-	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $posts[0]->categorias[0]->nome }}</p>
-	          <h5 class="tx-normal tx-roboto lh-3 mg-b-15"><a href="#" class="tx-white hover-info">{{ $posts[0]->titulo }}</a></h5>
-	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($posts[0]->texto), 0, 120) . '...' ?? 'Não Informado'}}</p>
-	          <p class="tx-13 mg-b-0">
-	            <a href="#" class="tx-info">12 Likes</a>
-	            <a href="#" class="tx-info mg-l-5">23 Comments</a>
-	            <a href="#" class="tx-info mg-l-5"><i class="icon ion-more"></i></a>
-	          </p>
-	        </div><!-- card-body -->
-	      </div><!-- card -->
+  @isset($posts)
+  	<div class="br-pagebody pd-x-20 pd-sm-x-30 mx-wd-1350">
+  	   <div class="card-deck card-deck-sm mg-x-0">
+          @foreach($posts as $post)
+    	      <div class="card bd-0 mg-0">
+    	        <figure class="card-item-img bg-mantle rounded-top">
+    	          <img class="img-fluid rounded-top" src="{{ asset('storage/images/posts/'.$post->image) }}" alt="post image">
+    	        </figure>
+    	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
+    	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $post->categorias[0]->nome }}</p>
+    	          <h5 class="tx-normal tx-roboto lh-3 mg-b-15"><a href="#" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
+    	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 120) . '...' ?? 'Não Informado'}}</p>
+    	          <p class="tx-13 mg-b-0">
+    	            <a href="#" class="tx-info">12 Likes</a>
+    	            <a href="#" class="tx-info mg-l-5">23 Comments</a>
+    	            <a href="#" class="tx-info mg-l-5"><i class="icon ion-more"></i></a>
+    	          </p>
+    	        </div><!-- card-body -->
+    	      </div><!-- card -->
+          @endforeach
+        </div>
+    @if($posts->isEmpty())
+       <div class="card-deck card-deck-sm mg-x-0">
+            <div class="card bd-0 mg-0">
+              <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
+                <h5 class="tx-normal tx-roboto lh-3 mg-b-15 alert-danger padding12">Voce ainda nao tem posts publicados</a></h5>
+              </div><!-- card-body -->
+            </div>
+        </div>
+    @endif
+  @endif
 
-	      <div class="card bd-0 mg-0">
-	        <figure class="card-item-img bg-dance rounded-top">
-	          <img class="img-fluid rounded-top" src="{{ asset('storage/images/posts/'.$posts[1]->image) }}" alt="post image">
-	        </figure>
-	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
-	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $posts[1]->categorias[0]->nome }}</p>
-	          <h5 class="tx-normal tx-roboto lh-3 mg-b-15"><a href="#" class="tx-white hover-info">{{ $posts[1]->titulo }}</a></h5>
-	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($posts[1]->texto), 0, 120) . '...' ?? 'Não Informado'}}</p>
-	          <p class="tx-13 mg-b-0">
-	            <a href="#" class="tx-info">40 Likes</a>
-	            <a href="#" class="tx-info mg-l-5">17 Comments</a>
-	            <a href="#" class="tx-info mg-l-5"><i class="icon ion-more"></i></a>
-	          </p>
-	        </div><!-- card-body -->
-	      </div><!-- card -->
-
-	      <div class="card bd-0 mg-0">
-	        <figure class="card-item-img bg-transfile rounded-top">
-	          <img class="img-fluid rounded-top" src="{{ asset('storage/images/posts/'.$posts[2]->image) }}" alt="post image">
-	        </figure>
-	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
-	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $posts[2]->categorias[0]->nome }}</p>
-	          <h5 class="tx-normal tx-roboto lh-3 mg-b-15"><a href="#" class="tx-white hover-info">{{ $posts[2]->titulo }}</a></h5>
-	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($posts[2]->texto), 0, 120) . '...' ?? 'Não Informado'}}</p>
-	          <p class="tx-13 mg-b-0">
-	            <a href="#" class="tx-info">32 Likes</a>
-	            <a href="#" class="tx-info mg-l-5">33 Comments</a>
-	            <a href="#" class="tx-info mg-l-5"><i class="icon ion-more"></i></a>
-	          </p>
-	        </div><!-- card-body -->
-	   </div><!-- card-deck-->
-	</div><!-- br-pagebody-->
-	
 	<!-- Lista as Categorias -->
 	<div class="row row-sm mg-t-20">
       <div class="col-lg-6">
@@ -141,16 +122,17 @@
           </div><!-- col-8 -->
         </div><!-- row -->
       </div><!-- col-lg-6 -->
-    </div><!-- row -->
+  </div><!-- row -->
 	
-	<!-- Post Destaque com mais Comentarios -->
+	<!-- Post Destaque com mais Comentarios // isso vai vir do Front End -->
+  @isset($post)
     <div class="row row-sm mg-t-20">
       <div class="col-lg-8">
         <div class="card card-inverse bd-0 mg-b-20 ht-400 ht-xs-350 ht-lg-100p">
-            <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset('storage/images/posts/'.$posts[1]->image) }}" alt="post image">
+            <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset('storage/images/posts/'.$post->image) }}" alt="post image">
             <div class="pos-absolute a-0 pd-b-30 bg-black-5 rounded d-flex align-items-sm-center justify-content-center">
               <div class="tx-center wd-80p mg-t-25 mg-sm-t-0">
-                <p class="tx-info tx-uppercase tx-mont tx-semibold tx-11">{{ $posts[1]->categorias[0]->nome }}</p>
+                <p class="tx-info tx-uppercase tx-mont tx-semibold tx-11">{{ $post->categorias[0]->nome }}</p>
                 <h3 class="tx-center lh-4 tx-light tx-roboto"><a href="#" class="tx-white-8 hover-white">Post de Maior Destaque do Blog</a></h3>
               </div>
             </div><!-- pos-absolute d-flex -->
@@ -160,7 +142,7 @@
                 <span class="d-block tx-white-8 mg-r-5">Mar 25, 2017</span>
                 <a href="#" class="d-block tx-white-8 hover-white mg-r-10"><i class="fa fa-heart-o mg-r-5"></i> 23 Likes</a>
                 <a href="#" class="d-block tx-white-8 hover-white"><i class="fa fa-comment-o mg-r-5"></i> 4 Comments</a>
-                <span>By: <a href="#" class="tx-white-8 hover-white">{{ $posts[1]->autor->name }}</a></span>
+                <span>By: <a href="#" class="tx-white-8 hover-white">{{ $post->autor->name }}</a></span>
               </div><!-- d-flex -->
             </div><!-- pos-absolute-bottom -->
           </div><!-- card -->
@@ -169,14 +151,14 @@
       <div class="col-lg-4">
         <div class="card bd-gray-400 pd-25 ht-100p">
           <div class="media mg-b-25">
-            <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile imagem">
+            <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
             <div class="media-body mg-t-2">
-              <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $posts[1]->autor->name }}</a></h6>
+              <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
               <div class="tx-12">May 25, 2017</div>
             </div><!-- media-body -->
           </div><!-- media -->
-          <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">{{ $posts[1]->titulo }}</a></h5>
-          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($posts[0]->texto), 0, 150) . '...' ?? 'Não Informado'}}</p>
+          <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
+          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 150) . '...' ?? 'Não Informado'}}</p>
           <p class="mg-t-auto mg-b-0 tx-13">
             <a href="#" class="tx-info">18 Likes</a>
             <a href="#" class="tx-info mg-l-20">1 Comment</a>
@@ -184,6 +166,7 @@
         </div><!-- card -->
       </div><!-- col-4 -->
     </div><!-- row -->
+  @endif
 	
 	<!-- Perfil do Usuário-->
     <div class="card mg-t-20 widget-4">
@@ -209,7 +192,7 @@
         </nav>
       </div><!-- card-footer -->
     </div><!-- card -->
-
+  </div><!-- br-pagebody-->
 </div><!-- end mainpanel -->
 
 @endsection

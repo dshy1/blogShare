@@ -49,7 +49,7 @@
     <div class="br-section-wrapper">
       <div class="form-layout form-layout-1">
 		
-      		<form id="form-categorias" name="form-categorias" action="#" method="POST" enctype="multipart/form-data">
+      		<form id="form-users" name="form-users" action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
 
       			    @csrf
 

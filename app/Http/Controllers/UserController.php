@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Role;
+use Session;
+
 
 
 class UserController extends Controller
@@ -36,10 +39,51 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function store(Request $request) {
+
+
+        // validate
+        $validator = $this->validate($request, [
+            'name'   => 'required',
+            'email'  => 'required|unique:users'
+
+        ]);
+
+        try{
+
+            // \DB::beginTransaction();
+
+            $user = User::create([
+                'name'     => $request->get('name'),
+                'email'    => $request->get('email'),
+                'password' => bcrypt('123456789'),
+                'image'    =>  NULL
+            ]);
+
+
+            # Vincula a politica de autor ao usuário
+            $role = Role::findOrFail(2);
+            $user->roles()->attach($role);
+
+            // \DB::commit();
+
+            # status de retorno
+            Session::flash('success', ' O usuário foi salvo com sucesso!');
+            return redirect()->route('users.index');
+
+
+        }catch (\Exception $exception) {
+
+            // \DB::rollback();
+            # status de retorno
+            Session::flash('error', ' O usuário não pôde ser cadastrado!');
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->route('users.index');
+
+
+    } // end store
 
     /**
      * Display the specified resource.

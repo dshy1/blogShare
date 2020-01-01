@@ -41,7 +41,7 @@
             <span class="menu-item-label">Membros</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="{{ route('users.index') }}" class="sub-link">Novo Membro</a></li>
+            <li class="sub-item"><a href="{{ route('users.create') }}" class="sub-link">Novo Membro</a></li>
             <li class="sub-item"><a href="{{ route('users.index') }}" class="sub-link">Todos os Membros</a></li>
           </ul>
         </li><!-- br-menu-item -->
@@ -51,10 +51,6 @@
             <i class="material-icons">person</i>
             <span class="menu-item-label">Meu Perfil</span>
           </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            <li class="sub-item"><a href="#" class="sub-link">Morris Charts</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">Flot Charts</a></li>
-          </ul>
         </li><!-- br-menu-item -->
 
       </ul><!-- br-sideleft-menu -->
