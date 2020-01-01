@@ -7,14 +7,14 @@
       <label class="sidebar-label">Navegação</label>
       <ul class="br-sideleft-menu">
         <li class="br-menu-item">
-          <a href="{{ route('home') }}" class="{{ (request()->is('/dashboard')) ? 'active' : 'br-menu-link' }}"> 
+          <a href="{{ route('home') }}" class="{{ (request()->is('dashboard')) ? 'br-menu-link active' : 'br-menu-link' }}"> 
             <i class="material-icons">dashboard</i>
             <span class="menu-item-label">Dashboard</span>
           </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
+          <a href="#" class="{{ (request()->is('posts')) || (request()->is('posts/create'))  ? 'br-menu-link active' : 'br-menu-link' }}">
             <i class="material-icons">photo</i>
             <span class="menu-item-label">Posts</span>
           </a><!-- br-menu-link -->
@@ -25,7 +25,7 @@
         </li>
 
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
+          <a href="#" class="{{ (request()->is('categorias')) || (request()->is('categorias/create'))? 'br-menu-link active' : 'br-menu-link' }}">
             <i class="material-icons">class</i>
             <span class="menu-item-label">Categorias</span>
           </a><!-- br-menu-link -->
@@ -36,7 +36,7 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
+          <a href="#" class="{{ (request()->is('users')) || (request()->is('users/create'))? 'br-menu-link active' : 'br-menu-link' }}">
             <i class="material-icons">group</i>
             <span class="menu-item-label">Membros</span>
           </a><!-- br-menu-link -->

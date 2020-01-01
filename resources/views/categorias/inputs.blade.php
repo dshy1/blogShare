@@ -1,4 +1,5 @@
- <div class="row mg-b-25">
+ 
+ <div class="row mg-b-10">
     <div class="col-md-8">
       <div class="form-group">
         <label class="form-control-label cinza-claro">Nome: <span class="tx-danger">*</span></label>
@@ -11,7 +12,7 @@
     </div><!-- col-8 -->
  </div><!-- row -->
 
- <div class="row mg-b-25">
+ <div class="row mg-b-10">
      <div class="col-md-8">
         <label class="form-control-label cinza-claro">Descrição:</label>
          @isset($detalhe)

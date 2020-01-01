@@ -16,7 +16,7 @@
 
 </style>
 
-<div class="row mg-b-25">
+<div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="form-group">
       <label class="form-control-label cinza-claro">Título: <span class="tx-danger">*</span></label>
@@ -31,7 +31,9 @@
   <div class="form-group">
       <input type="hidden" class="form-control" name="slug" />
   </div>  
+</div><!-- row -->
 
+<div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="form-group">
       <label class="form-control-label cinza-claro">Texto: <span class="tx-danger">*</span></label>
@@ -44,7 +46,9 @@
       @endif
     </div>
   </div><!-- col-12 -->
+ </div><!-- row -->
 
+<div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="form-group mg-b-10-force form-categorias">
       <label class="form-control-label cinza-claro">Categorias: <span class="tx-danger">*</span></label>
@@ -60,7 +64,9 @@
       @endif
     </div>
   </div><!-- col-12 -->
+</div><!-- row -->
 
+<div class="row mg-b-10">
   <div class="col-lg-8">
     <div class="custom-file">
       <label class="form-control-label cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>

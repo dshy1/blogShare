@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', $cliente . ' | Nova Categoria')
+@section('title', $cliente . ' | Novo Usuário')
 
 @section('content')
 
@@ -22,16 +22,16 @@
   <div class="br-pageheader">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
       <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
-      <a class="breadcrumb-item" href="{{ route('categorias.index') }}">Categorias</a>
-      <span class="breadcrumb-item active">Nova Categoria</span>
+      <a class="breadcrumb-item" href="{{ route('users.index') }}">Usuários</a>
+      <span class="breadcrumb-item active">Novo Usuário</span>
     </nav>
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
       <i class="large material-icons">bookmark_border</i>
     <div>
-      <h2 class="tx-white">Nova Categoria</h2>
-      <p class="mg-b-0 cinza-claro">Crie uma nova categoria para seus posts</p>
+      <h2 class="tx-white">Novo Usuário</h2>
+      <p class="mg-b-0 cinza-claro">Crie um novo colaborador para seu blog</p>
     </div>
   </div><!-- d-flex -->
 
@@ -49,15 +49,15 @@
     <div class="br-section-wrapper">
       <div class="form-layout form-layout-1">
 		
-      		<form id="form-categorias" name="form-categorias" action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data">
+      		<form id="form-categorias" name="form-categorias" action="#" method="POST" enctype="multipart/form-data">
 
       			    @csrf
 
-                @include('categorias.inputs', ['categoria' => null, 'detalhe' => null])
+                @include('users.inputs', ['user' => null, 'detalhe' => null])
 
       	        <div class="form-layout-footer marginT70">
-      	          <button class="btn btn-primary">Adicionar Categoria</button>
-      	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
+      	          <button class="btn btn-primary">Adicionar Usuário</button>
+      	          <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
       	        </div><!-- form-layout-footer -->
       		 </form>
 

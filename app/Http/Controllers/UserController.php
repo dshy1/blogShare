@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function create() {
 
-        return "Ola...vamos criar um novo user?";
+        return view('users.novo');
     }
 
     /**

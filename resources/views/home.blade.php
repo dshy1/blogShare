@@ -169,7 +169,7 @@
       <div class="col-lg-4">
         <div class="card bd-gray-400 pd-25 ht-100p">
           <div class="media mg-b-25">
-            <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+            <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile imagem">
             <div class="media-body mg-t-2">
               <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $posts[1]->autor->name }}</a></h6>
               <div class="tx-12">May 25, 2017</div>
@@ -195,8 +195,9 @@
       </div><!-- card-header -->
       <div class="card-body">
         <div class="card-profile-img">
-          <img src="../img/img1.jpg" alt="profile image">
+          <img src="{{ isset(Auth::user()->image) !=NULL ? 'Auth::user()->image' : 'asset(storage/images/home/img32.jpg)' }}" alt="profile image">
         </div><!-- card-profile-img -->
+
         <h4 class="tx-normal tx-roboto tx-white">{{ Auth::user()->name }}</h4>
         <p class="mg-b-25 cinza-claro">{{ Auth::user()->email }}</p>
       </div><!-- card-body -->
