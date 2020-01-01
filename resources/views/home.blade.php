@@ -22,6 +22,10 @@
     figure {
     	overflow: hidden;
     }
+    .data-bottom {
+    	position: absolute;
+    	bottom: 22px;
+    }
 
 </style>
 
@@ -108,12 +112,14 @@
             <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-success">Categorias</p>
             <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('categorias.index') }}" class="tx-white">Aqui você pode criar e separar seus posts por categorias</a></h5>
             @foreach($categorias as $categoria)
-            	<p class="tx-14 tx-gray-600 mg-b-auto">{{ $categoria->nome }}</p>
+            	<li class="tx-gray-600">{{ $categoria->nome }}</li>
             @endforeach
-            <span class="d-block mg-t-20 tx-13">Mar 11, 2017, 2:30pm</span>
+            <span class="d-block mg-t-20 tx-13 data-bottom">Mar 11, 2017, 2:30pm</span>
           </div><!-- col-md-7 -->
         </div><!-- row -->
       </div><!-- col-lg-6 -->
+	
+	 <!-- Lista de Usuários -->
       <div class="col-lg-6 mg-t-20 mg-lg-t-0-force">
         <div class="row no-gutters widget-3 rounded">
           <div class="col-md-5 col-lg-6 col-xl-5">
@@ -122,14 +128,86 @@
             </figure>
           </div><!-- col-4 -->
           <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
-            <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">History</p>
-            <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="#" class="tx-white">17 Brilliant Short Novels You Can Read in a Sitting</a></h5>
-            <p class="tx-14 tx-gray-600 mg-b-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Nascetur ridiculus mus. Donec quam felis, ultricies nec...</p>
-            <span class="d-block mg-t-20 tx-13">Mar 11, 2017, 11:30am</span>
+            <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">Autores</p>
+            <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="#" class="tx-white">Aqui você pode criar mais colaboradores para seu blog</a></h5>
+            @isset($users)
+	            @foreach($users as $user)
+	            	<li class="tx-gray-600">{{ $user->name }}</li>
+	            @endforeach
+        	@else
+	            <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhum usuário cadastrado no sistema.</p>
+        	@endif	
+            <span class="d-block mg-t-20 tx-13 data-bottom">Mar 11, 2017, 11:30am</span>
           </div><!-- col-8 -->
         </div><!-- row -->
       </div><!-- col-lg-6 -->
     </div><!-- row -->
+	
+	<!-- Post Destaque com mais Comentarios -->
+    <div class="row row-sm mg-t-20">
+      <div class="col-lg-8">
+        <div class="card card-inverse bd-0 mg-b-20 ht-400 ht-xs-350 ht-lg-100p">
+            <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset('storage/images/posts/'.$posts[1]->image) }}" alt="post image">
+            <div class="pos-absolute a-0 pd-b-30 bg-black-5 rounded d-flex align-items-sm-center justify-content-center">
+              <div class="tx-center wd-80p mg-t-25 mg-sm-t-0">
+                <p class="tx-info tx-uppercase tx-mont tx-semibold tx-11">{{ $posts[1]->categorias[0]->nome }}</p>
+                <h3 class="tx-center lh-4 tx-light tx-roboto"><a href="#" class="tx-white-8 hover-white">Post de Maior Destaque do Blog</a></h3>
+              </div>
+            </div><!-- pos-absolute d-flex -->
+
+            <div class="pos-absolute b-0 x-0 pd-y-15 pd-x-25 bd-t bd-white-1">
+              <div class="d-sm-flex justify-content-between align-items-center tx-13">
+                <span class="d-block tx-white-8 mg-r-5">Mar 25, 2017</span>
+                <a href="#" class="d-block tx-white-8 hover-white mg-r-10"><i class="fa fa-heart-o mg-r-5"></i> 23 Likes</a>
+                <a href="#" class="d-block tx-white-8 hover-white"><i class="fa fa-comment-o mg-r-5"></i> 4 Comments</a>
+                <span>By: <a href="#" class="tx-white-8 hover-white">{{ $posts[1]->autor->name }}</a></span>
+              </div><!-- d-flex -->
+            </div><!-- pos-absolute-bottom -->
+          </div><!-- card -->
+      </div><!-- col-8 -->
+
+      <div class="col-lg-4">
+        <div class="card bd-gray-400 pd-25 ht-100p">
+          <div class="media mg-b-25">
+            <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+            <div class="media-body mg-t-2">
+              <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $posts[1]->autor->name }}</a></h6>
+              <div class="tx-12">May 25, 2017</div>
+            </div><!-- media-body -->
+          </div><!-- media -->
+          <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">{{ $posts[1]->titulo }}</a></h5>
+          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($posts[0]->texto), 0, 150) . '...' ?? 'Não Informado'}}</p>
+          <p class="mg-t-auto mg-b-0 tx-13">
+            <a href="#" class="tx-info">18 Likes</a>
+            <a href="#" class="tx-info mg-l-20">1 Comment</a>
+          </p>
+        </div><!-- card -->
+      </div><!-- col-4 -->
+    </div><!-- row -->
+	
+	<!-- Perfil do Usuário-->
+    <div class="card mg-t-20 widget-4">
+      <div class="card-header">
+        <div class="tx-24 hidden-xss-down">
+          <a href="#" class="mg-r-10"><i class="icon ion-ios-email-outline"></i></a>
+          <a href="#"><i class="icon ion-more"></i></a>
+        </div>
+      </div><!-- card-header -->
+      <div class="card-body">
+        <div class="card-profile-img">
+          <img src="../img/img1.jpg" alt="profile image">
+        </div><!-- card-profile-img -->
+        <h4 class="tx-normal tx-roboto tx-white">{{ Auth::user()->name }}</h4>
+        <p class="mg-b-25 cinza-claro">{{ Auth::user()->email }}</p>
+      </div><!-- card-body -->
+      <div class="card-footer tx-14 d-sm-flex justify-content-sm-center">
+        <nav class="nav nav-inline flex-column flex-sm-row">
+          <a href="#" class="nav-link">
+          	<button class="btn btn-outline-primary">Ver Perfil</button>
+          </a>
+        </nav>
+      </div><!-- card-footer -->
+    </div><!-- card -->
 
 </div><!-- end mainpanel -->
 

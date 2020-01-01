@@ -31,8 +31,9 @@ class HomeController extends Controller
     public function index() {
 
         $user = Auth::user();
+        $users = User::orderBy('id', 'desc')->limit(4)->get();
         $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->limit(3)->get();
-        $categorias = Categoria::orderBy('id', 'desc')->limit(5)->get();
+        $categorias = Categoria::orderBy('id', 'desc')->limit(4)->get();
 
 
         // dd($posts[0]->categorias[0]);
@@ -45,6 +46,6 @@ class HomeController extends Controller
 
         // return view('home', compact('executando', 'avaliando', 'coordenando', 'cliente', 'projetos'));
 
-        return view('home', compact('posts', 'categorias'));
+        return view('home', compact('posts', 'categorias', 'users'));
     }
 }
