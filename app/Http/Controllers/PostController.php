@@ -149,7 +149,7 @@ class PostController extends Controller {
     public function update(Request $request, $id) {
         
 
-        dd($request->has('image'));
+        // dd($request->has('image'));
 
         // validate
         $validator = $this->validate($request, [
@@ -161,11 +161,36 @@ class PostController extends Controller {
 
         try{
 
-            $post = Post::find($id);
+            $post = Post::findOrFail($id);
 
             # caminho das pastas de arquivos
             $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
 
+            // \DB::beginTransaction();
+            $post->titulo = $request->input('titulo');
+            $post->slug   = Str::slug($post->titulo, '-');
+            $post->texto  = $request->input('texto');
+
+            $post->save();
+
+            # Vincula as categorias
+            $post->categorias()->sync($request->get('categorias'));
+
+            // \DB::commit();
+
+            # status de retorno
+            Session::flash('success', ' O post foi atualizado com sucesso!');
+            return redirect()->route('posts.index');
+
+            //Imagem Upload
+            // Se não for trocar a imagem do post
+            if(isset($request->image)){
+                $post->image  =  $request->input('image');
+            }else{
+                $post->image = $post->image;
+            }
+
+            // Se for trocar a imagem por uma imagem nova
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $arquivo_post = $request->file('image');
                 $extensao  = $arquivo_post->getClientOriginalExtension();
@@ -173,25 +198,9 @@ class PostController extends Controller {
                 $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
             }
 
-            // \DB::beginTransaction();
-            $post->titulo = $request->input('titulo');
-            $post->slug   = Str::slug($post->titulo, '-');
-            $post->texto  = $request->input('texto');
+            $post->image = $nome_arquivo;
 
-            if($request->has('image')) {
-                
-                $post->image  = $request->input('image');
-            }
-            else {
-
-                $post->image  = $nome_arquivo;
-            }   
-
-            // dd($post);
             $post->save();
-
-            # Vincula as categorias
-            $post->categorias()->sync($request->get('categorias'));
 
             // \DB::commit();
 

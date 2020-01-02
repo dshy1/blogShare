@@ -23,7 +23,7 @@
     }
     .large {
       font-size: 78px;
-      color: #18a4b4;
+      color: #1caf9a;
     }
     #form-delete-categorias {
       margin-top: -3px;
@@ -55,7 +55,7 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <i class="large material-icons">bookmark_border</i>
+    <i class="large material-icons">bookmarks</i>
     <div>
       <h2 class="tx-white">Categorias</h2>
       <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todas as categorias cadastradas no sistema</p>

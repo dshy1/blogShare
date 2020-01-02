@@ -11,7 +11,7 @@
     }
     .large {
       font-size: 78px;
-      color: #18a4b4;
+      color: #1caf9a;
     }
 
 </style>
@@ -28,7 +28,7 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-      <i class="large material-icons">bookmark_border</i>
+      <i class="large material-icons">add_photo_alternate</i>
     <div>
       <h2 class="tx-white">Nova Categoria</h2>
       <p class="mg-b-0 cinza-claro">Crie uma nova categoria para seus posts</p>

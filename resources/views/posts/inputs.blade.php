@@ -78,14 +78,13 @@
         <!-- <input type="file" accept="image/png, image/jpeg" name="image" id="image" class="form-control form-control-dark" value="{{ old('image') }}" />
         <button type="button" class="btn btn-primary" onclick="$('#image').trigger('click')">Selecionar imagem</button> -->
 
-        <label for='input-file' id="teste">Selecionar Arquivo &#187;</label>
-        <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" value="{{ asset('storage/images/posts/'.$post->image) }}" />
-        <span id='file-name' class="cinza-claro">{{ $post->image }}</span>
+        <label for='input-file' id="teste">Selecionar Imagem &#187;</label>
+        <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" />
+        <span id='file-name' class="cinza-claro">{{ $post->image ?? old('image') }}</span>
       @endif
     </div>
   </div><!-- col-8 -->
 </div><!-- row -->
-
 
 
   <!-- Script JS -->

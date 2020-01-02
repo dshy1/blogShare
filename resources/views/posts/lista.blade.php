@@ -55,7 +55,7 @@
     <!-- br-pageheader -->
 
     <div class="br-pagetitle">
-        <i class="large material-icons">bookmark_border</i>
+        <i class="large material-icons">description</i>
         <div>
             <h2 class="tx-white">Posts</h2>
             <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>
@@ -93,10 +93,10 @@
                         @foreach($posts as $post)
                         <tr>
                             <td><a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{ $post->id }}</a></td>
-                            <td><a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{ $post->titulo }}</a></td>
+                            <td><a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{substr(strip_tags($post->titulo), 0, 60) . '...' ?? 'Não Informado'}}</a></td>
                             <td>{{substr(strip_tags($post->texto), 0, 40) . '...' ?? 'Não Informado'}}</td>
                             <td>{{ $post->autor->name }}</td>
-                            <td><img src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 80px; height: 70px;">
+                            <td><img src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 80px; height: 60px;">
                             </td>
                             <td class="d-flex">
                                 <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |

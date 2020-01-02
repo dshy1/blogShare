@@ -5,9 +5,15 @@
 @section('content')
 
 <style type="text/css">
+
     .com-padding-top {
         padding-top: 100px;
     }
+    .large {
+      font-size: 78px;
+      color: #1caf9a;
+    }
+
 </style>
 
 
@@ -22,7 +28,7 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <i class="icon ion-ios-gear-outline"></i>
+      <i class="large material-icons">edit</i>
     <div>
       <h2 class="tx-white">Editar {{ $categoria->nome }}</h2>
       <p class="mg-b-0 cinza-claro">Edite a categoria para utilizar nos seus posts</p>

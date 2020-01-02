@@ -45,7 +45,7 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <i class="large material-icons">bookmark_border</i>
+    <i class="large material-icons">edit</i>
     <div>
       <h2 class="tx-white">Editar Post</h2>
       <p class="mg-b-0 cinza-claro">Edite seu post e deixe-o mais incrível ainda</p>

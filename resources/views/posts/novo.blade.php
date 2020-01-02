@@ -45,7 +45,7 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <i class="large material-icons">bookmark_border</i>
+    <i class="large material-icons">add_photo_alternate</i>
     <div>
       <h2 class="tx-white">Novo Post</h2>
       <p class="mg-b-0 cinza-claro">Crie um novo post incrível :)</p>

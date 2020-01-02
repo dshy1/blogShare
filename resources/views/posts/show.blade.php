@@ -66,7 +66,7 @@
   </div><!-- br-pageheader -->
 
   <div class="br-pagetitle">
-    <i class="large material-icons">bookmark_border</i>
+    <i class="large material-icons">local_library</i>
     <div>
         <h2 class="tx-white">{{ $post->titulo }}</h2>
         <p class="mg-b-0 cinza-claro">Aqui você pode ver todos os detalhes do seu post</p>
@@ -117,9 +117,9 @@
               </div><!-- media-body -->
             </div><!-- media -->
             <h6 class="tx-normal tx-roboto mg-b-15 lh-4 cinza-claro">Data de Criação:</h6>
-            <p class="tx-14 mg-b-25 txt-gray">{{ date('j M, Y', strtotime($post->created_at)) }}</p>
+            <p class="tx-14 mg-b-25 txt-gray">{{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y')}}</p>
             <h6 class="tx-normal tx-roboto mg-b-15 lh-4 cinza-claro">Última Atualização:</h6>
-            <p class="tx-14 mg-b-25 txt-gray">{{ date('j M, Y', strtotime($post->updated_at)) }}</p>
+            <p class="tx-14 mg-b-25 txt-gray">{{ \Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}</p>
             <hr>
             
             <!-- Botoes de Açao -->
@@ -137,7 +137,7 @@
               </div>
 
               <div class="col-sm-3 no-padding margin-left-neg">
-                  <a href="{{ route('posts.index') }}" class="btn btn-light btn-sm bt-voltar">Voltar</a>
+                  <a href="{{ route('posts.index') }}" class="btn btn-light btn-sm bt-voltar">Posts</a>
               </div>
             </div><!-- media -->
 

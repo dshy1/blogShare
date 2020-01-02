@@ -22,7 +22,7 @@
     figure {
     	overflow: hidden;
     }
-    .data-bottom {
+    .data-bottom, .comments-bottom {
     	position: absolute;
     	bottom: 22px;
     }
@@ -44,7 +44,7 @@
     <!-- br-pageheader -->
 
     <div class="br-pagetitle">
-        <i class="large material-icons">bookmark_border</i>
+        <i class="large material-icons">dashboard</i>
         <div>
             <h2 class="tx-white">Bem-vindo</h2>
             <p class="mg-b-0 cinza-claro">Aqui você pode navegar pelo seu painel de controle e fazer coisas incríveis</p>
@@ -52,20 +52,21 @@
     </div>
     <!-- d-flex -->
 	
-	<!-- Lista dos 3 posts mais recentes -->
+  <!-- Lista dos 3 posts mais recentes -->
   @isset($posts)
   	<div class="br-pagebody pd-x-20 pd-sm-x-30 mx-wd-1350">
   	   <div class="card-deck card-deck-sm mg-x-0">
           @foreach($posts as $post)
     	      <div class="card bd-0 mg-0">
-    	        <figure class="card-item-img bg-mantle rounded-top">
+    	        <figure class="{{ Auth::user()->roles->first()->name == 'Admin' ? 'card-item-img bg-mantle rounded-top' : 'card-item-img bg-mantle rounded-top' }}">
+                
     	          <img class="img-fluid rounded-top" src="{{ asset('storage/images/posts/'.$post->image) }}" alt="post image">
     	        </figure>
     	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
     	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $post->categorias[0]->nome }}</p>
-    	          <h5 class="tx-normal tx-roboto lh-3 mg-b-15"><a href="#" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
+    	          <h5 class="tx-normal tx-roboto lh-3 mg-b-15"><a href="{{ route('posts.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
     	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 120) . '...' ?? 'Não Informado'}}</p>
-    	          <p class="tx-13 mg-b-0">
+    	          <p class="tx-13 mg-b-0 comments-bottom">
     	            <a href="#" class="tx-info">12 Likes</a>
     	            <a href="#" class="tx-info mg-l-5">23 Comments</a>
     	            <a href="#" class="tx-info mg-l-5"><i class="icon ion-more"></i></a>
@@ -100,7 +101,7 @@
             @foreach($categorias as $categoria)
             	<li class="tx-gray-600">{{ $categoria->nome }}</li>
             @endforeach
-            <span class="d-block mg-t-20 tx-13 data-bottom">Mar 11, 2017, 2:30pm</span>
+            <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
           </div><!-- col-md-7 -->
         </div><!-- row -->
       </div><!-- col-lg-6 -->
@@ -115,7 +116,7 @@
           </div><!-- col-4 -->
           <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
             <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">Autores</p>
-            <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="#" class="tx-white">Aqui você pode criar mais colaboradores para seu blog</a></h5>
+            <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('users.index') }}" class="tx-white">Aqui você pode criar mais colaboradores para seu blog</a></h5>
             @isset($users)
 	            @foreach($users as $user)
 	            	<li class="tx-gray-600">{{ $user->name }}</li>
@@ -123,7 +124,7 @@
         	@else
 	            <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhum usuário cadastrado no sistema.</p>
         	@endif	
-            <span class="d-block mg-t-20 tx-13 data-bottom">Mar 11, 2017, 11:30am</span>
+            <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
           </div><!-- col-8 -->
         </div><!-- row -->
       </div><!-- col-lg-6 -->
@@ -144,7 +145,7 @@
 
             <div class="pos-absolute b-0 x-0 pd-y-15 pd-x-25 bd-t bd-white-1">
               <div class="d-sm-flex justify-content-between align-items-center tx-13">
-                <span class="d-block tx-white-8 mg-r-5">Mar 25, 2017</span>
+                <span class="d-block tx-white-8 mg-r-5">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
                 <a href="#" class="d-block tx-white-8 hover-white mg-r-10"><i class="fa fa-heart-o mg-r-5"></i> 23 Likes</a>
                 <a href="#" class="d-block tx-white-8 hover-white"><i class="fa fa-comment-o mg-r-5"></i> 4 Comments</a>
                 <span class="cinza-claro">By: <a href="#" class="tx-white-8 hover-white">{{ $post->autor->name }}</a></span>
@@ -159,7 +160,7 @@
             <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : 'storage/images/user/avatar01.jpg' }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
             <div class="media-body mg-t-2">
               <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
-              <div class="tx-12">May 25, 2017</div>
+              <div class="tx-12">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</div>
             </div><!-- media-body -->
           </div><!-- media -->
           <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
