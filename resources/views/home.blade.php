@@ -26,6 +26,11 @@
     	position: absolute;
     	bottom: 22px;
     }
+    .profile-image {
+      max-height: 112px;
+      object-fit:cover;
+
+    }
 
 </style>
 
@@ -73,15 +78,15 @@
        <div class="card-deck card-deck-sm mg-x-0">
             <div class="card bd-0 mg-0">
               <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
-                <h5 class="tx-normal tx-roboto lh-3 mg-b-15 alert-danger padding12">Voce ainda nao tem posts publicados</a></h5>
+                <h5 class="tx-normal tx-roboto lh-3 mg-b-15 alert-danger padding12">Você ainda não tem posts publicados</a></h5>
               </div><!-- card-body -->
             </div>
         </div>
     @endif
   @endif
 
-	<!-- Lista as Categorias -->
 	<div class="row row-sm mg-t-20">
+     <!-- Lista as Categorias -->
       <div class="col-lg-6">
         <div class="row no-gutters flex-row-reverse widget-3 rounded">
           <div class="col-md-5 col-lg-6 col-xl-5">
@@ -100,7 +105,7 @@
         </div><!-- row -->
       </div><!-- col-lg-6 -->
 	
-	 <!-- Lista de Usuários -->
+	    <!-- Lista de Usuários -->
       <div class="col-lg-6 mg-t-20 mg-lg-t-0-force">
         <div class="row no-gutters widget-3 rounded">
           <div class="col-md-5 col-lg-6 col-xl-5">
@@ -142,7 +147,7 @@
                 <span class="d-block tx-white-8 mg-r-5">Mar 25, 2017</span>
                 <a href="#" class="d-block tx-white-8 hover-white mg-r-10"><i class="fa fa-heart-o mg-r-5"></i> 23 Likes</a>
                 <a href="#" class="d-block tx-white-8 hover-white"><i class="fa fa-comment-o mg-r-5"></i> 4 Comments</a>
-                <span>By: <a href="#" class="tx-white-8 hover-white">{{ $post->autor->name }}</a></span>
+                <span class="cinza-claro">By: <a href="#" class="tx-white-8 hover-white">{{ $post->autor->name }}</a></span>
               </div><!-- d-flex -->
             </div><!-- pos-absolute-bottom -->
           </div><!-- card -->
@@ -151,7 +156,7 @@
       <div class="col-lg-4">
         <div class="card bd-gray-400 pd-25 ht-100p">
           <div class="media mg-b-25">
-            <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
+            <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : 'storage/images/user/avatar01.jpg' }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
             <div class="media-body mg-t-2">
               <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
               <div class="tx-12">May 25, 2017</div>
@@ -168,17 +173,17 @@
     </div><!-- row -->
   @endif
 	
-	<!-- Perfil do Usuário-->
+	  <!-- Perfil do Usuário-->
     <div class="card mg-t-20 widget-4">
       <div class="card-header">
         <div class="tx-24 hidden-xss-down">
-          <a href="#" class="mg-r-10"><i class="icon ion-ios-email-outline"></i></a>
-          <a href="#"><i class="icon ion-more"></i></a>
+          <a href="#" class="mg-r-10"><i class=""></i></a>
+          <a href="#"><i class=""></i></a>
         </div>
       </div><!-- card-header -->
       <div class="card-body">
         <div class="card-profile-img">
-          <img src="{{ isset(Auth::user()->image) !=NULL ? 'Auth::user()->image' : 'asset(storage/images/home/img32.jpg)' }}" alt="profile image">
+          <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : asset('storage/images/user/avatar01.jpg') }}" alt="profile image" class="profile-image">          
         </div><!-- card-profile-img -->
 
         <h4 class="tx-normal tx-roboto tx-white">{{ Auth::user()->name }}</h4>

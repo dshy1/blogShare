@@ -94,10 +94,10 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td><img src="" alt="user image" style="width: 80px; height: 70px;">
+                            <td><img src="{{ $user->image !== null ? '$user->image' : asset('storage/images/user/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 35px;">
                             </td>
                             <td class="d-flex">
-                                <a href="#" class="btn btn-link sem-padding">Editar</a> |
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link sem-padding">Editar</a> |
                                 <form action="#" method="POST" id="form-delete-users">
                                     @method('DELETE') @csrf
                                     <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
@@ -125,7 +125,7 @@
 
         // Funçao para confirmar deletar 
         function confirmDelete() {
-            if (confirm("Deseja realmente deletar esse post?")) {
+            if (confirm("Deseja realmente deletar esse usuário?")) {
                 return true;
             } else {
                 return false;

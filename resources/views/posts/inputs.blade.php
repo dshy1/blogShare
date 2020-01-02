@@ -79,8 +79,8 @@
         <button type="button" class="btn btn-primary" onclick="$('#image').trigger('click')">Selecionar imagem</button> -->
 
         <label for='input-file' id="teste">Selecionar Arquivo &#187;</label>
-        <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" value="{{ old('image') }}" />
-        <span id='file-name' class="cinza-claro">{{ $post->image ?? old('image') }}</span>
+        <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" value="{{ asset('storage/images/posts/'.$post->image) }}" />
+        <span id='file-name' class="cinza-claro">{{ $post->image }}</span>
       @endif
     </div>
   </div><!-- col-8 -->
@@ -92,11 +92,13 @@
   <script type="text/javascript">
   
     // Mostrar o path da imagem no span ao selecionar o arquivo
+    // pega o input e o span
     var $input = document.getElementById('input-file'),
     $fileName  = document.getElementById('file-name');
 
+    // Qdo houver um change no input
     $input.addEventListener('change', function() {
-
+      // Mostra o conteudo dele no span
       $fileName.textContent = this.value;
 
     });

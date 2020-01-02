@@ -102,9 +102,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        
+        $user  = User::findOrFail($id);
+        // dd($user->image);
+
+        return view('users.edit', compact('user')); 
     }
 
     /**

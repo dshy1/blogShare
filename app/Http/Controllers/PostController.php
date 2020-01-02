@@ -148,12 +148,14 @@ class PostController extends Controller {
      */
     public function update(Request $request, $id) {
         
+
+        dd($request->has('image'));
+
         // validate
         $validator = $this->validate($request, [
             'titulo'     => 'required|max:255',
             'texto'      => 'required',
-            'categorias' => 'required|array|min:1',
-            'image'      => 'mimes:jpeg,jpg,png,gif|required|max:10000'// max 10000kb
+            'categorias' => 'required|array|min:1'
 
         ]);
 
@@ -175,10 +177,17 @@ class PostController extends Controller {
             $post->titulo = $request->input('titulo');
             $post->slug   = Str::slug($post->titulo, '-');
             $post->texto  = $request->input('texto');
-            $post->image  = $nome_arquivo;
 
-             // dd($post);
+            if($request->has('image')) {
+                
+                $post->image  = $request->input('image');
+            }
+            else {
 
+                $post->image  = $nome_arquivo;
+            }   
+
+            // dd($post);
             $post->save();
 
             # Vincula as categorias
