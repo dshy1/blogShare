@@ -111,7 +111,7 @@
         <div class="col-lg-4">
           <div class="card bd-gray-400 pd-25">
             <div class="media mg-b-25">
-              <img src="../img/img5.jpg" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+              <img src="{{ $post->autor->image !== null ? '$post->autor->image' : asset('storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image">
               <div class="media-body mg-t-2">
                 <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white hover-info">{{ $post->autor->name }}</a></h6>
               </div><!-- media-body -->
@@ -125,19 +125,18 @@
             <!-- Botoes de Açao -->
             <div class="media mg-b-25">
               <div class="col-sm-3 no-padding margin-right-neg">
-                  <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm bt-editar">Editar</a>
+                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm bt-editar">Editar</a>
               </div>
 
               <div class="col-sm-3 no-padding">
-                <form action="#" method="POST" id="delete">
-                   {{ method_field('POST') }}
-                   @csrf
-                  <input type="submit" value="Deletar" class="btn btn-danger btn-sm bt-deletar" onclick="return myFunction();" />
+                <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts02">
+                    @method('DELETE') @csrf
+                    <input type="submit" value="Deletar" class="btn btn-danger btn-sm bt-deletar" onclick=" return confirmDelete();" />
                 </form>
               </div>
 
               <div class="col-sm-3 no-padding margin-left-neg">
-                  <a href="{{ route('posts.index') }}" class="btn btn-light btn-sm bt-voltar">Posts</a>
+                 <a href="{{ route('posts.index') }}" class="btn btn-light btn-sm bt-voltar">Posts</a>
               </div>
             </div><!-- media -->
 
@@ -155,6 +154,23 @@
 @endsection
 
 
+@section('scripts')
+
+    <!-- Script JS -->
+    <script type="text/javascript">
+
+        // Funçao para confirmar deletar 
+        function confirmDelete() {
+            if (confirm("Deseja realmente deletar esse post?")) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+    </script>
+
+@stop
 
 
 

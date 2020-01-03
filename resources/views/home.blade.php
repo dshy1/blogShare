@@ -157,7 +157,7 @@
       <div class="col-lg-4">
         <div class="card bd-gray-400 pd-25 ht-100p">
           <div class="media mg-b-25">
-            <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : 'storage/images/user/avatar01.jpg' }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
+            <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : 'storage/images/users/avatar01.jpg' }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
             <div class="media-body mg-t-2">
               <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
               <div class="tx-12">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</div>
@@ -184,7 +184,7 @@
       </div><!-- card-header -->
       <div class="card-body">
         <div class="card-profile-img">
-          <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : asset('storage/images/user/avatar01.jpg') }}" alt="profile image" class="profile-image">          
+          <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : asset('storage/images/users/avatar01.jpg') }}" alt="profile image" class="profile-image">          
         </div><!-- card-profile-img -->
 
         <h4 class="tx-normal tx-roboto tx-white">{{ Auth::user()->name }}</h4>

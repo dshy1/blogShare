@@ -102,7 +102,8 @@
                                 <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |
                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link sem-padding">Editar</a> |
                                 <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
-                                    @method('DELETE') @csrf
+                                    @csrf
+                                    @method('DELETE') 
                                     <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
                                 </form>
                             </td>

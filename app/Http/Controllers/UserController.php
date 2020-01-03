@@ -53,6 +53,7 @@ class UserController extends Controller
 
             // \DB::beginTransaction();
 
+            # Cria o um novo usuário
             $user = User::create([
                 'name'     => $request->get('name'),
                 'email'    => $request->get('email'),
@@ -61,7 +62,7 @@ class UserController extends Controller
             ]);
 
 
-            # Vincula a politica de autor ao usuário
+            # Vincula a politica de autor ao usuário criado
             $role = Role::findOrFail(2);
             $user->roles()->attach($role);
 
@@ -75,6 +76,7 @@ class UserController extends Controller
         }catch (\Exception $exception) {
 
             // \DB::rollback();
+
             # status de retorno
             Session::flash('error', ' O usuário não pôde ser cadastrado!');
             return redirect()->back()->withInput();
@@ -117,10 +119,66 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(Request $request, $id) {
+
+
+        // validate
+        $validator = $this->validate($request, [
+            'name'             => 'required',
+            'password-confirm' => 'same:password'
+
+        ]);
+
+          try{
+
+             // \DB::beginTransaction();
+
+            $user = User::findOrFail($id);
+
+            # caminho das pastas de arquivos
+            $pasta_img = 'images' . DIRECTORY_SEPARATOR . 'users';
+           
+            $user->name      = $request->input('name');
+            $user->password  = bcrypt($request->input('password'));
+
+            //Imagem Upload
+            // Se não for trocar a imagem do post
+            if(isset($request->image)){
+                $user->image  =  $request->input('image');
+            }else{
+                $user->image  = $user->image;
+            }
+
+            // Se for trocar a imagem por uma imagem nova
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $arquivo_user = $request->file('image');
+                $extensao     = $arquivo_user->getClientOriginalExtension();
+                $nome_arquivo = 'user_' . rand(11111111, 99999999) . '.' . $extensao;
+                $upload       = $arquivo_user->storeAs($pasta_img, $nome_arquivo);
+            }
+
+            $user->image = $nome_arquivo;
+
+            $user->save();
+
+            // \DB::commit();
+
+            # status de retorno
+            Session::flash('success', ' O usuário foi atualizado com sucesso!');
+            return redirect()->route('users.index');
+
+        }catch (\Exception $exception) {
+
+            // \DB::rollback();
+
+            # status de retorno
+            Session::flash('error', ' O usuário não pôde ser atualizado!');
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->route('users.index');
+
+    }// end update
 
     /**
      * Remove the specified resource from storage.
@@ -128,8 +186,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        
+        try{
+
+            $user = User::findOrFail($id);
+            $user->delete();
+
+            # status de retorno
+            Session::flash('success', ' O usuário foi deletado com sucesso!');
+
+            return redirect()->route('users.index');
+
+        }catch (\Exception $exception){
+
+            # status de retorno
+            Session::flash('error', 'Falha ao deletar o usuário!');
+
+            return redirect()->route('users.index');
+
+        }
     }
 }

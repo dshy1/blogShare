@@ -89,17 +89,19 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td><img src="{{ $user->image !== null ? '$user->image' : asset('storage/images/user/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 35px;">
+                            <td><img src="{{ $user->image !== null ? asset('storage/images/users/'.$user->image) : asset('storage/images/users/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 40px;">
                             </td>
                             <td class="d-flex">
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link sem-padding">Editar</a> |
-                                <form action="#" method="POST" id="form-delete-users">
-                                    @method('DELETE') @csrf
+                                <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
+                                     @csrf
+                                     @method('DELETE')
                                     <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
                                 </form>
                             </td>

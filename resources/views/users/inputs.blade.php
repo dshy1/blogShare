@@ -29,7 +29,7 @@
     <div class="col-md-8">
       <div class="form-group">
         <label class="form-control-label cinza-claro">E-mail: <span class="tx-danger">*</span></label>
-          <input class="form-control form-control-dark" type="text" name="email" value="{{ $user->email  ?? old('email') }}" placeholder="Digite um e-mail válido" />
+          <input class="form-control form-control-dark" type="text" name="email" value="{{ $user->email  ?? old('email') }}" placeholder="Digite um e-mail válido" isset($user) ? disabled="" />
       </div>
     </div><!-- col-8 -->
  </div><!-- row -->
@@ -39,7 +39,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <label class="form-control-label cinza-claro">Senha: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="password" name="password" value="{{ $user->password  ?? old('password') }}" placeholder="Mínimo 8 caracteres" />
+            <input class="form-control form-control-dark" type="password" name="password" value="{{ old('password') }}" placeholder="Mínimo 8 caracteres" />
         </div>
       </div><!-- col-8 -->
    </div><!-- row -->
@@ -48,7 +48,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <label class="form-control-label cinza-claro">Confirmar Senha: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="password" name="password-confirm" value="{{ $user->password  ?? old('password') }}" placeholder="" />
+            <input class="form-control form-control-dark" type="password" name="password-confirm" value="{{ old('password') }}" placeholder="" />
         </div>
       </div><!-- col-8 -->
    </div><!-- row -->
@@ -56,15 +56,15 @@
    <div class="row mg-b-10">
       <div class="col-lg-8">
         <div class="custom-file">
-          <label class="form-control-label cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
-            <label for='input-file' id="teste">Selecionar Arquivo &#187;</label>
-            <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" value="{{ old('image') }}" />
+            <label class="form-control-label cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
+
+            <label for='input-file' id="teste">Selecionar Imagem &#187;</label>
+            <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" />
             <span id='file-name' class="cinza-claro">{{ $user->image ?? old('image') }}</span>
         </div>
       </div><!-- col-8 -->
    </div><!-- row -->
 @endif
-
 
 
 

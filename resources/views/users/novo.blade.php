@@ -48,7 +48,6 @@
   <div class="br-pagebody">
     <div class="br-section-wrapper">
       <div class="form-layout form-layout-1">
-		
       		<form id="form-users" name="form-users" action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
 
       			    @csrf
@@ -60,7 +59,6 @@
       	          <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
       	        </div><!-- form-layout-footer -->
       		 </form>
-
       </div><!-- form-layout -->
     </div>
   </div>

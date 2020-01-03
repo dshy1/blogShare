@@ -118,6 +118,8 @@ class PostController extends Controller {
 
         $post  = Post::with('categorias')->with('autor')->get()->find($post);
 
+        // dd($post->autor);
+
         return view('posts.show', compact('post')); 
 
     }
