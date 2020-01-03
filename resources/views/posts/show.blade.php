@@ -68,7 +68,7 @@
   <div class="br-pagetitle">
     <i class="large material-icons">local_library</i>
     <div>
-        <h2 class="tx-white">{{ $post->titulo }}</h2>
+        <h4 class="tx-white">{{ $post->titulo }}</h4>
         <p class="mg-b-0 cinza-claro">Aqui você pode ver todos os detalhes do seu post</p>
     </div>
   </div>
@@ -111,7 +111,7 @@
         <div class="col-lg-4">
           <div class="card bd-gray-400 pd-25">
             <div class="media mg-b-25">
-              <img src="{{ $post->autor->image !== null ? '$post->autor->image' : asset('storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image">
+              <img src="{{ Auth::user()->image !== null ? asset('storage/images/users/'.Auth::user()->image) : asset('storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image">
               <div class="media-body mg-t-2">
                 <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white hover-info">{{ $post->autor->name }}</a></h6>
               </div><!-- media-body -->

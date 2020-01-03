@@ -1,9 +1,10 @@
 <?php
 
 use App\User;
-use App\Models\Role;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 
 /*
@@ -22,10 +23,13 @@ Route::get('/', function () {
 });
 
 
+
 #### Rotas que precisam de autenticaçao
-Route::group(['middleware' => ['auth']], function() {
+Auth::routes();
     
-	#### Dashboard
+Route::group(['middleware' => ['auth']], function () {
+    
+    #### Dashboard
 	Route::get('/dashboard', 'HomeController@index')->name('home');
 
 	### Categoria Resource
@@ -38,10 +42,6 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::resource('/users', 'UserController');
 
 });
-
-
-Auth::routes();
-
 
 
 
@@ -76,6 +76,21 @@ Route::get('/user', function() {
 });
 
 
+// Route::get('/role', function() {
+
+// 	// Atribuir todas as permissoes para o Admin
+// 	$role = Role::findOrFail(1);
+// 	$permissions = Permission::all();
+
+// 	foreach ($permissions as $permission) {
+        
+//         $role->givePermissionTo($permission);
+//     }
+	
+// 	return "Permissões atribuídas com sucesso para: " .$role->name;
+  
+   	
+// });
 
 
 

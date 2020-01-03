@@ -117,7 +117,6 @@
             {{ $posts->links() }}
         </div>
     </div>
-
 </div>
 <!--  end mainpanel -->
 @endsection

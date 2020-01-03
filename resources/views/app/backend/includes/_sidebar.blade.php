@@ -23,29 +23,33 @@
             <li class="sub-item"><a href="{{ route('posts.index') }}" class="sub-link">Todos os Posts</a></li>
           </ul>
         </li>
-
-        <li class="br-menu-item">
-          <a href="#" class="{{ (request()->is('categorias')) || (request()->is('categorias/create'))? 'br-menu-link active' : 'br-menu-link' }}">
-            <i class="material-icons">class</i>
-            <span class="menu-item-label">Categorias</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            <li class="sub-item"><a href="{{ route('categorias.create') }}" class="sub-link">Nova Categoria</a></li>
-            <li class="sub-item"><a href="{{ route('categorias.index') }}" class="sub-link">Todas as Categorias</a></li>
-          </ul>
-        </li><!-- br-menu-item -->
-
-        <li class="br-menu-item">
-          <a href="#" class="{{ (request()->is('users')) || (request()->is('users/create'))? 'br-menu-link active' : 'br-menu-link' }}">
-            <i class="material-icons">group</i>
-            <span class="menu-item-label">Membros</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            <li class="sub-item"><a href="{{ route('users.create') }}" class="sub-link">Novo Membro</a></li>
-            <li class="sub-item"><a href="{{ route('users.index') }}" class="sub-link">Todos os Membros</a></li>
-          </ul>
-        </li><!-- br-menu-item -->
-
+        
+        @can('cria-categoria')
+          <li class="br-menu-item">
+            <a href="#" class="{{ (request()->is('categorias')) || (request()->is('categorias/create'))? 'br-menu-link active' : 'br-menu-link' }}">
+              <i class="material-icons">class</i>
+              <span class="menu-item-label">Categorias</span>
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub">
+              <li class="sub-item"><a href="{{ route('categorias.create') }}" class="sub-link">Nova Categoria</a></li>
+              <li class="sub-item"><a href="{{ route('categorias.index') }}" class="sub-link">Todas as Categorias</a></li>
+            </ul>
+          </li><!-- br-menu-item -->
+        @endcan
+        
+        @can('cria-user')
+          <li class="br-menu-item">
+            <a href="#" class="{{ (request()->is('users')) || (request()->is('users/create'))? 'br-menu-link active' : 'br-menu-link' }}">
+              <i class="material-icons">group</i>
+              <span class="menu-item-label">Membros</span>
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub">
+              <li class="sub-item"><a href="{{ route('users.create') }}" class="sub-link">Novo Membro</a></li>
+              <li class="sub-item"><a href="{{ route('users.index') }}" class="sub-link">Todos os Membros</a></li>
+            </ul>
+          </li><!-- br-menu-item -->
+        @endcan
+        
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">
             <i class="material-icons">person</i>

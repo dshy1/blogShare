@@ -75,60 +75,63 @@
     	      </div><!-- card -->
           @endforeach
         </div>
-    @if($posts->isEmpty())
-       <div class="card-deck card-deck-sm mg-x-0">
+
+      @if($posts->isEmpty())
+        <div class="card-deck card-deck-sm mg-x-0">
             <div class="card bd-0 mg-0">
               <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
                 <h5 class="tx-normal tx-roboto lh-3 mg-b-15 alert-danger padding12">Você ainda não tem posts publicados</a></h5>
               </div><!-- card-body -->
             </div>
         </div>
-    @endif
+      @endif
   @endif
 
-	<div class="row row-sm mg-t-20">
-     <!-- Lista as Categorias -->
-      <div class="col-lg-6">
-        <div class="row no-gutters flex-row-reverse widget-3 rounded">
-          <div class="col-md-5 col-lg-6 col-xl-5">
-            <figure class="ht-200 ht-md-100p">
-              <img src="{{ asset('storage/images/home/img31.jpg') }}" class="img-fit-cover op-8" alt="">
-            </figure>
-          </div><!-- col-md-5 -->
-          <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
-            <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-success">Categorias</p>
-            <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('categorias.index') }}" class="tx-white">Aqui você pode criar e separar seus posts por categorias</a></h5>
-            @foreach($categorias as $categoria)
-            	<li class="tx-gray-600">{{ $categoria->nome }}</li>
-            @endforeach
-            <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
-          </div><!-- col-md-7 -->
-        </div><!-- row -->
-      </div><!-- col-lg-6 -->
-	
-	    <!-- Lista de Usuários -->
-      <div class="col-lg-6 mg-t-20 mg-lg-t-0-force">
-        <div class="row no-gutters widget-3 rounded">
-          <div class="col-md-5 col-lg-6 col-xl-5">
-            <figure class="ht-200 ht-md-100p">
-              <img src="{{ asset('storage/images/home/img32.jpg') }}" class="img-fit-cover op-8" alt="">
-            </figure>
-          </div><!-- col-4 -->
-          <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
-            <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">Autores</p>
-            <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('users.index') }}" class="tx-white">Aqui você pode criar mais colaboradores para seu blog</a></h5>
-            @isset($users)
-	            @foreach($users as $user)
-	            	<li class="tx-gray-600">{{ $user->name }}</li>
-	            @endforeach
-        	@else
-	            <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhum usuário cadastrado no sistema.</p>
-        	@endif	
-            <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
-          </div><!-- col-8 -->
-        </div><!-- row -->
-      </div><!-- col-lg-6 -->
-  </div><!-- row -->
+  @can('cria-categoria' && 'cria-user')
+  	<div class="row row-sm mg-t-20">
+       <!-- Lista as Categorias -->
+        <div class="col-lg-6">
+          <div class="row no-gutters flex-row-reverse widget-3 rounded">
+            <div class="col-md-5 col-lg-6 col-xl-5">
+              <figure class="ht-200 ht-md-100p">
+                <img src="{{ asset('storage/images/home/img31.jpg') }}" class="img-fit-cover op-8" alt="">
+              </figure>
+            </div><!-- col-md-5 -->
+            <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
+              <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-success">Categorias</p>
+              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('categorias.index') }}" class="tx-white">Aqui você pode criar e separar seus posts por categorias</a></h5>
+              @foreach($categorias as $categoria)
+              	<li class="tx-gray-600">{{ $categoria->nome }}</li>
+              @endforeach
+              <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
+            </div><!-- col-md-7 -->
+          </div><!-- row -->
+        </div><!-- col-lg-6 -->
+  	
+  	    <!-- Lista de Usuários -->
+        <div class="col-lg-6 mg-t-20 mg-lg-t-0-force">
+          <div class="row no-gutters widget-3 rounded">
+            <div class="col-md-5 col-lg-6 col-xl-5">
+              <figure class="ht-200 ht-md-100p">
+                <img src="{{ asset('storage/images/home/img32.jpg') }}" class="img-fit-cover op-8" alt="">
+              </figure>
+            </div><!-- col-4 -->
+            <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
+              <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">Autores</p>
+              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('users.index') }}" class="tx-white">Aqui você pode criar mais colaboradores para seu blog</a></h5>
+              @isset($users)
+  	            @foreach($users as $user)
+  	            	<li class="tx-gray-600">{{ $user->name }}</li>
+  	            @endforeach
+          	@else
+  	            <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhum usuário cadastrado no sistema.</p>
+          	@endif	
+              <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
+            </div><!-- col-8 -->
+          </div><!-- row -->
+        </div><!-- col-lg-6 -->
+    </div><!-- row -->
+  @endcan
 	
 	<!-- Post Destaque com mais Comentarios // isso vai vir do Front End -->
   @isset($post)
@@ -157,7 +160,8 @@
       <div class="col-lg-4">
         <div class="card bd-gray-400 pd-25 ht-100p">
           <div class="media mg-b-25">
-            <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : 'storage/images/users/avatar01.jpg' }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
+            <!-- Aqui vai a imagem e nome do autor do post em destaque -->
+            <img src="{{ asset('storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
             <div class="media-body mg-t-2">
               <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
               <div class="tx-12">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</div>
@@ -184,7 +188,7 @@
       </div><!-- card-header -->
       <div class="card-body">
         <div class="card-profile-img">
-          <img src="{{ Auth::user()->image !== null ? 'Auth::user()->image' : asset('storage/images/users/avatar01.jpg') }}" alt="profile image" class="profile-image">          
+          <img src="{{ Auth::user()->image !== null ? asset('storage/images/users/'.Auth::user()->image) : asset('storage/images/users/avatar01.jpg') }}" alt="user image" class="profile-image">          
         </div><!-- card-profile-img -->
 
         <h4 class="tx-normal tx-roboto tx-white">{{ Auth::user()->name }}</h4>

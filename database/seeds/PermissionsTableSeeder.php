@@ -14,7 +14,7 @@ class PermissionsTableSeeder extends Seeder
       
         $permissions = [
 
-        	// can: Admin / Autor
+        	// can: Admin && Autor
         	// Posts
         	'cria-post',
         	'lista-post',
@@ -30,10 +30,10 @@ class PermissionsTableSeeder extends Seeder
 
           // can: Admin
           // Autor
-          'cria-autor',
-          'lista-autor',
-          'atualiza-autor',
-          'deleta-autor',
+          'cria-user',
+          'lista-user',
+          'atualiza-user',
+          'deleta-user',
         ];
 
         // cria as permissões acima no DB, na tabela permissions

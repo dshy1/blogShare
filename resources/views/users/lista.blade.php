@@ -22,7 +22,7 @@
     }
     .large {
         font-size: 78px;
-        color: #6f42c1;
+        color: #0866C6;
     }
     #form-delete-users {
         margin-top: -3px;
@@ -79,7 +79,7 @@
         <div class="br-section-wrapper">
             <div class="bd bd-white-1 rounded table-responsive">
                 <table class="table table-striped mg-b-0">
-                    <thead class="thead-colored thead-purple">
+                    <thead class="thead-colored thead-primary">
                         <tr>
                             <th class="titulo-tabela">#</th>
                             <th class="titulo-tabela">Nome</th>

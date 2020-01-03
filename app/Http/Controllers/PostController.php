@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Categoria;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Session;
-use DB;
 
 
 
@@ -23,8 +23,9 @@ class PostController extends Controller {
     public function __construct(Request $request, Post $post) {
 
         $this->request = $request;
-        $this->post = $post;
+        $this->post    = $post;
         $this->middleware('auth');
+        // para essas middlewares do Spatie funcionar, tem que add a classe no app/Http/Kernel.php
         // $this->middleware('permission:lista-posts');
         // $this->middleware('permission:cria-posts', ['only' => ['create','store']]);
         // $this->middleware('permission:atualiza-posts', ['only' => ['edit','update']]);
@@ -34,9 +35,18 @@ class PostController extends Controller {
 
     public function index() {
 
-        $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);
+        $user = Auth::user();
 
-        return view('posts.lista', compact('posts'));
+        if ($user->roles()->first()->name == 'Admin') {
+          
+          $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);  
+        }
+        else {
+
+            $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->paginate(6);
+        }
+
+        return view('posts.lista', compact('posts', 'user'));
     }
 
 
@@ -89,6 +99,11 @@ class PostController extends Controller {
             # Vincula as categorias
             $post->categorias()->sync($request->get('categorias'));
 
+            # Pega o usuario logado
+            $user = Auth::user();
+            # Salva o post para esse usuario
+            $user->posts()->save($post);
+
             // \DB::commit();
 
             # status de retorno
@@ -118,8 +133,6 @@ class PostController extends Controller {
 
         $post  = Post::with('categorias')->with('autor')->get()->find($post);
 
-        // dd($post->autor);
-
         return view('posts.show', compact('post')); 
 
     }
@@ -136,8 +149,6 @@ class PostController extends Controller {
         $catgs_post  = $post->categorias->pluck('id', 'id')->all();
         $categorias   = Categoria::all();
 
-        // dd($post);
-
         return view('posts.edit', compact('post', 'catgs_post', 'categorias')); 
     }
 
@@ -150,8 +161,6 @@ class PostController extends Controller {
      */
     public function update(Request $request, $id) {
         
-
-        // dd($request->has('image'));
 
         // validate
         $validator = $this->validate($request, [
