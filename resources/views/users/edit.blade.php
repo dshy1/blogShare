@@ -38,7 +38,7 @@
         <img src="{{ $user->image !== null ? asset('storage/images/users/'.$user->image) : asset('storage/images/users/avatar01.jpg') }}" alt="profile image" class="profile-image">
       </div><!-- card-profile-img -->
       <h4 class="tx-normal tx-roboto tx-white">{{ $user->name }}</h4>
-      <p class="mg-b-25">{{ $user->email }}</p>
+      <p class="mg-b-25 cinza-claro">{{ $user->email }}</p>
     </div><!-- card-body -->
   </div><!-- card -->
 
@@ -89,6 +89,8 @@
     </div><!-- tab-pane -->
   </div><!-- br-pagebody -->
 </div><!-- br-mainpanel -->
+<!-- ########## START: MAIN PANEL ########## -->
+
 
 @endsection
 

@@ -119,7 +119,7 @@
               </div>
               <hr>
               <ul class="list-unstyled user-profile-nav">
-                <li class="center12"><a href="#"><i class="icon ion-ios-gear"></i>Configurações</a></li>
+                <li class="center12"><a href="{{ route('users.edit', Auth::user()->id) }}"><i class="icon ion-ios-gear"></i>Configurações</a></li>
                 <li class="center30"><a id="logout" href="{{ route('logout') }}" class="icon ion-power" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf
@@ -129,12 +129,6 @@
             </div><!-- dropdown-menu -->
           </div><!-- dropdown -->
         </nav>
-        <!-- <div class="navicon-right">
-          <a id="btnRightMenu" href="#" class="pos-relative">
-            <i class="material-icons">message</i>
-            <span class="square-8 bg-danger pos-absolute t-10 r--5 rounded-circle"></span>
-          </a>
-        </div> --><!-- navicon-right -->
       </div><!-- br-header-right -->
     </div><!-- br-header -->
     <!-- ########## END: HEAD PANEL ########## -->

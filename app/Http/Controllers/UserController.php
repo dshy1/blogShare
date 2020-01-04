@@ -11,11 +11,15 @@ use Session;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+   public function __construct() {
+
+        $this->middleware('auth');
+        
+    }
+
+
     public function index() {
 
         $users = User::orderBy('id', 'desc')->paginate(6);
@@ -62,8 +66,8 @@ class UserController extends Controller
             ]);
 
 
-            # Vincula a politica de autor ao usuário criado
-            $role = Role::findOrFail(2);
+            # Atribui a politica de autor ao usuário criado
+            $role = Role::where('name', 'autor')->get()->first();
             $user->roles()->attach($role);
 
             // \DB::commit();
@@ -107,7 +111,6 @@ class UserController extends Controller
     public function edit($id) {
         
         $user  = User::findOrFail($id);
-        // dd($user->image);
 
         return view('users.edit', compact('user')); 
     }
@@ -131,21 +134,33 @@ class UserController extends Controller
 
           try{
 
-             // \DB::beginTransaction();
-
             $user = User::findOrFail($id);
 
             # caminho das pastas de arquivos
             $pasta_img = 'images' . DIRECTORY_SEPARATOR . 'users';
-           
-            $user->name      = $request->input('name');
-            $user->password  = bcrypt($request->input('password'));
 
-            //Imagem Upload
-            // Se não for trocar a imagem do post
+            // \DB::beginTransaction();
+            $user->name      = $request->input('name');
+            $user->password  = $user->password;
+            $user->image     = null;
+
+            # Password
+            // Se o usuario criar uma nova senha, salva
+            if (isset($request->password)) {
+                $user->password  = bcrypt($request->input('password'));
+            }
+            // Senao mantem a que ja esta no banco
+            else {
+                $user->password  = $user->password;
+            }
+
+            # Imagem Upload
+            // Se o usuario selecionar uma nova imagem, salva
             if(isset($request->image)){
                 $user->image  =  $request->input('image');
-            }else{
+            }
+            // Senao mantem a que ja esta no banco
+            else {
                 $user->image  = $user->image;
             }
 

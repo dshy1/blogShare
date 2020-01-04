@@ -64,6 +64,8 @@
     </div>
   </div>
 </div><!--  end mainpanel -->
+<!-- ########## END: MAIN PANEL ########## -->
+
 
 @endsection
 

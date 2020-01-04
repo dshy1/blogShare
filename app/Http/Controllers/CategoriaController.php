@@ -15,8 +15,7 @@ class CategoriaController extends Controller {
     protected $categoria;
 
     public function __construct(Request $request, Categoria $categoria){
-        $this->request = $request;
-        $this->categoria = $categoria;
+     
         $this->middleware('auth');
         // $this->middleware('permission:lista-categoria');
         // $this->middleware('permission:cria-categoria', ['only' => ['create','store']]);

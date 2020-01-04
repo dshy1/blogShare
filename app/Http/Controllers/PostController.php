@@ -22,10 +22,7 @@ class PostController extends Controller {
 
     public function __construct(Request $request, Post $post) {
 
-        $this->request = $request;
-        $this->post    = $post;
         $this->middleware('auth');
-        // para essas middlewares do Spatie funcionar, tem que add a classe no app/Http/Kernel.php
         // $this->middleware('permission:lista-posts');
         // $this->middleware('permission:cria-posts', ['only' => ['create','store']]);
         // $this->middleware('permission:atualiza-posts', ['only' => ['edit','update']]);
@@ -37,7 +34,7 @@ class PostController extends Controller {
 
         $user = Auth::user();
 
-        if ($user->roles()->first()->name == 'Admin') {
+        if ($user->roles()->first()->name == 'admin') {
           
           $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);  
         }
@@ -71,7 +68,7 @@ class PostController extends Controller {
 
         try{
 
-            // Salvar as imagens na pasta storage
+            # Salvar as imagens na pasta storage
             // cria a pasta images e dentro dela a pasta posts
             $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
 
@@ -80,7 +77,7 @@ class PostController extends Controller {
                 // pega a imagem
                 $arquivo_post = $request->file('image');
                 // pega a extensao da imagem
-                $extensao  = $arquivo_post->getClientOriginalExtension();
+                $extensao = $arquivo_post->getClientOriginalExtension();
                 // cria um novo nome pra imagem com a extensao
                 $nome_arquivo = 'post_' . rand(11111111, 99999999) . '.' . $extensao;
                 // salva a imagem
@@ -145,9 +142,9 @@ class PostController extends Controller {
      */
     public function edit($id) {
        
-        $post  = Post::with('categorias')->find($id);
+        $post        = Post::with('categorias')->find($id);
         $catgs_post  = $post->categorias->pluck('id', 'id')->all();
-        $categorias   = Categoria::all();
+        $categorias  = Categoria::all();
 
         return view('posts.edit', compact('post', 'catgs_post', 'categorias')); 
     }
@@ -175,7 +172,7 @@ class PostController extends Controller {
             $post = Post::findOrFail($id);
 
             # caminho das pastas de arquivos
-            $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
+            $pasta_post   = 'images' . DIRECTORY_SEPARATOR . 'posts';
 
             // \DB::beginTransaction();
             $post->titulo = $request->input('titulo');
@@ -204,9 +201,9 @@ class PostController extends Controller {
             // Se for trocar a imagem por uma imagem nova
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $arquivo_post = $request->file('image');
-                $extensao  = $arquivo_post->getClientOriginalExtension();
+                $extensao     = $arquivo_post->getClientOriginalExtension();
                 $nome_arquivo = 'post_' . rand(11111111, 99999999) . '.' . $extensao;
-                $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
+                $upload       = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
             }
 
             $post->image = $nome_arquivo;

@@ -52,34 +52,37 @@ Route::group(['middleware' => ['auth']], function () {
 
 /*
 |-------------------------------------------------
-| Rotas Avulsas para testes
+| Rotas Avulsas para testes 
 |-------------------------------------------------
 */
 
-#### Pegar o usuario e atribuir uma política
-// Route::get('/userpolitica', function() {
+#### Atribuir politica a um usuario
+Route::get('/user-add-role', function() {
+	// pega o user 1
+	$user = User::find(1);
+	// atribui a politica admin ao user
+	$user->roles()->attach(1);
 
-// 	$user = User::find(1);
-// 	$user->roles()->attach(1);
+	return "Política de Admin atribuída com sucesso para: " .$user->name;
 
-// });
-
-#### Pegar o nome do usuario e sua politica
-Route::get('/user', function() {
-
-	$user = User::find(1)->with('roles')->get();
-
-	// dd($user);
-   	echo $user[0]->name.'<br />'.
-   	$user[0]->roles[0]->name;
-   	
 });
 
+#### Exibir o nome do usuario e sua politica
+// Route::get('/user-role', function() {
 
-// Route::get('/role', function() {
+// 	$user = User::find(1)->with('roles')->get();
 
-// 	// Atribuir todas as permissoes para o Admin
-// 	$role = Role::findOrFail(1);
+// 	// dd($user);
+//    	echo $user[0]->name.'<br />'.
+//    	$user[0]->roles[0]->name;
+   	
+// });
+
+#### Atribuir todas as permissoes para a role admin
+// Route::get('/role-admin', function() {
+// 	// pega a role admin
+// 	$role = Role::where('name', 'Admin')->get()->first();
+// 	// pega todas as permissoes
 // 	$permissions = Permission::all();
 
 // 	foreach ($permissions as $permission) {
@@ -92,6 +95,24 @@ Route::get('/user', function() {
    	
 // });
 
+#### Atribuir algumas permissoes para a role autor
+// Route::get('/role-autor', function() {
+// 	// pega a role autor
+// 	$role = Role::where('name', 'Autor')->get()->first();
+
+//     $role->givePermissionTo(['cria-post', 'lista-post', 'atualiza-post', 'deleta-post',]);
+    
+// 	return "Permissões atribuídas com sucesso para: " .$role->name;
+  
+   	
+// });
+
+#### Redirecionar /home para /login
+Route::get('/home', function() {
+	
+	return redirect()->route('login');
+   	
+});
 
 
 

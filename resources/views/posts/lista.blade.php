@@ -119,6 +119,8 @@
     </div>
 </div>
 <!--  end mainpanel -->
+<!-- ########## START: MAIN PANEL ########## -->
+
 @endsection
 
 @section('scripts')

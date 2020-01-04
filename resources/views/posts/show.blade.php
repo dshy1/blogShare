@@ -107,7 +107,7 @@
           </div><!-- card -->
         </div><!-- col-8 -->
         
-        <!-- Informaçoes de data e botoes -->
+        <!-- Informaçoes de data e botoes de acao -->
         <div class="col-lg-4">
           <div class="card bd-gray-400 pd-25">
             <div class="media mg-b-25">
@@ -150,6 +150,8 @@
   </div>
 
 </div><!--  end mainpanel -->
+<!-- ########## START: MAIN PANEL ########## -->
+
 
 @endsection
 

@@ -38,8 +38,8 @@
    <div class="row mg-b-10">
       <div class="col-md-8">
         <div class="form-group">
-          <label class="form-control-label cinza-claro">Senha: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="password" name="password" value="{{ old('password') }}" placeholder="Mínimo 8 caracteres" />
+          <label class="form-control-label cinza-claro">Nova Senha: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="password" name="password" value="{{ old('password') }}" minlength=8 placeholder="Mínimo 8 caracteres" />
         </div>
       </div><!-- col-8 -->
    </div><!-- row -->
@@ -47,7 +47,7 @@
    <div class="row mg-b-10">
       <div class="col-md-8">
         <div class="form-group">
-          <label class="form-control-label cinza-claro">Confirmar Senha: <span class="tx-danger">*</span></label>
+          <label class="form-control-label cinza-claro">Confirmar Nova Senha: <span class="tx-danger">*</span></label>
             <input class="form-control form-control-dark" type="password" name="password-confirm" value="{{ old('password') }}" placeholder="" />
         </div>
       </div><!-- col-8 -->
@@ -58,7 +58,7 @@
         <div class="custom-file">
             <label class="form-control-label cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
 
-            <label for='input-file' id="teste">Selecionar Imagem &#187;</label>
+            <label for='input-file' id="teste">Selecionar Nova Imagem &#187;</label>
             <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" />
             <span id='file-name' class="cinza-claro">{{ $user->image ?? old('image') }}</span>
         </div>

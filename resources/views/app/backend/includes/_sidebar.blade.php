@@ -51,9 +51,9 @@
         @endcan
         
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
+          <a href="{{ route('users.edit', Auth::user()->id) }}" class="{{ (request()->is('users/*/edit')) ? 'br-menu-link active' : 'br-menu-link' }}">
             <i class="material-icons">person</i>
-            <span class="menu-item-label">Meu Perfil</span>
+            <span class="menu-item-label">Ver Perfil</span>
           </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
 

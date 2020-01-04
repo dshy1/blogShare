@@ -3,17 +3,17 @@
   
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Meta -->
-    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="author" content="">
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard." />
+    <meta name="author" content="" />
 
     <title>Login</title>
 
-    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}">
-    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}">
+    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}" />
+    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}" />
   </head>
 
   <body>
@@ -47,23 +47,16 @@
 
                         @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                                {{ __('Esqueceu a senha?') }}
                             </a>
                         @endif
 
-                      </div><!-- form-group -->
-
+                      </div><!-- form-group --> 
                       <button type="submit" class="btn btn-info btn-block">{{ __('Login') }}</button>
-
-                      <div class="mg-t-60 tx-center">Not yet a member? 
-                        <a href="#" class="tx-info">Sign Up</a>
-                      </div>
                   </form>
             </div><!-- login-wrapper -->
           </div><!-- overlay-body -->
     </div>
-
   </body>
-
 </html>
 

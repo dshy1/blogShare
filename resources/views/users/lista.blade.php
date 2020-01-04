@@ -21,7 +21,7 @@
         display: flex;
     }
     .large {
-        font-size: 78px;
+        font-size: 90px;
         color: #0866C6;
     }
     #form-delete-users {
@@ -118,6 +118,8 @@
 
 </div>
 <!--  end mainpanel -->
+<!-- ########## START: MAIN PANEL ########## -->
+
 @endsection
 
 @section('scripts')

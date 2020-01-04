@@ -87,7 +87,7 @@
       @endif
   @endif
 
-  @can('cria-categoria' && 'cria-user')
+  @can('cria-categoria')
   	<div class="row row-sm mg-t-20">
        <!-- Lista as Categorias -->
         <div class="col-lg-6">
@@ -99,10 +99,15 @@
             </div><!-- col-md-5 -->
             <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
               <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-success">Categorias</p>
-              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('categorias.index') }}" class="tx-white">Aqui você pode criar e separar seus posts por categorias</a></h5>
-              @foreach($categorias as $categoria)
-              	<li class="tx-gray-600">{{ $categoria->nome }}</li>
-              @endforeach
+              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('categorias.index') }}" class="tx-white">Aqui você pode criar e separar seus posts por categorias</a>
+              </h5>
+              @isset($categorias)
+                @foreach($categorias as $categoria)
+                  <li class="tx-gray-600">{{ $categoria->nome }}</li>
+                @endforeach
+              @else
+                <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhuma categoria cadastrada no sistema.</p>
+              @endif  
               <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
             </div><!-- col-md-7 -->
           </div><!-- row -->
@@ -118,14 +123,15 @@
             </div><!-- col-4 -->
             <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
               <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">Autores</p>
-              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('users.index') }}" class="tx-white">Aqui você pode criar mais colaboradores para seu blog</a></h5>
+              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('users.index') }}" class="tx-white">Aqui você pode criar mais colaboradores para seu blog</a>
+              </h5>
               @isset($users)
   	            @foreach($users as $user)
   	            	<li class="tx-gray-600">{{ $user->name }}</li>
   	            @endforeach
-          	@else
+          	  @else
   	            <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhum usuário cadastrado no sistema.</p>
-          	@endif	
+          	  @endif	
               <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
             </div><!-- col-8 -->
           </div><!-- row -->
@@ -196,7 +202,7 @@
       </div><!-- card-body -->
       <div class="card-footer tx-14 d-sm-flex justify-content-sm-center">
         <nav class="nav nav-inline flex-column flex-sm-row">
-          <a href="#" class="nav-link">
+          <a href="{{ route('users.edit', Auth::user()->id) }}" class="nav-link">
           	<button class="btn btn-outline-primary">Ver Perfil</button>
           </a>
         </nav>
@@ -204,5 +210,6 @@
     </div><!-- card -->
   </div><!-- br-pagebody-->
 </div><!-- end mainpanel -->
+<!-- ########## END: MAIN PANEL ########## -->
 
 @endsection

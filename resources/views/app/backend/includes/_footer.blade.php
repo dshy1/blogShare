@@ -1,15 +1,19 @@
 
+<style type="text/css">
+  
+  .small {
+    font-size: 15px;
+    color: #ff31ef;
+  }
+
+</style>
+
 <!-- ########## START: FOOTER ########## -->
     <div class="br-mainpanel">
       <footer class="br-footer">
         <div class="footer-left">
-          <div class="mg-b-2">Copyright &copy; 2019. All Rights Reserved.</div>
-          <div>Lorem Ipsum.</div>
-        </div>
-        <div class="footer-right d-flex align-items-center">
-          <span class="tx-uppercase mg-r-10">Share:</span>
-          <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-facebook tx-20"></i></a>
-          <a target="_blank" class="pd-x-5" href="#"><i class="fab fa-twitter tx-20"></i></a>
+          <div class="mg-b-2">Copyright &copy; 2020. All Rights Reserved.</div>
+          <div>Made with <i class="small material-icons pink">favorite</i> by Jana.</div>
         </div>
       </footer>
 

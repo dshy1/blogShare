@@ -10,8 +10,8 @@
       padding-top: 100px;
     }
     .large {
-      font-size: 78px;
-      color: #6f42c1;
+      font-size: 80px;
+      color: #0866C6;
     }
 
 </style>
@@ -63,6 +63,8 @@
     </div>
   </div>
 </div><!--  end mainpanel -->
+<!-- ########## START: MAIN PANEL ########## -->
+
 
 @endsection
 
