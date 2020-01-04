@@ -7,11 +7,6 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <!-- Font Awesome CSS-->
-    {{-- <link rel="stylesheet" href="{{ asset('css/all.min.css') }}" />icon ion-ios-bell-outline tx-24 --}}
-
-    {{-- <link rel="stylesheet" href="{{ asset('template-dark/lib/fontawesome-free/css/all.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('template-dark/lib/ionicons/css/ionicons.min.css') }}" /> --}}
 
     <!-- Template Bkt CSS -->
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}" />

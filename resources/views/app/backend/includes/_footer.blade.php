@@ -2,7 +2,7 @@
 <style type="text/css">
   
   .small {
-    font-size: 15px;
+    font-size: 16px;
     color: #ff31ef;
   }
 
