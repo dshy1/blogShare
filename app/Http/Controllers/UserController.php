@@ -132,66 +132,38 @@ class UserController extends Controller
 
         ]);
 
-          try{
+        $user = User::findOrFail($id);
 
-            $user = User::findOrFail($id);
+        # caminho da pasta para salvar as imagens do upload
+        $pasta_img = 'images' . DIRECTORY_SEPARATOR . 'users';
 
-            # caminho das pastas de arquivos
-            $pasta_img = 'images' . DIRECTORY_SEPARATOR . 'users';
-
-            // \DB::beginTransaction();
-            $user->name      = $request->input('name');
-            $user->password  = $user->password;
-            $user->image     = null;
-
-            # Password
-            // Se o usuario criar uma nova senha, salva
-            if (isset($request->password)) {
-                $user->password  = bcrypt($request->input('password'));
-            }
-            // Senao mantem a que ja esta no banco
-            else {
-                $user->password  = $user->password;
-            }
-
-            # Imagem Upload
-            // Se o usuario selecionar uma nova imagem, salva
-            if(isset($request->image)){
-                $user->image  =  $request->input('image');
-            }
-            // Senao mantem a que ja esta no banco
-            else {
-                $user->image  = $user->image;
-            }
-
-            // Se for trocar a imagem por uma imagem nova
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
-                $arquivo_user = $request->file('image');
-                $extensao     = $arquivo_user->getClientOriginalExtension();
-                $nome_arquivo = 'user_' . rand(11111111, 99999999) . '.' . $extensao;
-                $upload       = $arquivo_user->storeAs($pasta_img, $nome_arquivo);
-            }
-
-            $user->image = $nome_arquivo;
-
-            $user->save();
-
-            // \DB::commit();
-
-            # status de retorno
-            Session::flash('success', ' O usuário foi atualizado com sucesso!');
-            return redirect()->route('users.index');
-
-        }catch (\Exception $exception) {
-
-            // \DB::rollback();
-
-            # status de retorno
-            Session::flash('error', ' O usuário não pôde ser atualizado!');
-            return redirect()->back()->withInput();
+        $user->name = $request->input('name');
+         # Password
+        // Se o usuário criar uma nova senha, salva
+        if (isset($request->password)) {
+            $user->password  = bcrypt($request->input('password'));
         }
 
-        return redirect()->route('users.index');
+        $user->password = $user->password;
+
+        $user->save();
+         # Imagem Upload
+        // Se o usuário fizer upload de uma imagem nova
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $arquivo_user = $request->file('image');
+            $extensao     = $arquivo_user->getClientOriginalExtension();
+            $nome_arquivo = 'user_' . rand(11111111, 99999999) . '.' . $extensao;
+            $upload       = $arquivo_user->storeAs($pasta_img, $nome_arquivo);
+            $user->image  = $nome_arquivo;
+
+        }
+
+        $user->image = $user->image;
+
+        $user->save();
+        # status de retorno
+        Session::flash('success', ' O usuário foi atualizado com sucesso!');
+        return redirect()->route('users.index');        
 
     }// end update
 
