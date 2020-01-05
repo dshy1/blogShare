@@ -36,3 +36,11 @@ a.link-branco:hover {
 .padding12 {
 	padding: 12px;
 }
+
+#login-wrapper {
+	height: 450px!important;
+}
+
+a.disabled {
+    pointer-events: none;
+}

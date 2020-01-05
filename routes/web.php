@@ -45,11 +45,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-// senha gabizinho: share1234
-
-
-
-
 /*
 |-------------------------------------------------
 | Rotas Avulsas para testes 
@@ -57,15 +52,15 @@ Route::group(['middleware' => ['auth']], function () {
 */
 
 #### Atribuir politica a um usuario
-Route::get('/user-add-role', function() {
-	// pega o user 1
-	$user = User::find(1);
-	// atribui a politica admin ao user
-	$user->roles()->attach(1);
+// Route::get('/user-add-role', function() {
+// 	// pega o user 1
+// 	$user = User::find(1);
+// 	// atribui a politica admin ao user
+// 	$user->roles()->attach(1);
 
-	return "Política de Admin atribuída com sucesso para: " .$user->name;
+// 	return "Política de Admin atribuída com sucesso para: " .$user->name;
 
-});
+// });
 
 #### Exibir o nome do usuario e sua politica
 // Route::get('/user-role', function() {

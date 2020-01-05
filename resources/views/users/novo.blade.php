@@ -55,7 +55,7 @@
                 @include('users.inputs', ['user' => null, 'detalhe' => null])
 
       	        <div class="form-layout-footer marginT70">
-      	          <button class="btn btn-primary">Adicionar Usuário</button>
+      	          <input type="submit" class="btn btn-primary disabled" value="Adicionar Usuário" onclick="return false;" />
       	          <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
       	        </div><!-- form-layout-footer -->
       		 </form>
@@ -64,7 +64,6 @@
   </div>
 </div><!--  end mainpanel -->
 <!-- ########## START: MAIN PANEL ########## -->
-
 
 @endsection
 

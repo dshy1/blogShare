@@ -20,7 +20,7 @@
     <div class="col-md-8">
       <div class="form-group">
         <label class="form-control-label cinza-claro">Nome: <span class="tx-danger">*</span></label>
-        	<input class="form-control form-control-dark" type="text" name="name" value="{{ $user->name  ?? old('nome') }}" placeholder="Digite o nome" />
+        <input class="form-control form-control-dark" type="text" name="name" value="{{ $user->name  ?? old('nome') }}" placeholder="Digite o nome" />
       </div>
     </div><!-- col-8 -->
  </div><!-- row -->
@@ -29,7 +29,11 @@
     <div class="col-md-8">
       <div class="form-group">
         <label class="form-control-label cinza-claro">E-mail: <span class="tx-danger">*</span></label>
-          <input class="form-control form-control-dark" type="text" name="email" value="{{ $user->email  ?? old('email') }}" placeholder="Digite um e-mail válido" isset($user) ? disabled="" />
+        @isset($user)
+          <input class="form-control form-control-dark" type="text" name="email" value="{{ $user->email  ?? old('email') }}" placeholder="Digite um e-mail válido" disabled="" />
+        @else
+          <input class="form-control form-control-dark" type="text" name="email" value="{{ $user->email  ?? old('email') }}" placeholder="Digite um e-mail válido" />
+        @endif
       </div>
     </div><!-- col-8 -->
  </div><!-- row -->
@@ -39,7 +43,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <label class="form-control-label cinza-claro">Nova Senha: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="password" name="password" value="{{ old('password') }}" minlength=8 placeholder="Mínimo 8 caracteres" />
+          <input class="form-control form-control-dark" type="password" name="password" value="{{ old('password') }}" minlength=8 placeholder="Mínimo 8 caracteres" />
         </div>
       </div><!-- col-8 -->
    </div><!-- row -->
@@ -48,7 +52,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <label class="form-control-label cinza-claro">Confirmar Nova Senha: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="password" name="password-confirm" value="{{ old('password-confirm') }}" placeholder="" />
+          <input class="form-control form-control-dark" type="password" name="password-confirm" value="{{ old('password-confirm') }}" placeholder="" />
         </div>
       </div><!-- col-8 -->
    </div><!-- row -->

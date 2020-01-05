@@ -10,10 +10,16 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard." />
     <meta name="author" content="" />
 
-    <title>Login</title>
+    <title>jana. | Login</title>
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{ asset('storage/images/home/favicon.png') }}" />
 
+    <!-- Template Bkt CSS -->
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}" />
     <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}" />
+    <!-- Meus estilos -->
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
   </head>
 
   <body>
@@ -21,8 +27,8 @@
     <div class="d-flex align-items-center justify-content-center ht-100v">
           <img src="{{ asset('template-dark/img/bg04.jpg') }}" class="wd-100p ht-100p object-fit-cover" alt="">
           <div class="overlay-body bg-black-6 d-flex align-items-center justify-content-center">
-            <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 rounded bd bd-white-2 bg-black-7">
-              <div class="signin-logo tx-center tx-28 tx-bold tx-white"><span class="tx-normal"></span> jana. {{-- <span class="tx-info">dash</span> --}} <span class="tx-normal"></span></div>
+            <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 rounded bd bd-white-2 bg-black-7" id="login-wrapper">
+              <div class="signin-logo tx-center tx-30 tx-bold tx-white"><span class="tx-normal"></span> jana. {{-- <span class="tx-info">dash</span> --}} <span class="tx-normal"></span></div>
               <div class="tx-white-5 tx-center mg-b-60">The Admin Dashboard For Perfectionist</div>
             
                  <form method="POST" action="{{ route('login') }}">

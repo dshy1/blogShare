@@ -74,7 +74,7 @@
                     @include('posts.inputs', ['post' => $post, 'detalhe' => null])
 
                   <div class="form-layout-footer marginT70">
-                    <input type="submit" class="btn btn-primary" value="Atualizar Post" />
+                    <input type="submit" class="btn btn-primary disabled" value="Atualizar Post" onclick="return false;" />
                     <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
                   </div><!-- form-layout-footer -->
                 </form>

@@ -90,7 +90,7 @@ class PostController extends Controller {
                 'titulo' => $request->get('titulo'),
                 'slug'   => Str::slug($request->get('titulo'), '-'),
                 'texto'  => $request->get('texto'),
-                'image'  =>  $nome_arquivo
+                'image'  => $nome_arquivo
             ]);
 
             # Vincula as categorias

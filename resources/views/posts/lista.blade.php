@@ -73,7 +73,7 @@
     </div>
     @endif
 
-    <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo post">Novo</a>
+    <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm bt-novo disabled" title="Criar novo post">Novo</a>
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
@@ -100,11 +100,11 @@
                             </td>
                             <td class="d-flex">
                                 <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |
-                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link sem-padding">Editar</a> |
+                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link sem-padding disabled">Editar</a> |
                                 <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
                                     @csrf
                                     @method('DELETE') 
-                                    <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
+                                    <input type="submit" class="btn btn-link sem-padding disabled" name="" value="Deletar" onclick="return false;" />
                                 </form>
                             </td>
                         </tr>

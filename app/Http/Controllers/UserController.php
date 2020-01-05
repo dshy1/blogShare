@@ -138,6 +138,7 @@ class UserController extends Controller
         $pasta_img = 'images' . DIRECTORY_SEPARATOR . 'users';
 
         $user->name = $request->input('name');
+
          # Password
         // Se o usuário criar uma nova senha, salva
         if (isset($request->password)) {
@@ -147,6 +148,7 @@ class UserController extends Controller
         $user->password = $user->password;
 
         $user->save();
+        
          # Imagem Upload
         // Se o usuário fizer upload de uma imagem nova
         if ($request->hasFile('image') && $request->file('image')->isValid()) {

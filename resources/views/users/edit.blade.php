@@ -76,7 +76,7 @@
                           @include('users.inputs', ['user' => $user, 'detalhe' => null])
 
                           <div class="form-layout-footer marginT70">
-                            <button class="btn btn-primary">Salvar alterações</button>
+                            <input type="submit" class="btn btn-primary disabled" value="Salvar Alterações" onclick="return false;" />
                             <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
                           </div><!-- form-layout-footer -->
                      </form>

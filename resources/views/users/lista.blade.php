@@ -73,7 +73,7 @@
     </div>
     @endif
 
-    <a href="{{ route('users.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo usuário">Novo</a>
+    <a href="{{ route('users.create') }}" class="btn btn-success btn-sm bt-novo disabled" title="Criar novo usuário">Novo</a>
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
@@ -98,11 +98,11 @@
                             <td><img src="{{ $user->image !== null ? asset('storage/images/users/'.$user->image) : asset('storage/images/users/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 40px;">
                             </td>
                             <td class="d-flex">
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link sem-padding">Editar</a> |
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link sem-padding disabled">Editar</a> |
                                 <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
                                      @csrf
                                      @method('DELETE')
-                                    <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
+                                    <input type="submit" class="btn btn-link sem-padding disabled" name="" value="Deletar" onclick="return false;" />
                                 </form>
                             </td>
                         </tr>

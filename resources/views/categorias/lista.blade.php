@@ -72,7 +72,7 @@
        </div>
     @endif
  
-  <a href="{{ route('categorias.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar nova categoria">Novo</a>
+  <a href="{{ route('categorias.create') }}" class="btn btn-success btn-sm bt-novo disabled" title="Criar nova categoria">Novo</a>
   
   <div class="br-pagebody">
     <div class="br-section-wrapper">
@@ -93,12 +93,12 @@
                       <td>{{ $categoria->nome }}</td>
                       <td>{{ $categoria->descricao ?? 'Não Informado' }}</td>
                       <td class="d-flex">
-                        <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-link sem-padding">Editar</a>
+                        <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-link sem-padding disabled">Editar</a>
                         |
                         <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="form-delete-categorias">
                            @method('DELETE')
                            @csrf
-                           <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
+                           <input type="submit" class="btn btn-link sem-padding disabled" name="" value="Deletar" onclick="return false;" />
                         </form>
                       </td>
                     </tr>

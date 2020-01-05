@@ -125,13 +125,13 @@
             <!-- Botoes de Açao -->
             <div class="media mg-b-25">
               <div class="col-sm-3 no-padding margin-right-neg">
-                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm bt-editar">Editar</a>
+                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm bt-editar disabled">Editar</a>
               </div>
 
               <div class="col-sm-3 no-padding">
                 <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts02">
                     @method('DELETE') @csrf
-                    <input type="submit" value="Deletar" class="btn btn-danger btn-sm bt-deletar" onclick=" return confirmDelete();" />
+                    <input type="submit" value="Deletar" class="btn btn-danger btn-sm bt-deletar disabled" onclick=" return false;" />
                 </form>
               </div>
 
