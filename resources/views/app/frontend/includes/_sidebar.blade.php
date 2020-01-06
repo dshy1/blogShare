@@ -29,6 +29,9 @@
       ul.menu li a {
         color: #fff;
       }
+      .header-sidebar {
+        height: auto!important;
+      }
 
     </style>
 
@@ -41,10 +44,10 @@
 <div id="container">
     <!-- Header
         ================================================== -->
-    <header>
+    <header class="{{ (request()->is('contato')) ? 'header-sidebar' : '' }}">
       <div class="logo-box">
         <a class="logo" href="#">
-          <h1 style="color: #fff;">AgShare</h1>
+          <h1 style="color: #fff;">LOGO</h1>
           {{-- <img src="template-front/images/logo.png" alt="Share Comunicacao"> --}}
         </a>
         <p class="slogan">Mais resultado para sua empresa.</p>
@@ -54,11 +57,11 @@
 
       <div class="menu-box">
         <ul class="menu">
-          <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Serviços</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contato</a></li>
+          <li><a class="active" href="{{ route('site.index') }}">Home</a></li>
+          <li><a href="{{ route('site.sobre') }}">Sobre</a></li>
+          <li><a href="{{ route('site.servicos') }}">Serviços</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="{{ route('site.contato') }}">Contato</a></li>
         </ul>       
       </div>
 

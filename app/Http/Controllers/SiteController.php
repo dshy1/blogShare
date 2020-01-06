@@ -3,22 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+
 
 class SiteController extends Controller
 {
+
      public function index() {
 
-        // $user = Auth::user();
-
-        // if ($user->roles()->first()->name == 'admin') {
-          
-        //   $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);  
-        // }
-        // else {
-
-        //     $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->paginate(6);
-        // }
-
         return view('site.home');
+
+    }
+
+    public function sobre() {
+
+        return view('site.sobre');
+        
+    }
+
+    public function servicos() {
+
+        return view('site.servicos');
+        
+    }
+
+    public function contato() {
+
+        return view('site.contato');
+        
+    }
+
+    public function lista() {
+
+    	$posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6); 
+
+        return view('site.lista', compact('posts'));
+        
     }
 }

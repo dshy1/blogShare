@@ -20,6 +20,10 @@ use Spatie\Permission\Models\Permission;
 
 #### Rotas de navegaçao do site
 Route::get('/', 'SiteController@index')->name('site.index');
+Route::get('/sobre', 'SiteController@sobre')->name('site.sobre');
+Route::get('/servicos', 'SiteController@servicos')->name('site.servicos');
+Route::get('/contato', 'SiteController@contato')->name('site.contato');
+Route::get('/blog', 'SiteController@lista')->name('site.lista');
 
 
 #### Rotas que precisam de autenticaçao
