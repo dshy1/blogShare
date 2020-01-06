@@ -1,4 +1,4 @@
-@extends('layouts.main02')
+@extends('layouts.main-back')
 
 @section('title', $cliente . ' | Dashboard')
 
@@ -30,6 +30,9 @@
       max-height: 112px;
       object-fit:cover;
 
+    }
+    .card-title {
+      font-size: 20px;
     }
 
 </style>
@@ -65,7 +68,10 @@
               </a>
     	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
     	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $post->categorias[0]->nome }}</p>
-    	          <h5 class="tx-normal tx-roboto lh-3 mg-b-15"><a href="{{ route('posts.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
+    	          <h4 class="tx-normal tx-roboto lh-3 mg-b-15 card-title">
+                  <a href="{{ route('posts.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}
+                  </a>
+                </h4>
     	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 120) . '...' ?? 'Não Informado'}}</p>
     	          <p class="tx-13 mg-b-0 comments-bottom">
     	            <a href="#" class="tx-info">12 Likes</a>
@@ -88,9 +94,9 @@
       @endif
   @endif
 
+  <!-- Lista as Categorias -->
   @can('cria-categoria')
   	<div class="row row-sm mg-t-20">
-       <!-- Lista as Categorias -->
         <div class="col-lg-6">
           <div class="row no-gutters flex-row-reverse widget-3 rounded">
             <div class="col-md-5 col-lg-6 col-xl-5">
@@ -102,7 +108,7 @@
             </div><!-- col-md-5 -->
             <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
               <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-success">Categorias</p>
-              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('categorias.index') }}" class="tx-white">Aqui você pode criar e separar seus posts por categorias</a>
+              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('categorias.index') }}" class="tx-white card-title">Aqui você pode criar e separar seus posts por categorias</a>
               </h5>
               @isset($categorias)
                 @foreach($categorias as $categoria)
@@ -128,7 +134,7 @@
             </div><!-- col-4 -->
             <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
               <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">Autores</p>
-              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('users.index') }}" class="tx-white">Aqui você pode criar mais colaboradores para seu blog</a>
+              <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('users.index') }}" class="tx-white card-title">Aqui você pode criar mais colaboradores para seu blog</a>
               </h5>
               @isset($users)
   	            @foreach($users as $user)

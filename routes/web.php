@@ -18,10 +18,8 @@ use Spatie\Permission\Models\Permission;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+#### Rotas de navegaçao do site
+Route::get('/', 'SiteController@index')->name('site.index');
 
 
 #### Rotas que precisam de autenticaçao

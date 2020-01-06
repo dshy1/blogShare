@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             view()->composer('*', function($view){
                 // nome do cliente para title
                 $cliente = "Share Comunicação";
+                // caminho para js, css e images (se for para o host, coloca public/)
                 $caminho = '';
 
                 $view->with('cliente', $cliente)->with('caminho', $caminho);

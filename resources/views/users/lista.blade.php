@@ -1,4 +1,4 @@
-@extends('layouts.main02')
+@extends('layouts.main-back')
 
 @section('title', $cliente . ' | Listagem de Usuários')
 
