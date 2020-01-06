@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', $cliente . ' | Cadastro de Categorias')
+@section('title', $cliente . ' | Listagem de Categorias')
 
 @section('content')
 

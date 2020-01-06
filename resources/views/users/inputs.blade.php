@@ -61,7 +61,6 @@
       <div class="col-lg-8">
         <div class="custom-file">
             <label class="form-control-label cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
-
             <label for='input-file' id="teste">Selecionar Nova Imagem &#187;</label>
             <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" />
             <span id='file-name' class="cinza-claro">{{ $user->image ?? old('image') }}</span>

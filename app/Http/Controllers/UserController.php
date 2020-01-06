@@ -134,7 +134,7 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        # caminho da pasta para salvar as imagens do upload
+        # Salvar as imagens na pasta storage/app/public/imagens/users
         $pasta_img = 'images' . DIRECTORY_SEPARATOR . 'users';
 
         $user->name = $request->input('name');
@@ -144,13 +144,13 @@ class UserController extends Controller
         if (isset($request->password)) {
             $user->password  = bcrypt($request->input('password'));
         }
-
+        // Senão mantem a senha atual
         $user->password = $user->password;
 
         $user->save();
         
          # Imagem Upload
-        // Se o usuário fizer upload de uma imagem nova
+        // Se o usuário fizer upload de uma imagem nova, salva
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $arquivo_user = $request->file('image');
             $extensao     = $arquivo_user->getClientOriginalExtension();
@@ -159,7 +159,7 @@ class UserController extends Controller
             $user->image  = $nome_arquivo;
 
         }
-
+        // Senão mantem a imagem atual
         $user->image = $user->image;
 
         $user->save();

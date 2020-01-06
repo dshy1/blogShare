@@ -13,6 +13,9 @@
     padding: 6px 20px; 
     margin-bottom: 15px;
   }
+  #categorias-wrapper {
+    min-width: 250px;
+  }
 
 </style>
 
@@ -55,7 +58,7 @@
       @isset($detalhe)
         <p id="categorias" class="">Detalhes Categorias</p>
       @else
-        <select class="form-control select2" data-placeholder="Choose country" multiple="multiple" name="categorias[]">
+        <select class="form-control select2" data-placeholder="Choose country" multiple="multiple" name="categorias[]" id="categorias-wrapper">
            @foreach($categorias as $categoria)
               <option value="{{ $categoria->id }}" {{ isset($catgs_post) && in_array($categoria->id, $catgs_post) ? 'selected="selected"' : '' }} >{{ $categoria->nome }}
               </option>
@@ -73,14 +76,13 @@
       @isset($detalhe)
         <p id="imagem" class="">Detalhes da Imagem</p>
       @else
-        <!-- <input type="file" accept="image/png, image/jpeg" class="custom-file-input"  id="validatedCustomFile" aria-describedby="inputGroupFileAddon04" name="image" value="{{ old('image') }}" placeholder="Tamanho recomendado: 100X100px" /> -->
-
-        <!-- <input type="file" accept="image/png, image/jpeg" name="image" id="image" class="form-control form-control-dark" value="{{ old('image') }}" />
-        <button type="button" class="btn btn-primary" onclick="$('#image').trigger('click')">Selecionar imagem</button> -->
-
-        <label for='input-file' id="teste">Selecionar Imagem &#187;</label>
-        <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" />
-        <span id='file-name' class="cinza-claro">{{ $post->image ?? old('image') }}</span>
+        @isset($post)
+          <label for='input-file' id="teste">Selecionar Nova Imagem &#187;</label>
+        @else
+          <label for='input-file' id="teste">Selecionar Imagem &#187;</label>
+        @endif
+          <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" />
+          <span id='file-name' class="cinza-claro">{{ $post->image ?? old('image') }}</span>
       @endif
     </div>
   </div><!-- col-8 -->

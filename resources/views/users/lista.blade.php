@@ -1,6 +1,6 @@
 @extends('layouts.main02')
 
-@section('title', $cliente . ' | Cadastro de Usuários')
+@section('title', $cliente . ' | Listagem de Usuários')
 
 @section('content')
 
@@ -95,7 +95,7 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td><img src="{{ $user->image !== null ? asset('storage/images/users/'.$user->image) : asset('storage/images/users/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 40px;">
+                            <td><img src="{{ $user->image !== null ? asset($caminho.'storage/images/users/'.$user->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 40px;">
                             </td>
                             <td class="d-flex">
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link sem-padding disabled">Editar</a> |

@@ -86,7 +86,7 @@
     <div class="row row-sm mg-t-20">
         <div class="col-lg-8">
           <div class="card card-inverse bd-0 mg-b-20 ht-400 ht-xs-350 ht-lg-100p height-50">
-              <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset('storage/images/posts/'.$post->image) }}" alt="Image">
+              <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="Image">
               <div class="pos-absolute a-0 pd-b-30 bg-black-1 rounded d-flex align-items-sm-center justify-content-center">
               </div><!-- pos-absolute d-flex -->
 
@@ -111,7 +111,7 @@
         <div class="col-lg-4">
           <div class="card bd-gray-400 pd-25">
             <div class="media mg-b-25">
-              <img src="{{ Auth::user()->image !== null ? asset('storage/images/users/'.Auth::user()->image) : asset('storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image">
+              <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image">
               <div class="media-body mg-t-2">
                 <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white hover-info">{{ $post->autor->name }}</a></h6>
               </div><!-- media-body -->
@@ -125,7 +125,7 @@
             <!-- Botoes de Açao -->
             <div class="media mg-b-25">
               <div class="col-sm-3 no-padding margin-right-neg">
-                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm bt-editar disabled">Editar</a>
+                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm bt-editar">Editar</a>
               </div>
 
               <div class="col-sm-3 no-padding">

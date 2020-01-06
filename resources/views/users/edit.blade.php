@@ -35,7 +35,7 @@
    
     <div class="card-body">
       <div class="card-profile-img">
-        <img src="{{ $user->image !== null ? asset('storage/images/users/'.$user->image) : asset('storage/images/users/avatar01.jpg') }}" alt="profile image" class="profile-image">
+        <img src="{{ $user->image !== null ? asset($caminho.'storage/images/users/'.$user->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="profile image" class="profile-image">
       </div><!-- card-profile-img -->
       <h4 class="tx-normal tx-roboto tx-white">{{ $user->name }}</h4>
       <p class="mg-b-25 cinza-claro">{{ $user->email }}</p>

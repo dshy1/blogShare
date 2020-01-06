@@ -27,10 +27,11 @@ class AppServiceProvider extends ServiceProvider
             Schema::defaultStringLength(191);
 
             view()->composer('*', function($view){
+                // nome do cliente para title
+                $cliente = "Share Comunicação";
+                $caminho = '';
 
-                $cliente = "Magazine Domino";
-
-                $view->with('cliente', $cliente);
+                $view->with('cliente', $cliente)->with('caminho', $caminho);
   
         });
     }

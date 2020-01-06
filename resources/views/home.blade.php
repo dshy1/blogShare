@@ -58,10 +58,11 @@
   	   <div class="card-deck card-deck-sm mg-x-0">
           @foreach($posts as $post)
     	      <div class="card bd-0 mg-0">
-    	        <figure class="{{ Auth::user()->roles->first()->name == 'Admin' ? 'card-item-img bg-mantle rounded-top' : 'card-item-img bg-mantle rounded-top' }}">
-                
-    	          <img class="img-fluid rounded-top" src="{{ asset('storage/images/posts/'.$post->image) }}" alt="post image">
-    	        </figure>
+              <a href="{{ route('posts.show', $post->id) }}">
+      	        <figure class="{{ Auth::user()->roles->first()->name == 'Admin' ? 'card-item-img bg-mantle rounded-top' : 'card-item-img bg-mantle rounded-top' }}">
+      	           <img class="img-fluid rounded-top" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image">
+      	        </figure>
+              </a>
     	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
     	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $post->categorias[0]->nome }}</p>
     	          <h5 class="tx-normal tx-roboto lh-3 mg-b-15"><a href="{{ route('posts.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
@@ -93,9 +94,11 @@
         <div class="col-lg-6">
           <div class="row no-gutters flex-row-reverse widget-3 rounded">
             <div class="col-md-5 col-lg-6 col-xl-5">
-              <figure class="ht-200 ht-md-100p">
-                <img src="{{ asset('storage/images/home/img31.jpg') }}" class="img-fit-cover op-8" alt="">
-              </figure>
+              <a href="{{ route('categorias.index') }}">
+                <figure class="ht-200 ht-md-100p">
+                  <img src="{{ asset($caminho.'storage/images/home/img31.jpg') }}" class="img-fit-cover op-8" alt="">
+                </figure>
+              </a>
             </div><!-- col-md-5 -->
             <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
               <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-success">Categorias</p>
@@ -117,9 +120,11 @@
         <div class="col-lg-6 mg-t-20 mg-lg-t-0-force">
           <div class="row no-gutters widget-3 rounded">
             <div class="col-md-5 col-lg-6 col-xl-5">
-              <figure class="ht-200 ht-md-100p">
-                <img src="{{ asset('storage/images/home/img32.jpg') }}" class="img-fit-cover op-8" alt="">
-              </figure>
+              <a href="{{ route('users.index') }}">
+                <figure class="ht-200 ht-md-100p">
+                  <img src="{{ asset($caminho.'storage/images/home/img32.jpg') }}" class="img-fit-cover op-8" alt="">
+                </figure>
+              </a>
             </div><!-- col-4 -->
             <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
               <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">Autores</p>
@@ -144,7 +149,7 @@
     <div class="row row-sm mg-t-20">
       <div class="col-lg-8">
         <div class="card card-inverse bd-0 mg-b-20 ht-400 ht-xs-350 ht-lg-100p">
-            <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset('storage/images/posts/'.$post->image) }}" alt="post image">
+            <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image">
             <div class="pos-absolute a-0 pd-b-30 bg-black-5 rounded d-flex align-items-sm-center justify-content-center">
               <div class="tx-center wd-80p mg-t-25 mg-sm-t-0">
                 <p class="tx-info tx-uppercase tx-mont tx-semibold tx-11">{{ $post->categorias[0]->nome }}</p>
@@ -167,7 +172,7 @@
         <div class="card bd-gray-400 pd-25 ht-100p">
           <div class="media mg-b-25">
             <!-- Aqui vai a imagem e nome do autor do post em destaque -->
-            <img src="{{ asset('storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
+            <img src="{{ asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
             <div class="media-body mg-t-2">
               <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
               <div class="tx-12">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</div>
@@ -194,7 +199,7 @@
       </div><!-- card-header -->
       <div class="card-body">
         <div class="card-profile-img">
-          <img src="{{ Auth::user()->image !== null ? asset('storage/images/users/'.Auth::user()->image) : asset('storage/images/users/avatar01.jpg') }}" alt="user image" class="profile-image">          
+          <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" class="profile-image">          
         </div><!-- card-profile-img -->
 
         <h4 class="tx-normal tx-roboto tx-white">{{ Auth::user()->name }}</h4>

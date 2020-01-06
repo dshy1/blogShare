@@ -7,25 +7,28 @@
     <title>@yield('title')</title>
     
     <!-- favicon -->
-    <link rel="shortcut icon" href="{{ asset('storage/images/home/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset($caminho.'storage/images/home/favicon.png') }}" />
+
+    {{-- {{ asset('img/backgrounds/' . $background . '.jpg') }} --}}
+
 
     <!-- Styles -->
 
     <!-- Template Bkt CSS -->
-    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.css') }}" />
-    <link rel="stylesheet" href="{{ asset('template-dark/css/bkt.dark.css') }}" />
+    <link rel="stylesheet" href="{{ asset($caminho.'template-dark/css/bkt.css') }}" />
+    <link rel="stylesheet" href="{{ asset($caminho.'template-dark/css/bkt.dark.css') }}" />
 
     <!-- Multi select -->
-    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/samples.css') }}" />
+    <link rel="stylesheet" href="{{ asset($caminho.'css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset($caminho.'css/samples.css') }}" />
     <!-- Meus estilos -->
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset($caminho.'css/custom.css') }}" />
     
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Jquery -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset($caminho.'js/jquery.min.js') }}"></script>
 
     <style type="text/css">
 
@@ -42,6 +45,9 @@
       }
       .paddingT0 {
         padding-top: 0!important;
+      }
+      .dropdown-user {
+        margin-right: 7%;
       }
 
     </style>
@@ -107,10 +113,10 @@
             <a href="#" class="nav-link nav-link-profile" data-toggle="dropdown">
               <span class="logged-name hidden-md-down">{{ Auth::user()->name }}</span>
               <!-- imagem do usuario logado do header -->
-              <img src="{{ Auth::user()->image !== null ? asset('storage/images/users/'.Auth::user()->image) : asset('storage/images/users/avatar01.jpg') }}" class="wd-32 rounded-circle" alt="user image">
+              <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset('public/storage/images/users/avatar01.jpg') }}" class="wd-32 rounded-circle" alt="user image">
               <span class="square-10 bg-success"></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-header wd-250 paddingT0">
+            <div class="dropdown-menu dropdown-menu-header wd-250 paddingT0 dropdown-user">
               <div class="tx-center">
                 <h6 class="logged-fullname">{{ Auth::user()->name }}</h6>
                 <p>{{ Auth::user()->email }}</p>

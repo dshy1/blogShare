@@ -68,7 +68,7 @@ class PostController extends Controller {
 
         try{
 
-            # Salvar as imagens na pasta storage
+            # Salvar as imagens na pasta storage/app/public/imagens/posts
             // cria a pasta images e dentro dela a pasta posts
             $pasta_post = 'images' . DIRECTORY_SEPARATOR . 'posts';
 
@@ -167,64 +167,40 @@ class PostController extends Controller {
 
         ]);
 
-        try{
 
-            $post = Post::findOrFail($id);
+        $post = Post::findOrFail($id);
 
-            # caminho das pastas de arquivos
-            $pasta_post   = 'images' . DIRECTORY_SEPARATOR . 'posts';
+        # Salvar as imagens na pasta storage/app/public/imagens/posts
+        $pasta_post   = 'images' . DIRECTORY_SEPARATOR . 'posts';
 
-            // \DB::beginTransaction();
-            $post->titulo = $request->input('titulo');
-            $post->slug   = Str::slug($post->titulo, '-');
-            $post->texto  = $request->input('texto');
+        $post->titulo = $request->input('titulo');
+        $post->slug   = Str::slug($post->titulo, '-');
+        $post->texto  = $request->input('texto');
 
-            $post->save();
+        $post->save();
 
-            # Vincula as categorias
-            $post->categorias()->sync($request->get('categorias'));
+        # Vincula as categorias
+        $post->categorias()->sync($request->get('categorias'));
 
-            // \DB::commit();
-
-            # status de retorno
-            Session::flash('success', ' O post foi atualizado com sucesso!');
-            return redirect()->route('posts.index');
-
-            //Imagem Upload
-            // Se não for trocar a imagem do post
-            if(isset($request->image)){
-                $post->image  =  $request->input('image');
-            }else{
-                $post->image = $post->image;
-            }
-
-            // Se for trocar a imagem por uma imagem nova
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
-                $arquivo_post = $request->file('image');
-                $extensao     = $arquivo_post->getClientOriginalExtension();
-                $nome_arquivo = 'post_' . rand(11111111, 99999999) . '.' . $extensao;
-                $upload       = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
-            }
-
+        # Imagem Upload
+        // Se o usuário fizer upload de uma imagem nova, salva
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $arquivo_post = $request->file('image');
+            $extensao     = $arquivo_post->getClientOriginalExtension();
+            $nome_arquivo = 'post_' . rand(11111111, 99999999) . '.' . $extensao;
+            $upload       = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
             $post->image = $nome_arquivo;
 
-            $post->save();
-
-            // \DB::commit();
-
-            # status de retorno
-            Session::flash('success', ' O post foi atualizado com sucesso!');
-            return redirect()->route('posts.index');
-
-        }catch (\Exception $exception) {
-
-            // \DB::rollback();
-            # status de retorno
-            Session::flash('error', ' O post não pôde ser atualizado!');
-            return redirect()->back()->withInput();
         }
+        // Senão mantem a imagem atual
+        $post->image = $post->image;
 
+        $post->save();
+
+        # status de retorno
+        Session::flash('success', ' O post foi atualizado com sucesso!');
         return redirect()->route('posts.index');
+
 
     } // end update
 

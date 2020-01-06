@@ -44,3 +44,12 @@ a.link-branco:hover {
 a.disabled {
     pointer-events: none;
 }
+
+/*.company-logo img {
+	width: 100%!important;
+	height: : 100%!important;
+    object-fit: cover!important;
+    -webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray; 
+}*/
