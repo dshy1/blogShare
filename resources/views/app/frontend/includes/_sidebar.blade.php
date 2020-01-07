@@ -6,19 +6,20 @@
 
     <title>@yield('title')</title>
 
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css' />
 
-    <link rel="stylesheet" type="text/css" href="template-front/css/bootstrap.css" media="screen"> 
-    <link rel="stylesheet" type="text/css" href="template-front/css/magnific-popup.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="template-front/css/font-awesome.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="template-front/css/flexslider.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="template-front/css/style.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="template-front/css/responsive.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/bootstrap.css') }}" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/magnific-popup.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/font-awesome.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/flexslider.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/style.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/responsive.css') }}" media="screen" />
+
 
     <style type="text/css">
       
@@ -46,8 +47,8 @@
         ================================================== -->
     <header class="{{ (request()->is('contato')) ? 'header-sidebar' : '' }}">
       <div class="logo-box">
-        <a class="logo" href="#">
-          <h1 style="color: #fff;">LOGO</h1>
+        <a class="logo" href="{{ route('site.index') }}">
+          <h1 style="color: #fff;">AG SHARE</h1>
           {{-- <img src="template-front/images/logo.png" alt="Share Comunicacao"> --}}
         </a>
         <p class="slogan">Mais resultado para sua empresa.</p>
@@ -57,11 +58,11 @@
 
       <div class="menu-box">
         <ul class="menu">
-          <li><a class="active" href="{{ route('site.index') }}">Home</a></li>
-          <li><a href="{{ route('site.sobre') }}">Sobre</a></li>
-          <li><a href="{{ route('site.servicos') }}">Serviços</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="{{ route('site.contato') }}">Contato</a></li>
+          <li><a href="{{ route('site.index') }}" class="{{ (request()->is('/')) ? 'active' : '' }}">Home</a></li>
+          <li><a href="{{ route('site.sobre') }}" class="{{ (request()->is('sobre')) ? 'active' : '' }}">Sobre</a></li>
+          <li><a href="{{ route('site.servicos') }}" class="{{ (request()->is('servicos')) ? 'active' : '' }}">Serviços</a></li>
+          <li><a href="{{ route('site.lista') }}" class="{{ (request()->is('blog')) || (request()->is('post/*'))? 'active' : '' }}">Blog</a></li>
+          <li><a href="{{ route('site.contato') }}" class="{{ (request()->is('contato')) ? 'active' : '' }}">Contato</a></li>
         </ul>       
       </div>
 

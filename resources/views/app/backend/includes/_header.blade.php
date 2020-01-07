@@ -9,9 +9,6 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset($caminho.'storage/images/home/favicon.png') }}" />
 
-    {{-- {{ asset('img/backgrounds/' . $background . '.jpg') }} --}}
-
-
     <!-- Styles -->
 
     <!-- Template Bkt CSS -->
@@ -88,7 +85,7 @@
                     <img src="../img/img8.jpg" alt="">
                     <div class="media-body">
                       <p class="noti-text"><strong>Suzzeth Bungaos</strong> curtiu seu post.</p>
-                      <span>October 03, 2017 8:45am</span>
+                      <span>03 Outubro, 2017 8:45h</span>
                     </div>
                   </div><!-- media -->
                 </a>
@@ -98,7 +95,7 @@
                     <img src="../img/img9.jpg" alt="">
                     <div class="media-body">
                       <p class="noti-text"><strong>Mellisa Brown</strong> comentou no seu post. <strong>Direito do Consumidor para Todos</strong></p>
-                      <span>October 02, 2017 12:44am</span>
+                      <span>05 Outubro, 2017 10:00h</span>
                     </div>
                   </div><!-- media -->
                 </a>

@@ -24,7 +24,7 @@
 					<div class="portfolio-box">
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image1.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image1.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
 									<h2>Creative Wallpaper</h2>
@@ -33,13 +33,13 @@
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image1.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image1.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image2.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image2.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
 									<h2>Creative Wallpaper 02</h2>
@@ -48,13 +48,13 @@
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image2.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image2.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image3.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image3.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
 									<h2>Creative Wallpaper 03</h2>
@@ -63,266 +63,265 @@
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image3.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image3.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image4.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image4.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper 04</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image4.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image4.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image5.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image5.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image5.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image5.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image6.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image6.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image6.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image6.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image7.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image7.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image7.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image7.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image8.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image8.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image8.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image8.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image9.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image9.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image9.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image9.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image10.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image10.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image10.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image10.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image11.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image11.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image11.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image11.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image12.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image12.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image12.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image12.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image13.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image13.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image13.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image13.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image14.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image14.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image14.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image14.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image15.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image15.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image15.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image15.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image16.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image16.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image16.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image16.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image12.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image12.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image12.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image12.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image1.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image1.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image1.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image1.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image4.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image3.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image4.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image3.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="project-post">
-							<img alt="" src="template-front/upload/image8.jpg">
+							<img src="{{ asset($caminho.'template-front/upload/image8.jpg') }}"  alt="" />
 							<div class="hover-box">
 								<div class="project-title">
-									<h2>Creative Wallpaper</h2>
+									<h2>Creative Wallpaper 03</h2>
 									<span>illustration, nature</span>							
 								</div>
 								<ul class="project-links">
 									<li><a href="#"><i class="fa fa-heart"></i></a></li>
 									<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
-									<li><a href="template-front/upload/image8.jpg" class="zoom-image"><i class="fa fa-search"></i></a></li>
+									<li><a href="{{ asset($caminho.'template-front/upload/image8.jpg') }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>

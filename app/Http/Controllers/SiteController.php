@@ -33,11 +33,20 @@ class SiteController extends Controller
         
     }
 
+    // Mostra o blog com todos os posts
     public function lista() {
 
     	$posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6); 
 
         return view('site.lista', compact('posts'));
         
+    }
+
+    // Mostra o todos detalhes do post
+    public function show($slug) {
+
+        $post = Post::where('slug', $slug)->first();
+
+        return view('site.show', compact('post'));
     }
 }

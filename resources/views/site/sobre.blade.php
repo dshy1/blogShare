@@ -25,7 +25,7 @@
 					<div class="about-box">
 						<div class="about-content">
 							<div class="about-section">
-								<img alt="" src="template-front/upload/about.jpg">
+								<img src="{{ asset($caminho.'template-front/upload/about.jpg') }}" alt="" />
 								<h1>Quem Somos</h1>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus sem, accumsan in purus nec, ullamcorper viverra magna. Maecenas justo nisi, iaculis non arcu nec, tincidunt pharetra felis. Suspendisse molestie nulla eros, non dignissim lectus tincidunt quis. Curabitur dignissim lacus vel velit mattis, at pellentesque lorem convallis. Nam pharetra iaculis metus quis feugiat. Sed vitae turpis eget magna aliquet vestibulum sit amet ut lorem. Duis congue pharetra varius. Donec sit amet lectus erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas sollicitudin eu felis id pharetra. Vestibulum quis nibh cursus. </p>
 								<p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>								
@@ -36,10 +36,21 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="team-post">
-												<img alt="" src="template-front/upload/team1.jpg">
+												<img src="{{ asset($caminho.'template-front/upload/team1.jpg') }}" alt="" />
 												<div class="team-hover">
 													<div class="team-data">
 														<h3>Glaucus Oliveira</h3>
+														<span>CEO</span>
+													</div>
+												</div>
+											</div>											
+										</div>
+										<div class="col-md-4">
+											<div class="team-post">
+												<img src="{{ asset($caminho.'template-front/upload/team2.jpg') }}" alt="" />
+												<div class="team-hover">
+													<div class="team-data">
+														<h3>Janaina Santos</h3>
 														<span>Web Developer</span>
 													</div>
 												</div>
@@ -47,21 +58,10 @@
 										</div>
 										<div class="col-md-4">
 											<div class="team-post">
-												<img alt="" src="template-front/upload/team2.jpg">
+												<img src="{{ asset($caminho.'template-front/upload/team3.jpg') }}" alt="" />
 												<div class="team-hover">
 													<div class="team-data">
-														<h3>Glaucus Oliveira</h3>
-														<span>Web Developer</span>
-													</div>
-												</div>
-											</div>											
-										</div>
-										<div class="col-md-4">
-											<div class="team-post">
-												<img alt="" src="template-front/upload/team3.jpg">
-												<div class="team-hover">
-													<div class="team-data">
-														<h3>Glaucus Oliveira</h3>
+														<h3>Pedro Mira</h3>
 														<span>Web Developer</span>
 													</div>
 												</div>
@@ -71,10 +71,10 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="team-post">
-												<img alt="" src="template-front/upload/team4.jpg">
+												<img src="{{ asset($caminho.'template-front/upload/team4.jpg') }}" alt="" />
 												<div class="team-hover">
 													<div class="team-data">
-														<h3>Glaucus Oliveira</h3>
+														<h3>Jonas Oliveira</h3>
 														<span>Web Developer</span>
 													</div>
 												</div>
@@ -82,10 +82,10 @@
 										</div>
 										<div class="col-md-4">
 											<div class="team-post">
-												<img alt="" src="template-front/upload/team5.jpg">
+												<img src="{{ asset($caminho.'template-front/upload/team5.jpg') }}" alt="" />
 												<div class="team-hover">
 													<div class="team-data">
-														<h3>Glaucus Oliveira</h3>
+														<h3>Leonardo Raul</h3>
 														<span>Web Developer</span>
 													</div>
 												</div>
@@ -93,7 +93,7 @@
 										</div>
 										<div class="col-md-4">
 											<div class="team-post">
-												<img alt="" src="template-front/upload/team6.jpg">
+												<img src="{{ asset($caminho.'template-front/upload/team6.jpg') }}" alt="" />
 												<div class="team-hover">
 													<div class="team-data">
 														<h3>Nosso Cliente Especial</h3>
@@ -110,7 +110,7 @@
 						<div class="sidebar">
 							<div class="skills-progress">
 								<h1>Nossas Habilidades</h1>
-								<p>Frontend Development <span>71%</span></p>
+								<p>Desenvolvimento Front End <span>71%</span></p>
 								<div class="meter nostrips frontend">
 									<span style="width: 71%"></span>
 								</div>
@@ -118,7 +118,7 @@
 								<div class="meter nostrips photoshop">
 									<span style="width: 85%"></span>
 								</div>
-								<p>Backend Development <span>76%</span></p>
+								<p>Desenvolvimento Back End <span>76%</span></p>
 								<div class="meter nostrips wp">
 									<span style="width: 76%"></span>
 								</div>
@@ -133,7 +133,7 @@
 								<ul>
 									<li>
 										<div class="client-test">
-											<img alt="" src="template-front/upload/avatar2.jpg">
+											<img src="{{ asset($caminho.'template-front/upload/avatar2.jpg') }}" alt="" />
 											<h3>Tadeu Alves - CEO em Unilever</h3>
 										</div>
 										<p>Sollicitudin lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. . 
@@ -141,7 +141,7 @@
 									</li>
 									<li>
 										<div class="client-test">
-											<img alt="" src="template-front/upload/avatar1.jpg">
+											<img src="{{ asset($caminho.'template-front/upload/avatar1.jpg') }}" alt="" />
 											<h3>Glaucus Oliveira - Web Developer</h3>
 										</div>
 										<p>Sollicitudin lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. 
@@ -154,11 +154,11 @@
 								<h1>Serviços</h1>
 								<ul>
 									<li><a href="#">Web Design</a></li>
-									<li><a href="#">Photography</a></li>
-									<li><a href="#">Plugin Development</a></li>
+									<li><a href="#">Fotografia</a></li>
+									<li><a href="#">Plugins</a></li>
 									<li><a href="#">Front End</a></li>
-									<li><a href="#">Design from Scratch</a></li>
-									<li><a href="#">Website Maintenance</a></li>
+									<li><a href="#">Back End</a></li>
+									<li><a href="#">Web Hospedagem</a></li>
 								</ul>
 							</div>
 						</div>

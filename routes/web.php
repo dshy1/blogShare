@@ -24,6 +24,8 @@ Route::get('/sobre', 'SiteController@sobre')->name('site.sobre');
 Route::get('/servicos', 'SiteController@servicos')->name('site.servicos');
 Route::get('/contato', 'SiteController@contato')->name('site.contato');
 Route::get('/blog', 'SiteController@lista')->name('site.lista');
+Route::get('/post/{slug}', 'SiteController@show')->name('site.show');
+
 
 
 #### Rotas que precisam de autenticaçao

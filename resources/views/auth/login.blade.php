@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Meta -->
-    <meta name="description" content="Premium Quality and Responsive UI for Dashboard." />
+    <meta name="description" content="" />
     <meta name="author" content="" />
 
     <title>jana. | Login</title>
@@ -20,6 +20,15 @@
     <link rel="stylesheet" href="{{ asset($caminho.'template-dark/css/bkt.dark.css') }}" />
     <!-- Meus estilos -->
     <link rel="stylesheet" href="{{ asset($caminho.'css/custom.css') }}" />
+
+    <style type="text/css">
+      
+      .tx-35 {
+        font-size: 35px!important;
+      }
+
+    </style>
+    
   </head>
 
   <body>
@@ -28,8 +37,8 @@
           <img src="{{ asset($caminho.'template-dark/img/bg04.jpg') }}" class="wd-100p ht-100p object-fit-cover" alt="">
           <div class="overlay-body bg-black-6 d-flex align-items-center justify-content-center">
             <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 rounded bd bd-white-2 bg-black-7" id="login-wrapper">
-              <div class="signin-logo tx-center tx-30 tx-bold tx-white"><span class="tx-normal"></span> jana. {{-- <span class="tx-info">dash</span> --}} <span class="tx-normal"></span></div>
-              <div class="tx-white-5 tx-center mg-b-60">The Admin Dashboard For Perfectionist</div>
+              <div class="signin-logo tx-center tx-35 tx-bold tx-white"><span class="tx-normal"></span> jana. <span class="tx-normal"></span></div>
+              <div class="tx-white-5 tx-center mg-b-60">Porque Seu Sistema Tem Que Ser <span>Deslumbrante</span></div>
             
                  <form method="POST" action="{{ route('login') }}">
                     @csrf

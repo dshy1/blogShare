@@ -1,6 +1,6 @@
 @extends('layouts.main-front')
 
-@section('title', $cliente . ' | Quem Somos')
+@section('title', $cliente . ' | Blog')
 
 @section('content')
 
@@ -14,6 +14,15 @@
 		}
 		.project-title h2 {
 			color: #04b4ff;
+		}
+		img.post-image {
+			min-height: 200px;
+			max-height: 200px;
+			object-fit:cover
+		}
+		.post-tags {
+			position: absolute;
+			bottom: 18px;
 		}
 
 	</style>
@@ -29,20 +38,19 @@
 									<div class="flexslider">
 										<ul class="slides">
 											<li>
-												<img alt="" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" style="min-height: 200px;max-height: 200px;" />
+												<a href="{{ route('site.show', $post->slug) }}">
+													<img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image" class="post-image">
+												</a>
 											</li>
-											{{-- <li>
-												<img alt="" src="template-front/upload/3.jpg" />
-											</li> --}}
 										</ul>
 									</div>
 									<div class="post-content" style="min-height: 275px; max-height: 275px;">
-										<h2><a href="single-post.html">{{ $post->titulo}}</a></h2>
+										<h2><a href="{{ route('site.show', $post->slug) }}">{{ $post->titulo}}</a></h2>
 										<p>{{substr(strip_tags($post->texto), 0, 150) . '...' ?? 'Não Informado'}}</p>
 										<ul class="post-tags">
 											<li><a href="#"><i class="fa fa-heart"></i>163 likes</a></li>
 											<li><a href="#"><i class="fa fa-comment"></i>3 comments</a></li>
-											<li><a href="#"><i class="fa fa-calendar"></i>Dec 19, 2013</a></li>
+											<li><a href="#"><i class="fa fa-calendar"></i>19 Dezembro, 2019</a></li>
 										</ul>
 									</div>							
 								</div>

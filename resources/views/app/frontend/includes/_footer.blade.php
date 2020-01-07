@@ -1,9 +1,8 @@
 
 
     <div class="preloader">
-        <img alt="" src="template-front/images/preloader.html">
+        <img src="{{ asset($caminho.'template-front/images/preloader.html') }}"  alt="" />
     </div>
-
 
     <script type="text/javascript" src="{{ asset($caminho.'template-front/js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset($caminho.'template-front/js/jquery.migrate.js') }}"></script>
