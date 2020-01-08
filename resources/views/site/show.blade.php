@@ -11,6 +11,10 @@
 			max-height: 400px;
 			object-fit:cover
 		}
+		.autor-image {
+			width: 52px;
+			border-radius: 50px;
+		}
 
 	</style>
 
@@ -147,14 +151,15 @@
 							<div class="post-info">
 								<h1>Post Informações</h1>
 								<ul>
-									{{-- <li>
-										<span><i class="fa fa-user"></i></span><a href="#">Premium Layers</a>
-									</li> --}}
+									<li>
+										<img src="{{ asset($caminho.'storage/images/users/'.$post->autor->image) }}" alt="autor image" class="autor-image" />
+										<a href="#">Por: {{ $post->autor->name }}</a>
+									</li>
 									<li>
 										<span><i class="fa fa-heart"></i></span><a href="#">138 Likes</a>
 									</li>
 									<li>
-										<span><i class="fa fa-calendar"></i></span><a href="#">14 Janeiro, 2014</a>
+										<span><i class="fa fa-calendar"></i></span><a href="#">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</a>
 									</li>
 									<li>
 										<span><i class="fa fa-link"></i></span><a href="#">http:www.themeforest.net</a>

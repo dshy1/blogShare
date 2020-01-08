@@ -51,6 +51,9 @@
       .margin-left-neg {
         margin-left: -8px;
       }
+      .ht-100p {
+        height: auto;
+      }
 
   </style>
 
@@ -93,7 +96,7 @@
                 <div class="card bd-gray-400 pd-25 ht-100p ">
                   <div class="d-sm-flex justify-content-between align-items-left tx-14 txt-gray" style="flex-direction: column;">
                     <h4 class="branco">{{ $post->titulo }}</h4>
-                    <p>{{ strip_tags($post->texto) }}</p>
+                    <p>{!! $post->texto !!}</p>
                      <h4 class="branco">Categorias:</h4>
                       <ul>
                         @foreach($post->categorias as $categoria)

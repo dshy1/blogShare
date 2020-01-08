@@ -95,9 +95,9 @@
 											<div class="team-post">
 												<img src="{{ asset($caminho.'template-front/upload/team6.jpg') }}" alt="" />
 												<div class="team-hover">
-													<div class="team-data">
-														<h3>Nosso Cliente Especial</h3>
-														<span>Você faz parte dessa equipe</span>
+													<div class="team-data" style="padding: 0 5%;">
+														<h3 style="margin-top: -30px;">Nosso Cliente Especial</h3>
+														<span>Você também faz parte dessa equipe</span>
 													</div>
 												</div>
 											</div>											

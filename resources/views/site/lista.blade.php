@@ -39,7 +39,7 @@
 										<ul class="slides">
 											<li>
 												<a href="{{ route('site.show', $post->slug) }}">
-													<img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image" class="post-image">
+													<img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image" class="post-image" />
 												</a>
 											</li>
 										</ul>
@@ -50,7 +50,7 @@
 										<ul class="post-tags">
 											<li><a href="#"><i class="fa fa-heart"></i>163 likes</a></li>
 											<li><a href="#"><i class="fa fa-comment"></i>3 comments</a></li>
-											<li><a href="#"><i class="fa fa-calendar"></i>19 Dezembro, 2019</a></li>
+											<li><a href="#"><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</a></li>
 										</ul>
 									</div>							
 								</div>

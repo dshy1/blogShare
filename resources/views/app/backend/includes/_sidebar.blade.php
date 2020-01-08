@@ -16,7 +16,7 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="#" class="{{ (request()->is('posts')) || (request()->is('posts/create'))  ? 'br-menu-link active' : 'br-menu-link' }}">
+          <a href="#" class="{{ (request()->is('posts')) || (request()->is('posts/*'))  ? 'br-menu-link active' : 'br-menu-link' }}">
             <i class="material-icons">photo</i>
             <span class="menu-item-label">Posts</span>
           </a><!-- br-menu-link -->
@@ -28,7 +28,7 @@
         
         @can('cria-categoria')
           <li class="br-menu-item">
-            <a href="#" class="{{ (request()->is('categorias')) || (request()->is('categorias/create'))? 'br-menu-link active' : 'br-menu-link' }}">
+            <a href="#" class="{{ (request()->is('categorias')) || (request()->is('categorias/*'))? 'br-menu-link active' : 'br-menu-link' }}">
               <i class="material-icons">class</i>
               <span class="menu-item-label">Categorias</span>
             </a><!-- br-menu-link -->

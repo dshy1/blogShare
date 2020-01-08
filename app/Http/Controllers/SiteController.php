@@ -42,10 +42,10 @@ class SiteController extends Controller
         
     }
 
-    // Mostra o todos detalhes do post
+    // Mostra todos detalhes do post pelo slug
     public function show($slug) {
 
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::where('slug', $slug)->with('autor')->first();
 
         return view('site.show', compact('post'));
     }
