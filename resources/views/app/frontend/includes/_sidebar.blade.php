@@ -31,7 +31,7 @@
         color: #fff;
       }
       .header-sidebar {
-        height: auto!important;
+        height: 1200px!important;
       }
 
     </style>
@@ -45,7 +45,7 @@
 <div id="container">
     <!-- Header
         ================================================== -->
-    <header class="{{ (request()->is('contato')) ? 'header-sidebar' : '' }}">
+    <header class="{{ (request()->is('contato')) || (request()->is('blog')) || (request()->is('search')) || (request()->is('search/*')) ? 'header-sidebar' : '' }}">
       <div class="logo-box">
         <a class="logo" href="{{ route('site.index') }}">
           <h1 style="color: #fff;">AG SHARE</h1>
@@ -61,7 +61,7 @@
           <li><a href="{{ route('site.index') }}" class="{{ (request()->is('/')) ? 'active' : '' }}">Home</a></li>
           <li><a href="{{ route('site.sobre') }}" class="{{ (request()->is('sobre')) ? 'active' : '' }}">Sobre</a></li>
           <li><a href="{{ route('site.servicos') }}" class="{{ (request()->is('servicos')) ? 'active' : '' }}">Serviços</a></li>
-          <li><a href="{{ route('site.lista') }}" class="{{ (request()->is('blog')) || (request()->is('post/*'))? 'active' : '' }}">Blog</a></li>
+          <li><a href="{{ route('site.lista') }}" class="{{ (request()->is('blog')) || (request()->is('post/*')) || (request()->is('search')) || (request()->is('search/*')) ? 'active' : '' }}">Blog</a></li>
           <li><a href="{{ route('site.contato') }}" class="{{ (request()->is('contato')) ? 'active' : '' }}">Contato</a></li>
         </ul>       
       </div>
@@ -77,14 +77,15 @@
           <li><a href="#">Janeiro 2017</a></li>
         </ul>       
       </div>
-
+  
       <div class="categories-box">
         <h2>Categorias</h2>
         <ul class="categories">
-          <li><a href="#">Direito Civil</a></li>
-          <li><a href="#">Direito Bancario</a></li>
-          <li><a href="#">Direito Consumidor</a></li>
-          <li><a href="#">Atualidades</a></li>
+          @foreach($categorias as $categoria)
+            <li>
+              <a href="{{ route('site.pesquisa.cat', ['id' => $categoria->id]) }}">{{ $categoria->nome }}</a>
+            </li>         
+          @endforeach
         </ul>
       </div>
 

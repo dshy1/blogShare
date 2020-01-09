@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 
 
+
 class SiteController extends Controller
 {
 
      public function index() {
 
-        return view('site.home');
+        return view('site.home', compact('categorias'));
 
     }
 

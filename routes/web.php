@@ -25,6 +25,9 @@ Route::get('/servicos', 'SiteController@servicos')->name('site.servicos');
 Route::get('/contato', 'SiteController@contato')->name('site.contato');
 Route::get('/blog', 'SiteController@lista')->name('site.lista');
 Route::get('/post/{slug}', 'SiteController@show')->name('site.show');
+Route::get('/search', 'PesquisaController@pesquisaCategoria')->name('site.pesquisa.cat');
+Route::get('/search/{tag}', 'PesquisaController@pesquisaTag')->name('site.pesquisa.tag');
+
 
 
 

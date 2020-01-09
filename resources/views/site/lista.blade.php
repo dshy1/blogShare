@@ -31,6 +31,11 @@
 			<div class="inner-content">
 				<div class="blog-page">
 					<div class="blog-box">
+        				@isset($count)
+        					@if($count == 0)
+								<h3>Sua pesquisa não encontrou nenhum resultado</h3>
+							@endif
+						@endif
 						<!-- blog-post -->
 						@foreach($posts as $post)
 							<div class="blog-post gallery-post">

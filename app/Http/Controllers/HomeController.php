@@ -32,7 +32,6 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $users = User::orderBy('id', 'desc')->limit(4)->get();
-        // $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->limit(3)->get();
         $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->limit(3)->get();
 
         $categorias = Categoria::orderBy('id', 'desc')->limit(4)->get();

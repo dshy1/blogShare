@@ -170,22 +170,22 @@
 								<h1>Tags</h1>
 								<ul>
 									<li>
-										<a href="#">web design</a>
+										<a href="{{ route('site.pesquisa.tag', ['tag' => 'web design']) }}">web design</a>
 									</li>
 									<li>
-										<a href="#">fotografia</a>
+										<a href="{{ route('site.pesquisa.tag', ['tag' => 'fotografia']) }}">fotografia</a>
 									</li>
 									<li>
-										<a href="#">desenvolvimento</a>
+										<a href="{{ route('site.pesquisa.tag', ['tag' => 'desenvolvimento']) }}">desenvolvimento</a>
 									</li>
 									<li>
-										<a href="#">php</a>
+										<a href="{{ route('site.pesquisa.tag', ['tag' => 'php']) }}">php</a>
 									</li>
 									<li>
-										<a href="#">ecommerce</a>
+										<a href="{{ route('site.pesquisa.tag', ['tag' => 'ecommerce']) }}">ecommerce</a>
 									</li>
 									<li>
-										<a href="#">artes gráficas</a>
+										<a href="{{ route('site.pesquisa.tag', ['tag' => 'artes graficas']) }}">artes gráficas</a>
 									</li>
 								</ul>
 							</div>
