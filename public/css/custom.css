@@ -38,7 +38,7 @@ a.link-branco:hover {
 }
 
 #login-wrapper {
-	height: 450px!important;
+	height: 480px!important;
 }
 
 a.disabled {
@@ -47,4 +47,12 @@ a.disabled {
 
 .tx-35 {
 	font-size: 35px!important;
+}
+
+input#password {
+	margin-bottom: 15px;
+}
+
+.links-senha-voltar {
+	text-align: center;
 }

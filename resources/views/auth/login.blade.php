@@ -26,6 +26,9 @@
       .tx-35 {
         font-size: 35px!important;
       }
+      a.btn-link {
+        padding: 4px 15px;
+      }
 
     </style>
     
@@ -51,7 +54,7 @@
                         @endif
                       </div><!-- form-group -->
 
-                      <div class="form-group">
+                      <div class="form-group links-senha-voltar">
                         <input id="password" type="password" class="form-control fc-outline-dark{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Informe a senha" />
                         @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
@@ -65,6 +68,8 @@
                                 {{ __('Esqueceu a senha?') }}
                             </a>
                         @endif
+
+                        <br /><a class="btn btn-link" href="{{ route('site.lista') }}">{{ __('Voltar para o blog') }}</a>
 
                       </div><!-- form-group --> 
                       <button type="submit" class="btn btn-info btn-block">{{ __('Login') }}</button>
