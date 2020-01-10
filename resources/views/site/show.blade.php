@@ -185,6 +185,9 @@
 										<a href="{{ route('site.pesquisa.tag', ['tag' => 'ecommerce']) }}">ecommerce</a>
 									</li>
 									<li>
+										<a href="{{ route('site.pesquisa.tag', ['tag' => 'advogados']) }}">advogados</a>
+									</li>
+									<li>
 										<a href="{{ route('site.pesquisa.tag', ['tag' => 'artes graficas']) }}">artes gráficas</a>
 									</li>
 								</ul>

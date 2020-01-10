@@ -97,18 +97,17 @@
             maximumSelectionLength: 3
         });
 
-        // --- Editor Texto -->
+        // ## Check Editor -->
         ClassicEditor.create( document.querySelector( '#editor' ), {
-              // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-        } )
-          .then( editor => {
-              window.editor = editor;
-        } )
-          .catch( err => {
-              console.error( err.stack );
-        } );
-
-        // initSample();
+          // Aqui determina o que vai aparecer na caixa de ferramentas
+          toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', 'link', '|', 'undo', 'redo' ]
+        })
+        .then( editor => {
+            window.editor = editor;
+        })
+        .catch( err => {
+            console.error( err.stack );
+        });
 
     </script> 
 

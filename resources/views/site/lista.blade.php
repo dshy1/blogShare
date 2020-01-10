@@ -30,12 +30,14 @@
 	  	<div id="content">
 			<div class="inner-content">
 				<div class="blog-page">
-					<div class="blog-box">
-        				@isset($count)
-        					@if($count == 0)
-								<h3>Sua pesquisa não encontrou nenhum resultado</h3>
-							@endif
+					@isset($count)
+    					@if($count == 0)
+							<h3>Sua pesquisa não encontrou nenhum resultado</h3>
+						@else
+							<h3>Foram encontrados {{ $count }} resultados</h3>
 						@endif
+					@endif
+					<div class="blog-box">
 						<!-- blog-post -->
 						@foreach($posts as $post)
 							<div class="blog-post gallery-post">

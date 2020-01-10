@@ -92,7 +92,7 @@
   <!-- Script JS -->
   <script type="text/javascript">
   
-    // Mostrar o path da imagem no span ao selecionar o arquivo
+    // ## Mostrar o path da imagem no span ao selecionar o arquivo
     // pega o input e o span
     var $input = document.getElementById('input-file'),
     $fileName  = document.getElementById('file-name');

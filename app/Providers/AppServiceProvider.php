@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             Schema::defaultStringLength(191);
 
             view()->composer('*', function($view){
-
+                // trazer todas as categorias para mostrar na sidebar
                 $categorias = Categoria::orderBy('id', 'desc')->limit(5)->get();
                 // nome do cliente para title
                 $cliente = "Share Comunicação";

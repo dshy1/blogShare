@@ -75,7 +75,7 @@
                     @include('posts.inputs', ['post' => null, 'detalhe' => null])
 
                   <div class="form-layout-footer marginT70">
-                    <input type="submit" class="btn btn-primary disabled" value="Salvar Post" onclick="return false;" />
+                    <input type="submit" class="btn btn-primary" value="Salvar Post" onclick="return true;" />
                     <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
                   </div><!-- form-layout-footer -->
                 </form>
@@ -84,9 +84,7 @@
           </div><!-- bd -->
       </div>
     </div>
-
   </div><!--  end mainpanel -->
-  <!-- ########## START: MAIN PANEL ########## -->
 
 @endsection
 
@@ -96,23 +94,29 @@
   <!-- Script JS -->
   <script type="text/javascript">
   
-      // ---  Multi select-->
+      // ##  Multi select: definindo o número máximo de seleçoes-->
       $(".select2").select2({
           maximumSelectionLength: 3
       });
 
-      // --- Editor Texto -->
+      // ## Check Editor -->
       ClassicEditor.create( document.querySelector( '#editor' ), {
-            // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-      } )
-        .then( editor => {
-            window.editor = editor;
-      } )
-        .catch( err => {
-            console.error( err.stack );
-      } );
+          // Aqui determina o que vai aparecer na caixa de ferramentas
+          toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+          heading: {
+              options: [
+                  { model: 'paragraph', title: 'Parágrafo', class: 'ck-heading_paragraph' },
+                  { model: 'heading1', view: 'h1', title: 'Título 1', class: 'ck-heading_heading1' },
+                  { model: 'heading2', view: 'h2', title: 'Título 2', class: 'ck-heading_heading2' },
+                  { model: 'heading3', view: 'h3', title: 'Título 3', class: 'ck-heading_heading3' }
 
-      // initSample();
+              ]
+          }
+      }) 
+      .catch( error => {
+            console.error( error );
+      });
+
 
   </script> 
 

@@ -41,8 +41,8 @@
     <script src="{{ asset($caminho.'template-dark/js/map.shiftworker.js') }}"></script>
     <script src="{{ asset($caminho.'template-dark/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset($caminho.'template-dark/js/dashboard.dark.js') }}"></script>
-
-    <script src="{{ asset($caminho.'js/ckeditor.js') }}"></script>
+    {{-- CKeditor --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 
     @yield('scripts')
 

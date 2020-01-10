@@ -24,12 +24,12 @@ class PesquisaController extends Controller
     }
 
     // Pesquisar por tag
-    public function pesquisaTag(Request $request, $tag) {
+    public function pesquisaTag($tag) {
 
         $word = $tag;
 
 		$posts = Post::where('titulo', 'LIKE', "%{$word}%")->latest()->paginate(6);
-
+	
 		$count = count($posts);
 
         return view('site.lista', compact('posts', 'count'));    

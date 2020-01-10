@@ -23,10 +23,6 @@ class PostController extends Controller {
     public function __construct(Request $request, Post $post) {
 
         $this->middleware('auth');
-        // $this->middleware('permission:lista-posts');
-        // $this->middleware('permission:cria-posts', ['only' => ['create','store']]);
-        // $this->middleware('permission:atualiza-posts', ['only' => ['edit','update']]);
-        // $this->middleware('permission:deleta-posts', ['only' => ['destroy']]);
 
     }
 
@@ -129,8 +125,9 @@ class PostController extends Controller {
     public function show(Post $post) {
 
         $post  = Post::with('categorias')->with('autor')->get()->find($post);
+        $categorias = Categoria::all();
 
-        return view('posts.show', compact('post')); 
+        return view('posts.show', compact('post', 'categorias')); 
 
     }
 
