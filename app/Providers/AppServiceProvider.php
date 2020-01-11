@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Pagination\Paginator;
 use App\Models\Categoria;
 
 
@@ -27,9 +28,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot() {
 
             Schema::defaultStringLength(191);
+            // define qual pagina sera usada nas paginaçoes
+            Paginator::defaultView('bootstrap-4');
 
-            view()->composer('*', function($view){
-                // trazer todas as categorias para mostrar na sidebar
+            view()->composer('*', function($view) {
+                // trazer todas as categorias para mostrar nos includes(sidebar)
                 $categorias = Categoria::orderBy('id', 'desc')->limit(5)->get();
                 // nome do cliente para title
                 $cliente = "Share Comunicação";

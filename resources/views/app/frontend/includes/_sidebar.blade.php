@@ -33,6 +33,9 @@
       .header-sidebar {
         height: 1200px!important;
       }
+      a.link-branco {
+        color: #787878;
+      }
 
     </style>
 
@@ -102,7 +105,7 @@
           <li><a href="#"><i class="fa fa-instagram"></i></a></li>
         </ul>
       </div>
-      <p class="copyright">&#169; 2020 Battuta, Todos os Direitos Reservados</p>
+      <p class="copyright">&#169; 2020 Battuta & <span><a href="{{ route('login') }}" class="link-branco">jana.</a></span>, Todos os Direitos Reservados</p>
     </header>
     <!-- End Header -->
 

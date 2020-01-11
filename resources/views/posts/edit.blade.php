@@ -74,7 +74,7 @@
                       @include('posts.inputs', ['post' => $post, 'detalhe' => null])
 
                     <div class="form-layout-footer marginT70">
-                      <input type="submit" class="btn btn-primary" value="Atualizar Post" onclick="return true;" />
+                      <input type="submit" class="btn btn-primary disabled" value="Atualizar Post" onclick="return false;" />
                       <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
                     </div><!-- form-layout-footer -->
                   </form>
@@ -92,7 +92,7 @@
     <!-- Script JS -->
     <script type="text/javascript">
     
-        // ---  Multi select-->
+        // ## Multi select-->
         $(".select2").select2({
             maximumSelectionLength: 3
         });
@@ -100,13 +100,19 @@
         // ## Check Editor -->
         ClassicEditor.create( document.querySelector( '#editor' ), {
           // Aqui determina o que vai aparecer na caixa de ferramentas
-          toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', 'link', '|', 'undo', 'redo' ]
-        })
-        .then( editor => {
-            window.editor = editor;
-        })
-        .catch( err => {
-            console.error( err.stack );
+          toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+          heading: {
+              options: [
+                  { model: 'paragraph', title: 'Parágrafo', class: 'ck-heading_paragraph' },
+                  { model: 'heading1', view: 'h1', title: 'Título 1', class: 'ck-heading_heading1' },
+                  { model: 'heading2', view: 'h2', title: 'Título 2', class: 'ck-heading_heading2' },
+                  { model: 'heading3', view: 'h3', title: 'Título 3', class: 'ck-heading_heading3' }
+
+            ]
+          }
+        }) 
+        .catch( error => {
+              console.error( error );
         });
 
     </script> 

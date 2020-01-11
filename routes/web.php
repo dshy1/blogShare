@@ -29,8 +29,6 @@ Route::get('/search', 'PesquisaController@pesquisaCategoria')->name('site.pesqui
 Route::get('/search/{tag}', 'PesquisaController@pesquisaTag')->name('site.pesquisa.tag');
 
 
-
-
 #### Rotas que precisam de autenticaçao
 Auth::routes();
     

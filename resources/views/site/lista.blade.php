@@ -52,7 +52,15 @@
 										</ul>
 									</div>
 									<div class="post-content" style="min-height: 275px; max-height: 275px;">
-										<h2><a href="{{ route('site.show', $post->slug) }}">{{ $post->titulo}}</a></h2>
+										@if(strlen($post->titulo) > 80)
+											<h2>
+												<a href="{{ route('site.show', $post->slug) }}">{{substr(strip_tags($post->titulo), 0, 60) . '...' ?? 'Não Informado'}}</a>
+											</h2>
+										@else
+											<h2>
+												<a href="{{ route('site.show', $post->slug) }}">{{ $post->titulo}}</a>
+											</h2>
+										@endif
 										<p>{{substr(strip_tags($post->texto), 0, 150) . '...' ?? 'Não Informado'}}</p>
 										<ul class="post-tags">
 											<li><a href="#"><i class="fa fa-heart"></i>163 likes</a></li>
@@ -65,9 +73,8 @@
 						@endforeach
 					</div>
 					
-            		{{ $posts->links() }}
-
-					{{-- <a class="blog-page-link" href="#">Older Posts</a> --}}
+            		{{ $posts->links('vendor.pagination.bootstrap-4') }}
+            		
 				</div>
 			</div>
 		</div>
