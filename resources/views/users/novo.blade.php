@@ -9,8 +9,8 @@
       .com-padding-top {
         padding-top: 100px;
       }
-      .large {
-        font-size: 80px;
+      .x-large {
+        font-size: 92px;
         color: #0866C6;
       }
 
@@ -28,7 +28,7 @@
     </div><!-- br-pageheader -->
 
     <div class="br-pagetitle">
-        <i class="large material-icons">add_photo_alternate</i>
+        <i class="x-large material-icons">add_photo_alternate</i>
       <div>
         <h2 class="tx-white">Novo Usuário</h2>
         <p class="mg-b-0 cinza-claro">Crie um novo colaborador para seu blog</p>
@@ -55,7 +55,7 @@
                   @include('users.inputs', ['user' => null, 'detalhe' => null])
 
         	        <div class="form-layout-footer marginT70">
-        	          <input type="submit" class="btn btn-primary disabled" value="Adicionar Usuário" onclick="return false;" />
+        	          <input type="submit" class="btn btn-primary" value="Adicionar Usuário" onclick="return true;" />
         	          <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
         	        </div><!-- form-layout-footer -->
         		 </form>

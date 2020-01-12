@@ -32,9 +32,18 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $users = User::orderBy('id', 'desc')->limit(4)->get();
-        $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->limit(3)->get();
-
         $categorias = Categoria::orderBy('id', 'desc')->limit(4)->get();
+
+        // Se o usuario for admin, trazer todos os posts
+         if ($user->roles()->first()->name == 'admin') {
+          
+          $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->limit(3)->get();  
+        }
+        // Senão trazer somente os posts de quem está logado
+        else {
+
+            $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->limit(3)->get(); 
+        }
 
         // dd($categorias->isEmpty());
 

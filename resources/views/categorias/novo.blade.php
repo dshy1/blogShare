@@ -9,8 +9,8 @@
       .com-padding-top {
         padding-top: 100px;
       }
-      .large {
-        font-size: 78px;
+      .x-large {
+        font-size: 92px;
         color: #1caf9a;
       }
 
@@ -28,7 +28,7 @@
     </div><!-- br-pageheader -->
 
     <div class="br-pagetitle">
-        <i class="large material-icons">add_photo_alternate</i>
+        <i class="x-large material-icons">add_photo_alternate</i>
       <div>
         <h2 class="tx-white">Nova Categoria</h2>
         <p class="mg-b-0 cinza-claro">Crie uma nova categoria para seus posts</p>
@@ -56,7 +56,7 @@
                   @include('categorias.inputs', ['categoria' => null, 'detalhe' => null])
 
         	        <div class="form-layout-footer marginT70">
-        	          <input type="submit" class="btn btn-primary disabled" value="Adicionar Categoria" onclick="return false;" />
+        	          <input type="submit" class="btn btn-primary" value="Adicionar Categoria" onclick="return true;" />
         	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
         	        </div><!-- form-layout-footer -->
         		 </form>

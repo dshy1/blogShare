@@ -20,8 +20,8 @@
         .d-flex {
             display: flex;
         }
-        .large {
-            font-size: 90px;
+        .x-large {
+            font-size: 92px;
             color: #0866C6;
         }
         #form-delete-users {
@@ -55,7 +55,7 @@
         <!-- br-pageheader -->
 
         <div class="br-pagetitle">
-            <i class="large material-icons">person</i>
+            <i class="x-large material-icons">person</i>
             <div>
                 <h2 class="tx-white">Usuários</h2>
                 <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os usuários cadastrados no sistema</p>
@@ -73,7 +73,7 @@
         </div>
         @endif
 
-        <a href="{{ route('users.create') }}" class="btn btn-success btn-sm bt-novo disabled" title="Criar novo usuário">Novo</a>
+        <a href="{{ route('users.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo usuário">Novo</a>
 
         <div class="br-pagebody">
             <div class="br-section-wrapper">
@@ -98,11 +98,11 @@
                                 <td><img src="{{ $user->image !== null ? asset($caminho.'storage/images/users/'.$user->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 40px;">
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link sem-padding disabled">Editar</a> |
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link sem-padding">Editar</a> |
                                     <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
                                          @csrf
                                          @method('DELETE')
-                                        <input type="submit" class="btn btn-link sem-padding disabled" name="" value="Deletar" onclick="return false;" />
+                                        <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
                                     </form>
                                 </td>
                             </tr>
@@ -129,7 +129,7 @@
 
         // Funçao para confirmar deletar 
         function confirmDelete() {
-            if (confirm("Deseja realmente deletar esse usuário?")) {
+            if (confirm("Deseja realmente deletar esse Usuário?")) {
                 return true;
             } else {
                 return false;

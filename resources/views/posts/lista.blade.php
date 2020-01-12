@@ -107,7 +107,7 @@
                                     <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
                                         @csrf
                                         @method('DELETE') 
-                                        <input type="submit" class="btn btn-link sem-padding disabled" name="" value="Deletar" onclick="return false;" />
+                                        <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
                                     </form>
                                 </td>
                             </tr>

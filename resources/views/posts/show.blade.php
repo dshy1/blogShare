@@ -114,15 +114,15 @@
           <div class="col-lg-4">
             <div class="card bd-gray-400 pd-25">
               <div class="media mg-b-25">
-                <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image">
+                <img src="{{ $post->autor->image !== null ? asset($caminho.'storage/images/users/'.$post->autor->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image" />
                 <div class="media-body mg-t-2">
                   <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white hover-info">{{ $post->autor->name }}</a></h6>
                 </div><!-- media-body -->
               </div><!-- media -->
               <h6 class="tx-normal tx-roboto mg-b-15 lh-4 cinza-claro">Data de Criação:</h6>
-              <p class="tx-14 mg-b-25 txt-gray">{{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y')}}</p>
+              <p class="tx-14 mg-b-25 txt-gray">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</p>
               <h6 class="tx-normal tx-roboto mg-b-15 lh-4 cinza-claro">Última Atualização:</h6>
-              <p class="tx-14 mg-b-25 txt-gray">{{ \Carbon\Carbon::parse($post->updated_at)->format('d/m/Y')}}</p>
+              <p class="tx-14 mg-b-25 txt-gray">{{ \Carbon\Carbon::parse($post->updated_at)->format('d M, Y')}}</p>
               <hr>
               
               <!-- Botoes de Açao -->
@@ -134,7 +134,7 @@
                 <div class="col-sm-3 no-padding">
                   <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts02">
                       @method('DELETE') @csrf
-                      <input type="submit" value="Deletar" class="btn btn-danger btn-sm bt-deletar disabled" onclick=" return false;" />
+                      <input type="submit" value="Deletar" class="btn btn-danger btn-sm bt-deletar" onclick=" return confirmDelete();" />
                   </form>
                 </div>
 

@@ -46,6 +46,12 @@
       .dropdown-user {
         margin-right: 7%;
       }
+      img.rounded-header {
+        width: 32px;
+        height: 32px;
+        border-radius: 100%;
+        object-fit:cover;
+      }
 
     </style>
 
@@ -110,7 +116,7 @@
             <a href="#" class="nav-link nav-link-profile" data-toggle="dropdown">
               <span class="logged-name hidden-md-down">{{ Auth::user()->name }}</span>
               <!-- imagem do usuario logado do header -->
-              <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" class="wd-32 rounded-circle" alt="user image">
+              <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" class="wd-32 rounded-circle rounded-header" alt="user image" />
               <span class="square-10 bg-success"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-250 paddingT0 dropdown-user">

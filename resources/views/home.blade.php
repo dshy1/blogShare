@@ -29,10 +29,23 @@
       .profile-image {
         max-height: 112px;
         object-fit:cover;
-
       }
       .card-title {
         font-size: 20px;
+      }
+      .media-cards {
+        position: absolute;
+        top: 242px;
+        right: 0;
+      }
+      .media-cards img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        object-fit:cover;
+      }
+      .card-post-destaque {
+        max-height: 375px;
       }
 
   </style>
@@ -64,9 +77,17 @@
       	      <div class="card bd-0 mg-0">
                 <a href="{{ route('posts.show', $post->id) }}">
         	        <figure class="{{ Auth::user()->roles->first()->name == 'Admin' ? 'card-item-img bg-mantle rounded-top' : 'card-item-img bg-mantle rounded-top' }}">
-        	           <img class="img-fluid rounded-top" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image">
+        	           <img class="img-fluid rounded-top" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image" />
         	        </figure>
                 </a>
+                
+                {{-- Essa div com a imagem do autor do post só vai aparecer para o admin --}}
+                @if(Auth::user()->roles()->first()->name =='admin')
+                  <div class="media mg-b-25 media-cards">
+                      <img src="{{ $post->autor->image !== null ? asset($caminho.'storage/images/users/'.$post->autor->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image" />
+                  </div><!-- media -->
+                @endif
+
       	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
       	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $post->categorias[0]->nome }}</p>
       	          <h4 class="tx-normal tx-roboto lh-3 mg-b-15 card-title">
@@ -103,7 +124,7 @@
               <div class="col-md-5 col-lg-6 col-xl-5">
                 <a href="{{ route('categorias.index') }}">
                   <figure class="ht-200 ht-md-100p">
-                    <img src="{{ asset($caminho.'storage/images/home/img31.jpg') }}" class="img-fit-cover op-8" alt="">
+                    <img src="{{ asset($caminho.'storage/images/home/img31.jpg') }}" class="img-fit-cover op-8" alt="categorias image" />
                   </figure>
                 </a>
               </div><!-- col-md-5 -->
@@ -118,7 +139,7 @@
                 @else
                   <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhuma categoria cadastrada no sistema.</p>
                 @endif  
-                <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
+                <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d M, Y')}}</span>
               </div><!-- col-md-7 -->
             </div><!-- row -->
           </div><!-- col-lg-6 -->
@@ -129,7 +150,7 @@
               <div class="col-md-5 col-lg-6 col-xl-5">
                 <a href="{{ route('users.index') }}">
                   <figure class="ht-200 ht-md-100p">
-                    <img src="{{ asset($caminho.'storage/images/home/img32.jpg') }}" class="img-fit-cover op-8" alt="">
+                    <img src="{{ asset($caminho.'storage/images/home/img32.jpg') }}" class="img-fit-cover op-8" alt="usuarios image" />
                   </figure>
                 </a>
               </div><!-- col-4 -->
@@ -144,7 +165,7 @@
             	  @else
     	            <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhum usuário cadastrado no sistema.</p>
             	  @endif	
-                <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
+                <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d M, Y')}}</span>
               </div><!-- col-8 -->
             </div><!-- row -->
           </div><!-- col-lg-6 -->
@@ -155,8 +176,8 @@
     @isset($post)
       <div class="row row-sm mg-t-20">
         <div class="col-lg-8">
-          <div class="card card-inverse bd-0 mg-b-20 ht-400 ht-xs-350 ht-lg-100p">
-              <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image">
+          <div class="card card-inverse bd-0 mg-b-20 ht-400 ht-xs-350 ht-lg-100p card-post-destaque">
+              <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image" />
               <div class="pos-absolute a-0 pd-b-30 bg-black-5 rounded d-flex align-items-sm-center justify-content-center">
                 <div class="tx-center wd-80p mg-t-25 mg-sm-t-0">
                   <p class="tx-info tx-uppercase tx-mont tx-semibold tx-11">{{ $post->categorias[0]->nome }}</p>
@@ -166,23 +187,23 @@
 
               <div class="pos-absolute b-0 x-0 pd-y-15 pd-x-25 bd-t bd-white-1">
                 <div class="d-sm-flex justify-content-between align-items-center tx-13">
-                  <span class="d-block tx-white-8 mg-r-5">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</span>
+                  <span class="d-block tx-white-8 mg-r-5">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</span>
                   <a href="#" class="d-block tx-white-8 hover-white mg-r-10"><i class="fa fa-heart-o mg-r-5"></i> 23 Likes</a>
                   <a href="#" class="d-block tx-white-8 hover-white"><i class="fa fa-comment-o mg-r-5"></i> 4 Comments</a>
-                  <span class="cinza-claro">By: <a href="#" class="tx-white-8 hover-white">{{ $post->autor->name }}</a></span>
+                  <span class="cinza-claro">Por: <a href="#" class="tx-white-8 hover-white">{{ $post->autor->name }}</a></span>
                 </div><!-- d-flex -->
               </div><!-- pos-absolute-bottom -->
             </div><!-- card -->
         </div><!-- col-8 -->
 
         <div class="col-lg-4">
-          <div class="card bd-gray-400 pd-25 ht-100p">
+          <div class="card bd-gray-400 pd-25 ht-100p card-post-destaque">
             <div class="media mg-b-25">
               <!-- Aqui vai a imagem e nome do autor do post em destaque -->
-              <img src="{{ asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image">
+              <img src="{{ asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image" />
               <div class="media-body mg-t-2">
                 <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
-                <div class="tx-12">{{ \Carbon\Carbon::now()->format('d/m/Y')}}</div>
+                <div class="tx-12">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</div>
               </div><!-- media-body -->
             </div><!-- media -->
             <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
@@ -206,7 +227,7 @@
         </div><!-- card-header -->
         <div class="card-body">
           <div class="card-profile-img">
-            <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" class="profile-image">          
+            <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" class="profile-image" />          
           </div><!-- card-profile-img -->
 
           <h4 class="tx-normal tx-roboto tx-white">{{ Auth::user()->name }}</h4>

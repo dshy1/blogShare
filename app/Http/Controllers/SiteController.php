@@ -37,7 +37,7 @@ class SiteController extends Controller
     // Mostra o blog com todos os posts
     public function lista() {
 
-    	$posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6); 
+    	$posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(4); 
 
         return view('site.lista', compact('posts'));
         

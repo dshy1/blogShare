@@ -29,6 +29,16 @@
       a.btn-link {
         padding: 4px 15px;
       }
+      .btn-login {
+        padding: 17px;
+        margin-bottom: 15px;
+      }
+      .form-group input {
+        height: 60px;
+      }
+      .slogan {
+        margin-top: 10px;
+      }
 
     </style>
     
@@ -37,11 +47,11 @@
   <body>
 
     <div class="d-flex align-items-center justify-content-center ht-100v">
-          <img src="{{ asset($caminho.'template-dark/img/bg04.jpg') }}" class="wd-100p ht-100p object-fit-cover" alt="">
-          <div class="overlay-body bg-black-6 d-flex align-items-center justify-content-center">
+        <img src="{{ asset($caminho.'template-dark/img/bg04.jpg') }}" class="wd-100p ht-100p object-fit-cover" alt="">
+        <div class="overlay-body bg-black-6 d-flex align-items-center justify-content-center">
             <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 rounded bd bd-white-2 bg-black-7" id="login-wrapper">
-              <div class="signin-logo tx-center tx-35 tx-bold tx-white"><span class="tx-normal"></span> jana. <span class="tx-normal"></span></div>
-              <div class="tx-white-5 tx-center mg-b-60">Porque Seu Sistema Tem Que Ser <span>Deslumbrante</span></div>
+              <div class="signin-logo tx-center tx-35 tx-bold tx-white"><span class="tx-normal"></span> jana.<span class="tx-normal" style="color: #11b7d2;">Blog</span></div>
+              <div class="tx-white-5 tx-center mg-b-60 slogan">Porque Seu Sistema Tem Que Ser <span>Deslumbrante</span></div>
             
                  <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -53,6 +63,7 @@
                             </span>
                         @endif
                       </div><!-- form-group -->
+                      
 
                       <div class="form-group links-senha-voltar">
                         <input id="password" type="password" class="form-control fc-outline-dark{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Informe a senha" />
@@ -61,7 +72,8 @@
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
                         @endif
-
+                        
+                         <button type="submit" class="btn btn-info btn-block btn-login">{{ __('LOGIN') }}</button>
 
                         @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -70,12 +82,10 @@
                         @endif
 
                         <br /><a class="btn btn-link" href="{{ route('site.lista') }}">{{ __('Voltar para o blog') }}</a>
-
                       </div><!-- form-group --> 
-                      <button type="submit" class="btn btn-info btn-block">{{ __('Login') }}</button>
                   </form>
             </div><!-- login-wrapper -->
-          </div><!-- overlay-body -->
+        </div><!-- overlay-body -->
     </div>
   </body>
 </html>

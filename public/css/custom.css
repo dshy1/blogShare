@@ -37,7 +37,9 @@ a.link-branco:hover {
 }
 
 #login-wrapper {
-	height: 480px!important;
+	background-color: rgba(16, 16, 16, 0.7);
+	width: 400px;
+	height: 520px!important;
 }
 
 a.disabled {
@@ -55,3 +57,4 @@ input#password {
 .links-senha-voltar {
 	text-align: center;
 }
+

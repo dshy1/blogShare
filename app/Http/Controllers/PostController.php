@@ -30,10 +30,12 @@ class PostController extends Controller {
 
         $user = Auth::user();
 
+        // Se o usuario for admin, trazer todos os posts
         if ($user->roles()->first()->name == 'admin') {
           
           $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);  
         }
+        // Senão trazer somente os posts de quem está logado
         else {
 
             $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->paginate(6);

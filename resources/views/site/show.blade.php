@@ -13,7 +13,10 @@
 		}
 		.autor-image {
 			width: 52px;
-			border-radius: 50px;
+			height: 52px;
+			border-radius: 100%;
+			margin: 0 4% 0 -3%;
+			object-fit: cover;
 		}
 
 	</style>
@@ -21,7 +24,6 @@
 	  	<div id="content">
 			<div class="inner-content">
 				<div class="single-project">
-
 					<div class="single-box">
 						<div class="single-box-content">
 							<div class="flexslider">

@@ -24,6 +24,9 @@
 			position: absolute;
 			bottom: 18px;
 		}
+		.gallery-post {
+			width: 50%;
+		}
 
 	</style>
 
