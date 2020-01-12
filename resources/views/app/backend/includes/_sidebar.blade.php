@@ -2,7 +2,7 @@
 
 <!-- ########## START: LEFT PANEL ########## -->
 <div class="container">
-    <div class="br-logo"><a href="{{ route('home') }}"><span>[</span>jana <i>admin</i><span>]</span></a></div>
+    <div class="br-logo"><a href="{{ route('home') }}"><span>[</span>jana <i>Blog</i><span>]</span></a></div>
     <div class="br-sideleft sideleft-scrollbar">
 
       {{-- Menu --}}

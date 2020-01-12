@@ -24,8 +24,18 @@
 			position: absolute;
 			bottom: 18px;
 		}
-		.gallery-post {
-			width: 50%;
+
+		@media (min-width: 1000px) {
+			.gallery-post {
+				width: 50%;
+			}
+			.post-content h2 {
+				font-size: 23px;
+				margin: 12px 0 15px;
+			}
+			.post-tags {
+				bottom: 30px;
+			}
 		}
 
 	</style>
@@ -64,7 +74,7 @@
 												<a href="{{ route('site.show', $post->slug) }}">{{ $post->titulo}}</a>
 											</h2>
 										@endif
-										<p>{{substr(strip_tags($post->texto), 0, 150) . '...' ?? 'Não Informado'}}</p>
+										<p>{{substr(strip_tags($post->texto), 0, 240) . '...' ?? 'Não Informado'}}</p>
 										<ul class="post-tags">
 											<li><a href="#"><i class="fa fa-heart"></i>163 likes</a></li>
 											<li><a href="#"><i class="fa fa-comment"></i>3 comments</a></li>

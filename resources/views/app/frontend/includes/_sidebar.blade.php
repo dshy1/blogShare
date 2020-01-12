@@ -36,6 +36,15 @@
       a.link-branco {
         color: #787878;
       }
+      .logo {
+        width: 275px;
+      }
+
+      @media (max-width: 768px) {
+        .header-sidebar {
+          height: auto!important;
+        }
+      }
 
     </style>
 
@@ -51,8 +60,7 @@
     <header class="{{ (request()->is('contato')) || (request()->is('blog')) || (request()->is('search')) || (request()->is('search/*')) ? 'header-sidebar' : '' }}">
       <div class="logo-box">
         <a class="logo" href="{{ route('site.index') }}">
-          <h1 style="color: #fff;">AG SHARE</h1>
-          {{-- <img src="template-front/images/logo.png" alt="Share Comunicacao"> --}}
+          <img src="{{ asset($caminho.'images/brand/share.png') }}" class="logo" alt="Share Comunicacao" />
         </a>
         <p class="slogan">Mais resultado para sua empresa.</p>
       </div>
@@ -105,7 +113,7 @@
           <li><a href="#"><i class="fa fa-instagram"></i></a></li>
         </ul>
       </div>
-      <p class="copyright">&#169; 2020 Battuta & <span><a href="{{ route('login') }}" class="link-branco">jana.</a></span>, Todos os Direitos Reservados</p>
+      <p class="copyright">&#169; 2020 Battuta & <span><a href="{{ route('login') }}" class="link-branco">jana.Blog</a></span>, Todos os Direitos Reservados</p>
     </header>
     <!-- End Header -->
 

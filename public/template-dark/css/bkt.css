@@ -13174,7 +13174,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child::
   bottom: 0;
   z-index: 100;
   width: 230px;
-  background-color: #1D2939;
+  background-color: #27333a;
   padding-left: 10px;
   padding-right: 10px;
   transition: all 0.2s ease-in-out; }
@@ -15151,7 +15151,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child::
   background-color: #1CAF9A; }
 
 .bg-br-primary {
-  background-color: #1D2939; }
+  /*background-color: #1D2939; */
+  background-color: #27333a; 
+}
 
 .bg-lightsky {
   background-color: #E4F2F2; }
