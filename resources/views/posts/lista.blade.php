@@ -6,32 +6,15 @@
 
     <style type="text/css">
 
-        .com-padding-top {
-            padding-top: 100px;
-        }
-        .alert-success {
-            width: 420px;
-            position: absolute;
-            top: 80px;
-        }
-        .sem-padding {
-            padding: 0 4px;
-        }
-        .d-flex {
-            display: flex;
-        }
         .large {
             font-size: 78px;
-            color: #18a4b4;
+            color: #809db1;
         }
-        #form-delete-posts {
-            margin-top: -3px;
+        .d-flex input,  .d-flex a {
+            position: relative;
+            top: 16px;
         }
-        .bt-novo {
-           float: right;
-           margin-right: 32px;
-        }
-
+     
     </style>
 
 
@@ -89,7 +72,7 @@
                                 <th class="titulo-tabela">Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="vertical-middle">
                             @foreach($posts as $post)
                             <tr>
                                 <td><a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{ $post->id }}</a></td>
@@ -102,12 +85,12 @@
                                     </a>
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-link sem-padding">Ver</a> |
-                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link sem-padding">Editar</a> |
+                                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-outline-primary btn-sm com-margin">Ver</a> 
+                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
                                     <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
                                         @csrf
                                         @method('DELETE') 
-                                        <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
+                                        <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" name="" value="Deletar" onclick="return confirmDelete();" />
                                     </form>
                                 </td>
                             </tr>
@@ -122,7 +105,7 @@
         </div>
     </div>
     <!--  end mainpanel -->
-    <!-- ########## START: MAIN PANEL ########## -->
+    <!-- ########## END: MAIN PANEL ########## -->
 
 @endsection
 

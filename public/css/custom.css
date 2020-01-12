@@ -38,7 +38,6 @@ a.link-branco:hover {
 
 #login-wrapper {
 	background-color: rgba(16, 16, 16, 0.7);
-	width: 400px;
 	height: 520px!important;
 }
 
@@ -58,3 +57,45 @@ input#password {
 	text-align: center;
 }
 
+/*Tabelas Estilos*/
+.com-padding-top {
+    padding-top: 100px;
+}
+.alert-success {
+    width: 420px;
+    position: absolute;
+    top: 80px;
+}
+.sem-padding {
+    padding: 0 4px;
+}
+.d-flex {
+    display: flex;
+}
+.d-flex input,  .d-flex a {
+    position: relative;
+}
+.large {
+    font-size: 78px;
+    color: #809db1;
+}
+#form-delete-posts {
+    margin-top: -3px;
+}
+.bt-novo {
+   float: right;
+   margin-right: 32px;
+}
+.com-margin {
+    margin-right: 3px;
+}
+.com-margin-top {
+    margin-top: 3px;
+}
+.vertical-middle td {
+    vertical-align: middle;
+}
+th.titulo-tabela {
+    background: transparent!important;
+    border-bottom: 2px solid #2f3e46!important;
+}

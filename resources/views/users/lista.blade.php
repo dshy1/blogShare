@@ -6,30 +6,12 @@
 
     <style type="text/css">
 
-        .com-padding-top {
-            padding-top: 100px;
-        }
-        .alert-success {
-            width: 420px;
-            position: absolute;
-            top: 80px;
-        }
-        .sem-padding {
-            padding: 0 4px;
-        }
         .d-flex {
             display: flex;
         }
         .x-large {
             font-size: 92px;
-            color: #0866C6;
-        }
-        #form-delete-users {
-            margin-top: -3px;
-        }
-        .bt-novo {
-          float: right;
-          margin-right: 32px;
+            color: #809db1;         
         }
 
     </style>
@@ -98,11 +80,11 @@
                                 <td><img src="{{ $user->image !== null ? asset($caminho.'storage/images/users/'.$user->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 40px;">
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-link sem-padding">Editar</a> |
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
                                     <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
                                          @csrf
                                          @method('DELETE')
-                                        <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
+                                        <input type="submit" class="btn btn-outline-danger btn-sm" name="" value="Deletar" onclick="return confirmDelete();" />
                                     </form>
                                 </td>
                             </tr>

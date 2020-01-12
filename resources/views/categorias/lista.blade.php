@@ -5,32 +5,10 @@
 @section('content')
 
   <style type="text/css">
-
-      .com-padding-top {
-        padding-top: 100px;
-      }
-
-      .alert-success {
-        width: 420px;
-        position: absolute;
-        top: 80px;
-      }
-      .sem-padding {
-        padding: 0 4px;
-      }
-      .d-flex {
-        display: flex;
-      }
+  
       .large {
         font-size: 78px;
-        color: #1caf9a;
-      }
-      #form-delete-categorias {
-        margin-top: -3px;
-      }
-      .bt-novo {
-        float: right;
-        margin-right: 32px;
+        color: #809db1;
       }
 
   </style>
@@ -93,12 +71,11 @@
                         <td>{{ $categoria->nome }}</td>
                         <td>{{ $categoria->descricao ?? 'Não Informado' }}</td>
                         <td class="d-flex">
-                          <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-link sem-padding">Editar</a>
-                          |
+                          <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a>
                           <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="form-delete-categorias">
                              @method('DELETE')
                              @csrf
-                             <input type="submit" class="btn btn-link sem-padding" name="" value="Deletar" onclick="return confirmDelete();" />
+                             <input type="submit" class="btn btn-outline-danger btn-sm" name="" value="Deletar" onclick="return confirmDelete();" />
                           </form>
                         </td>
                       </tr>

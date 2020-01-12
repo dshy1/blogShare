@@ -34,7 +34,7 @@
 				margin: 12px 0 15px;
 			}
 			.post-tags {
-				bottom: 30px;
+				bottom: 37px;
 			}
 		}
 

@@ -5,7 +5,7 @@
 **/
 body {
   /*background-color: #141d28;*/
-  background-color: #1f282e;
+  background-color: #1d262b;
   }
 
 .br-logo {
@@ -22,9 +22,10 @@ body {
       color: #1CAF9A; }
 
 .br-header {
-  /*background-color: #26354a;*/
-  background-color: #232e34;
-  box-shadow: none; }
+    /*background-color: #26354a;*/
+    background-color: #27333a;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+  }
   .br-header::before {
     display: none; }
 

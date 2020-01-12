@@ -6,12 +6,9 @@
 
   <style type="text/css">
 
-      .com-padding-top {
-          padding-top: 100px;
-      }
       .large {
           font-size: 78px;
-          color: #18a4b4;
+          color: #809db1;  
       }
       img.rounded-top {
       	min-width: 100%;
@@ -94,7 +91,7 @@
                     <a href="{{ route('posts.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}
                     </a>
                   </h4>
-      	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 120) . '...' ?? 'Não Informado'}}</p>
+      	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 157) . '...' ?? 'Não Informado'}}</p>
       	          <p class="tx-13 mg-b-0 comments-bottom">
       	            <a href="#" class="tx-info">12 Likes</a>
       	            <a href="#" class="tx-info mg-l-5">23 Comments</a>

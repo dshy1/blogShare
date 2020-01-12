@@ -13275,7 +13275,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child::
   .br-menu-link:focus, .br-menu-link:active {
     outline: none; }
   .br-menu-link.active {
-    background-image: linear-gradient(to right, #1CAF9A 0%, #17A2B8 100%);
+    /*background-image: linear-gradient(to right, #1CAF9A 0%, #17A2B8 100%);*/
+    background: #202a2f;
     background-repeat: repeat-x;
     color: #fff; }
     .br-menu-link.active::after {
