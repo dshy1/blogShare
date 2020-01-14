@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Editar Categoria')
+@section('title', $plataforma. ' | Editar Categoria')
 
 @section('content')
 
@@ -10,8 +10,7 @@
           padding-top: 100px;
       }
       .large {
-        font-size: 78px;
-        color: #1caf9a;
+        font-size: 77px;
       }
 
   </style>
@@ -28,7 +27,7 @@
     </div><!-- br-pageheader -->
 
     <div class="br-pagetitle">
-        <i class="large material-icons">edit</i>
+        <i class="large material-icons cor-icones">edit</i>
       <div>
         <h2 class="tx-white">Editar {{ $categoria->nome }}</h2>
         <p class="mg-b-0 cinza-claro">Edite a categoria para utilizar nos seus posts</p>

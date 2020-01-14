@@ -36,8 +36,17 @@
       a.link-branco {
         color: #787878;
       }
+      .logo-box {
+        padding: 39px 30px 27px;
+      }
+
       .logo {
-        width: 275px;
+        width: 90%;
+      }
+      p.slogan {
+        font-size: 16px;
+        font-style: normal;
+        line-height: 25px;
       }
 
       @media (max-width: 768px) {
@@ -62,7 +71,7 @@
         <a class="logo" href="{{ route('site.index') }}">
           <img src="{{ asset($caminho.'images/brand/share.png') }}" class="logo" alt="Share Comunicacao" />
         </a>
-        <p class="slogan">Mais resultado para sua empresa.</p>
+        <p class="slogan">Marketing Digital que traz mais resultado para você e a sua empresa.</p>
       </div>
 
       <a class="elemadded responsive-link" href="#">Menu</a>

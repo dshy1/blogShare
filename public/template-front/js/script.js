@@ -6,11 +6,10 @@ var $ = jQuery.noConflict();
 $(document).ready(function($) {
 	"use strict";
 
+
 	/*-------------------------------------------------*/
 	/* =  portfolio isotope
 	/*-------------------------------------------------*/
-
-
 
 	var winDow = $(window);
 		// Needed variables

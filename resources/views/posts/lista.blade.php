@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Listagem de Posts')
+@section('title', $plataforma. ' | Listagem de Posts')
 
 @section('content')
 
@@ -8,7 +8,6 @@
 
         .large {
             font-size: 78px;
-            color: #809db1;
         }
         .d-flex input,  .d-flex a {
             position: relative;
@@ -38,7 +37,7 @@
         <!-- br-pageheader -->
 
         <div class="br-pagetitle">
-            <i class="large material-icons">description</i>
+            <i class="large material-icons cor-icones">description</i>
             <div>
                 <h2 class="tx-white">Posts</h2>
                 <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>

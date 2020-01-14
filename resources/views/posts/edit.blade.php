@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Editar Post')
+@section('title', $plataforma. ' | Editar Post')
 
 @section('content')
 
@@ -27,8 +27,7 @@
         margin-top: 25px;
       }
       .large {
-        font-size: 78px;
-        color: #18a4b4;
+        font-size: 77px;
       }
 
   </style>
@@ -45,7 +44,7 @@
     </div><!-- br-pageheader -->
 
     <div class="br-pagetitle">
-      <i class="large material-icons">edit</i>
+      <i class="large material-icons cor-icones">edit</i>
       <div>
         <h2 class="tx-white">Editar Post</h2>
         <p class="mg-b-0 cinza-claro">Edite seu post e deixe-o mais incrível ainda</p>
@@ -74,7 +73,7 @@
                       @include('posts.inputs', ['post' => $post, 'detalhe' => null])
 
                     <div class="form-layout-footer marginT70">
-                      <input type="submit" class="btn btn-primary" value="Atualizar Post" onclick="return true;" />
+                      <input type="submit" class="btn btn-primary" value="Salvar Alterações" onclick="return true;" />
                       <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
                     </div><!-- form-layout-footer -->
                   </form>

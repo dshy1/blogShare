@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Editar Usuário')
+@section('title', $plataforma. ' | Editar Usuário')
 
 @section('content')
 

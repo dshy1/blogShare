@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Listagem de Usuários')
+@section('title', $plataforma. ' | Listagem de Usuários')
 
 @section('content')
 
@@ -10,8 +10,10 @@
             display: flex;
         }
         .x-large {
-            font-size: 92px;
-            color: #809db1;         
+            font-size: 92px;        
+        }
+        .bt-delete {
+            margin-top: -2px;
         }
 
     </style>
@@ -37,7 +39,7 @@
         <!-- br-pageheader -->
 
         <div class="br-pagetitle">
-            <i class="x-large material-icons">person</i>
+            <i class="x-large material-icons cor-icones">person</i>
             <div>
                 <h2 class="tx-white">Usuários</h2>
                 <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os usuários cadastrados no sistema</p>
@@ -77,14 +79,15 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td><img src="{{ $user->image !== null ? asset($caminho.'storage/images/users/'.$user->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" style="width: auto; max-height: 40px;">
+                                <td>
+                                    <img src="{{ $user->image !== null ? asset($caminho.'storage/images/users/'.$user->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" class="wd-32 rounded-circle rounded-header" />
                                 </td>
                                 <td class="d-flex">
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
                                     <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
                                          @csrf
                                          @method('DELETE')
-                                        <input type="submit" class="btn btn-outline-danger btn-sm" name="" value="Deletar" onclick="return confirmDelete();" />
+                                        <input type="submit" class="btn btn-outline-danger btn-sm bt-delete" name="" value="Deletar" onclick="return confirmDelete();" />
                                     </form>
                                 </td>
                             </tr>

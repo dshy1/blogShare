@@ -137,7 +137,7 @@ html[xmlns] .slides {display: block;}
 .flex-control-nav li {margin: 0 0 0 8px; display: inline-block; zoom: 1; *display: inline;}
 .flex-control-paging li a {width: 21px; height: 13px; display: block; background: transparent; cursor: pointer; text-indent: -9999px; border: 1px solid rgba(255,255,255,0.5); }
 .flex-control-paging li a:hover { opacity:0.9; }
-.flex-control-paging li a.flex-active {background: #d1c224; cursor: default; border: 1px solid transparent;}
+.flex-control-paging li a.flex-active {background: #009fe3; cursor: default; border: 1px solid transparent;}
 
 .flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
 .flex-control-thumbs li {width: 25%; float: left; margin: 0;}

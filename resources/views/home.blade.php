@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title',  'jana. | Dashboard')
+@section('title', $plataforma. ' | Painel de Controle')
 
 @section('content')
 
@@ -131,12 +131,12 @@
                 </h5>
                 @isset($categorias)
                   @foreach($categorias as $categoria)
-                    <li class="tx-gray-600">{{ $categoria->nome }}</li>
+                    <li class="tx-gray-600 cinza-claro">{{ $categoria->nome }}</li>
                   @endforeach
                 @else
                   <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhuma categoria cadastrada no sistema.</p>
                 @endif  
-                <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d M, Y')}}</span>
+                <span class="d-block mg-t-20 tx-13 data-bottom cinza-rodape">{{ \Carbon\Carbon::now()->format('d M, Y')}}</span>
               </div><!-- col-md-7 -->
             </div><!-- row -->
           </div><!-- col-lg-6 -->
@@ -157,12 +157,12 @@
                 </h5>
                 @isset($users)
     	            @foreach($users as $user)
-    	            	<li class="tx-gray-600">{{ $user->name }}</li>
+    	            	<li class="tx-gray-600 cinza-claro">{{ $user->name }}</li>
     	            @endforeach
             	  @else
     	            <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhum usuário cadastrado no sistema.</p>
             	  @endif	
-                <span class="d-block mg-t-20 tx-13 data-bottom">{{ \Carbon\Carbon::now()->format('d M, Y')}}</span>
+                <span class="d-block mg-t-20 tx-13 data-bottom cinza-rodape">{{ \Carbon\Carbon::now()->format('d M, Y')}}</span>
               </div><!-- col-8 -->
             </div><!-- row -->
           </div><!-- col-lg-6 -->
@@ -200,7 +200,7 @@
               <img src="{{ asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image" />
               <div class="media-body mg-t-2">
                 <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
-                <div class="tx-12">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</div>
+                <div class="tx-12 cinza-rodape">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</div>
               </div><!-- media-body -->
             </div><!-- media -->
             <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">{{ $post->titulo }}</a></h5>

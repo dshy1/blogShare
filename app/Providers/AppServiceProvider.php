@@ -32,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
             view()->composer('*', function($view) {
                 // trazer todas as categorias para mostrar nos includes(sidebar)
                 $categorias = Categoria::orderBy('id', 'desc')->limit(5)->get();
+                // nome da plataforma para title
+                $plataforma = "jana.Blog";
                 // nome do cliente para title
                 $cliente = "Share Comunicação";
                 // caminho para js, css e images (se for para o host, coloca public/)
@@ -39,7 +41,8 @@ class AppServiceProvider extends ServiceProvider
 
                 $view->with('cliente', $cliente)
                      ->with('caminho', $caminho)
-                     ->with('categorias', $categorias);
+                     ->with('categorias', $categorias)
+                     ->with('plataforma', $plataforma);
   
         });
     }

@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Criar Nova Categoria')
+@section('title', $plataforma. ' | Criar Nova Categoria')
 
 @section('content')
 
@@ -11,7 +11,6 @@
       }
       .x-large {
         font-size: 92px;
-        color: #1caf9a;
       }
 
   </style>
@@ -28,7 +27,7 @@
     </div><!-- br-pageheader -->
 
     <div class="br-pagetitle">
-        <i class="x-large material-icons">add_photo_alternate</i>
+        <i class="x-large material-icons cor-icones">add_photo_alternate</i>
       <div>
         <h2 class="tx-white">Nova Categoria</h2>
         <p class="mg-b-0 cinza-claro">Crie uma nova categoria para seus posts</p>

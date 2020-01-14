@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Criar Novo Usuário')
+@section('title', $plataforma. ' | Criar Novo Usuário')
 
 @section('content')
 
@@ -11,7 +11,6 @@
       }
       .x-large {
         font-size: 92px;
-        color: #0866C6;
       }
 
   </style>
@@ -28,7 +27,7 @@
     </div><!-- br-pageheader -->
 
     <div class="br-pagetitle">
-        <i class="x-large material-icons">add_photo_alternate</i>
+        <i class="x-large material-icons cor-icones">add_photo_alternate</i>
       <div>
         <h2 class="tx-white">Novo Usuário</h2>
         <p class="mg-b-0 cinza-claro">Crie um novo colaborador para seu blog</p>

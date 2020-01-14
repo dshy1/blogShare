@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Listagem de Categorias')
+@section('title', $plataforma. ' | Listagem de Categorias')
 
 @section('content')
 
@@ -8,7 +8,9 @@
   
       .large {
         font-size: 78px;
-        color: #809db1;
+      }
+      .bt-delete {
+        margin-top: -2px;
       }
 
   </style>
@@ -33,7 +35,7 @@
     </div><!-- br-pageheader -->
 
     <div class="br-pagetitle">
-      <i class="large material-icons">bookmarks</i>
+      <i class="large material-icons cor-icones">bookmarks</i>
       <div>
         <h2 class="tx-white">Categorias</h2>
         <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todas as categorias cadastradas no sistema</p>
@@ -75,7 +77,7 @@
                           <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="form-delete-categorias">
                              @method('DELETE')
                              @csrf
-                             <input type="submit" class="btn btn-outline-danger btn-sm" name="" value="Deletar" onclick="return confirmDelete();" />
+                             <input type="submit" class="btn btn-outline-danger btn-sm bt-delete" name="" value="Deletar" onclick="return confirmDelete();" />
                           </form>
                         </td>
                       </tr>

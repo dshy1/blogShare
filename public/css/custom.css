@@ -1,12 +1,23 @@
 
+/*Cores*/
 
 .cinza-claro {
   color: #868ba1;
 }
 
+.cinza-rodape {
+  color: #828f97;
+}
+
 .branco {
   color: #fff;
 }
+
+.cor-icones {
+  color: #809db1;
+}
+
+/*///////////////////////////////*/
 
 th.titulo-tabela {
 	font-weight: 700!important;
@@ -56,6 +67,8 @@ input#password {
 .links-senha-voltar {
 	text-align: center;
 }
+
+/*///////////////////////////////*/
 
 /*Tabelas Estilos*/
 .com-padding-top {

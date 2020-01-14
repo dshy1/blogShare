@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>jana. | Login</title>
+    <title>jana.Blog | Login</title>
     
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset($caminho.'storage/images/home/favicon.png') }}" />

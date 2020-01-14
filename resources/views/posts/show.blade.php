@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', 'jana. | Exibir Post')
+@section('title', $plataforma. ' | ' .$post->titulo)
 
 @section('content')
 
@@ -42,8 +42,7 @@
         background: gray;
       }
       .large {
-          font-size: 78px;
-          color: #18a4b4;
+          font-size: 80px;
       }
       .margin-right-neg {
         margin-right: -15px;
@@ -69,9 +68,9 @@
     </div><!-- br-pageheader -->
 
     <div class="br-pagetitle">
-      <i class="large material-icons">local_library</i>
+      <i class="large material-icons cor-icones">local_library</i>
       <div>
-          <h4 class="tx-white">{{ $post->titulo }}</h4>
+          <h2 class="tx-white">{{ $post->titulo }}</h2>
           <p class="mg-b-0 cinza-claro">Aqui você pode ver todos os detalhes do seu post</p>
       </div>
     </div>
@@ -120,9 +119,9 @@
                 </div><!-- media-body -->
               </div><!-- media -->
               <h6 class="tx-normal tx-roboto mg-b-15 lh-4 cinza-claro">Data de Criação:</h6>
-              <p class="tx-14 mg-b-25 txt-gray">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</p>
+              <p class="tx-14 mg-b-25 txt-gray cinza-rodape">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</p>
               <h6 class="tx-normal tx-roboto mg-b-15 lh-4 cinza-claro">Última Atualização:</h6>
-              <p class="tx-14 mg-b-25 txt-gray">{{ \Carbon\Carbon::parse($post->updated_at)->format('d M, Y')}}</p>
+              <p class="tx-14 mg-b-25 txt-gray cinza-rodape">{{ \Carbon\Carbon::parse($post->updated_at)->format('d M, Y')}}</p>
               <hr>
               
               <!-- Botoes de Açao -->

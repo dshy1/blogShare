@@ -12,8 +12,8 @@
     <div class="br-mainpanel">
       <footer class="br-footer">
         <div class="footer-left">
-          <div class="mg-b-2">Copyright &copy; 2020. All Rights Reserved.</div>
-          <div>Made with <i class="small material-icons pink">favorite</i> by Jana.</div>
+          <div class="mg-b-2 cinza-rodape">Copyright &copy; 2020. All Rights Reserved.</div>
+          <div class="cinza-rodape">Made with <i class="small material-icons pink cinza-rodape">favorite</i> by Jana.</div>
         </div>
       </footer>
 
