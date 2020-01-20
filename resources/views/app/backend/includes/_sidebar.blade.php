@@ -51,6 +51,19 @@
             </ul>
           </li><!-- br-menu-item -->
         @endcan
+
+        @can('cria-user')
+          <li class="br-menu-item">
+            <a href="#" class="{{ (request()->is('clientes')) || (request()->is('clientes/create'))? 'br-menu-link active' : 'br-menu-link' }}">
+              <i class="material-icons">group</i>
+              <span class="menu-item-label">Porfolio</span>
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub">
+              <li class="sub-item"><a href="{{ route('clientes.create') }}" class="sub-link">Novo Cliente</a></li>
+              <li class="sub-item"><a href="{{ route('clientes.index') }}" class="sub-link">Todos os Clientes</a></li>
+            </ul>
+          </li><!-- br-menu-item -->
+        @endcan
         
         <li class="br-menu-item">
           <a href="{{ route('users.edit', Auth::user()->id) }}" class="{{ (request()->is('users/*/edit')) ? 'br-menu-link active' : 'br-menu-link' }}">

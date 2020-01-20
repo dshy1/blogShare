@@ -55,6 +55,9 @@
 
     </style>
 
+</head>
+
+<body>
 
  <!-- ########## START: HEAD PANEL ########## -->
     <div class="br-header">

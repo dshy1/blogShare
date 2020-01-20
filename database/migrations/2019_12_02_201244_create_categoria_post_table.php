@@ -15,9 +15,10 @@ class CreateCategoriaPostTable extends Migration
 
         Schema::create('categoria_post', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('post_id')->unsigned();
-            $table->integer('categoria_id')->unsigned();
+            $table->integer('post_id')->unsigned();// fk com posts
+            $table->integer('categoria_id')->unsigned(); // fk com categorias
 
+            // refereciando as fk
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
 

@@ -1,6 +1,6 @@
 @extends('layouts.main-back')
 
-@section('title', $plataforma. ' | Listagem de Posts')
+@section('title', $plataforma. ' | Listagem de Clientes')
 
 @section('content')
 
@@ -31,7 +31,7 @@
         <div class="br-pageheader">
             <nav class="breadcrumb pd-0 mg-0 tx-12">
                 <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
-                <span class="breadcrumb-item active">Posts</span>
+                <span class="breadcrumb-item active">Clientes</span>
             </nav>
         </div>
         <!-- br-pageheader -->
@@ -39,8 +39,8 @@
         <div class="br-pagetitle">
             <i class="large material-icons cor-icones">description</i>
             <div>
-                <h2 class="tx-white">Posts</h2>
-                <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>
+                <h2 class="tx-white">Clientes</h2>
+                <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os clientes cadastrados no sistema</p>
             </div>
         </div>
         <!-- d-flex -->
@@ -55,7 +55,7 @@
         </div>
         @endif
 
-        <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo post">Novo</a>
+        <a href="{{ route('clientes.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo post">Novo</a>
 
         <div class="br-pagebody">
             <div class="br-section-wrapper">
@@ -66,27 +66,26 @@
                                 <th class="titulo-tabela">#</th>
                                 <th class="titulo-tabela">Título</th>
                                 <th class="titulo-tabela">Texto</th>
-                                <th class="titulo-tabela">Autor</th>
+                                <th class="titulo-tabela">Site</th>
                                 <th class="titulo-tabela">Thumb</th>
                                 <th class="titulo-tabela">Ações</th>
                             </tr>
                         </thead>
                         <tbody class="vertical-middle">
-                            @foreach($posts as $post)
+                            @foreach($portfolios as $port)
                             <tr>
-                                <td><a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{ $post->id }}</a></td>
-                                <td><a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{substr(strip_tags($post->titulo), 0, 60) . '...' ?? 'Não Informado'}}</a></td>
-                                <td>{{substr(strip_tags($post->texto), 0, 40) . '...' ?? 'Não Informado'}}</td>
-                                <td>{{ $post->autor->name }}</td>
+                                <td>{{ $port->id }}</td>
+                                <td>{{substr(strip_tags($port->titulo), 0, 60) . '...' ?? 'Não Informado'}}</td>
+                                <td>{{substr(strip_tags($port->texto), 0, 80) . '...' ?? 'Não Informado'}}</td>
+                                <td>{{ $port->url ?? 'www.sharecomunicacao.com.br' }}</td>
                                 <td>
-                                    <a href="{{ route('posts.show', $post->id) }}">
-                                        <img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 80px; height: 60px;">
+                                    <a href="{{ route('clientes.show', $port->id) }}">
+                                        <img src="{{ asset($caminho.'storage/images/clientes/'.$port->image) }}" alt="Post image" style="width: 80px; height: 60px;">
                                     </a>
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-outline-primary btn-sm com-margin">Ver</a> 
-                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
-                                    <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
+                                    <a href="{{ route('clientes.edit', $port->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
+                                    <form action="{{route('clientes.destroy', ['id' => $port->id])}}" method="POST" id="form-delete-posts">
                                         @csrf
                                         @method('DELETE') 
                                         <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" name="" value="Deletar" onclick="return confirmDelete();" />
@@ -99,7 +98,7 @@
                 </div>
                 <!-- bd -->
 
-                {{ $posts->links() }}
+                {{ $portfolios->links() }}
             </div>
         </div>
     </div>
@@ -115,7 +114,7 @@
 
         // Funçao para confirmar deletar 
         function confirmDelete() {
-            if (confirm("Deseja realmente deletar esse Post?")) {
+            if (confirm("Deseja realmente deletar esse Cliente?")) {
                 return true;
             } else {
                 return false;

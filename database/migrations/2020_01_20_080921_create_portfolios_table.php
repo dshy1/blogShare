@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreatePortfoliosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,14 @@ class CreatePostsTable extends Migration
      * @return void
      */
     public function up() {
-
-        Schema::create('posts', function (Blueprint $table) {
+        
+        Schema::create('portfolios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->default(1); //fk com user
             $table->string('titulo')->unique();
             $table->string('slug');
             $table->text('texto');
+            $table->text('url')->nullable();
             $table->string('image')->nullable()->default(0);
-            
-            // refereciando a fk
-            $table->foreign('user_id')->references('id')->on('users'); 
 
             $table->timestamps();
         });
@@ -33,11 +30,8 @@ class CreatePostsTable extends Migration
      *
      * @return void
      */
-    public function down() {
-
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('posts');
-        Schema::enableForeignKeyConstraints();
-
+    public function down()
+    {
+        Schema::dropIfExists('portfolios');
     }
 }

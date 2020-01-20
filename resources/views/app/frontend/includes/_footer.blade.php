@@ -13,6 +13,15 @@
     <script type="text/javascript" src="{{ asset($caminho.'template-front/js/retina-1.1.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset($caminho.'template-front/js/jquery.nicescroll.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset($caminho.'template-front/js/script.js') }}"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            
+            $("#ascrail2000").children().css({"background": "rgba(16, 137, 222, 0.5)"});
+        });
+
+    </script>
     
     @yield('scripts')
     

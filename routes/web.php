@@ -43,6 +43,9 @@ Route::group(['middleware' => ['auth']], function () {
 	### Post Resource
 	Route::resource('/posts', 'PostController');
 
+	### Portfolio Resource
+	Route::resource('/clientes', 'PortfolioController');
+
 	### User Resource
 	Route::resource('/users', 'UserController');
 

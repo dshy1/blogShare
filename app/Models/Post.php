@@ -20,7 +20,6 @@ class Post extends Model {
     ];
 
 
-
      // *** Relacionamentos ///////////////////////
 
     // One to Many - autor( o post pertence a um usuário )

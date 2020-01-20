@@ -126,7 +126,7 @@ class PostController extends Controller {
      */
     public function show(Post $post) {
 
-        $post  = Post::with('categorias')->with('autor')->get()->find($post);
+        $post       = Post::with('categorias')->with('autor')->get()->find($post);
         $categorias = Categoria::all();
 
         return view('posts.show', compact('post', 'categorias')); 

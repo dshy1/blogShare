@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Portfolio;
 
 
 
@@ -12,7 +13,11 @@ class SiteController extends Controller
 
      public function index() {
 
-        return view('site.home', compact('categorias'));
+        $portfolios = Portfolio::orderBy('id','desc')->limit(15)->get();
+
+        // dd($portfolios);
+
+        return view('site.home', compact('categorias', 'portfolios'));
 
     }
 
