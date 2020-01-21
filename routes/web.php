@@ -32,7 +32,7 @@ Route::get('/search/{tag}', 'PesquisaController@pesquisaTag')->name('site.pesqui
 #### Rotas que precisam de autenticaçao
 Auth::routes();
     
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth']], function() {
     
     #### Dashboard
 	Route::get('/dashboard', 'HomeController@index')->name('home');

@@ -55,7 +55,7 @@
         @can('cria-user')
           <li class="br-menu-item">
             <a href="#" class="{{ (request()->is('clientes')) || (request()->is('clientes/create'))? 'br-menu-link active' : 'br-menu-link' }}">
-              <i class="material-icons">group</i>
+              <i class="material-icons">import_contacts</i>
               <span class="menu-item-label">Porfolio</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">

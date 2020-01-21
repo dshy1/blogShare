@@ -13,6 +13,11 @@
             position: relative;
             top: 16px;
         }
+        img.thumb-image {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+        }
      
     </style>
 
@@ -80,7 +85,7 @@
                                 <td>{{ $post->autor->name }}</td>
                                 <td>
                                     <a href="{{ route('posts.show', $post->id) }}">
-                                        <img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="Post image" style="width: 80px; height: 60px;">
+                                        <img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="Post image" class="thumb-image" />
                                     </a>
                                 </td>
                                 <td class="d-flex">

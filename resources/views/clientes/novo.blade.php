@@ -47,7 +47,7 @@
       <i class="x-large material-icons cor-icones">add_photo_alternate</i>
       <div>
         <h2 class="tx-white">Novo Cliente</h2>
-        <p class="mg-b-0 cinza-claro">Crie um portfolio de clientes para sua homepage</p>
+        <p class="mg-b-0 cinza-claro">Adicione um novo cliente para o portfolio da sua homepage</p>
       </div>
     </div><!-- d-flex -->
 

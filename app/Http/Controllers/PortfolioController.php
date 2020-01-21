@@ -49,7 +49,6 @@ class PortfolioController extends Controller
      */
     public function store(Request $request) {
 
-
         // validate
         $validator = $this->validate($request, [
             'titulo'     => 'required|unique:portfolios|max:255',
@@ -119,12 +118,7 @@ class PortfolioController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id) {
 
         $portfolio = Portfolio::find($id);
@@ -133,24 +127,53 @@ class PortfolioController extends Controller
         
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+ 
+    public function update(Request $request, $id) {
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        
+        // validate
+         $validator = $this->validate($request, [
+            'titulo' => 'required|max:255',
+            'texto'  => 'required',
+
+        ]);
+
+
+        $cliente = Portfolio::findOrFail($id);
+
+        # Salvar as imagens na pasta storage/app/public/imagens/clientes
+        $pasta_clientes  = 'images' . DIRECTORY_SEPARATOR . 'clientes';
+
+        $cliente->titulo = $request->input('titulo');
+        $cliente->slug   = Str::slug($cliente->titulo, '-');
+        $cliente->texto  = $request->input('texto');
+        $cliente->url    = $request->input('url');
+
+        $cliente->save();
+
+        # Imagem Upload
+        // Se o usuário fizer upload de uma imagem nova, salva
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $arquivo_post   = $request->file('image');
+            $extensao       = $arquivo_post->getClientOriginalExtension();
+            $nome_arquivo   = 'cliente_' . rand(11111111, 99999999) . '.' . $extensao;
+            $upload         = $arquivo_post->storeAs($pasta_clientes, $nome_arquivo);
+            $cliente->image = $nome_arquivo;
+
+        }
+        // Senão mantem a imagem atual
+        $cliente->image = $cliente->image;
+
+        $cliente->save();
+
+        # status de retorno
+        Session::flash('success', ' O cliente foi atualizado com sucesso!');
+        return redirect()->route('clientes.index');
+
+
+    }// end update
+
+
     public function destroy($id)
     {
         //

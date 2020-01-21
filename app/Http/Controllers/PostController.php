@@ -118,12 +118,8 @@ class PostController extends Controller {
        
     } // end store
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
+
     public function show(Post $post) {
 
         $post       = Post::with('categorias')->with('autor')->get()->find($post);
@@ -133,12 +129,7 @@ class PostController extends Controller {
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function edit($id) {
        
         $post        = Post::with('categorias')->find($id);
@@ -148,13 +139,7 @@ class PostController extends Controller {
         return view('posts.edit', compact('post', 'catgs_post', 'categorias')); 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id) {
         
 
@@ -165,7 +150,6 @@ class PostController extends Controller {
             'categorias' => 'required|array|min:1'
 
         ]);
-
 
         $post = Post::findOrFail($id);
 
@@ -203,12 +187,8 @@ class PostController extends Controller {
 
     } // end update
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function destroy($id) {
         
         try{

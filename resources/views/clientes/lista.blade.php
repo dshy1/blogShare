@@ -7,11 +7,22 @@
     <style type="text/css">
 
         .large {
-            font-size: 78px;
+            font-size: 82px;
         }
         .d-flex input,  .d-flex a {
             position: relative;
             top: 16px;
+        }
+        img.thumb-image {
+            width: 70px;
+            height: 60px;
+            object-fit: cover;
+        }
+        td.com-limit {
+          max-width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
      
     </style>
@@ -37,7 +48,7 @@
         <!-- br-pageheader -->
 
         <div class="br-pagetitle">
-            <i class="large material-icons cor-icones">description</i>
+            <i class="large material-icons cor-icones">library_books</i>
             <div>
                 <h2 class="tx-white">Clientes</h2>
                 <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os clientes cadastrados no sistema</p>
@@ -75,12 +86,12 @@
                             @foreach($portfolios as $port)
                             <tr>
                                 <td>{{ $port->id }}</td>
-                                <td>{{substr(strip_tags($port->titulo), 0, 60) . '...' ?? 'Não Informado'}}</td>
-                                <td>{{substr(strip_tags($port->texto), 0, 80) . '...' ?? 'Não Informado'}}</td>
-                                <td>{{ $port->url ?? 'www.sharecomunicacao.com.br' }}</td>
+                                <td>{{ $port->titulo }}</td>
+                                <td>{{substr(strip_tags($port->texto), 0, 60) . '...' ?? 'Não Informado'}}</td>
+                                <td class="com-limit">{{ $port->url ?? 'www.sharecomunicacao.com.br' }}</td>
                                 <td>
-                                    <a href="{{ route('clientes.show', $port->id) }}">
-                                        <img src="{{ asset($caminho.'storage/images/clientes/'.$port->image) }}" alt="Post image" style="width: 80px; height: 60px;">
+                                    <a href="#">
+                                        <img src="{{ asset($caminho.'storage/images/clientes/'.$port->image) }}" alt="client image" class="thumb-image" />
                                     </a>
                                 </td>
                                 <td class="d-flex">
