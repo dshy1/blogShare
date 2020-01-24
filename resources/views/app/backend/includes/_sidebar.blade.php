@@ -14,54 +14,35 @@
             <span class="menu-item-label">Dashboard</span>
           </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
-
-        <li class="br-menu-item">
-          <a href="#" class="{{ (request()->is('posts')) || (request()->is('posts/*'))  ? 'br-menu-link active' : 'br-menu-link' }}">
-            <i class="material-icons">photo</i>
-            <span class="menu-item-label">Posts</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            <li class="sub-item"><a href="{{ route('posts.create') }}" class="sub-link">Novo Post</a></li>
-            <li class="sub-item"><a href="{{ route('posts.index') }}" class="sub-link">Todos os Posts</a></li>
-          </ul>
-        </li>
         
-        @can('cria-categoria')
+        @can('cria-post')
           <li class="br-menu-item">
-            <a href="#" class="{{ (request()->is('categorias')) || (request()->is('categorias/*'))? 'br-menu-link active' : 'br-menu-link' }}">
-              <i class="material-icons">class</i>
-              <span class="menu-item-label">Categorias</span>
+            <a href="#" class="{{ (request()->is('posts')) || (request()->is('posts/*')) || (request()->is('categorias')) || (request()->is('categorias/*')) ? 'br-menu-link active' : 'br-menu-link' }}">
+              <i class="material-icons">photo</i>
+              <span class="menu-item-label">Blog</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-              <li class="sub-item"><a href="{{ route('categorias.create') }}" class="sub-link">Nova Categoria</a></li>
-              <li class="sub-item"><a href="{{ route('categorias.index') }}" class="sub-link">Todas as Categorias</a></li>
+              <li class="sub-item"><a href="{{ route('posts.index') }}" class="sub-link">Posts</a></li>
+              <li class="sub-item"><a href="{{ route('categorias.index') }}" class="sub-link">Categorias</a></li>
             </ul>
-          </li><!-- br-menu-item -->
+          </li>
         @endcan
         
         @can('cria-user')
           <li class="br-menu-item">
-            <a href="#" class="{{ (request()->is('users')) || (request()->is('users/create'))? 'br-menu-link active' : 'br-menu-link' }}">
+            <a href="{{ route('users.index') }}" class="{{ (request()->is('users')) || (request()->is('users/create'))? 'br-menu-link active' : 'br-menu-link' }}">
               <i class="material-icons">group</i>
               <span class="menu-item-label">Membros</span>
             </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-              <li class="sub-item"><a href="{{ route('users.create') }}" class="sub-link">Novo Membro</a></li>
-              <li class="sub-item"><a href="{{ route('users.index') }}" class="sub-link">Todos os Membros</a></li>
-            </ul>
           </li><!-- br-menu-item -->
         @endcan
 
         @can('cria-user')
           <li class="br-menu-item">
-            <a href="#" class="{{ (request()->is('clientes')) || (request()->is('clientes/create'))? 'br-menu-link active' : 'br-menu-link' }}">
+            <a href="{{ route('clientes.index') }}" class="{{ (request()->is('clientes')) || (request()->is('clientes/create'))? 'br-menu-link active' : 'br-menu-link' }}">
               <i class="material-icons">import_contacts</i>
               <span class="menu-item-label">Porfolio</span>
             </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-              <li class="sub-item"><a href="{{ route('clientes.create') }}" class="sub-link">Novo Cliente</a></li>
-              <li class="sub-item"><a href="{{ route('clientes.index') }}" class="sub-link">Todos os Clientes</a></li>
-            </ul>
           </li><!-- br-menu-item -->
         @endcan
         

@@ -60,7 +60,7 @@
         </div>
         @endif
 
-        <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo post">Novo</a>
+        <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo post"><span>+</span> Novo</a>
 
         <div class="br-pagebody">
             <div class="br-section-wrapper">

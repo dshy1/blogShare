@@ -23,30 +23,22 @@ class PortfolioController extends Controller
 
     }
 
+    // Traz todos os clientes cadastrados para mostrar no dashboard, na página /clientes
     public function index() {
-
+        
         $portfolios = Portfolio::orderBy('id', 'desc')->paginate(6); 
 
         return view('clientes.lista', compact('portfolios'));
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function create() {
         
         return view('clientes.novo');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request) {
 
         // validate
@@ -105,19 +97,13 @@ class PortfolioController extends Controller
 
         return redirect()->route('clientes.index');
 
-    }// end class
+    }// end store
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //
     }
-
    
     public function edit($id) {
 
@@ -126,7 +112,6 @@ class PortfolioController extends Controller
         return view('clientes.edit', compact('portfolio')); 
         
     }
-
  
     public function update(Request $request, $id) {
 
@@ -174,8 +159,27 @@ class PortfolioController extends Controller
     }// end update
 
 
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        
+          try{
+
+            $cliente = Portfolio::findOrFail($id);
+            $cliente->delete();
+
+            # status de retorno
+            Session::flash('success', ' O cliente foi deletado com sucesso!');
+
+            return redirect()->route('clientes.index');
+
+        }catch (\Exception $exception){
+
+            # status de retorno
+            Session::flash('error', 'Falha ao deletar o cliente!');
+
+            return redirect()->route('clientes.index');
+
+        }
     }
-}
+
+
+}// end class

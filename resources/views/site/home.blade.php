@@ -32,7 +32,7 @@
 									</div>
 									<ul class="project-links">
 										<li><a href="#"><i class="fa fa-heart"></i></a></li>
-										<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+										<li><a href="{{ route('portfolio.show', $port->slug) }}"><i class="fa fa-arrow-right"></i></a></li>
 										<li><a href="{{ asset($caminho.'storage/images/clientes/'.$port->image) }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 									</ul>
 								</div>

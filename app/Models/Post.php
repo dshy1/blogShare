@@ -23,7 +23,7 @@ class Post extends Model {
      // *** Relacionamentos ///////////////////////
 
     // One to Many - autor( o post pertence a um usuário )
-    // Depois do ::class coloca virgula. O primeiro parâmetro é o da tabela users que seria id e depois outra virgula e segundo parâmetro qual campo da sua tabela ele relaciona.
+    // Depois do ::class coloca virgula. O primeiro parâmetro é o da tabela users que seria id e o segundo parâmetro qual campo da tabela posts ele relaciona.
 
       public function autor() {
 

@@ -26,6 +26,7 @@ class PostController extends Controller {
 
     }
 
+    // Traz todos os posts cadastrados para mostrar no dashboard, na página /posts
     public function index() {
 
         $user = Auth::user();
@@ -118,7 +119,6 @@ class PostController extends Controller {
        
     } // end store
 
-   
 
     public function show(Post $post) {
 
@@ -187,7 +187,6 @@ class PostController extends Controller {
 
     } // end update
 
-    
 
     public function destroy($id) {
         

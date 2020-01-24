@@ -57,7 +57,7 @@
         </div>
         @endif
 
-        <a href="{{ route('users.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo usuário">Novo</a>
+        <a href="{{ route('users.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo colaborador"><span>+</span> Novo</a>
 
         <div class="br-pagebody">
             <div class="br-section-wrapper">

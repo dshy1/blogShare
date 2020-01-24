@@ -24,6 +24,23 @@
 			position: absolute;
 			bottom: 18px;
 		}
+		span.float-right a {
+			width: 25px;
+			height: 25px;
+			float: right;
+			font-size: 17px;
+			font-weight: bold;
+			margin: -6px 10px 0 0;
+			background: transparent;
+    		border-radius: 100%;
+    		text-align: center;
+    		line-height: 25px;
+
+		}
+		span.float-right a:hover, span.float-right a:focus {
+			text-decoration: none;
+			background: #d4d4d4;		
+		}
 
 		@media (min-width: 1000px) {
 			.gallery-post {
@@ -45,9 +62,9 @@
 				<div class="blog-page">
 					@isset($count)
     					@if($count == 0)
-							<h3>Sua pesquisa não encontrou nenhum resultado</h3>
+							<h5 class="alert alert-success">Sua pesquisa não encontrou nenhum resultado<span class="float-right"><a href="#">X</a></span></h5>
 						@else
-							<h3>Foram encontrados {{ $count }} resultados</h3>
+							<h5 class="alert alert-success">Foram encontrados <strong>{{ $count }}</strong> resultados <span class="float-right"><a href="#">X</a></span></h5>
 						@endif
 					@endif
 					<div class="blog-box">

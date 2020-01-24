@@ -78,7 +78,7 @@
     // Mostrar o path da imagem no span ao selecionar o arquivo
     var $input = document.getElementById('input-file'),
     $fileName  = document.getElementById('file-name');
-    $fileName.textContent = 'Recomendado imagem de 500x500.';
+    $fileName.textContent = 'Recomendado imagem de 300x300px.';
 
 
     $input.addEventListener('change', function() {

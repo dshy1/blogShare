@@ -14,6 +14,7 @@
     <script type="text/javascript" src="{{ asset($caminho.'template-front/js/jquery.nicescroll.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset($caminho.'template-front/js/script.js') }}"></script>
 
+    {{-- Muda a cor da barra de rolagem --}}
     <script type="text/javascript">
 
         $(document).ready(function(){

@@ -13,11 +13,13 @@ class PesquisaController extends Controller
 
         $categorias = Categoria::all();
 
-        $posts = Post::whereHas('categorias', function ($query) use ($request) {
+        $posts = Post::whereHas('categorias', function($query) use($request) {
             $query->where('categorias.id', $request->id);
         })->paginate(6);
 
-		$count = count($posts);
+        $count = count($posts);
+       
+        dd($count);
 
         return view('site.lista', compact('categorias', 'posts', 'count'));    
             

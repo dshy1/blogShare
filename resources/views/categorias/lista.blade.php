@@ -52,7 +52,7 @@
          </div>
       @endif
    
-    <a href="{{ route('categorias.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar nova categoria">Novo</a>
+    <a href="{{ route('categorias.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar nova categoria"><span>+</span> Novo</a>
     
     <div class="br-pagebody">
       <div class="br-section-wrapper">

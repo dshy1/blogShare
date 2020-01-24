@@ -66,7 +66,7 @@
         </div>
         @endif
 
-        <a href="{{ route('clientes.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo post">Novo</a>
+        <a href="{{ route('clientes.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo cliente"><span>+</span> Novo</a>
 
         <div class="br-pagebody">
             <div class="br-section-wrapper">

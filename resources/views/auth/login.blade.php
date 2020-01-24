@@ -82,8 +82,12 @@
                         @endif
 
                         <br /><a class="btn btn-link" href="{{ route('site.lista') }}">{{ __('Voltar para o blog') }}</a>
+
+                  <p class="tx-white-5 tx-center mg-b-60 slogan">Copyright 2020 © jana.Blog Version: 1.0</p>
+
                       </div><!-- form-group --> 
                   </form>
+
             </div><!-- login-wrapper -->
         </div><!-- overlay-body -->
     </div>

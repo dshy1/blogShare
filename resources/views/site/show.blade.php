@@ -172,26 +172,18 @@
 								<h1>Tags</h1>
 								<ul>
 									<li>
-										<a href="{{ route('site.pesquisa.tag', ['tag' => 'web design']) }}">web design</a>
+										<a href="{{ route('site.pesquisa.cat', $post->slug) }}">web design</a>
 									</li>
 									<li>
-										<a href="{{ route('site.pesquisa.tag', ['tag' => 'fotografia']) }}">fotografia</a>
+										<a href="{{ route('site.pesquisa.cat', $post->slug) }}">fotografia</a>
 									</li>
 									<li>
-										<a href="{{ route('site.pesquisa.tag', ['tag' => 'desenvolvimento']) }}">desenvolvimento</a>
+										<a href="{{ route('site.pesquisa.cat', $post->slug) }}">desenvolvimento</a>
 									</li>
 									<li>
-										<a href="{{ route('site.pesquisa.tag', ['tag' => 'php']) }}">php</a>
+										<a href="{{ route('site.pesquisa.cat', $post->slug) }}">php</a>
 									</li>
-									<li>
-										<a href="{{ route('site.pesquisa.tag', ['tag' => 'ecommerce']) }}">ecommerce</a>
-									</li>
-									<li>
-										<a href="{{ route('site.pesquisa.tag', ['tag' => 'advogados']) }}">advogados</a>
-									</li>
-									<li>
-										<a href="{{ route('site.pesquisa.tag', ['tag' => 'artes graficas']) }}">artes gráficas</a>
-									</li>
+									
 								</ul>
 							</div>
 							<div class="archives-sidebar">

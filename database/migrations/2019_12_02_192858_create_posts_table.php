@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('texto');
             $table->string('image')->nullable()->default(0);
             
-            // refereciando a fk
+            // refereciando a fk na tabela users
             $table->foreign('user_id')->references('id')->on('users'); 
 
             $table->timestamps();

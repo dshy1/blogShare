@@ -40,7 +40,7 @@
 												<div class="team-hover">
 													<div class="team-data">
 														<h3>Glaucus Oliveira</h3>
-														<span>CEO</span>
+														<span>CEO & Founder</span>
 													</div>
 												</div>
 											</div>											
@@ -51,7 +51,7 @@
 												<div class="team-hover">
 													<div class="team-data">
 														<h3>Janaina Santos</h3>
-														<span>Web Developer</span>
+														<span>Full Stack Developer</span>
 													</div>
 												</div>
 											</div>											
@@ -62,7 +62,7 @@
 												<div class="team-hover">
 													<div class="team-data">
 														<h3>Pedro Mira</h3>
-														<span>Web Developer</span>
+														<span>Web Designer</span>
 													</div>
 												</div>
 											</div>											
@@ -75,7 +75,7 @@
 												<div class="team-hover">
 													<div class="team-data">
 														<h3>Jonas Oliveira</h3>
-														<span>Web Developer</span>
+														<span>Técnico em Informática</span>
 													</div>
 												</div>
 											</div>											
@@ -86,7 +86,7 @@
 												<div class="team-hover">
 													<div class="team-data">
 														<h3>Leonardo Raul</h3>
-														<span>Web Developer</span>
+														<span>Web Designer</span>
 													</div>
 												</div>
 											</div>											
@@ -142,7 +142,7 @@
 									<li>
 										<div class="client-test">
 											<img src="{{ asset($caminho.'template-front/upload/avatar1.jpg') }}" alt="" />
-											<h3>Glaucus Oliveira - Web Developer</h3>
+											<h3>Marcos Rocha - Corretor de Imóveis</h3>
 										</div>
 										<p>Sollicitudin lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. 
 										</p>

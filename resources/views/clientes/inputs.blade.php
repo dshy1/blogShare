@@ -91,7 +91,7 @@
     // pega o input e o span
     var $input = document.getElementById('input-file'),
     $fileName  = document.getElementById('file-name');
-    $fileName.textContent = 'Recomendado imagem de 1024x700.';
+    $fileName.textContent = 'Recomendado imagem de 500x500px.';
 
     // Qdo houver um change no input
     $input.addEventListener('change', function() {

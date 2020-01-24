@@ -31,7 +31,10 @@
         color: #fff;
       }
       .header-sidebar {
-        height: 1200px!important;
+        height: 1000px!important;
+      }
+      #header-sidebar02 {
+        min-height: 1400px!important;
       }
       a.link-branco {
         color: #787878;
@@ -53,6 +56,9 @@
         .header-sidebar {
           height: auto!important;
         }
+        #header-sidebar02 {
+          min-height: 150px!important;
+        }
       }
 
     </style>
@@ -64,9 +70,8 @@
 
 <!-- Container -->
 <div id="container">
-    <!-- Header
-        ================================================== -->
-    <header class="{{ (request()->is('contato')) || (request()->is('blog')) || (request()->is('search')) || (request()->is('search/*')) ? 'header-sidebar' : '' }}">
+    <!-- Header -->
+    <header class="{{ (request()->is('/')) || (request()->is('contato')) ? 'header-sidebar' : '' }}" id="{{ (request()->is('blog')) || (request()->is('search')) || (request()->is('search/*')) ? 'header-sidebar02' : '' }}">
       <div class="logo-box">
         <a class="logo" href="{{ route('site.index') }}">
           <img src="{{ asset($caminho.'images/brand/share.png') }}" class="logo" alt="Share Comunicacao" />
@@ -103,7 +108,7 @@
         <ul class="categories">
           @foreach($categorias as $categoria)
             <li>
-              <a href="{{ route('site.pesquisa.cat', ['id' => $categoria->id]) }}">{{ $categoria->nome }}</a>
+              <a href="{{ route('site.pesquisa.cat', ['id' => $categoria->id]) }}">{{ ucfirst($categoria->nome) }}</a>
             </li>         
           @endforeach
         </ul>
