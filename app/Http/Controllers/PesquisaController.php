@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Categoria;
 
+
 class PesquisaController extends Controller
 {
     // Pesquisar por categoria na sidebar
@@ -15,11 +16,12 @@ class PesquisaController extends Controller
 
         $posts = Post::whereHas('categorias', function($query) use($request) {
             $query->where('categorias.id', $request->id);
-        })->paginate(6);
+        });
 
-        $count = count($posts);
+        $count = $posts->count();
+        $posts = $posts->paginate(6);
        
-        dd($count);
+        // dd($count);
 
         return view('site.lista', compact('categorias', 'posts', 'count'));    
             

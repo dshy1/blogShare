@@ -86,7 +86,7 @@
 										<span><i class="fa fa-calendar"></i></span><a href="#">{{ \Carbon\Carbon::parse($port->created_at)->format('d M, Y')}}</a>
 									</li>
 									<li>
-										<span><i class="fa fa-link"></i></span><a href="#">{{ $port->url ?? 'www.sharecomunicacao.com.br'}}</a>
+										<span><i class="fa fa-facebook"></i></span><a href="{{'facebook.com/'.$port->url }}">{{ $port->url ?? 'sharecomunicacao'}}</a>
 									</li>
 								</ul>
 							</div>

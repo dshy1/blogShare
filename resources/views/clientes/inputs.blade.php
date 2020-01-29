@@ -54,11 +54,11 @@
 <div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="form-group">
-      <label class="form-control-label cinza-claro">Site do cliente:</label>
+      <label class="form-control-label cinza-claro">Facebook do cliente:</label>
       @isset($detalhe)
         <p id="url" class="" >{{ $portfolio->url or 'Não Informado' }}</p>
       @else
-        <input class="form-control form-control-dark" type="text" name="url" value="{{ $portfolio->url ?? old('url') }}" placeholder="Ex: www.sharecomunicacao.com.br" />
+        <input class="form-control form-control-dark" type="text" name="url" value="{{ $portfolio->url ?? old('url') }}" placeholder="Ex: sharecomunicacao" />
       @endif
     </div>
   </div><!-- col-12 --> 
