@@ -55,7 +55,11 @@
                   @include('categorias.inputs', ['categoria' => $categoria, 'detalhe' => null])
 
       	        <div class="form-layout-footer marginT70">
-                   <input type="submit" class="btn btn-primary" value="Salvar Alterações" onclick="return true;" />
+                    @if(Auth::user()->email === 'teste@gmail.com')
+                      <input type="submit" class="btn btn-primary disabled" value="Salvar Alterações" onclick="return false;" />
+                    @else
+                      <input type="submit" class="btn btn-primary" value="Salvar Alterações" onclick="return true;" />
+                    @endif
       	           <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
       	        </div><!-- form-layout-footer -->
       		 </form>

@@ -88,13 +88,25 @@
                                         <img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="Post image" class="thumb-image" />
                                     </a>
                                 </td>
+
                                 <td class="d-flex">
                                     <a href="{{ route('posts.show', $post->id) }}" class="btn btn-outline-primary btn-sm com-margin">Ver</a> 
-                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
+                                    @if(Auth::user()->email === 'teste@gmail.com')
+                                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm com-margin disabled">Editar</a> 
+                                    @else
+                                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
+                                    @endif
+
                                     <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
+
                                         @csrf
-                                        @method('DELETE') 
-                                        <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" name="" value="Deletar" onclick="return confirmDelete();" />
+                                        @method('DELETE')
+
+                                        @if(Auth::user()->email === 'teste@gmail.com')
+                                            <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top disabled" id="btn-delete" value="Deletar" onclick="return false;" />
+                                        @else
+                                          <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
+                                        @endif
                                     </form>
                                 </td>
                             </tr>
@@ -120,6 +132,7 @@
 
         // Funçao para confirmar deletar 
         function confirmDelete() {
+
             if (confirm("Deseja realmente deletar esse Post?")) {
                 return true;
             } else {

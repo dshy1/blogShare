@@ -73,11 +73,22 @@
                         <td>{{ $categoria->nome }}</td>
                         <td>{{ $categoria->descricao ?? 'Não Informado' }}</td>
                         <td class="d-flex">
-                          <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a>
+                          @if(Auth::user()->email === 'teste@gmail.com')
+                              <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-outline-success btn-sm com-margin disabled">Editar</a> 
+                          @else
+                              <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
+                          @endif
+
                           <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="form-delete-categorias">
-                             @method('DELETE')
-                             @csrf
-                             <input type="submit" class="btn btn-outline-danger btn-sm bt-delete" name="" value="Deletar" onclick="return confirmDelete();" />
+
+                              @method('DELETE')
+                              @csrf
+
+                              @if(Auth::user()->email === 'teste@gmail.com')
+                                  <input type="submit" class="btn btn-outline-danger btn-sm disabled" id="btn-delete" value="Deletar" onclick="return false;" />
+                              @else
+                                <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
+                              @endif
                           </form>
                         </td>
                       </tr>

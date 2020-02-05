@@ -65,25 +65,27 @@
       <div class="br-section-wrapper">
           <div class="bd bd-white-1 rounded table-responsive">
               <div class="form-layout form-layout-1">
-
                 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
 
                     @csrf
                     {{ method_field('POST') }}
 
                     @include('posts.inputs', ['post' => null, 'detalhe' => null])
-
+                 
                   <div class="form-layout-footer marginT70">
-                    <input type="submit" class="btn btn-primary" value="Salvar Post" onclick="return true;" />
-                    <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
-                  </div><!-- form-layout-footer -->
+                      @if(Auth::user()->email === 'teste@gmail.com')
+                        <input type="submit" class="btn btn-primary disabled" value="Salvar Post" onclick="return false;" />
+                      @else
+                        <input type="submit" class="btn btn-primary" value="Salvar Post" onclick="return true;" />
+                      @endif
+                      <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
+                  </div>
                 </form>
-
-              </div><!-- form-layout -->
-          </div><!-- bd -->
+              </div>
+          </div>
       </div>
     </div>
-  </div><!--  end mainpanel -->
+  </div><!-- mainpanel -->
 
 @endsection
 

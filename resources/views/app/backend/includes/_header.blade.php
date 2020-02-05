@@ -22,8 +22,7 @@
     <link rel="stylesheet" href="{{ asset($caminho.'css/custom.css') }}" />
     
     <!-- Material Icons -->
-    {{-- https://material.io/resources/icons/?style=baseline --}}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
     <!-- Jquery -->
     <script src="{{ asset($caminho.'js/jquery.min.js') }}"></script>

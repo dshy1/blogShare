@@ -26,7 +26,7 @@ class PostController extends Controller {
 
     }
 
-    // Traz todos os posts cadastrados para mostrar no dashboard, na página /posts
+    // Traz todos os posts cadastrados para mostrar no dashboard, na url /posts
     public function index() {
 
         $user = Auth::user();
@@ -83,7 +83,6 @@ class PostController extends Controller {
                 $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
             }
 
-            // \DB::beginTransaction();
 
             $post = Post::create([
                 'titulo' => $request->get('titulo'),
@@ -100,8 +99,6 @@ class PostController extends Controller {
             # Salva o post para esse usuario
             $user->posts()->save($post);
 
-            // \DB::commit();
-
             # status de retorno
             Session::flash('success', ' O post foi salvo com sucesso!');
             return redirect()->route('posts.index');
@@ -109,7 +106,6 @@ class PostController extends Controller {
 
         }catch (\Exception $exception) {
 
-            // \DB::rollback();
             # status de retorno
             Session::flash('error', ' O post não pôde ser cadastrado!');
             return redirect()->back()->withInput();
