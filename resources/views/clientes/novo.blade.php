@@ -41,7 +41,7 @@
         <a class="breadcrumb-item" href="{{ route('clientes.index') }}">Clientes</a>
         <span class="breadcrumb-item active">Novo Cliente</span>
       </nav>
-    </div><!-- br-pageheader -->
+    </div>
 
     <div class="br-pagetitle">
       <i class="x-large material-icons cor-icones">add_photo_alternate</i>
@@ -49,41 +49,43 @@
         <h2 class="tx-white">Novo Cliente</h2>
         <p class="mg-b-0 cinza-claro">Adicione um novo cliente para o portfolio da sua homepage</p>
       </div>
-    </div><!-- d-flex -->
+    </div>
 
-      @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-         </div>
-      @endif
+    @if($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+       </div>
+    @endif
 
     <div class="br-pagebody">
       <div class="br-section-wrapper">
           <div class="bd bd-white-1 rounded table-responsive">
               <div class="form-layout form-layout-1">
-
                 <form action="{{ route('clientes.store') }}" method="POST" enctype="multipart/form-data">
-
                     @csrf
                     {{ method_field('POST') }}
 
                     @include('clientes.inputs', ['cliente' => null, 'detalhe' => null])
 
                   <div class="form-layout-footer marginT70">
-                    <input type="submit" class="btn btn-primary" value="Salvar Cliente" />
+                    @if(Auth::user()->email === 'teste@gmail.com')
+                        <input type="submit" class="btn btn-primary disabled" value="Salvar Cliente" onclick="return false;" />
+                      @else
+                        <input type="submit" class="btn btn-primary" value="Salvar Cliente" onclick="return true;" />
+                      @endif
                     <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Cancelar</a>
-                  </div><!-- form-layout-footer -->
+                  </div>
                 </form>
-
-              </div><!-- form-layout -->
-          </div><!-- bd -->
+              </div>
+          </div>
       </div>
     </div>
-  </div><!--  end mainpanel -->
+  </div>
+  <!--  end mainpanel -->
 
 @endsection
 
@@ -110,7 +112,6 @@
       .catch( error => {
             console.error( error );
       });
-
 
   </script> 
 

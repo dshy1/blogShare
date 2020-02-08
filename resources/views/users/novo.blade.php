@@ -48,21 +48,24 @@
       <div class="br-section-wrapper">
         <div class="form-layout form-layout-1">
         		<form id="form-users" name="form-users" action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+      			    @csrf
 
-        			    @csrf
+                @include('users.inputs', ['user' => null, 'detalhe' => null])
 
-                  @include('users.inputs', ['user' => null, 'detalhe' => null])
-
-        	        <div class="form-layout-footer marginT70">
-        	          <input type="submit" class="btn btn-primary" value="Adicionar Usuário" onclick="return true;" />
-        	          <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
-        	        </div><!-- form-layout-footer -->
+      	        <div class="form-layout-footer marginT70">
+    	              @if(Auth::user()->email === 'teste@gmail.com')
+                      <input type="submit" class="btn btn-primary disabled" value="Adicionar Usuário" onclick="return false;" />
+                    @else
+                      <input type="submit" class="btn btn-primary" value="Adicionar Usuário" onclick="return true;" />
+                    @endif
+      	            <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
+      	        </div>
         		 </form>
-        </div><!-- form-layout -->
+        </div>
       </div>
     </div>
-  </div><!--  end mainpanel -->
-  <!-- ########## START: MAIN PANEL ########## -->
+  </div>
+  <!--  end mainpanel -->
 
 @endsection
 

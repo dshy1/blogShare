@@ -29,12 +29,12 @@
         <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $portfolio->titulo ?? old('titulo') }}" placeholder="Digite o nome do cliente" />
       @endif
     </div>
-  </div><!-- col-12 -->
+  </div>
 
   <div class="form-group">
       <input type="hidden" class="form-control" name="slug" />
   </div>  
-</div><!-- row -->
+</div>
 
 <div class="row mg-b-10">
   <div class="col-lg-12">
@@ -48,8 +48,8 @@
         </main>
       @endif
     </div>
-  </div><!-- col-12 -->
- </div><!-- row -->
+  </div>
+ </div>
 
 <div class="row mg-b-10">
   <div class="col-lg-12">
@@ -61,8 +61,8 @@
         <input class="form-control form-control-dark" type="text" name="url" value="{{ $portfolio->url ?? old('url') }}" placeholder="Ex: sharecomunicacao" />
       @endif
     </div>
-  </div><!-- col-12 --> 
-</div><!-- row -->
+  </div> 
+</div>
 
 <div class="row mg-b-10">
   <div class="col-lg-8">
@@ -80,8 +80,8 @@
           <span id='file-name' class="cinza-claro">{{ $portfolio->image ?? old('image') }}</span>
       @endif
     </div>
-  </div><!-- col-8 -->
-</div><!-- row -->
+  </div>
+</div>
 
 
   <!-- Script JS -->

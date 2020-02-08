@@ -29,12 +29,12 @@
         <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo ?? old('titulo') }}" placeholder="Digite o título do post" />
       @endif
     </div>
-  </div><!-- col-12 -->
+  </div>
 
   <div class="form-group">
       <input type="hidden" class="form-control" name="slug" />
   </div>  
-</div><!-- row -->
+</div>
 
 <div class="row mg-b-10">
   <div class="col-lg-12">
@@ -48,8 +48,8 @@
         </main>
       @endif
     </div>
-  </div><!-- col-12 -->
- </div><!-- row -->
+  </div>
+ </div>
 
 <div class="row mg-b-10">
   <div class="col-lg-12">
@@ -66,8 +66,8 @@
         </select>
       @endif
     </div>
-  </div><!-- col-12 -->
-</div><!-- row -->
+  </div>
+</div>
 
 <div class="row mg-b-10">
   <div class="col-lg-8">
@@ -85,25 +85,25 @@
           <span id='file-name' class="cinza-claro">{{ $post->image ?? old('image') }}</span>
       @endif
     </div>
-  </div><!-- col-8 -->
-</div><!-- row -->
+  </div>
+</div>
 
 
-  <!-- Script JS -->
-  <script type="text/javascript">
-  
-    // ## Mostrar o path da imagem no span ao selecionar o arquivo
-    // pega o input e o span
-    var $input = document.getElementById('input-file'),
-    $fileName  = document.getElementById('file-name');
-    $fileName.textContent = 'Recomendado imagem de 1024x700px.';
+<!-- Script JS -->
+<script type="text/javascript">
 
-    // Qdo houver um change no input
-    $input.addEventListener('change', function() {
-      // Mostra o conteudo dele no span
-      $fileName.textContent = this.value;
+  // ## Mostrar o path da imagem no span ao selecionar o arquivo
+  // pega o input e o span
+  var $input = document.getElementById('input-file'),
+  $fileName  = document.getElementById('file-name');
+  $fileName.textContent = 'Recomendado imagem de 1024x700px.';
 
-    });
+  // Qdo houver um change no input
+  $input.addEventListener('change', function() {
+    // Mostra o conteudo dele no span
+    $fileName.textContent = this.value;
 
-  </script> 
+  });
+
+</script> 
 

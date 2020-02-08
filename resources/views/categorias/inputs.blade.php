@@ -9,8 +9,8 @@
         	<input class="form-control form-control-dark" type="text" name="nome" value="{{ $categoria->nome  ?? old('nome') }}" placeholder="Ex: direito bancário" />
         @endif
       </div>
-    </div><!-- col-8 -->
- </div><!-- row -->
+    </div>
+ </div>
 
  <div class="row mg-b-10">
      <div class="col-md-8">
@@ -20,5 +20,5 @@
          @else
          		<textarea class="form-control form-control-dark" name="descricao" placeholder="Se desejar, faça uma breve descrição" value="{{ $categoria->descricao ?? old('descricao') }}"></textarea>
          @endif
-      </div><!-- col-8 -->
- </div><!-- row -->
+      </div>
+ </div>

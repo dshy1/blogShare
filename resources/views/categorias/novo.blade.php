@@ -24,7 +24,7 @@
         <a class="breadcrumb-item" href="{{ route('categorias.index') }}">Categorias</a>
         <span class="breadcrumb-item active">Nova Categoria</span>
       </nav>
-    </div><!-- br-pageheader -->
+    </div>
 
     <div class="br-pagetitle">
         <i class="x-large material-icons cor-icones">add_photo_alternate</i>
@@ -32,24 +32,22 @@
         <h2 class="tx-white">Nova Categoria</h2>
         <p class="mg-b-0 cinza-claro">Crie uma nova categoria para seus posts</p>
       </div>
-    </div><!-- d-flex -->
+    </div>
 
-      @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-         </div>
-      @endif
+    @if($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+       </div>
+    @endif
 
     <div class="br-pagebody">
       <div class="br-section-wrapper">
         <div class="form-layout form-layout-1">
-  		
         		<form id="form-categorias" name="form-categorias" action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data">
-
         			    @csrf
 
                   @include('categorias.inputs', ['categoria' => null, 'detalhe' => null])
@@ -61,14 +59,13 @@
                         <input type="submit" class="btn btn-primary" value="Adicionar Categoria" onclick="return true;" />
                       @endif
         	          <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
-        	        </div><!-- form-layout-footer -->
+        	        </div>
         		 </form>
-
-        </div><!-- form-layout -->
+        </div>
       </div>
     </div>
-  </div><!--  end mainpanel -->
-  <!-- ########## END: MAIN PANEL ########## -->
+  </div>
+  <!--  end mainpanel -->
 
 
 @endsection

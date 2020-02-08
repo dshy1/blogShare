@@ -41,7 +41,7 @@
         <a class="breadcrumb-item" href="{{ route('clientes.index') }}">Clientes</a>
         <span class="breadcrumb-item active">Editar Cliente</span>
       </nav>
-    </div><!-- br-pageheader -->
+    </div>
 
     <div class="br-pagetitle">
       <i class="large material-icons cor-icones">edit</i>
@@ -49,7 +49,7 @@
         <h2 class="tx-white">Editar Cliente</h2>
         <p class="mg-b-0 cinza-claro">Edite o cliente para exibir no seu portfolio</p>
       </div>
-    </div><!-- d-flex -->
+    </div>
 
     @if($errors->any())
       <div class="alert alert-danger">
@@ -73,16 +73,21 @@
                       @include('clientes.inputs', ['portfolio' => $portfolio, 'detalhe' => null])
 
                     <div class="form-layout-footer marginT70">
-                      <input type="submit" class="btn btn-primary" value="Salvar Alterações" onclick="return true;" />
+                      @if(Auth::user()->email === 'teste@gmail.com')
+                        <input type="submit" class="btn btn-primary disabled" value="Salvar Alterações" onclick="return false;" />
+                      @else
+                        <input type="submit" class="btn btn-primary" value="Salvar Alterações" onclick="return true;" />
+                      @endif
                       <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Cancelar</a>
-                    </div><!-- form-layout-footer -->
+                    </div>
                   </form>
-              </div><!-- form-layout -->
-          </div><!-- bd -->
+              </div>
+          </div>
       </div>
     </div>
-  </div><!--  end mainpanel -->
-  <!-- ########## END: MAIN PANEL ########## -->
+  </div>
+  <!--  end mainpanel -->
+  
 
 @endsection
 

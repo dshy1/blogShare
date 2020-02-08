@@ -45,8 +45,7 @@
                 <span class="breadcrumb-item active">Clientes</span>
             </nav>
         </div>
-        <!-- br-pageheader -->
-
+    
         <div class="br-pagetitle">
             <i class="large material-icons cor-icones">library_books</i>
             <div>
@@ -54,7 +53,6 @@
                 <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os clientes cadastrados no sistema</p>
             </div>
         </div>
-        <!-- d-flex -->
 
         @if(Session::has('error'))
         <div class="alert alert-danger">
@@ -95,11 +93,21 @@
                                     </a>
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('clientes.edit', $port->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
+                                    @if(Auth::user()->email === 'teste@gmail.com')
+                                      <a href="{{ route('clientes.edit', $port->id) }}" class="btn btn-outline-success btn-sm com-margin disabled">Editar</a>
+                                    @else
+                                      <a href="{{ route('clientes.edit', $port->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
+                                    @endif
+
                                     <form action="{{route('clientes.destroy', ['id' => $port->id])}}" method="POST" id="form-delete-posts">
                                         @csrf
-                                        @method('DELETE') 
-                                        <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" name="" value="Deletar" onclick="return confirmDelete();" />
+                                        @method('DELETE')
+
+                                        @if(Auth::user()->email === 'teste@gmail.com')
+                                            <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top disabled" id="btn-delete" value="Deletar" onclick="return false;" />
+                                        @else
+                                            <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
+                                        @endif
                                     </form>
                                 </td>
                             </tr>
@@ -107,14 +115,14 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- bd -->
 
                 {{ $portfolios->links() }}
+
             </div>
         </div>
     </div>
     <!--  end mainpanel -->
-    <!-- ########## END: MAIN PANEL ########## -->
+
 
 @endsection
 

@@ -1,5 +1,4 @@
 
-
 @include('app.frontend.includes._sidebar')
 
     @yield('content') 

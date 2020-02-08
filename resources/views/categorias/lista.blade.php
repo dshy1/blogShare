@@ -32,7 +32,7 @@
         <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
         <span class="breadcrumb-item active">Categorias</span>
       </nav>
-    </div><!-- br-pageheader -->
+    </div>
 
     <div class="br-pagetitle">
       <i class="large material-icons cor-icones">bookmarks</i>
@@ -40,7 +40,7 @@
         <h2 class="tx-white">Categorias</h2>
         <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todas as categorias cadastradas no sistema</p>
       </div>
-    </div><!-- d-flex -->
+    </div>
 
       @if(Session::has('error'))
         <div class="alert alert-danger">
@@ -80,7 +80,6 @@
                           @endif
 
                           <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="form-delete-categorias">
-
                               @method('DELETE')
                               @csrf
 
@@ -95,11 +94,11 @@
                   @endforeach
                 </tbody>
               </table>
-            </div><!-- bd -->
+          </div>
       </div>
     </div>
-  </div><!--  end mainpanel -->
-  <!-- ########## END: MAIN PANEL ########## -->
+  </div>
+  <!--  end mainpanel -->
 
 
 @endsection

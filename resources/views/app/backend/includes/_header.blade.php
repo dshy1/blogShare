@@ -10,7 +10,6 @@
     <link rel="shortcut icon" href="{{ asset($caminho.'storage/images/home/favicon.png') }}" />
 
     <!-- Styles -->
-
     <!-- Template Bkt CSS -->
     <link rel="stylesheet" href="{{ asset($caminho.'template-dark/css/bkt.css') }}" />
     <link rel="stylesheet" href="{{ asset($caminho.'template-dark/css/bkt.dark.css') }}" />
@@ -71,24 +70,20 @@
               <i class="material-icons">search</i>
             </button>
           </span>
-        </div><!-- input-group -->
-      </div><!-- br-header-left -->
+        </div>
+      </div>
       <div class="br-header-right">
         <nav class="nav">
-          
           <div class="dropdown">
             <a href="#" class="nav-link pd-x-7 pos-relative" data-toggle="dropdown">
               <i class="material-icons">notifications</i>
-              <!-- start: if statement -->
               <span class="square-8 bg-danger pos-absolute t-15 r-5 rounded-circle"></span>
-              <!-- end: if statement -->
             </a>
             <div class="dropdown-menu dropdown-menu-header">
               <div class="dropdown-menu-label">
                 <label>Notificações</label>
-              </div><!-- d-flex -->
+              </div>
               <div class="media-list">
-                <!-- loop starts here -->
                 <a href="#" class="media-list-link read">
                   <div class="media">
                     <img src="../img/img8.jpg" alt="">
@@ -96,9 +91,9 @@
                       <p class="noti-text"><strong>Suzzeth Bungaos</strong> curtiu seu post.</p>
                       <span>03 Outubro, 2017 8:45h</span>
                     </div>
-                  </div><!-- media -->
+                  </div>
                 </a>
-                <!-- loop ends here -->
+               
                 <a href="#" class="media-list-link read">
                   <div class="media">
                     <img src="../img/img9.jpg" alt="">
@@ -106,14 +101,14 @@
                       <p class="noti-text"><strong>Mellisa Brown</strong> comentou no seu post. <strong>Direito do Consumidor para Todos</strong></p>
                       <span>05 Outubro, 2017 10:00h</span>
                     </div>
-                  </div><!-- media -->
+                  </div>
                 </a>
                 <div class="dropdown-footer">
                   <a href="#"><i class="fa fa-angle-down"></i>Ver todas</a>
                 </div>
-              </div><!-- media-list -->
-            </div><!-- dropdown-menu -->
-          </div><!-- dropdown -->
+              </div>
+            </div>
+          </div>
 
           <div class="dropdown">
             <a href="#" class="nav-link nav-link-profile" data-toggle="dropdown">
@@ -136,11 +131,12 @@
                     </form>
                 </li>
               </ul>
-            </div><!-- dropdown-menu -->
-          </div><!-- dropdown -->
+            </div>
+          </div>
         </nav>
-      </div><!-- br-header-right -->
-    </div><!-- br-header -->
-    <!-- ########## END: HEAD PANEL ########## -->
+      </div>
+    </div>
+    <!-- br-header -->
+    
 
 

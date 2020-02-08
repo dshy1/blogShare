@@ -83,11 +83,20 @@
                                     <img src="{{ $user->image !== null ? asset($caminho.'storage/images/users/'.$user->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" class="wd-32 rounded-circle rounded-header" />
                                 </td>
                                 <td class="d-flex">
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
+                                    @if(Auth::user()->email === 'teste@gmail.com')
+                                      <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-success btn-sm com-margin disabled">Editar</a> 
+                                    @else
+                                      <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
+                                    @endif
+                                    
                                     <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
                                          @csrf
                                          @method('DELETE')
-                                        <input type="submit" class="btn btn-outline-danger btn-sm bt-delete" name="" value="Deletar" onclick="return confirmDelete();" />
+                                         @if(Auth::user()->email === 'teste@gmail.com')
+                                            <input type="submit" class="btn btn-outline-danger btn-sm disabled" id="btn-delete" value="Deletar" onclick="return false;" />
+                                        @else
+                                            <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
+                                        @endif
                                     </form>
                                 </td>
                             </tr>

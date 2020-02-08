@@ -39,7 +39,6 @@
                 <span class="breadcrumb-item active">Posts</span>
             </nav>
         </div>
-        <!-- br-pageheader -->
 
         <div class="br-pagetitle">
             <i class="large material-icons cor-icones">description</i>
@@ -48,7 +47,6 @@
                 <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os posts cadastrados no sistema</p>
             </div>
         </div>
-        <!-- d-flex -->
 
         @if(Session::has('error'))
         <div class="alert alert-danger">
@@ -98,7 +96,6 @@
                                     @endif
 
                                     <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-posts">
-
                                         @csrf
                                         @method('DELETE')
 
@@ -114,14 +111,13 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- bd -->
 
                 {{ $posts->links() }}
+
             </div>
         </div>
     </div>
     <!--  end mainpanel -->
-    <!-- ########## END: MAIN PANEL ########## -->
 
 @endsection
 

@@ -41,7 +41,7 @@
         <a class="breadcrumb-item" href="{{ route('posts.index') }}">Posts</a>
         <span class="breadcrumb-item active">Editar Post</span>
       </nav>
-    </div><!-- br-pageheader -->
+    </div>
 
     <div class="br-pagetitle">
       <i class="large material-icons cor-icones">edit</i>
@@ -49,7 +49,7 @@
         <h2 class="tx-white">Editar Post</h2>
         <p class="mg-b-0 cinza-claro">Edite seu post e deixe-o mais incrível ainda</p>
       </div>
-    </div><!-- d-flex -->
+    </div>
 
     @if($errors->any())
       <div class="alert alert-danger">
@@ -66,7 +66,6 @@
           <div class="bd bd-white-1 rounded table-responsive">
               <div class="form-layout form-layout-1">
                   <form id="form-posts-edit" name="form-posts-edit" action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
-
                       @csrf
                       {{method_field('PATCH')}}
 
@@ -79,14 +78,14 @@
                         <input type="submit" class="btn btn-primary" value="Salvar Alterações" onclick="return true;" />
                       @endif
                       <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
-                    </div><!-- form-layout-footer -->
+                    </div>
                   </form>
-              </div><!-- form-layout -->
-          </div><!-- bd -->
+              </div>
+          </div>
       </div>
     </div>
-  </div><!--  end mainpanel -->
-  <!-- ########## END: MAIN PANEL ########## -->
+  </div>
+  <!--  end mainpanel -->
 
 @endsection
 

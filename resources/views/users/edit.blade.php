@@ -73,28 +73,30 @@
                 <div class="media-body mg-l-20" id="div-form-edit-user">
                   <div class="form-layout form-layout-1">
                       <form id="form-edit-user" name="form-users" action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
-
                             @csrf
                             {{method_field('PATCH')}}
 
                             @include('users.inputs', ['user' => $user, 'detalhe' => null])
 
                             <div class="form-layout-footer marginT70">
-                              <input type="submit" class="btn btn-primary" value="Salvar Alterações" onclick="return true;" />
+                              @if(Auth::user()->email === 'teste@gmail.com')
+                                <input type="submit" class="btn btn-primary disabled" value="Salvar alterações" onclick="return false;" />
+                              @else
+                                <input type="submit" class="btn btn-primary" value="Salvar alterações" onclick="return true;" />
+                              @endif
                               <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
-                            </div><!-- form-layout-footer -->
+                            </div>
                        </form>
-                  </div><!-- form-layout -->
-                </div><!-- media-body -->
-              </div><!-- media -->
-            </div><!-- card -->
-          </div><!-- col-lg-8 -->
-        </div><!-- row -->
-      </div><!-- tab-pane -->
-    </div><!-- br-pagebody -->
-  </div><!-- br-mainpanel -->
-  <!-- ########## START: MAIN PANEL ########## -->
-
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- br-mainpanel -->
 
 @endsection
 

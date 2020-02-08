@@ -41,7 +41,7 @@
         <a class="breadcrumb-item" href="{{ route('posts.index') }}">Posts</a>
         <span class="breadcrumb-item active">Novo Post</span>
       </nav>
-    </div><!-- br-pageheader -->
+    </div>
 
     <div class="br-pagetitle">
       <i class="x-large material-icons cor-icones">add_photo_alternate</i>
@@ -49,24 +49,23 @@
         <h2 class="tx-white">Novo Post</h2>
         <p class="mg-b-0 cinza-claro">Crie um novo post incrível :)</p>
       </div>
-    </div><!-- d-flex -->
+    </div>
 
-      @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-         </div>
-      @endif
+    @if($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+       </div>
+    @endif
 
     <div class="br-pagebody">
       <div class="br-section-wrapper">
           <div class="bd bd-white-1 rounded table-responsive">
               <div class="form-layout form-layout-1">
                 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
-
                     @csrf
                     {{ method_field('POST') }}
 
@@ -85,7 +84,8 @@
           </div>
       </div>
     </div>
-  </div><!-- mainpanel -->
+  </div>
+  <!-- mainpanel -->
 
 @endsection
 
