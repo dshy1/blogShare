@@ -31,12 +31,12 @@ Route::get('/search', 'PesquisaController@pesquisaCategoria')->name('site.pesqui
 
 #### Rotas que precisam de autenticaçao
 Auth::routes();
-    
-Route::group(['middleware' => ['auth']], function() {
-    
-    #### Dashboard
-	Route::get('/dashboard', 'HomeController@index')->name('home');
 
+#### Dashboard
+Route::get('/dashboard', 'HomeController@index')->name('home');
+    
+Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function() {
+    
 	### Categoria Resource
 	Route::resource('/categorias', 'CategoriaController');
 
@@ -81,7 +81,7 @@ Route::group(['middleware' => ['auth']], function() {
    	
 // });
 
-#### Atribuir todas as permissoes para a role admin
+#### Atribuir todas as permissoes para a politica de admin
 // Route::get('/role-admin', function() {
 // 	// pega a role admin
 // 	$role = Role::where('name', 'Admin')->get()->first();
@@ -98,7 +98,7 @@ Route::group(['middleware' => ['auth']], function() {
    	
 // });
 
-#### Atribuir algumas permissoes para a role autor
+#### Atribuir algumas permissoes para a politica de autor
 // Route::get('/role-autor', function() {
 // 	// pega a role autor
 // 	$role = Role::where('name', 'Autor')->get()->first();

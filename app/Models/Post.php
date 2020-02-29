@@ -23,16 +23,16 @@ class Post extends Model {
      // *** Relacionamentos ///////////////////////
 
     // One to Many - autor( o post pertence a um usuário )
-    // Depois do ::class coloca virgula. O primeiro parâmetro é o da tabela users que seria id e o segundo parâmetro qual campo da tabela posts ele relaciona.
+    // Depois do ::class coloca virgula. O primeiro parâmetro é a foreign key e o segundo parâmetro qual campo da outra tabela ela se relaciona.
 
-      public function autor() {
+    public function autor() {
 
-        return $this->hasOne(\App\User::class, 'id', 'user_id');
+        return $this->belongsTo(\App\User::class, 'user_id', 'id');
     }
 
     // Many to Many - categorias( um post pode ter várias categorias )
 
-     public function categorias() {
+    public function categorias() {
 
         // é belongsToMany porque tem uma pivot table categoria_post
         return $this->belongsToMany(\App\Models\Categoria::class);

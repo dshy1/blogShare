@@ -26,7 +26,7 @@ class PostController extends Controller {
 
     }
 
-    // Traz todos os posts cadastrados para mostrar no dashboard, na url /posts
+    // Traz todos os posts
     public function index() {
 
         $user = Auth::user();
@@ -50,7 +50,7 @@ class PostController extends Controller {
 
         $categorias = Categoria::all();
 
-        return view('posts.novo', compact('categorias', 'catgs_post'));
+        return view('posts.create', compact('categorias', 'catgs_post'));
     }
 
 
@@ -96,6 +96,7 @@ class PostController extends Controller {
 
             # Pega o usuario logado
             $user = Auth::user();
+            
             # Salva o post para esse usuario
             $user->posts()->save($post);
 

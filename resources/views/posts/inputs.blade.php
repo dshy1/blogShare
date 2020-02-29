@@ -26,7 +26,7 @@
       @isset($detalhe)
         <p id="titulo" class="" >{{ $post->titulo or 'Não Informado' }}</p>
       @else
-        <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo ?? old('titulo') }}" placeholder="Digite o título do post" />
+        <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo ?? old('titulo') }}" placeholder="Título do post" />
       @endif
     </div>
   </div>
@@ -58,7 +58,7 @@
       @isset($detalhe)
         <p id="categorias" class="">Detalhes Categorias</p>
       @else
-        <select class="form-control select2" data-placeholder="Choose country" multiple="multiple" name="categorias[]" id="categorias-wrapper">
+        <select class="js-example-basic-multiple" multiple="multiple" name="categorias[]" id="categorias-wrapper">
            @foreach($categorias as $categoria)
               <option value="{{ $categoria->id }}" {{ isset($catgs_post) && in_array($categoria->id, $catgs_post) ? 'selected="selected"' : '' }} >{{ $categoria->nome }}
               </option>

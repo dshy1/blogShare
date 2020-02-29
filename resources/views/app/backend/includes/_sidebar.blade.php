@@ -1,63 +1,83 @@
 
+<style type="text/css">
+  
+  #side-menu {
+    min-height: 100vh;
+  }
+  #side-menu li {
+    color: #7b919e;
+  }
+  a.waves-effect:hover {
+    color: #d7e4ec;
+  }
+  .mm-active {
+    color: #d7e4ec!important;
+  }
+</style>
 
-<!-- ########## START: LEFT PANEL ########## -->
-<div class="container">
-    <div class="br-logo"><a href="{{ route('home') }}"><span>[</span>jana.<i>Blog</i><span>]</span></a></div>
-    <div class="br-sideleft sideleft-scrollbar">
+<!-- ========== Left Sidebar Start ========== -->
+  <div class="vertical-menu">
 
-      {{-- Menu --}}
-      <label class="sidebar-label">Navegação</label>
-      <ul class="br-sideleft-menu">
-        <li class="br-menu-item">
-          <a href="{{ route('home') }}" class="{{ (request()->is('dashboard')) ? 'br-menu-link active' : 'br-menu-link' }}"> 
-            <i class="material-icons">dashboard</i>
-            <span class="menu-item-label">Dashboard</span>
-          </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
-        
-        @can('cria-post')
-          <li class="br-menu-item">
-            <a href="#" class="{{ (request()->is('posts')) || (request()->is('posts/*')) || (request()->is('categorias')) || (request()->is('categorias/*')) ? 'br-menu-link active' : 'br-menu-link' }}">
-              <i class="material-icons">photo</i>
-              <span class="menu-item-label">Blog</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-              <li class="sub-item"><a href="{{ route('posts.index') }}" class="sub-link">Posts</a></li>
-              <li class="sub-item"><a href="{{ route('categorias.index') }}" class="sub-link">Categorias</a></li>
-            </ul>
-          </li>
-        @endcan
-        
-        @can('cria-user')
-          <li class="br-menu-item">
-            <a href="{{ route('users.index') }}" class="{{ (request()->is('users')) || (request()->is('users/create'))? 'br-menu-link active' : 'br-menu-link' }}">
-              <i class="material-icons">group</i>
-              <span class="menu-item-label">Membros</span>
-            </a><!-- br-menu-link -->
-          </li><!-- br-menu-item -->
-        @endcan
+      <div data-simplebar class="h-100">
+          <!--- Sidemenu -->
+          <div id="sidebar-menu">
+              <!-- Left Menu Start -->
+              <ul class="metismenu list-unstyled" id="side-menu">
+                  <li class="menu-title">Menu</li>
 
-        @can('cria-user')
-          <li class="br-menu-item">
-            <a href="{{ route('clientes.index') }}" class="{{ (request()->is('clientes')) || (request()->is('clientes/create'))? 'br-menu-link active' : 'br-menu-link' }}">
-              <i class="material-icons">import_contacts</i>
-              <span class="menu-item-label">Porfolio</span>
-            </a><!-- br-menu-link -->
-          </li><!-- br-menu-item -->
-        @endcan
-        
-        <li class="br-menu-item">
-          <a href="{{ route('users.edit', Auth::user()->id) }}" class="{{ (request()->is('users/*/edit')) ? 'br-menu-link active' : 'br-menu-link' }}">
-            <i class="material-icons">person</i>
-            <span class="menu-item-label">Ver Perfil</span>
-          </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
+                  <li>
+                      <a href="{{ route('home') }}" class="waves-effect">
+                          <i class="mdi mdi-view-dashboard"></i><span class="badge badge-pill badge-success float-right">3</span>
+                          <span>Dashboard</span>
+                      </a>
+                  </li>
 
-      </ul><!-- br-sideleft-menu -->
+                  <li>
+                      <a href="javascript: void(0);" class="has-arrow waves-effect">
+                          <i class="mdi mdi-pencil-box-multiple"></i>
+                          <span>Blog</span>
+                      </a>
+                      <ul class="sub-menu" aria-expanded="false">
+                          <li><a href="{{ route('posts.index') }}">Posts</a></li>
+                          <li><a href="#">Categorias</a></li>
+                      </ul>
+                  </li>
 
-      <br>
-    </div><!-- br-sideleft -->
-</div>
-<!-- ########## END: LEFT PANEL ########## -->
+                  <li>
+                      <a href="#" class="waves-effect">
+                          <i class="mdi mdi-account-multiple-outline"></i>
+                          <span>Membros</span>
+                      </a>
+                  </li>
 
+                  <li>
+                      <a href="#" class="waves-effect">
+                          <i class="mdi mdi-layers-triple"></i>
+                          <span>Clientes</span>
+                      </a>
+                  </li>
+
+                  <li>
+                      <a href="#" class="waves-effect">
+                          <i class="mdi mdi-account-lock"></i>
+                          <span>Ver Perfil</span>
+                      </a>
+                  </li>
+
+              </ul>
+
+              <div class="sidebar-section mt-5 mb-3">
+                  <h6 class="text-reset font-weight-medium">
+                      Project Completed
+                      <span class="float-right">67%</span>
+                  </h6>
+                  <div class="progress mt-3" style="height: 4px;">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+              </div>
+          </div>
+          <!-- Sidebar -->
+      </div>
+  </div>
+  <!-- Left Sidebar End -->
 

@@ -86,7 +86,7 @@
                               @if(Auth::user()->email === 'teste@gmail.com')
                                   <input type="submit" class="btn btn-outline-danger btn-sm disabled" id="btn-delete" value="Deletar" onclick="return false;" />
                               @else
-                                <input type="submit" class="btn btn-outline-danger btn-sm com-margin-top" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
+                                <input type="submit" class="btn btn-outline-danger btn-sm" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
                               @endif
                           </form>
                         </td>
