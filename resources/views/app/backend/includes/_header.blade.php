@@ -35,6 +35,10 @@
       .logo-light {
         display: block;
       }
+      .logo-lg img {
+        width: 130px;
+        height: auto;
+      }
       .app-search {
         
         position: absolute;
@@ -63,7 +67,7 @@
                             <img src="{{ asset($caminho.'template-dark/assets/images/logo-sm-light.png') }}" alt="" height="22" />
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset($caminho.'template-dark/assets/images/logo-light.png') }}" alt="" height="20" />
+                            <img src="{{ asset($caminho.'template-dark/assets/images/share.png') }}" alt="" height="20" />
                         </span>
                     </a>
                 </div>

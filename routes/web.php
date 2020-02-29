@@ -18,6 +18,14 @@ use Spatie\Permission\Models\Permission;
 |
 */
 
+
+#### Redireciona /home para /login
+Route::get('/home', function() {
+	
+	return redirect()->route('login');
+   	
+});
+
 #### Rotas de navegaçao do site
 Route::get('/', 'SiteController@index')->name('site.index');
 Route::get('/sobre', 'SiteController@sobre')->name('site.sobre');
@@ -110,12 +118,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function() {
    	
 // });
 
-#### Redirecionar /home para /login
-Route::get('/home', function() {
-	
-	return redirect()->route('login');
-   	
-});
 
-
+// git push origin05
 

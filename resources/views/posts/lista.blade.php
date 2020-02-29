@@ -9,9 +9,13 @@
         .large {
             font-size: 78px;
         }
-        .d-flex input,  .d-flex a {
+        .botoes {
+            display: flex;
+            align-items: center;
+        }
+        .botoes input,  .botoes a {
             position: relative;
-            top: 16px;
+            top: 10px;
         }
         img.thumb-image {
             width: 60px;
@@ -114,7 +118,7 @@
                                                             <img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="Post image" class="thumb-image" />
                                                         </a>
                                                     </td>
-                                                    <td class="d-flex">
+                                                    <td class="botoes">
                                                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-outline-primary btn-sm com-margin">Ver</a> 
                                                         {{-- @if(Auth::user()->email === 'teste@gmail.com')
                                                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm com-margin disabled">Editar</a> 
