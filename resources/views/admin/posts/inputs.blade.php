@@ -14,7 +14,7 @@
     margin-bottom: 15px;
   }
   #categorias-wrapper {
-    min-width: 250px;
+    min-width: 450px;
   }
 
 </style>
@@ -54,11 +54,12 @@
 <div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="form-group mg-b-10-force form-categorias">
-      <label class="form-control-label cinza-claro">Categorias: <span class="tx-danger">*</span></label>
+      <label class="form-control-label col-md-12 cinza-claro">Categorias: <span class="tx-danger">*</span></label>
       @isset($detalhe)
         <p id="categorias" class="">Detalhes Categorias</p>
       @else
         <select class="js-example-basic-multiple" multiple="multiple" name="categorias[]" id="categorias-wrapper">
+           <option value="" disabled selected>Selecione</option>
            @foreach($categorias as $categoria)
               <option value="{{ $categoria->id }}" {{ isset($catgs_post) && in_array($categoria->id, $catgs_post) ? 'selected="selected"' : '' }} >{{ $categoria->nome }}
               </option>
@@ -72,7 +73,7 @@
 <div class="row mg-b-10">
   <div class="col-lg-8">
     <div class="custom-file">
-      <label class="form-control-label cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
+      <label class="form-control-label col-md-12 cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
       @isset($detalhe)
         <p id="imagem" class="">Detalhes da Imagem</p>
       @else
@@ -83,6 +84,7 @@
         @endif
           <input id='input-file' type='file' accept="image/png, image/jpeg" name="image" />
           <span id='file-name' class="cinza-claro">{{ $post->image ?? old('image') }}</span>
+          <img src="" id="teste-image" />
       @endif
     </div>
   </div>
@@ -94,14 +96,16 @@
 
   // ## Mostrar o path da imagem no span ao selecionar o arquivo
   // pega o input e o span
-  var $input = document.getElementById('input-file'),
-  $fileName  = document.getElementById('file-name');
+  var $input     = document.getElementById('input-file');
+  var $fileName  = document.getElementById('file-name');
+  var $teste     = document.getElementById('teste-image');
   $fileName.textContent = 'Recomendado imagem de 1024x700px.';
 
   // Qdo houver um change no input
   $input.addEventListener('change', function() {
     // Mostra o conteudo dele no span
     $fileName.textContent = this.value;
+    $teste.setAttribute("src", $fileName);
 
   });
 

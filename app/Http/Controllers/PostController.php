@@ -42,7 +42,7 @@ class PostController extends Controller {
             $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->paginate(6);
         }
 
-        return view('posts.lista', compact('posts', 'user'));
+        return view('admin.posts.lista', compact('posts', 'user'));
     }
 
 
@@ -50,7 +50,7 @@ class PostController extends Controller {
 
         $categorias = Categoria::all();
 
-        return view('posts.create', compact('categorias', 'catgs_post'));
+        return view('admin.posts.create', compact('categorias', 'catgs_post'));
     }
 
 

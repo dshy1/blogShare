@@ -25,12 +25,20 @@
         .marginLeft4 {
             margin-left: 4px;
         }
+        .alert-success {
+            position: relative;
+            left: 25%;
+            margin: 100px 0 -60px;
+        }
+        .row-alert {
+            max-width: 80%;
+        }
      
     </style>
 
 
     @if(Session::has('success'))
-        <div class="row justify-content-center">
+        <div class="row justify-content-center row-alert">
             <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
                 <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
                 <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
