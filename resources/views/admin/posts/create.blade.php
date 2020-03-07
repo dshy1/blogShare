@@ -38,8 +38,8 @@
       .header-title {
         margin-bottom: 35px;
       }
-       hr {
-        margin-top: 50px!important;
+      hr {
+        margin-top: 130px!important;
       }
 
   </style>
@@ -59,7 +59,7 @@
                           <div class="page-title-right">
                               <ol class="breadcrumb m-0">
                                   <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                                  <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Posts</a></li>
+                                  <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Posts</a></li>
                                   <li class="breadcrumb-item active">Novo Post</li>
                               </ol>
                           </div>
@@ -69,13 +69,23 @@
               </div>
               <!-- end page title -->
 
+              @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                       @endforeach
+                    </ul>
+                </div>
+              @endif
+
               <div class="row">
                   <div class="col-12">
                       <div class="card">
                           <div class="card-body">
                             <h4 class="header-title">Crie Posts Incríveis para seu Blog</h4>
                            
-                             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                             <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data" >
                                   @csrf
                                   {{ method_field('POST') }}
 
@@ -87,7 +97,7 @@
                                       <input type="submit" class="btn btn-primary disabled" value="Salvar Post" onclick="return false;" />
                                     @else --}}
                                       <input type="submit" class="btn btn-primary" value="Salvar Post" onclick="return true;" />
-                                    <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
+                                    <a href="{{ route('post.index') }}" class="btn btn-secondary">Cancelar</a>
                                 </div>
                               </form>
                           </div>
@@ -109,12 +119,6 @@
 
   <!-- Script JS -->
   <script type="text/javascript">
-
-      $(document).ready(function() {
-        $('#categorias-wrapper').select2({
-            maximumSelectionLength: 3
-        });
-      });
 
       // ## Check Editor -->
       ClassicEditor.create( document.querySelector( '#editor' ), {

@@ -3,22 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>@yield('title')</title>
-
     <meta charset="utf-8" />
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <title>@yield('title')</title>
 
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css' />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/bootstrap.css') }}" media="screen" /> 
-    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/magnific-popup.css') }}" media="screen" />
-    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/font-awesome.css') }}" media="screen" />
-    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/flexslider.css') }}" media="screen" />
-    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/style.css') }}" media="screen" />
-    <link rel="stylesheet" type="text/css" href="{{ asset($caminho.'template-front/css/responsive.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($path.'template-front/css/bootstrap.css') }}" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="{{ asset($path.'template-front/css/magnific-popup.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($path.'template-front/css/font-awesome.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($path.'template-front/css/flexslider.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($path.'template-front/css/style.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset($path.'template-front/css/responsive.css') }}" media="screen" />
 
 
     <style type="text/css">
@@ -74,7 +72,7 @@
     <header class="{{ (request()->is('/')) || (request()->is('contato')) ? 'header-sidebar' : '' }}" id="{{ (request()->is('blog')) || (request()->is('search')) || (request()->is('search/*')) ? 'header-sidebar02' : '' }}">
       <div class="logo-box">
         <a class="logo" href="{{ route('site.index') }}">
-          <img src="{{ asset($caminho.'images/brand/share.png') }}" class="logo" alt="Share Comunicacao" />
+          <img src="{{ asset($path.'images/brand/share.png') }}" class="logo" alt="Share Comunicacao" />
         </a>
         <p class="slogan">Marketing Digital que traz mais resultado para você e a sua empresa.</p>
       </div>

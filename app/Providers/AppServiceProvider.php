@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-// use Illuminate\Pagination\Paginator;
 use App\Models\Categoria;
+use Route;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -32,18 +32,27 @@ class AppServiceProvider extends ServiceProvider
             view()->composer('*', function($view) {
                 // trazer todas as categorias para mostrar nos includes(sidebar)
                 $categorias = Categoria::orderBy('id', 'desc')->limit(5)->get();
-                // nome da plataforma para title
+                // nome da minha plataforma para usar no title
                 $plataforma = "jana.Blog";
                 // nome do cliente para title
                 $cliente = "Share Comunicação";
-                // caminho para js, css e images (se for para o host, coloca public/)
-                $caminho = '';
+                // path(caminho) para os arquivos js, css e images (se for para o host, coloca public/)
+                $path = '';
 
                 $view->with('cliente', $cliente)
-                     ->with('caminho', $caminho)
+                     ->with('path', $path)
                      ->with('categorias', $categorias)
                      ->with('plataforma', $plataforma);
   
-        });
+            });
+
+            // Mudando os verbos das rotas
+            Route::resourceVerbs([
+
+                'create' => 'novo',
+                'edit'   => 'editar'
+
+            ]);
+
     }
 }

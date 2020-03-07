@@ -21,7 +21,7 @@
       }
       .data-bottom, .comments-bottom {
       	position: absolute;
-      	bottom: 22px;
+      	bottom: -10px;
       }
       .profile-image {
         max-height: 112px;
@@ -40,206 +40,177 @@
         height: 40px;
         border-radius: 100%;
         object-fit:cover;
+        margin-right: 25px;
       }
       .card-post-destaque {
         max-height: 375px;
       }
+      .table-responsive {
+        overflow: hidden;
+      }
 
   </style>
 
-  {{-- Essa é a home do painel de controle /dashboard--}}
+  {{-- Essa é a home do painel de controle--}}
   <!-- ########## START: MAIN PANEL ########## -->
-  <div class="br-mainpanel">
-      <div class="br-pageheader">
-          <nav class="breadcrumb pd-0 mg-0 tx-12">
-              <span class="breadcrumb-item active">Home</span>
-          </nav>
-      </div>
-      <!-- br-pageheader -->
+  <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+              <div class="row">
+                  <div class="col-12">
+                      <div class="page-title-box d-flex align-items-center justify-content-between">
+                          <h4 class="mb-0 font-size-18">Dashboard</h4>
+                          <div class="page-title-right">
+                              <ol class="breadcrumb m-0">
+                                  <li class="breadcrumb-item">
+                                      <a href="javascript: void(0);" class="breadcrumb-item active">Home</a>
+                                  </li>
+                              </ol>
+                          </div>
+                      </div>
+                  </div>
+              </div> 
 
-      <div class="br-pagetitle">
-          <i class="large material-icons">dashboard</i>
-          <div>
-              <h2 class="tx-white">Bem-vindo</h2>
-              <p class="mg-b-0 cinza-claro">Aqui você pode navegar pelo seu painel de controle e fazer coisas incríveis</p>
-          </div>
-      </div>
-      <!-- d-flex -->
-  	
-    <!-- Lista dos 3 posts mais recentes -->
-    @isset($posts)
-    	<div class="br-pagebody pd-x-20 pd-sm-x-30 mx-wd-1350">
-    	   <div class="card-deck card-deck-sm mg-x-0">
-            @foreach($posts as $post)
-      	      <div class="card bd-0 mg-0">
-                <a href="{{ route('posts.show', $post->id) }}">
-        	        <figure class="{{ Auth::user()->roles->first()->name == 'Admin' ? 'card-item-img bg-mantle rounded-top' : 'card-item-img bg-mantle rounded-top' }}">
-        	           <img class="img-fluid rounded-top" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image" />
-        	        </figure>
-                </a>
-                
-                {{-- Essa div com a imagem do autor do post só vai aparecer para o admin --}}
-                @if(Auth::user()->roles()->first()->name =='admin')
-                  <div class="media mg-b-25 media-cards">
-                      <img src="{{ $post->autor->image !== null ? asset($caminho.'storage/images/users/'.$post->autor->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image" />
-                  </div><!-- media -->
-                @endif
+              <div class="row">
+                  <div class="col-sm-6 col-xl-3">
+                      <div class="card">
+                          <div class="card-body">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h5 class="font-size-14">Posts Publicados</h5>
+                                  </div>
+                                  <div class="avatar-xs">
+                                      <span class="avatar-title rounded-circle bg-primary">
+                                          <i class="dripicons-box"></i>
+                                      </span>
+                                  </div>
+                              </div>
+                              {{-- traz o total de posts publicados --}}
+                              <h4 class="m-0 align-self-center">{{ count($listaPosts) }}</h4>
+                              {{-- Mostra a data de criacao do ultimo post --}}
+                              <p class="mb-0 mt-3 text-muted">{{ \Carbon\Carbon::parse($lastPost->created_at)->diffForHumans() }}</p>                              
+                          </div>
+                      </div>
+                  </div>
 
-      	        <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
-      	          <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $post->categorias[0]->nome }}</p>
-      	          <h4 class="tx-normal tx-roboto lh-3 mg-b-15 card-title">
-                    <a href="{{ route('posts.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}
-                    </a>
-                  </h4>
-      	          <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 157) . '...' ?? 'Não Informado'}}</p>
-      	          <p class="tx-13 mg-b-0 comments-bottom">
-      	            <a href="#" class="tx-info">12 Likes</a>
-      	            <a href="#" class="tx-info mg-l-5">23 Comments</a>
-      	            <a href="#" class="tx-info mg-l-5"><i class="icon ion-more"></i></a>
-      	          </p>
-      	        </div><!-- card-body -->
-      	      </div><!-- card -->
-            @endforeach
-          </div>
+                  <div class="col-sm-6 col-xl-3">
+                      <div class="card">
+                          <div class="card-body">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h5 class="font-size-14">Usuarios</h5>
+                                  </div>
+                                  <div class="avatar-xs">
+                                      <span class="avatar-title rounded-circle bg-primary">
+                                          <i class="dripicons-briefcase"></i>
+                                      </span>
+                                  </div>
+                              </div>
+                              <h4 class="m-0 align-self-center">$45,253</h4>
+                              <p class="mb-0 mt-3 text-muted"><span class="text-success">2.73 % <i class="mdi mdi-trending-up mr-1"></i></span>{{ \Carbon\Carbon::now()->format('d M, Y') }}</p>
+                          </div>
+                      </div>
+                  </div>
 
-        @if($posts->isEmpty())
-          <div class="card-deck card-deck-sm mg-x-0">
-              <div class="card bd-0 mg-0">
-                <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
-                  <h5 class="tx-normal tx-roboto lh-3 mg-b-15 alert-danger padding12">Você ainda não tem posts publicados</a></h5>
-                </div><!-- card-body -->
+                  <div class="col-sm-6 col-xl-3">
+                      <div class="card">
+                          <div class="card-body">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h5 class="font-size-14">Categorias</h5>
+                                  </div>
+                                  <div class="avatar-xs">
+                                      <span class="avatar-title rounded-circle bg-primary">
+                                          <i class="dripicons-tags"></i>
+                                      </span>
+                                  </div>
+                              </div>
+                              <h4 class="m-0 align-self-center">$12.74</h4>
+                              <p class="mb-0 mt-3 text-muted"><span class="text-danger">4.35 % <i class="mdi mdi-trending-down mr-1"></i></span> From previous period</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-sm-6 col-xl-3">
+                      <div class="card">
+                          <div class="card-body">
+                              <div class="media">
+                                  <div class="media-body">
+                                      <h5 class="font-size-14">Tags</h5>
+                                  </div>
+                                  <div class="avatar-xs">
+                                      <span class="avatar-title rounded-circle bg-primary">
+                                          <i class="dripicons-cart"></i>
+                                      </span>
+                                  </div>
+                              </div>
+                              <h4 class="m-0 align-self-center">20,781</h4>
+                              <p class="mb-0 mt-3 text-muted"><span class="text-success">7.21 % <i class="mdi mdi-trending-up mr-1"></i></span> From previous period</p>
+                          </div>
+                      </div>
+                  </div>
               </div>
-          </div>
-        @endif
-    @endif
+                
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="card">
+                          <div class="card-body">
+                              <h4 class="header-title mb-4">Posts Recentes</h4>
+                              <div class="table-responsive">
+                                 @isset($posts)
+                                    <div class="br-pagebody pd-x-20 pd-sm-x-30 mx-wd-1350">
+                                       <div class="card-deck card-deck-sm mg-x-0">
+                                          @foreach($posts as $post)
+                                            <div class="card bd-0 mg-0">
+                                              <a href="{{ route('post.show', $post->id) }}">
+                                                <figure class="{{ Auth::user()->roles->first()->name == 'Admin' ? 'card-item-img bg-mantle rounded-top' : 'card-item-img bg-mantle rounded-top' }}">
+                                                   <img class="img-fluid rounded-top" src="{{ asset($path.'storage/images/posts/'.$post->image) }}" alt="post image" />
+                                                </figure>
+                                              </a>
+                                              
+                                              {{-- Essa div com a imagem do autor do post só vai aparecer para o admin --}}
+                                              @if(Auth::user()->roles()->first()->name =='admin')
+                                                <div class="media mg-b-25 media-cards">
+                                                    <img src="{{ $post->autor->image !== null ? asset($path.'storage/images/users/'.$post->autor->image) : asset($path.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="user image" />
+                                                </div><!-- media -->
+                                              @endif
 
-    <!-- Lista as Categorias -->
-    @can('cria-categoria')
-    	<div class="row row-sm mg-t-20">
-          <div class="col-lg-6">
-            <div class="row no-gutters flex-row-reverse widget-3 rounded">
-              <div class="col-md-5 col-lg-6 col-xl-5">
-                <a href="{{ route('categorias.index') }}">
-                  <figure class="ht-200 ht-md-100p">
-                    <img src="{{ asset($caminho.'storage/images/home/img31.jpg') }}" class="img-fit-cover op-8" alt="categorias image" />
-                  </figure>
-                </a>
-              </div><!-- col-md-5 -->
-              <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
-                <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-success">Categorias</p>
-                <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('categorias.index') }}" class="tx-white card-title">Aqui você pode criar e separar seus posts por categorias</a>
-                </h5>
-                @isset($categorias)
-                  @foreach($categorias as $categoria)
-                    <li class="tx-gray-600 cinza-claro">{{ $categoria->nome }}</li>
-                  @endforeach
-                @else
-                  <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhuma categoria cadastrada no sistema.</p>
-                @endif  
-                <span class="d-block mg-t-20 tx-13 data-bottom cinza-rodape">{{ \Carbon\Carbon::now()->format('d M, Y')}}</span>
-              </div><!-- col-md-7 -->
-            </div><!-- row -->
-          </div><!-- col-lg-6 -->
-    	
-    	    <!-- Lista de Usuários -->
-          <div class="col-lg-6 mg-t-20 mg-lg-t-0-force">
-            <div class="row no-gutters widget-3 rounded">
-              <div class="col-md-5 col-lg-6 col-xl-5">
-                <a href="{{ route('users.index') }}">
-                  <figure class="ht-200 ht-md-100p">
-                    <img src="{{ asset($caminho.'storage/images/home/img32.jpg') }}" class="img-fit-cover op-8" alt="usuarios image" />
-                  </figure>
-                </a>
-              </div><!-- col-4 -->
-              <div class="col-md-7 col-lg-6 col-xl-7 bg-br-primary pd-25-force d-flex align-items-start flex-column">
-                <p class="tx-11 tx-mont tx-uppercase tx-semibold tx-pink">Autores</p>
-                <h5 class="tx-normal tx-roboto tx-lg-16-force tx-xl-20-force lh-3 mg-b-15"><a href="{{ route('users.index') }}" class="tx-white card-title">Aqui você pode criar mais colaboradores para seu blog</a>
-                </h5>
-                @isset($users)
-    	            @foreach($users as $user)
-    	            	<li class="tx-gray-600 cinza-claro">{{ $user->name }}</li>
-    	            @endforeach
-            	  @else
-    	            <p class="tx-14 tx-gray-600 mg-b-auto">Não existe nenhum usuário cadastrado no sistema.</p>
-            	  @endif	
-                <span class="d-block mg-t-20 tx-13 data-bottom cinza-rodape">{{ \Carbon\Carbon::now()->format('d M, Y')}}</span>
-              </div><!-- col-8 -->
-            </div><!-- row -->
-          </div><!-- col-lg-6 -->
-      </div><!-- row -->
-    @endcan
+                                              <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
+                                                <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $post->categorias[0]->nome }}</p>
+                                                <h4 class="tx-normal tx-roboto lh-3 mg-b-15 card-title">
+                                                  <a href="{{ route('post.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}
+                                                  </a>
+                                                </h4>
+                                                <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 157) . '...' ?? 'Não Informado'}}</p>
+                                                <p class="tx-13 mg-b-0 comments-bottom">
+                                                  <a href="#" class="tx-info">12 Likes</a>
+                                                  <a href="#" class="tx-info mg-l-5">23 Comments</a>
+                                                  <a href="#" class="tx-info mg-l-5"><i class="icon ion-more"></i></a>
+                                                </p>
+                                              </div><!-- card-body -->
+                                            </div><!-- card -->
+                                          @endforeach
+                                        </div>
+
+                                      @if($posts->isEmpty())
+                                        <div class="card-deck card-deck-sm mg-x-0">
+                                            <div class="card bd-0 mg-0">
+                                              <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
+                                                <h5 class="tx-normal tx-roboto lh-3 mg-b-15 alert-danger padding12">Você ainda não tem posts publicados</a></h5>
+                                              </div><!-- card-body -->
+                                            </div>
+                                        </div>
+                                      @endif
+                                  @endif
+                              </div>
+                          </div>
+                      </div>
+                  </div>                       
+              </div>
+            </div>
+            {{-- container --}}
+        </div>
+        {{-- page-content --}}
+    </div>
   	
-  	<!-- Post Destaque com mais Comentarios // isso vai vir do Front End -->
-    @isset($post)
-      <div class="row row-sm mg-t-20">
-        <div class="col-lg-8">
-          <div class="card card-inverse bd-0 mg-b-20 ht-400 ht-xs-350 ht-lg-100p card-post-destaque">
-              <img class="wd-100p ht-100p object-fit-cover rounded" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image" />
-              <div class="pos-absolute a-0 pd-b-30 bg-black-5 rounded d-flex align-items-sm-center justify-content-center">
-                <div class="tx-center wd-80p mg-t-25 mg-sm-t-0">
-                  <p class="tx-info tx-uppercase tx-mont tx-semibold tx-11">{{ $post->categorias[0]->nome }}</p>
-                  <h3 class="tx-center lh-4 tx-light tx-roboto"><a href="#" class="tx-white-8 hover-white">Post de Maior Destaque do Blog</a></h3>
-                </div>
-              </div><!-- pos-absolute d-flex -->
-
-              <div class="pos-absolute b-0 x-0 pd-y-15 pd-x-25 bd-t bd-white-1">
-                <div class="d-sm-flex justify-content-between align-items-center tx-13">
-                  <span class="d-block tx-white-8 mg-r-5">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</span>
-                  <a href="#" class="d-block tx-white-8 hover-white mg-r-10"><i class="fa fa-heart-o mg-r-5"></i> 23 Likes</a>
-                  <a href="#" class="d-block tx-white-8 hover-white"><i class="fa fa-comment-o mg-r-5"></i> 4 Comments</a>
-                  <span class="cinza-claro">Por: <a href="#" class="tx-white-8 hover-white">{{ $post->autor->name }}</a></span>
-                </div><!-- d-flex -->
-              </div><!-- pos-absolute-bottom -->
-            </div><!-- card -->
-        </div><!-- col-8 -->
-
-        <div class="col-lg-4">
-          <div class="card bd-gray-400 pd-25 ht-100p card-post-destaque">
-            <div class="media mg-b-25">
-              <!-- Aqui vai a imagem e nome do autor do post em destaque -->
-              <img src="{{ asset($caminho.'storage/images/users/avatar01.jpg') }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="profile image" />
-              <div class="media-body mg-t-2">
-                <h6 class="mg-b-5 tx-14"><a href="#" class="tx-white">{{ $post->autor->name }}</a></h6>
-                <div class="tx-12 cinza-rodape">{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y')}}</div>
-              </div><!-- media-body -->
-            </div><!-- media -->
-            <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="#" class="tx-white hover-info">{{ $post->titulo }}</a></h5>
-            <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 150) . '...' ?? 'Não Informado'}}</p>
-            <p class="mg-t-auto mg-b-0 tx-13">
-              <a href="#" class="tx-info">18 Likes</a>
-              <a href="#" class="tx-info mg-l-20">1 Comment</a>
-            </p>
-          </div><!-- card -->
-        </div><!-- col-4 -->
-      </div><!-- row -->
-    @endif
-  	
-  	  <!-- Perfil do Usuário-->
-      <div class="card mg-t-20 widget-4">
-        <div class="card-header">
-          <div class="tx-24 hidden-xss-down">
-            <a href="#" class="mg-r-10"><i class=""></i></a>
-            <a href="#"><i class=""></i></a>
-          </div>
-        </div><!-- card-header -->
-        <div class="card-body">
-          <div class="card-profile-img">
-            <img src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="user image" class="profile-image" />          
-          </div><!-- card-profile-img -->
-
-          <h4 class="tx-normal tx-roboto tx-white">{{ Auth::user()->name }}</h4>
-          <p class="mg-b-25 cinza-claro">{{ Auth::user()->email }}</p>
-        </div><!-- card-body -->
-        <div class="card-footer tx-14 d-sm-flex justify-content-sm-center">
-          <nav class="nav nav-inline flex-column flex-sm-row">
-            <a href="{{ route('users.edit', Auth::user()->id) }}" class="nav-link">
-            	<button class="btn btn-outline-primary">Ver Perfil</button>
-            </a>
-          </nav>
-        </div><!-- card-footer -->
-      </div><!-- card -->
-    </div><!-- br-pagebody-->
-  </div><!-- end mainpanel -->
-  <!-- ########## END: MAIN PANEL ########## -->
-
 @endsection

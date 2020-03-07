@@ -29,16 +29,16 @@
 							<div class="flexslider">
 								<ul class="slides">
 									<li>
-										<img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}"  alt="post image" class="post-image" />
+										<img src="{{ asset($path.'storage/images/posts/'.$post->image) }}"  alt="post image" class="post-image" />
 									</li>
 									<li>
-										<img src="{{ asset($caminho.'template-front/upload/photo1.jpg') }}"  alt="" class="post-image" />
+										<img src="{{ asset($path.'template-front/upload/photo1.jpg') }}"  alt="" class="post-image" />
 									</li>
 									<li>
-										<img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}"  alt="" class="post-image" />
+										<img src="{{ asset($path.'storage/images/posts/'.$post->image) }}"  alt="" class="post-image" />
 									</li>
 									<li>
-										<img src="{{ asset($caminho.'template-front/upload/photo2.jpg') }}"  alt="" class="post-image" />
+										<img src="{{ asset($path.'template-front/upload/photo2.jpg') }}"  alt="" class="post-image" />
 									</li>
 								</ul>
 							</div>
@@ -53,7 +53,7 @@
 									<ul class="comment-tree">
 										<li>
 											<div class="comment-box">
-												<img src="{{ asset($caminho.'template-front/upload/avatar1.jpg') }}"  alt="avatar" />
+												<img src="{{ asset($path.'template-front/upload/avatar1.jpg') }}"  alt="avatar" />
 												<div class="comment-content">
 													<h6>Paulo Ferreira <span>/ 4 minutes ago</span></h6>
 													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -62,7 +62,7 @@
 											<ul class="depth">
 												<li>
 													<div class="comment-box">
-														<img src="{{ asset($caminho.'template-front/upload/avatar2.jpg') }}"  alt="avatar" />
+														<img src="{{ asset($path.'template-front/upload/avatar2.jpg') }}"  alt="avatar" />
 														<div class="comment-content">
 															<h6>Jonathas Souza <span>/ 12 minutes ago</span></h6>
 															<p>Belo trabalho! Sensacional :)</p>
@@ -71,7 +71,7 @@
 													<ul class="depth">
 														<li>
 															<div class="comment-box">
-																<img src="{{ asset($caminho.'template-front/upload/avatar3.jpg') }}"  alt="avatar" />
+																<img src="{{ asset($path.'template-front/upload/avatar3.jpg') }}"  alt="avatar" />
 																<div class="comment-content">
 																	<h6>Matheus <span>/ 20 minutes ago</span></h6>
 																	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit :)</p>
@@ -80,7 +80,7 @@
 															<ul class="depth">
 																<li>
 																	<div class="comment-box">
-																		<img src="{{ asset($caminho.'template-front/upload/avatar4.jpg') }}"  alt="avatar" />
+																		<img src="{{ asset($path.'template-front/upload/avatar4.jpg') }}"  alt="avatar" />
 																		<div class="comment-content">
 																			<h6>joshinhobelt <span>/ 36 minutes ago</span></h6>
 																			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -92,7 +92,7 @@
 
 														<li>
 															<div class="comment-box">
-																<img src="{{ asset($caminho.'template-front/upload/avatar5.jpg') }}"  alt="avatar" />
+																<img src="{{ asset($path.'template-front/upload/avatar5.jpg') }}"  alt="avatar" />
 																<div class="comment-content">
 																	<h6>Steven Assis <span>/ 40 minutes ago</span></h6>
 																	<p>Belo trabalho!</p>
@@ -104,7 +104,7 @@
 
 												<li>
 													<div class="comment-box">
-														<img src="{{ asset($caminho.'template-front/upload/avatar6.jpg') }}"  alt="avatar" />
+														<img src="{{ asset($path.'template-front/upload/avatar6.jpg') }}"  alt="avatar" />
 														<div class="comment-content">
 															<h6>benjamin <span>/ 42 minutes ago</span></h6>
 															<p>Não poderia ser melhor :D</p>
@@ -116,7 +116,7 @@
 
 										<li>
 											<div class="comment-box">
-												<img src="{{ asset($caminho.'template-front/upload/avatar7.jpg') }}"  alt="avatar" />
+												<img src="{{ asset($path.'template-front/upload/avatar7.jpg') }}"  alt="avatar" />
 												<div class="comment-content">
 													<h6>natancesar<span>/ 48 minutes ago</span></h6>
 													<p>Muito promissor e interessante</p>
@@ -154,7 +154,7 @@
 								<h1>Post Informações</h1>
 								<ul>
 									<li>
-										<img src="{{ asset($caminho.'storage/images/users/'.$post->autor->image) }}" alt="autor image" class="autor-image" />
+										<img src="{{ asset($path.'storage/images/users/'.$post->autor->image) }}" alt="autor image" class="autor-image" />
 										<a href="#">Por: {{ $post->autor->name }}</a>
 									</li>
 									<li>

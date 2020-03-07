@@ -10,22 +10,22 @@
     <title>jana.Blog | Login</title>
     
     <!-- favicon -->
-    <link rel="shortcut icon" href="{{ asset($caminho.'storage/images/home/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset($path.'storage/images/home/favicon.png') }}" />
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
     <!-- Template CSS -->
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($caminho.'template-dark/css/bootstrap.min.css') }}" />
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($caminho.'template-dark/css/fontawesome.min.css') }}" />" />
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($caminho.'template-dark/css/pace-theme-minimal.css') }}" />" />
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($caminho.'template-dark/css/toastr.min.css') }}" />
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($caminho.'template-dark/css/core.css') }}" />
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($caminho.'template-dark/css/language.css') }}" />
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($caminho.'template-dark/css/default.css') }}" />
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($path.'template-dark/css/bootstrap.min.css') }}" />
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($path.'template-dark/css/fontawesome.min.css') }}" />" />
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($path.'template-dark/css/pace-theme-minimal.css') }}" />" />
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($path.'template-dark/css/toastr.min.css') }}" />
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($path.'template-dark/css/core.css') }}" />
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($path.'template-dark/css/language.css') }}" />
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset($path.'template-dark/css/default.css') }}" />
 
     <!-- Meus estilos -->
-    <link rel="stylesheet" href="{{ asset($caminho.'css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset($path.'css/custom.css') }}" />
 
     <style type="text/css">
       
@@ -78,7 +78,7 @@
 
             <div class="col-xs-12 col-sm-5 col-md-4 login-sidebar">
                 <div class="login-container">
-                    <img src="{{ asset($caminho.'images/brand/logo.png') }}" class="logo-share" />
+                    <img src="{{ asset($path.'images/brand/logo.png') }}" class="logo-share" />
                     <p>Faça login:</p>
                     <form method="POST" action="{{ route('login') }}" accept-charset="UTF-8" class="login-form"><input name="_token" type="hidden" >
                         @csrf

@@ -38,7 +38,7 @@
                           <span>Blog</span>
                       </a>
                       <ul class="sub-menu" aria-expanded="false">
-                          <li><a href="{{ route('posts.index') }}">Posts</a></li>
+                          <li><a href="{{ route('post.index') }}">Posts</a></li>
                           <li><a href="#">Categorias</a></li>
                       </ul>
                   </li>

@@ -34,7 +34,8 @@ class PostController extends Controller {
         // Se o usuario for admin, trazer todos os posts
         if ($user->roles()->first()->name == 'admin') {
           
-          $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);  
+          $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);
+           
         }
         // Senão trazer somente os posts de quem está logado
         else {
@@ -42,7 +43,7 @@ class PostController extends Controller {
             $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->paginate(6);
         }
 
-        return view('admin.posts.lista', compact('posts', 'user'));
+        return view('admin.posts.index', compact('posts', 'user'));
     }
 
 
@@ -56,6 +57,8 @@ class PostController extends Controller {
 
     public function store(Request $request) {
 
+        // dd($request);
+
         // validate
         $validator = $this->validate($request, [
             'titulo'     => 'required|unique:posts|max:255',
@@ -65,7 +68,7 @@ class PostController extends Controller {
 
         ]);
 
-        try{
+        try {
 
             # Salvar as imagens na pasta storage/app/public/imagens/posts
             // cria a pasta images e dentro dela a pasta posts
@@ -91,6 +94,7 @@ class PostController extends Controller {
                 'image'  => $nome_arquivo
             ]);
 
+
             # Vincula as categorias
             $post->categorias()->sync($request->get('categorias'));
 
@@ -102,17 +106,17 @@ class PostController extends Controller {
 
             # status de retorno
             Session::flash('success', ' Post criado com sucesso!');
-            return redirect()->route('posts.index');
+            return redirect()->route('post.index');
 
 
-        }catch (\Exception $exception) {
+        }catch(\Exception $exception) {
 
             # status de retorno
             Session::flash('error', ' O post não pôde ser cadastrado!');
             return redirect()->back()->withInput();
         }
 
-        return redirect()->route('posts.index');
+        return redirect()->route('post.index');
        
     } // end store
 
@@ -179,7 +183,7 @@ class PostController extends Controller {
 
         # status de retorno
         Session::flash('success', ' Post atualizado com sucesso!');
-        return redirect()->route('posts.index');
+        return redirect()->route('post.index');
 
 
     } // end update
@@ -195,14 +199,14 @@ class PostController extends Controller {
             # status de retorno
             Session::flash('success',  ' Post deletado com sucesso!');
 
-            return redirect()->route('posts.index');
+            return redirect()->route('post.index');
 
         }catch (\Exception $exception){
 
             # status de retorno
             Session::flash('error', 'Falha ao deletar o post!');
 
-            return redirect()->route('posts.index');
+            return redirect()->route('post.index');
 
         }
     }

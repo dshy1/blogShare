@@ -16,7 +16,7 @@ class SiteController extends Controller
 
         $portfolios = Portfolio::orderBy('id','desc')->limit(16)->get();
 
-        return view('site.home', compact('categorias', 'portfolios'));
+        return view('site.index', compact('categorias', 'portfolios'));
 
     }
 
@@ -56,7 +56,6 @@ class SiteController extends Controller
     }
 
     // Traz um único cliente pelo slug para mostrar na página /portfolio/...
-    // Traz todos os clientes cadastrados para mostrar na página /portfolio/...
     public function showCliente($slug) {
 
         $portfolios = Portfolio::orderBy('id','desc')->limit(3)->get();

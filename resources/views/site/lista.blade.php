@@ -76,7 +76,7 @@
 										<ul class="slides">
 											<li>
 												<a href="{{ route('site.show', $post->slug) }}">
-													<img src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="post image" class="post-image" />
+													<img src="{{ asset($path.'storage/images/posts/'.$post->image) }}" alt="post image" class="post-image" />
 												</a>
 											</li>
 										</ul>

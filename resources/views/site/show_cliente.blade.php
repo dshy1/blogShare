@@ -43,7 +43,7 @@
 							<div class="flexslider">
 								<ul class="slides">
 									<li>
-										<img src="{{ asset($caminho.'storage/images/clientes/'.$port->image) }}" alt="client image" class="client-image" />
+										<img src="{{ asset($path.'storage/images/clientes/'.$port->image) }}" alt="client image" class="client-image" />
 									</li>
 								</ul>
 							</div>
@@ -59,7 +59,7 @@
 										
 										@foreach($portfolios as $pt)
 											<div class="project-post">
-												<img src="{{ asset($caminho.'storage/images/clientes/'.$pt->image) }}"  alt="client image" />
+												<img src="{{ asset($path.'storage/images/clientes/'.$pt->image) }}"  alt="client image" />
 												<div class="hover-box">
 													<div class="project-title">
 														<h2>{{ $pt->titulo }}</h2>
@@ -68,7 +68,7 @@
 													<ul class="project-links">
 														<li><a href="#"><i class="fa fa-heart"></i></a></li>
 														<li><a href="{{ route('portfolio.show', $pt->slug) }}"><i class="fa fa-arrow-right"></i></a></li>
-														<li><a href="{{ asset($caminho.'storage/images/clientes/'.$pt->image) }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
+														<li><a href="{{ asset($path.'storage/images/clientes/'.$pt->image) }}" class="zoom-image"><i class="fa fa-search"></i></a></li>
 													</ul>
 												</div>
 											</div>
@@ -96,7 +96,7 @@
 									@foreach($galeria as $gl)
 										<li>
 											<a href="{{ route('portfolio.show', $gl->slug) }}">
-												<img src="{{ asset($caminho.'storage/images/clientes/'.$gl->image) }}"  alt="client image" />
+												<img src="{{ asset($path.'storage/images/clientes/'.$gl->image) }}"  alt="client image" />
 											</a>
 										</li>
 									@endforeach

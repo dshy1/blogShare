@@ -33,7 +33,10 @@ class HomeController extends Controller
         // Se o usuario for admin, trazer todos os posts
          if ($user->roles()->first()->name == 'admin') {
           
-            $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->limit(3)->get();  
+            $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->limit(3)->get();
+            $listaPosts = Post::all();
+            $lastPost = Post::latest()->first();
+            
         }
         // Senão trazer somente os posts de quem está logado
         else {
@@ -41,7 +44,6 @@ class HomeController extends Controller
             $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->limit(3)->get(); 
         }
 
-
-        return view('home', compact('posts', 'categorias', 'users'));
+        return view('home', compact('posts', 'categorias', 'users', 'listaPosts', 'lastPost'));
     }
 }

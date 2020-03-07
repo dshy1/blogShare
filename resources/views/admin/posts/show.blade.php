@@ -43,12 +43,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0 font-size-18">Post Informacoes</h4>
+                            <h4 class="mb-0 font-size-18">Post Informações</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Posts</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Posts</a></li>
                                     <li class="breadcrumb-item active">Informações</li>
                                 </ol>
                             </div>
@@ -61,7 +61,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title mb-4">{{ $post->titulo }}</h3>
-                                <img class="img-fluid rounded image_post" src="{{ asset($caminho.'storage/images/posts/'.$post->image) }}" alt="Image">
+                                <img class="img-fluid rounded image_post" src="{{ asset($path.'storage/images/posts/'.$post->image) }}" alt="Image">
                                 <p>{!! $post->texto !!}</p>
                                 <h3 class="header-title mb-4">Categorias:</h3>
                                 <ul>
@@ -79,7 +79,7 @@
                         <div class="card">
                             <div class="card-body">
                               <div class="autor-info">
-                                  <img src="{{ $post->autor->image !== null ? asset($caminho.'storage/images/users/'.$post->autor->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" class="avatar-xs rounded-circle" alt="author image" />
+                                  <img src="{{ $post->autor->image !== null ? asset($path.'storage/images/users/'.$post->autor->image) : asset($path.'storage/images/users/avatar01.jpg') }}" class="avatar-xs rounded-circle" alt="author image" />
                                   <h3 class="header-title mb-4 nome-autor">{{ $post->autor->name }}</h3>
                               </div>
                               <h5 class="font-size-14 mb-1">Data de Criação:</h5>
@@ -89,13 +89,14 @@
                               <hr class="cinza-claro">
 
                               <div class="media mg-b-25">
-                                  <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm">Editar</a>
-                                  <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-post02">
+                                  <a href="{{ route('post.edit', $post->id) }}" class="btn btn-outline-success btn-sm">Editar</a>
+                                  <form action="{{route('post.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-post02">
                                       @csrf
                                       @method('DELETE') 
 
                                         <input type="submit" value="Deletar" class="btn btn-outline-danger btn-sm marginLeft4" onclick="return confirmDelete();" />
                                   </form>
+                                  <a href="{{ route('post.index') }}" class="btn btn-outline-secondary btn-sm marginLeft4">Voltar</a>
                               </div>
                             </div>
                         </div>

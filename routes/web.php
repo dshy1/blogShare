@@ -41,21 +41,21 @@ Route::get('/search', 'PesquisaController@pesquisaCategoria')->name('site.pesqui
 Auth::routes();
 
 #### Dashboard
-Route::get('/dashboard', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
     
-Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function() {
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
     
 	### Categoria Resource
 	Route::resource('/categorias', 'CategoriaController');
 
 	### Post Resource
-	Route::resource('/posts', 'PostController');
+	Route::resource('/post', 'PostController')->names('post');
 
 	### Portfolio Resource
-	Route::resource('/clientes', 'PortfolioController');
+	Route::resource('/cliente', 'PortfolioController')->names('cliente');
 
 	### User Resource
-	Route::resource('/users', 'UserController');
+	Route::resource('/user', 'UserController')->names('user');
 
 });
 

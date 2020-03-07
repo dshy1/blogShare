@@ -7,22 +7,24 @@
     <title>@yield('title')</title>
     
     <!-- favicon -->
-    <link rel="shortcut icon" href="{{ asset($caminho.'storage/images/home/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset($path.'storage/images/home/favicon.png') }}" />
 
     <!-- Template Admin Backend -->
-    <link rel="stylesheet" href="{{ asset($caminho.'template-dark/assets/libs/slick-slider/slick/slick.css') }}" />
-    <link rel="stylesheet" href="{{ asset($caminho.'template-dark/assets/libs/slick-slider/slick/slick-theme.css') }}" />
+    <link rel="stylesheet" href="{{ asset($path.'template-dark/assets/libs/slick-slider/slick/slick.css') }}" />
+    <link rel="stylesheet" href="{{ asset($path.'template-dark/assets/libs/slick-slider/slick/slick-theme.css') }}" />
     <!-- Bootstrap Css -->
-    <link rel="stylesheet" href="{{ asset($caminho.'template-dark/assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset($path.'template-dark/assets/css/bootstrap.min.css') }}" />
     <!-- Icons Css -->
-    <link rel="stylesheet" href="{{ asset($caminho.'template-dark/assets/css/icons.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset($caminho.'template-dark/assets/css/app.min.css') }}" />    
+    <link rel="stylesheet" href="{{ asset($path.'template-dark/assets/css/icons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset($path.'template-dark/assets/css/app.min.css') }}" />    
     <!-- Meus estilos -->
-    <link rel="stylesheet" href="{{ asset($caminho.'css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset($path.'css/custom.css') }}" />
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset($caminho.'css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset($path.'css/select2.min.css') }}" />
+    <!-- Dropzone para upload de arquivo -->
+    <link rel="stylesheet" href="{{ asset($path.'template-dark/assets/libs/dropzone/min/dropzone.min.css') }}" />
     
 
     <style type="text/css">
@@ -61,10 +63,10 @@
                 <div class="navbar-brand-box">
                     <a href="#" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ asset($caminho.'template-dark/assets/images/logo-sm-light.png') }}" alt="" height="22" />
+                            <img src="{{ asset($path.'template-dark/assets/images/logo-sm-light.png') }}" alt="" height="22" />
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset($caminho.'template-dark/assets/images/share.png') }}" alt="" height="20" />
+                            <img src="{{ asset($path.'template-dark/assets/images/share.png') }}" alt="" height="20" />
                         </span>
                     </a>
                 </div>
@@ -153,7 +155,7 @@
                             </a>
                             <a href="#" class="text-reset notification-item">
                                 <div class="media">
-                                    <img src="{{ asset($caminho.'template-dark/assets/images/users/avatar-3.jpg') }}"
+                                    <img src="{{ asset($path.'template-dark/assets/images/users/avatar-3.jpg') }}"
                                         class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                     <div class="media-body">
                                         <h6 class="mt-0 mb-1">Andrew Mackie</h6>
@@ -206,7 +208,7 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="{{ Auth::user()->image !== null ? asset($caminho.'storage/images/users/'.Auth::user()->image) : asset($caminho.'storage/images/users/avatar01.jpg') }}" alt="User Avatar" />
+                        <img class="rounded-circle header-profile-user" src="{{ Auth::user()->image !== null ? asset($path.'storage/images/users/'.Auth::user()->image) : asset($path.'storage/images/users/avatar01.jpg') }}" alt="User Avatar" />
                         <span class="d-none d-sm-inline-block ml-1">{{ Auth::user()->name }}</span>
                         <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                     </button>

@@ -25,7 +25,7 @@
 					<div class="about-box">
 						<div class="about-content">
 							<div class="about-section">
-								<img src="{{ asset($caminho.'template-front/upload/about.jpg') }}" alt="" />
+								<img src="{{ asset($path.'template-front/upload/about.jpg') }}" alt="" />
 								<h1>Quem Somos</h1>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus sem, accumsan in purus nec, ullamcorper viverra magna. Maecenas justo nisi, iaculis non arcu nec, tincidunt pharetra felis. Suspendisse molestie nulla eros, non dignissim lectus tincidunt quis. Curabitur dignissim lacus vel velit mattis, at pellentesque lorem convallis. Nam pharetra iaculis metus quis feugiat. Sed vitae turpis eget magna aliquet vestibulum sit amet ut lorem. Duis congue pharetra varius. Donec sit amet lectus erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas sollicitudin eu felis id pharetra. Vestibulum quis nibh cursus. </p>
 								<p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>								
