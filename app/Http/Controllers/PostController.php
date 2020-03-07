@@ -101,7 +101,7 @@ class PostController extends Controller {
             $user->posts()->save($post);
 
             # status de retorno
-            Session::flash('success', ' O post foi salvo com sucesso!');
+            Session::flash('success', ' Post criado com sucesso!');
             return redirect()->route('posts.index');
 
 
@@ -122,7 +122,7 @@ class PostController extends Controller {
         $post       = Post::with('categorias')->with('autor')->get()->find($post);
         $categorias = Categoria::all();
 
-        return view('posts.show', compact('post', 'categorias')); 
+        return view('admin.posts.show', compact('post', 'categorias')); 
 
     }
 
@@ -133,7 +133,7 @@ class PostController extends Controller {
         $catgs_post  = $post->categorias->pluck('id', 'id')->all();
         $categorias  = Categoria::all();
 
-        return view('posts.edit', compact('post', 'catgs_post', 'categorias')); 
+        return view('admin.posts.edit', compact('post', 'catgs_post', 'categorias')); 
     }
 
    
@@ -178,7 +178,7 @@ class PostController extends Controller {
         $post->save();
 
         # status de retorno
-        Session::flash('success', ' O post foi atualizado com sucesso!');
+        Session::flash('success', ' Post atualizado com sucesso!');
         return redirect()->route('posts.index');
 
 
@@ -193,7 +193,7 @@ class PostController extends Controller {
             $post->delete();
 
             # status de retorno
-            Session::flash('success', ' O post foi deletado com sucesso!');
+            Session::flash('success',  ' Post deletado com sucesso!');
 
             return redirect()->route('posts.index');
 

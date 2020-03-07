@@ -16,6 +16,7 @@
   #categorias-wrapper {
     min-width: 450px;
   }
+ 
 
 </style>
 

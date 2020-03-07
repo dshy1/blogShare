@@ -19,10 +19,8 @@
     <link rel="stylesheet" href="{{ asset($caminho.'template-dark/assets/css/app.min.css') }}" />    
     <!-- Meus estilos -->
     <link rel="stylesheet" href="{{ asset($caminho.'css/custom.css') }}" />
-    
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset($caminho.'css/select2.min.css') }}" />
     
@@ -36,14 +34,13 @@
         display: block;
       }
       .logo-lg img {
-        width: 130px;
+        width: 135px;
         height: auto;
+        margin-top: 10px;
       }
       .app-search {
-        
         position: absolute;
         left: 22%;
-
       }
       .app-search span {
         top: 17px;

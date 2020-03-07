@@ -30,11 +30,16 @@
         font-size: 92px;
       }
       .form-layout-footer {
-        margin-top: 85px;
+        margin-top: 60px;
       }
-
       .titulo-pagina {
         font-size: 25px!important;
+      }
+      .header-title {
+        margin-bottom: 35px;
+      }
+       hr {
+        margin-top: 50px!important;
       }
 
   </style>
@@ -68,21 +73,20 @@
                   <div class="col-12">
                       <div class="card">
                           <div class="card-body">
-                            <h4 class="header-title">Crie Algo Incrível para seu Blog</h4>
-                            <p class="card-title-desc">Lorem Ispum dolor.</p>
+                            <h4 class="header-title">Crie Posts Incríveis para seu Blog</h4>
                            
                              <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                                   @csrf
                                   {{ method_field('POST') }}
 
                                   @include('admin.posts.inputs', ['post' => null, 'detalhe' => null])
+                                  <hr>
                                
                                 <div class="form-layout-footer">
                                     {{-- @if(Auth::user()->email === 'teste@gmail.com')
                                       <input type="submit" class="btn btn-primary disabled" value="Salvar Post" onclick="return false;" />
                                     @else --}}
                                       <input type="submit" class="btn btn-primary" value="Salvar Post" onclick="return true;" />
-                                    {{-- @endif --}}
                                     <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
                                 </div>
                               </form>
@@ -92,11 +96,11 @@
                   <!-- end col -->
               </div>
               <!-- end row -->
-
           </div>
           <!-- container -->
       </div>
       <!-- End Page-content -->
+  </div>
 
 @endsection
 

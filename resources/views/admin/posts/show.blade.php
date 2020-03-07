@@ -49,7 +49,7 @@
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                     <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Posts</a></li>
-                                    <li class="breadcrumb-item active">Informacoes</li>
+                                    <li class="breadcrumb-item active">Informações</li>
                                 </ol>
                             </div>
                         </div>
@@ -89,21 +89,12 @@
                               <hr class="cinza-claro">
 
                               <div class="media mg-b-25">
-                                  {{-- @if(Auth::user()->email === 'teste@gmail.com')
-                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm disabled">Editar</a>
-                                  @else --}}
-                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm">Editar</a>
-                                  {{-- @endif --}}
-                              
+                                  <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm">Editar</a>
                                   <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-post02">
                                       @csrf
                                       @method('DELETE') 
 
-                                     {{--  @if(Auth::user()->email === 'teste@gmail.com')
-                                        <input type="submit" value="Deletar" class="btn btn-outline-danger btn-sm disabled" onclick=" return false;" />
-                                      @else --}}
-                                        <input type="submit" value="Deletar" class="btn btn-outline-danger btn-sm marginLeft4" onclick="confirmDelete();" />
-                                      {{-- @endif/ --}}
+                                        <input type="submit" value="Deletar" class="btn btn-outline-danger btn-sm marginLeft4" onclick="return confirmDelete();" />
                                   </form>
                               </div>
                             </div>
@@ -116,7 +107,6 @@
         {{-- page-content --}}
     </div>
     <!-- main-content -->
-
 @endsection
 
 
