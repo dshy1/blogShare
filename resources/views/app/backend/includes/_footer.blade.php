@@ -27,14 +27,6 @@
             </div>
         </div>
     </footer>
-
-    {{-- <div class="br-mainpanel">
-      <footer class="br-footer">
-        <div class="footer-left">
-          <div class="cinza-rodape"><p>2020 &copy;Made with <i class="small material-icons pink cinza-rodape">favorite</i> and <i class="small material-icons">free_breakfast</i> by Jana.</p></div>
-        </div>
-      </footer>
-    </div> --}}
     
 
 

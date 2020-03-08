@@ -160,14 +160,10 @@
                             </div>
                         </div>
                     </div>
-                                            
-                        {{ $posts->links() }}
-                
+                    {{ $posts->links() }}
                 </div>
             </div>
-            {{-- container --}}
         </div>
-        {{-- page-content --}}
     </div>
     <!-- main-content -->
 

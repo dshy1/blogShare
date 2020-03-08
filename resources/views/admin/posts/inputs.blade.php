@@ -54,7 +54,7 @@
 <div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="form-group mg-b-10-force form-categorias">
-      <label class="form-control-label col-md-12 cinza-claro">Categorias: (selecione) <span class="tx-danger">*</span></label>
+      <label class="form-control-label cinza-claro">Categorias: (selecione) <span class="tx-danger">*</span></label>
       @isset($detalhe)
         <p id="categorias" class="">Detalhes Categorias</p>
       @else
@@ -72,7 +72,7 @@
 <div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="custom-file">
-      <label class="form-control-label col-md-12 cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
+      <label class="form-control-label cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
         {{-- @isset($post)
           <label for='input-file' id="teste1">Selecionar Nova Imagem &#187;</label>
         @else

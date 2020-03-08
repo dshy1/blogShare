@@ -13,6 +13,12 @@
   .mm-active {
     color: #d7e4ec!important;
   }
+  li#teste:hover{
+    color: red!important;
+  }
+  #sidebar-menu ul li a:hover, #sidebar-menu ul li a:hover i {
+    color: #e6f3ff;
+  }
 </style>
 
 <!-- ========== Left Sidebar Start ========== -->
@@ -25,7 +31,7 @@
               <ul class="metismenu list-unstyled" id="side-menu">
                   <li class="menu-title">Menu</li>
 
-                  <li>
+                  <li >
                       <a href="{{ route('home') }}" class="waves-effect">
                           <i class="mdi mdi-view-dashboard"></i><span class="badge badge-pill badge-success float-right">3</span>
                           <span>Dashboard</span>
@@ -39,7 +45,7 @@
                       </a>
                       <ul class="sub-menu" aria-expanded="false">
                           <li><a href="{{ route('post.index') }}">Posts</a></li>
-                          <li><a href="#">Categorias</a></li>
+                          <li><a href="{{ route('categoria.index') }}">Categorias</a></li>
                       </ul>
                   </li>
 
@@ -80,4 +86,7 @@
       </div>
   </div>
   <!-- Left Sidebar End -->
+
+
+
 
