@@ -1,6 +1,5 @@
 
 <style type="text/css">
-  
   #side-menu {
     min-height: 100vh;
   }
@@ -50,7 +49,7 @@
                   </li>
 
                   <li>
-                      <a href="#" class="waves-effect">
+                      <a href="{{ route('user.index') }}" class="waves-effect">
                           <i class="mdi mdi-account-multiple-outline"></i>
                           <span>Membros</span>
                       </a>

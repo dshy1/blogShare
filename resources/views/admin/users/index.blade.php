@@ -1,128 +1,174 @@
 @extends('layouts.main-back')
 
-@section('title', $plataforma. ' | Listagem de Usuários')
+@section('title', $plataforma. ' | Listagem de Posts')
 
 @section('content')
 
     <style type="text/css">
 
-        .d-flex {
+        .large {
+            font-size: 78px;
+        }
+        .botoes {
             display: flex;
+            align-items: center;
         }
-        .x-large {
-            font-size: 92px;        
+        .botoes input,  .botoes a {
+            position: relative;
+            top: 10px;
         }
-        .bt-delete {
-            margin-top: -2px;
+        img.thumb-image {
+            width: 60px;
+            height: 45px;
+            object-fit: cover;
         }
-
+        .marginLeft4 {
+            margin-left: 4px;
+        }
+        .alert-success {
+            position: relative;
+            left: 25%;
+            margin: 100px 0 -60px;
+        }
+        .row-alert {
+            max-width: 80%;
+        }
+        .fa-check-circle {
+            font-size: 20px;
+            margin-right: 7px;
+        }
+        .novo-post {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .tabela-thumb {
+            max-width: 80px;
+            min-width: 80px;
+        }
+        #user-image {
+            width: 50px;
+        }
+     
     </style>
 
 
     @if(Session::has('success'))
-    <div class="row justify-content-center">
-        <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
-            <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
-            <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
+        <div class="row justify-content-center row-alert">
+            <div class="col-md-8 alert alert-success alert-dismissible fade show" role="alert" id="close">
+                <strong><i class="fas fa-check-circle"></i></strong>{{ Session::get('success') }}
+                <button type="button" class="close" data-dimiss="alert" aria-label="Close"><span aria-hidden="true" onclick="fecharAlert();"><strong>&times;</strong></span></button>
+            </div>
         </div>
-    </div>
     @endif
 
     <!-- ########## START: MAIN PANEL ########## -->
-    <div class="br-mainpanel">
-        <div class="br-pageheader">
-            <nav class="breadcrumb pd-0 mg-0 tx-12">
-                <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
-                <span class="breadcrumb-item active">Usuários</span>
-            </nav>
-        </div>
-        <!-- br-pageheader -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0 font-size-18">Usuarios</h4>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript: void(0);">Home</a>
+                                        <a href="javascript: void(0);" class="breadcrumb-item active"> / Usuarios</a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
 
-        <div class="br-pagetitle">
-            <i class="x-large material-icons cor-icones">person</i>
-            <div>
-                <h2 class="tx-white">Usuários</h2>
-                <p class="mg-b-0 cinza-claro">Aqui você pode ver e alterar todos os usuários cadastrados no sistema</p>
-            </div>
-        </div>
-        <!-- d-flex -->
-
-        @if(Session::has('error'))
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
-        <a href="{{ route('users.create') }}" class="btn btn-success btn-sm bt-novo" title="Criar novo colaborador"><span>+</span> Novo</a>
-
-        <div class="br-pagebody">
-            <div class="br-section-wrapper">
-                <div class="bd bd-white-1 rounded table-responsive">
-                    <table class="table table-striped mg-b-0">
-                        <thead class="thead-colored thead-primary">
-                            <tr>
-                                <th class="titulo-tabela">#</th>
-                                <th class="titulo-tabela">Nome</th>
-                                <th class="titulo-tabela">E-mail</th>
-                                <th class="titulo-tabela">Thumb</th>
-                                <th class="titulo-tabela">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach($users as $user)
-                            <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    <img src="{{ $user->image !== null ? asset($path.'storage/images/users/'.$user->image) : asset($path.'storage/images/users/avatar01.jpg') }}" alt="user image" class="wd-32 rounded-circle rounded-header" />
-                                </td>
-                                <td class="d-flex">
-                                    @if(Auth::user()->email === 'teste@gmail.com')
-                                      <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-success btn-sm com-margin disabled">Editar</a> 
-                                    @else
-                                      <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-success btn-sm com-margin">Editar</a> 
-                                    @endif
-                                    
-                                    <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
-                                         @csrf
-                                         @method('DELETE')
-                                         @if(Auth::user()->email === 'teste@gmail.com')
-                                            <input type="submit" class="btn btn-outline-danger btn-sm disabled" id="btn-delete" value="Deletar" onclick="return false;" />
-                                        @else
-                                            <input type="submit" class="btn btn-outline-danger btn-sm" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
-                                        @endif
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                @if(Session::has('error'))
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                <!-- bd -->
+                @endif
+                
+                <div class="row">
+                    <div class="col-md-12 novo-post">
+                        <a href="{{ route('user.create') }}" class="btn btn-success btn-md bt-novo" title="Criar Novo Post"><span>+</span> Novo</a>
+                    </div>
+                </div>
 
-                {{ $users->links() }}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title mb-4">Usuarios Cadastrados</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-centered table-nowrap mb-0">
+                                        <thead>
+                                            <tr>
+                                               <th scope="col">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheckall" />
+                                                        <label class="custom-control-label" for="customCheckall"></label>
+                                                    </div>
+                                                </th>
+                                                <th class="titulo-tabela">#</th>
+                                                <th class="titulo-tabela">Nome</th>
+                                                <th class="titulo-tabela">E-mail</th>
+                                                <th class="titulo-tabela tabela-thumb">Thumb</th>
+                                                <th class="titulo-tabela">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($users as $user)
+                                                <tr>
+                                                    <td>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="{{ $user->id}}" />
+                                                            <label class="custom-control-label" for="{{ $user->id}}"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ $user->id }}</td>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>
+                                                        <img src="{{ $user->image !== null ? asset($path.'storage/images/users/'.$user->image) : asset($path.'storage/images/users/avatar01.jpg') }}" alt="user image" class="wd-32 rounded-circle rounded-header" id="user-image" />
+                                                    </td>
+                                                    <td class="d-flex">
+                                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-success btn-sm">Editar</a>                            
+                                                        <form action="{{route('user.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <input type="submit" class="btn btn-outline-danger btn-sm marginLeft4" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ $users->links() }}
+                </div>
             </div>
         </div>
-
     </div>
-    <!--  end mainpanel -->
-    <!-- ########## START: MAIN PANEL ########## -->
+    <!-- main-content -->
 
 @endsection
 
+
+<!-- Script JS -->
+
 @section('scripts')
 
-    <!-- Script JS -->
     <script type="text/javascript">
 
         // Funçao para confirmar deletar 
         function confirmDelete() {
+
             if (confirm("Deseja realmente deletar esse Usuário?")) {
                 return true;
             } else {

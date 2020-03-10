@@ -25,8 +25,6 @@ class CategoriaController extends Controller {
        
        $categorias = Categoria::orderBy('id', 'desc')->get()->paginate(6);
 
-       // dd($categorias);
-
        return view('admin.categorias.index', compact('categorias'));
     }
 

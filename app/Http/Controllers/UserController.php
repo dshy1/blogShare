@@ -24,7 +24,7 @@ class UserController extends Controller
 
         $users = User::orderBy('id', 'desc')->paginate(6);
 
-        return view('users.lista', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -34,7 +34,7 @@ class UserController extends Controller
      */
     public function create() {
 
-        return view('users.novo');
+        return view('admin.users.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class UserController extends Controller
 
             # status de retorno
             Session::flash('success', ' O usuário foi salvo com sucesso!');
-            return redirect()->route('users.index');
+            return redirect()->route('user.index');
 
 
         }catch (\Exception $exception) {
@@ -86,7 +86,7 @@ class UserController extends Controller
             return redirect()->back()->withInput();
         }
 
-        return redirect()->route('users.index');
+        return redirect()->route('user.index');
 
 
     } // end store
@@ -112,7 +112,7 @@ class UserController extends Controller
         
         $user  = User::findOrFail($id);
 
-        return view('users.edit', compact('user')); 
+        return view('admin.users.edit', compact('user')); 
     }
 
     /**
@@ -165,7 +165,7 @@ class UserController extends Controller
         $user->save();
         # status de retorno
         Session::flash('success', ' O usuário foi atualizado com sucesso!');
-        return redirect()->route('users.index');        
+        return redirect()->route('user.index');        
 
     }// end update
 
@@ -185,14 +185,14 @@ class UserController extends Controller
             # status de retorno
             Session::flash('success', ' O usuário foi deletado com sucesso!');
 
-            return redirect()->route('users.index');
+            return redirect()->route('user.index');
 
         }catch (\Exception $exception){
 
             # status de retorno
             Session::flash('error', 'Falha ao deletar o usuário!');
 
-            return redirect()->route('users.index');
+            return redirect()->route('user.index');
 
         }
     }
