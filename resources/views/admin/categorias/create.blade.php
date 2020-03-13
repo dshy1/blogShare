@@ -59,7 +59,7 @@
                           <div class="page-title-right">
                               <ol class="breadcrumb m-0">
                                   <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                                  <li class="breadcrumb-item"><a href="{{ route('categoria.index') }}">Categorias</a></li>
+                                  <li class="breadcrumb-item"><a href="{{ route('categorias.index') }}">Categorias</a></li>
                                   <li class="breadcrumb-item active">Nova Categoria</li>
                               </ol>
                           </div>
@@ -85,7 +85,7 @@
                           <div class="card-body">
                             <h4 class="header-title">Crie Categorias para Organizar Seus Posts</h4>
                            
-                             <form action="{{ route('categoria.store') }}" method="POST" enctype="multipart/form-data" >
+                             <form action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data" >
                                   @csrf
                                   {{ method_field('POST') }}
 
@@ -94,7 +94,7 @@
                                
                                 <div class="form-layout-footer">
                                     <input type="submit" class="btn btn-primary" value="Salvar Categoria" onclick="return true;" />
-                                    <a href="{{ route('categoria.index') }}" class="btn btn-secondary">Cancelar</a>
+                                    <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
                                 </div>
                               </form>
                           </div>

@@ -94,7 +94,7 @@
                 
                 <div class="row">
                     <div class="col-md-12 novo-post">
-                        <a href="{{ route('categoria.create') }}" class="btn btn-success btn-md bt-novo" title="Criar Nova Categoria"><span>+</span> Novo</a>
+                        <a href="{{ route('categorias.create') }}" class="btn btn-success btn-md bt-novo" title="Criar Nova Categoria"><span>+</span> Novo</a>
                     </div>
                 </div>
 
@@ -141,9 +141,9 @@
                                                         <td>Não Informado</td>
                                                     @endif
                                                     <td class="botoes">
-                                                        <a href="{{ route('categoria.edit', $cat->id) }}" class="btn btn-outline-success btn-sm marginLeft4">Editar</a> 
+                                                        <a href="{{ route('categorias.edit', $cat->id) }}" class="btn btn-outline-success btn-sm marginLeft4">Editar</a> 
 
-                                                        <form action="{{route('categoria.destroy', ['id' => $cat->id])}}" method="POST" id="form-delete-categoria">
+                                                        <form action="{{route('categorias.destroy', ['id' => $cat->id])}}" method="POST" id="form-delete-categoria">
                                                             @csrf
                                                             @method('DELETE')
 
@@ -158,7 +158,7 @@
                             </div>
                         </div>
                     </div>
-                    {{ $categorias->links() }}
+                    {{-- {{ $categorias->links() }} --}}
                 </div>
             </div>
         </div>

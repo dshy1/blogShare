@@ -46,16 +46,16 @@ Route::get('/admin', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
     
 	### Categoria Resource
-	Route::resource('/categoria', 'CategoriaController');
+	Route::resource('/categorias', 'CategoriasController');
 
 	### Post Resource
-	Route::resource('/post', 'PostController')->names('post');
+	Route::resource('/posts', 'PostsController')->names('post');
 
 	### Portfolio Resource
-	Route::resource('/cliente', 'PortfolioController')->names('cliente');
+	Route::resource('/clientes', 'PortfolioController')->names('cliente');
 
 	### User Resource
-	Route::resource('/user', 'UserController')->names('user');
+	Route::resource('/users', 'UsersController')->names('user');
 
 });
 

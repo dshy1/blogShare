@@ -9,7 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Session;
 
 
-class CategoriaController extends Controller {
+class CategoriasController extends Controller {
 
     protected $request;
     protected $categoria;
@@ -23,7 +23,7 @@ class CategoriaController extends Controller {
     // Traz todos as categorias cadastradas na página admin/categorias
     public function index() {
        
-       $categorias = Categoria::orderBy('id', 'desc')->get()->paginate(6);
+       $categorias = Categoria::orderBy('id', 'desc')->paginate(6);
 
        return view('admin.categorias.index', compact('categorias'));
     }

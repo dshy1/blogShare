@@ -15,7 +15,7 @@ use Session;
 
 
 
-class PostController extends Controller {
+class PostsController extends Controller {
 
     protected $request;
     protected $post;

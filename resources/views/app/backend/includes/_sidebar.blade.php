@@ -44,7 +44,7 @@
                       </a>
                       <ul class="sub-menu" aria-expanded="false">
                           <li><a href="{{ route('post.index') }}">Posts</a></li>
-                          <li><a href="{{ route('categoria.index') }}">Categorias</a></li>
+                          <li><a href="{{ route('categorias.index') }}">Categorias</a></li>
                       </ul>
                   </li>
 

@@ -103,11 +103,8 @@
                           </div>
                       </div>
                   </div>
-                  <!-- end col -->
               </div>
-              <!-- end row -->
           </div>
-          <!-- container -->
       </div>
       <!-- End Page-content -->
   </div>
