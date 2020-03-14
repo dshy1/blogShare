@@ -18,12 +18,9 @@ use Spatie\Permission\Models\Permission;
 |
 */
 
-
 #### Redireciona /home para /login
 Route::get('/home', function() {
-	
 	return redirect()->route('login');
-   	
 });
 
 #### Rotas de navegaçao do site
@@ -35,7 +32,6 @@ Route::get('/blog', 'SiteController@lista')->name('site.lista');
 Route::get('/post/{slug}', 'SiteController@show')->name('site.show');
 Route::get('/portfolio/{slug}', 'SiteController@showCliente')->name('portfolio.show');
 Route::get('/search', 'PesquisaController@pesquisaCategoria')->name('site.pesquisa.cat');
-
 
 #### Rotas que precisam de autenticaçao
 Auth::routes();
@@ -58,7 +54,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
 	Route::resource('/users', 'UsersController')->names('user');
 
 });
-
 
 
 /*

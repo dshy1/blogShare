@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class Portfolio extends Model {
-
+class Portfolio extends Model 
+{
     use Notifiable;
     use HasRoles;
 

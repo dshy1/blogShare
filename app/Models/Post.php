@@ -9,9 +9,8 @@ use App\User;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
 
-
-class Post extends Model {
-
+class Post extends Model 
+{
 	use Notifiable;
     use HasRoles;
 
@@ -19,12 +18,9 @@ class Post extends Model {
         'titulo', 'slug', 'texto', 'image'
     ];
 
-
-     // *** Relacionamentos ///////////////////////
+    ### Relations ///////////////////////
 
     // One to Many - autor( o post pertence a um usuário )
-    // Depois do ::class coloca virgula. O primeiro parâmetro é a foreign key e o segundo parâmetro qual campo da outra tabela ela se relaciona.
-
     public function autor() {
 
         return $this->belongsTo(\App\User::class, 'user_id', 'id');
@@ -34,7 +30,7 @@ class Post extends Model {
 
     public function categorias() {
 
-        // é belongsToMany porque tem uma pivot table categoria_post
+        // belongsToMany porque tem uma pivot table categoria_post
         return $this->belongsToMany(\App\Models\Categoria::class);
     }
 

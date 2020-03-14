@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model {
+class Categoria extends Model 
+{
 	
-       protected $fillable = [
+    protected $fillable = [
         'nome', 'descricao'
     ];
 
-
-    // *** Relacionamentos ///////////////////////
+    ### Relations ///////////////////////
 
     // Many to Many - posts( uma categoria pode pertencer a vários posts )
     public function posts() {

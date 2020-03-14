@@ -8,9 +8,8 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Session;
 
-
-class CategoriasController extends Controller {
-
+class CategoriasController extends Controller 
+{
     protected $request;
     protected $categoria;
 
@@ -47,8 +46,8 @@ class CategoriasController extends Controller {
         try{
 
             $categoria = Categoria::create([
-                'nome'        =>$request->get('nome'),
-                'descricao'   => $request->get('descricao'),
+                'nome'      =>$request->get('nome'),
+                'descricao' => $request->get('descricao'),
             ]);
 
             # status de retorno
@@ -71,12 +70,12 @@ class CategoriasController extends Controller {
     {
         //
     }
-
-   
+       
     public function edit($id) {
       
-         $categoria = Categoria::find($id);
-         return view('categoria.edit', compact('categoria'));
+        $categoria = Categoria::find($id);
+
+        return view('categoria.edit', compact('categoria'));
     }
 
     
@@ -92,7 +91,6 @@ class CategoriasController extends Controller {
 
             $categoria = Categoria::find($id);
             $categoria->fill($request->all());
-
             $categoria->save();
 
             # status de retorno
@@ -115,21 +113,21 @@ class CategoriasController extends Controller {
     public function destroy($id) {
         
         try{
+
             $categoria = Categoria::findOrFail($id);
             $categoria->delete();
 
             # status de retorno
-            Session::flash('success',' A categoria foi deletada com sucesso!');
+            Session::flash('success',' A categoria foi excluida com sucesso!');
 
             return redirect()->route('categoria.index');
 
         } catch (\Exception $exception){
             # status de retorno
-            Session::flash('error',' A categoria não pôde ser deletada!');
+            Session::flash('error',' A categoria não pôde ser excluida!');
             
             return redirect()->route('categoria.index');
         }
-
     }
     
 }// end class

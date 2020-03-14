@@ -84,7 +84,6 @@
                       <div class="card">
                           <div class="card-body">
                             <h4 class="header-title">Crie Categorias para Organizar Seus Posts</h4>
-                           
                              <form action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data" >
                                   @csrf
                                   {{ method_field('POST') }}

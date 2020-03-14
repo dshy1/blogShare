@@ -6,16 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-      protected $fillable = [
+    protected $fillable = [
         'name', 'guard_name'
     ];
 
-    // *** Relacionamentos ///////////////////////
-
+     ### Relations ///////////////////////
+    
     // Many to Many - politicas de acesso
     public function users() {
 
         return $this->belongsToMany('App\User');
     }
-
 }

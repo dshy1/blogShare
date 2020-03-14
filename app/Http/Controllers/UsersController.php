@@ -7,18 +7,13 @@ use App\User;
 use App\Models\Role;
 use Session;
 
-
-
 class UsersController extends Controller
 {
-
-
    public function __construct() {
 
         $this->middleware('auth');
         
     }
-
 
     public function index() {
 
@@ -45,7 +40,6 @@ class UsersController extends Controller
      */
     public function store(Request $request) {
 
-
         // validate
         $validator = $this->validate($request, [
             'name'   => 'required',
@@ -55,8 +49,6 @@ class UsersController extends Controller
 
         try{
 
-            // \DB::beginTransaction();
-
             # Cria o um novo usuário
             $user = User::create([
                 'name'     => $request->get('name'),
@@ -65,12 +57,9 @@ class UsersController extends Controller
                 'image'    =>  NULL
             ]);
 
-
             # Atribui a politica de autor ao usuário criado
             $role = Role::where('name', 'autor')->get()->first();
             $user->roles()->attach($role);
-
-            // \DB::commit();
 
             # status de retorno
             Session::flash('success', ' O usuário foi salvo com sucesso!');
@@ -79,8 +68,6 @@ class UsersController extends Controller
 
         }catch (\Exception $exception) {
 
-            // \DB::rollback();
-
             # status de retorno
             Session::flash('error', ' O usuário não pôde ser cadastrado!');
             return redirect()->back()->withInput();
@@ -88,8 +75,7 @@ class UsersController extends Controller
 
         return redirect()->route('user.index');
 
-
-    } // end store
+    } 
 
     /**
      * Display the specified resource.
@@ -123,7 +109,6 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-
 
         // validate
         $validator = $this->validate($request, [
@@ -167,7 +152,7 @@ class UsersController extends Controller
         Session::flash('success', ' O usuário foi atualizado com sucesso!');
         return redirect()->route('user.index');        
 
-    }// end update
+    }
 
     /**
      * Remove the specified resource from storage.

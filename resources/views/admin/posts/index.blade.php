@@ -149,7 +149,7 @@
                                                             @csrf
                                                             @method('DELETE')
 
-                                                              <input type="submit" class="btn btn-outline-danger btn-sm marginLeft4" value="Deletar" onclick="return confirmDelete();" />
+                                                              <input type="submit" class="btn btn-outline-danger btn-sm marginLeft4" value="Deletar" id="btn-delete-post" onclick="teste();" />
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -171,7 +171,6 @@
 
 
 <!-- Script JS -->
-
 @section('scripts')
 
     <script type="text/javascript">
@@ -190,6 +189,29 @@
         function fecharAlert() {
             document.getElementById("close").style.display = "none";
         }
+
+        // Alerta com swal
+        function teste() {
+
+            swal.fire({
+              title: 'Tem certeza que deseja excluir?',
+              text: "Essa acao e irreversivel!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Sim, deletar!'
+            }).then((result) => {
+              if (result.value) {
+                swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                )
+              }
+            })
+        }
+        
     </script>
 
 @stop

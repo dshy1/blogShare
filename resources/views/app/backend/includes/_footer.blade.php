@@ -12,7 +12,6 @@
     </style>
 
     <!-- ########## START: FOOTER ########## -->
-
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -27,11 +26,9 @@
             </div>
         </div>
     </footer>
-    
 
 
     <!-- Script JS -->
-    
     <script src="{{ asset($path.'template-dark/assets/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/libs/metismenu/metisMenu.min.js') }}"></script>
@@ -44,14 +41,14 @@
     <script src="{{ asset($path.'template-dark/assets/js/pages/dashboard.init.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/js/app.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/libs/dropzone/min/dropzone.min.js') }}"></script>
-
     <script src="{{ asset($path.'js/select2.min.js') }}"></script>
-
+    {{-- Swall alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{{ asset($path.'js/sweetalert2.all.min.js') }}"></script>
     {{-- CKeditor --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 
     @yield('scripts')
 
   </body>
-
 </html>

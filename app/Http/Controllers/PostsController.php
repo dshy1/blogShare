@@ -14,9 +14,8 @@ use Spatie\Permission\Models\Permission;
 use Session;
 
 
-
-class PostsController extends Controller {
-
+class PostsController extends Controller 
+{
     protected $request;
     protected $post;
 
@@ -33,8 +32,8 @@ class PostsController extends Controller {
 
         // Se o usuario for admin, trazer todos os posts
         if ($user->roles()->first()->name == 'admin') {
-          
-          $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);
+
+            $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);
            
         }
         // Senão trazer somente os posts de quem está logado
@@ -56,8 +55,6 @@ class PostsController extends Controller {
 
 
     public function store(Request $request) {
-
-        // dd($request);
 
         // validate
         $validator = $this->validate($request, [
@@ -86,14 +83,12 @@ class PostsController extends Controller {
                 $upload = $arquivo_post->storeAs($pasta_post, $nome_arquivo);
             }
 
-
             $post = Post::create([
                 'titulo' => $request->get('titulo'),
                 'slug'   => Str::slug($request->get('titulo'), '-'),
                 'texto'  => $request->get('texto'),
                 'image'  => $nome_arquivo
             ]);
-
 
             # Vincula as categorias
             $post->categorias()->sync($request->get('categorias'));
@@ -142,8 +137,7 @@ class PostsController extends Controller {
 
    
     public function update(Request $request, $id) {
-        
-
+    
         // validate
         $validator = $this->validate($request, [
             'titulo'     => 'required|max:255',
@@ -186,8 +180,7 @@ class PostsController extends Controller {
         return redirect()->route('post.index');
 
 
-    } // end update
-
+    } 
 
     public function destroy($id) {
         
@@ -197,19 +190,18 @@ class PostsController extends Controller {
             $post->delete();
 
             # status de retorno
-            Session::flash('success',  ' Post deletado com sucesso!');
+            Session::flash('success',  ' Post excluido com sucesso!');
 
             return redirect()->route('post.index');
 
         }catch (\Exception $exception){
 
             # status de retorno
-            Session::flash('error', 'Falha ao deletar o post!');
+            Session::flash('error', 'Falha ao excluir o Post!');
 
             return redirect()->route('post.index');
 
         }
     }
-
 
 } // end class
