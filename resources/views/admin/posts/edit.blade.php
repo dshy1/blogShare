@@ -59,7 +59,7 @@
                           <div class="page-title-right">
                               <ol class="breadcrumb m-0">
                                   <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                                  <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Posts</a></li>
+                                  <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Posts</a></li>
                                   <li class="breadcrumb-item active">Editar Post</li>
                               </ol>
                           </div>
@@ -84,7 +84,7 @@
                           <div class="card-body">
                             <h4 class="header-title">Deixe Seus Posts Ainda Mais Interessantes</h4>
                            
-                             <form action="{{ route('post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                             <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                                   @csrf
                                   {{method_field('PATCH')}}
 
@@ -93,7 +93,7 @@
 
                                 <div class="form-layout-footer">
                                     <input type="submit" class="btn btn-primary" value="Salvar Alterações" />
-                                    <a href="{{ route('post.index') }}" class="btn btn-secondary">Cancelar</a>
+                                    <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
                                 </div>
                               </form>
                           </div>

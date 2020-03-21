@@ -59,7 +59,7 @@
                           <div class="page-title-right">
                               <ol class="breadcrumb m-0">
                                   <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                                  <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Posts</a></li>
+                                  <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Posts</a></li>
                                   <li class="breadcrumb-item active">Novo Post</li>
                               </ol>
                           </div>
@@ -85,7 +85,7 @@
                           <div class="card-body">
                             <h4 class="header-title">Crie Posts Incríveis para seu Blog</h4>
                            
-                             <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data" >
+                             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" >
                                   @csrf
                                   {{ method_field('POST') }}
 
@@ -93,11 +93,8 @@
                                   <hr>
                                
                                 <div class="form-layout-footer">
-                                    {{-- @if(Auth::user()->email === 'teste@gmail.com')
-                                      <input type="submit" class="btn btn-primary disabled" value="Salvar Post" onclick="return false;" />
-                                    @else --}}
-                                      <input type="submit" class="btn btn-primary" value="Salvar Post" onclick="return true;" />
-                                    <a href="{{ route('post.index') }}" class="btn btn-secondary">Cancelar</a>
+                                    <input type="submit" class="btn btn-primary" value="Salvar Post" onclick="return true;" />
+                                    <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancelar</a>
                                 </div>
                               </form>
                           </div>

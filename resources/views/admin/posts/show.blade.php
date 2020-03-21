@@ -48,7 +48,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Posts</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Posts</a></li>
                                     <li class="breadcrumb-item active">Informações</li>
                                 </ol>
                             </div>
@@ -89,14 +89,14 @@
                               <hr class="cinza-claro">
 
                               <div class="media mg-b-25">
-                                  <a href="{{ route('post.edit', $post->id) }}" class="btn btn-outline-success btn-sm">Editar</a>
-                                  <form action="{{route('post.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-post02">
+                                  <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm">Editar</a>
+                                  <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-post02">
                                       @csrf
                                       @method('DELETE') 
 
                                         <input type="submit" value="Deletar" class="btn btn-outline-danger btn-sm marginLeft4" onclick="return confirmDelete();" />
                                   </form>
-                                  <a href="{{ route('post.index') }}" class="btn btn-outline-secondary btn-sm marginLeft4">Voltar</a>
+                                  <a href="{{ route('posts.index') }}" class="btn btn-outline-secondary btn-sm marginLeft4">Voltar</a>
                               </div>
                             </div>
                         </div>

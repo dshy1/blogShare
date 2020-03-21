@@ -28,7 +28,8 @@
         .alert-success {
             position: relative;
             left: 25%;
-            margin: 100px 0 -60px;
+            margin-top: 100px;
+            margin-bottom: -120px;
         }
         .row-alert {
             max-width: 80%;
@@ -86,7 +87,7 @@
                 
                 <div class="row">
                     <div class="col-md-12 novo-post">
-                        <a href="{{ route('post.create') }}" class="btn btn-success btn-md bt-novo" title="Criar Novo Post"><span>+</span> Novo</a>
+                        <a href="{{ route('posts.create') }}" class="btn btn-success btn-md bt-novo" title="Criar Novo Post"><span>+</span> Novo</a>
                     </div>
                 </div>
 
@@ -123,10 +124,10 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('post.show', $post->id) }}" class="link-branco">{{ $post->id }}</a>
+                                                        <a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{ $post->id }}</a>
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('post.show', $post->id) }}" class="link-branco">{{substr(strip_tags($post->titulo), 0, 40) . '...' ?? 'Não Informado'}}</a>
+                                                        <a href="{{ route('posts.show', $post->id) }}" class="link-branco">{{substr(strip_tags($post->titulo), 0, 40) . '...' ?? 'Não Informado'}}</a>
                                                     </td>
 
                                                     <td>{{substr(strip_tags($post->texto), 0, 20) . '...' ?? 'Não Informado'}}
@@ -139,18 +140,11 @@
                                                         </a>
                                                     </td>
                                                     <td class="botoes">
-                                                        <a href="{{ route('post.show', $post->id) }}" class="btn btn-outline-primary btn-sm com-margin">Ver</a> 
-                                                        {{-- @if(Auth::user()->email === 'teste@gmail.com')
-                                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm com-margin disabled">Editar</a> 
-                                                        @else --}}
-                                                            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-outline-success btn-sm marginLeft4">Editar</a> 
+                                                        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-outline-primary btn-sm com-margin">Ver</a> 
+                                                       
+                                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm marginLeft4">Editar</a> 
 
-                                                        <form action="{{route('post.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-post01">
-                                                            @csrf
-                                                            @method('DELETE')
-
-                                                              <input type="submit" class="btn btn-outline-danger btn-sm marginLeft4" value="Deletar" id="btn-delete-post" onclick="teste();" />
-                                                        </form>
+                                                            <a href="" class="btn btn-outline-danger btn-sm marginLeft4 btn-delete-post" data-post-id="{{ $post->id }}">Deletar</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -190,28 +184,52 @@
             document.getElementById("close").style.display = "none";
         }
 
-        // Alerta com swal
-        function teste() {
+        // Deletar Post - alerta com swall
+       $('.btn-delete-post').click(function() {
+
+            var post_id = $(this).attr("data-post-id");
 
             swal.fire({
-              title: 'Tem certeza que deseja excluir?',
-              text: "Essa acao e irreversivel!",
+              title: 'Exclusão de Post',
+              text: "Você está prestes a excluir este post, deseja continuar?",
               icon: 'warning',
               showCancelButton: true,
+              cancelButtonText: "Cancelar",
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
-              confirmButtonText: 'Sim, deletar!'
+              confirmButtonText: 'Sim',
+              reverseButtons: true
             }).then((result) => {
-              if (result.value) {
-                swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
-                  'success'
-                )
-              }
-            })
-        }
+                if (result.value) {
+                    $.ajax({
+                        url: "/posts/delete",
+                        type: "delete",
+                        data: {
+                            id: post_id
+                        },
+                        dataType: "html",
+                        success: function () {
+                            swal.fire(
+                              'Excluído!',
+                              'O post foi excluído com sucesso!',
+                              'success'
+                            );
+                            setTimeout(function(){
+                                location.reload();
+                            }, 1000)
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            swal.fire(
+                              'Erro!',
+                              'Não foi possível excluir o post, tente novamente mais tarde.',
+                              'error'
+                            );
+                        }
+                    });
+                }
+            });
+        });
         
     </script>
-
+     
 @stop

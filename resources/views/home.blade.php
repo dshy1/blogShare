@@ -162,7 +162,7 @@
                                        <div class="card-deck card-deck-sm mg-x-0">
                                           @foreach($posts as $post)
                                             <div class="card bd-0 mg-0">
-                                              <a href="{{ route('post.show', $post->id) }}">
+                                              <a href="{{ route('posts.show', $post->id) }}">
                                                 <figure class="{{ Auth::user()->roles->first()->name == 'Admin' ? 'card-item-img bg-mantle rounded-top' : 'card-item-img bg-mantle rounded-top' }}">
                                                    <img class="img-fluid rounded-top" src="{{ asset($path.'storage/images/posts/'.$post->image) }}" alt="post image" />
                                                 </figure>
@@ -178,7 +178,7 @@
                                               <div class="card-body pd-25 bd bd-t-0 bd-white-1 rounded-bottom">
                                                 <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-info">{{ $post->categorias[0]->nome }}</p>
                                                 <h4 class="tx-normal tx-roboto lh-3 mg-b-15 card-title">
-                                                  <a href="{{ route('post.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}
+                                                  <a href="{{ route('posts.show', $post->id) }}" class="tx-white hover-info">{{ $post->titulo }}
                                                   </a>
                                                 </h4>
                                                 <p class="tx-14 mg-b-25 cinza-claro">{{substr(strip_tags($post->texto), 0, 157) . '...' ?? 'Não Informado'}}</p>

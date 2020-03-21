@@ -43,13 +43,13 @@
                           <span>Blog</span>
                       </a>
                       <ul class="sub-menu" aria-expanded="false">
-                          <li><a href="{{ route('post.index') }}">Posts</a></li>
+                          <li><a href="{{ route('posts.index') }}">Posts</a></li>
                           <li><a href="{{ route('categorias.index') }}">Categorias</a></li>
                       </ul>
                   </li>
 
                   <li>
-                      <a href="{{ route('user.index') }}" class="waves-effect">
+                      <a href="{{ route('users.index') }}" class="waves-effect">
                           <i class="mdi mdi-account-multiple-outline"></i>
                           <span>Membros</span>
                       </a>

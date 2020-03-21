@@ -42,16 +42,18 @@ Route::get('/admin', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
     
 	### Categoria Resource
-	Route::resource('/categorias', 'CategoriasController');
+	Route::resource('/categorias', 'CategoriasController')->names('categorias');
 
 	### Post Resource
-	Route::resource('/posts', 'PostsController')->names('post');
+	Route::resource('/posts', 'PostsController')->names('posts');
 
 	### Portfolio Resource
-	Route::resource('/clientes', 'PortfolioController')->names('cliente');
+	Route::resource('/clientes', 'PortfolioController')->names('clientes');
 
 	### User Resource
-	Route::resource('/users', 'UsersController')->names('user');
+	Route::resource('/users', 'UsersController')->names('users');
+
+	Route::delete('/posts/delete', 'PostsController@deleteAjax')->name('post.delete');
 
 });
 

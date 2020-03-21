@@ -101,7 +101,7 @@ class PostsController extends Controller
 
             # status de retorno
             Session::flash('success', ' Post criado com sucesso!');
-            return redirect()->route('post.index');
+            return redirect()->route('posts.index');
 
 
         }catch(\Exception $exception) {
@@ -111,7 +111,7 @@ class PostsController extends Controller
             return redirect()->back()->withInput();
         }
 
-        return redirect()->route('post.index');
+        return redirect()->route('posts.index');
        
     } // end store
 
@@ -177,7 +177,7 @@ class PostsController extends Controller
 
         # status de retorno
         Session::flash('success', ' Post atualizado com sucesso!');
-        return redirect()->route('post.index');
+        return redirect()->route('posts.index');
 
 
     } 
@@ -190,18 +190,29 @@ class PostsController extends Controller
             $post->delete();
 
             # status de retorno
-            Session::flash('success',  ' Post excluido com sucesso!');
+            Session::flash('success',  ' Post excluído com sucesso!');
 
-            return redirect()->route('post.index');
+            return redirect()->route('posts.index');
 
         }catch (\Exception $exception){
 
             # status de retorno
             Session::flash('error', 'Falha ao excluir o Post!');
 
-            return redirect()->route('post.index');
+            return redirect()->route('posts.index');
 
         }
+    }
+
+    public function deleteAjax($id) {
+
+        if (Post::destroy($id)) {
+            return response()->json(["status" => true], 200);
+
+        }
+        return response()->json(["status" => false, "message" => "Não foi possível 
+         excluir o Post"], 401);
+
     }
 
 } // end class
