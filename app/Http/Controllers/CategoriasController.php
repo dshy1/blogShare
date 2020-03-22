@@ -56,26 +56,21 @@ class CategoriasController extends Controller
         }catch (\Exception $exception){
 
             # status de retorno
-            Session::flash('error',' A categoria não pôde ser cadastrada!'); 
+            Session::flash('error',' A Categoria não pôde ser cadastrada!'); 
 
             return redirect()->back()->withInput();
         }
 
-        return redirect()->route('categoria.index');
+        return redirect()->route('categorias.index');
 
     }
 
-   
-    public function show($id)
-    {
-        //
-    }
        
     public function edit($id) {
       
         $categoria = Categoria::find($id);
 
-        return view('categoria.edit', compact('categoria'));
+        return view('admin.categorias.edit', compact('categoria'));
     }
 
     
@@ -96,17 +91,17 @@ class CategoriasController extends Controller
             # status de retorno
             Session::flash('success', $request['nome'] . ' editado com sucesso!');
 
-            return redirect()->route('categoria.index');
+            return redirect()->route('categorias.index');
 
         }catch (\Exception $exception){
 
             # status de retorno
-            Session::flash('error',' A categoria não pôde ser editada!');
+            Session::flash('error',' A Categoria não pôde ser editada!');
 
             return redirect()->back()->withInput();
         }
 
-        return redirect()->route('categoria.index');
+        return redirect()->route('categorias.index');
     }
 
    
@@ -118,15 +113,15 @@ class CategoriasController extends Controller
             $categoria->delete();
 
             # status de retorno
-            Session::flash('success',' A categoria foi excluida com sucesso!');
+            Session::flash('success',' A Categoria foi excluída com sucesso!');
 
-            return redirect()->route('categoria.index');
+            return redirect()->route('categorias.index');
 
         } catch (\Exception $exception){
             # status de retorno
-            Session::flash('error',' A categoria não pôde ser excluida!');
+            Session::flash('error',' A Categoria não pôde ser excluída!');
             
-            return redirect()->route('categoria.index');
+            return redirect()->route('categorias.index');
         }
     }
     

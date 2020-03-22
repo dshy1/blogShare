@@ -51,7 +51,7 @@
       			      @csrf
                   {{method_field('PATCH')}}
 
-                  @include('categorias.inputs', ['categoria' => $categoria, 'detalhe' => null])
+                  @include('admin.categorias.inputs', ['categoria' => $categoria, 'detalhe' => null])
 
       	        <div class="form-layout-footer marginT70">
                     @if(Auth::user()->email === 'teste@gmail.com')
