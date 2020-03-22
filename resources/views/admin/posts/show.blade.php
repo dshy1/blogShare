@@ -90,7 +90,7 @@
 
                               <div class="media mg-b-25">
                                   <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm">Editar</a>
-                                  <form action="{{route('posts.destroy', ['id' => $post->id])}}" method="POST" id="form-delete-post02">
+                                  <form action="{{route('posts.destroy', $post->id)}}" method="POST" id="form-delete-post02">
                                       @csrf
                                       @method('DELETE') 
 

@@ -13,10 +13,8 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Session;
 
-
-class PostsController extends Controller 
+class PostsController extends Controller
 {
-    protected $request;
     protected $post;
 
     public function __construct(Request $request, Post $post) {
@@ -25,7 +23,6 @@ class PostsController extends Controller
 
     }
 
-    // Traz todos os posts
     public function index() {
 
         $user = Auth::user();
@@ -45,8 +42,7 @@ class PostsController extends Controller
         return view('admin.posts.index', compact('posts', 'user'));
     }
 
-
-    public function create() {
+     public function create() {
 
         $categorias = Categoria::all();
 
@@ -100,14 +96,14 @@ class PostsController extends Controller
             $user->posts()->save($post);
 
             # status de retorno
-            Session::flash('success', ' Post criado com sucesso!');
+            Session::flash('success', ' O Post foi criado com sucesso!');
             return redirect()->route('posts.index');
 
 
         }catch(\Exception $exception) {
 
             # status de retorno
-            Session::flash('error', ' O post não pôde ser cadastrado!');
+            Session::flash('error', ' O Post não pôde ser cadastrado!');
             return redirect()->back()->withInput();
         }
 
@@ -116,9 +112,9 @@ class PostsController extends Controller
     } // end store
 
 
-    public function show(Post $post) {
+    public function show($id) {
 
-        $post       = Post::with('categorias')->with('autor')->get()->find($post);
+        $post = Post::findOrFail($id)->with('categorias')->with('autor')->get()->find($id);
         $categorias = Categoria::all();
 
         return view('admin.posts.show', compact('post', 'categorias')); 
@@ -176,21 +172,21 @@ class PostsController extends Controller
         $post->save();
 
         # status de retorno
-        Session::flash('success', ' Post atualizado com sucesso!');
+        Session::flash('success', ' O Post foi atualizado com sucesso!');
         return redirect()->route('posts.index');
 
 
     } 
 
     public function destroy($id) {
-        
+
         try{
 
             $post = Post::findOrFail($id);
             $post->delete();
 
             # status de retorno
-            Session::flash('success',  ' Post excluído com sucesso!');
+            Session::flash('success',  ' O Post foi excluído com sucesso!');
 
             return redirect()->route('posts.index');
 
@@ -202,17 +198,7 @@ class PostsController extends Controller
             return redirect()->route('posts.index');
 
         }
-    }
-
-    public function deleteAjax($id) {
-
-        if (Post::destroy($id)) {
-            return response()->json(["status" => true], 200);
-
-        }
-        return response()->json(["status" => false, "message" => "Não foi possível 
-         excluir o Post"], 401);
 
     }
 
-} // end class
+}

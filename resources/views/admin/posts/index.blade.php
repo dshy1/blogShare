@@ -141,10 +141,14 @@
                                                     </td>
                                                     <td class="botoes">
                                                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-outline-primary btn-sm com-margin">Ver</a> 
-                                                       
                                                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success btn-sm marginLeft4">Editar</a> 
 
-                                                            <a href="" class="btn btn-outline-danger btn-sm marginLeft4 btn-delete-post" data-post-id="{{ $post->id }}">Deletar</a>
+                                                           <form action="{{route('posts.destroy', $post->id)}}" method="POST" id="form-delete-post02">
+                                                              @csrf
+                                                              @method('DELETE') 
+
+                                                                <input type="submit" value="Deletar" class="btn btn-outline-danger btn-sm marginLeft4" onclick="return confirmDelete();" />
+                                                          </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -171,10 +175,9 @@
 
         // Funçao para confirmar deletar 
         function confirmDelete() {
-
             if (confirm("Deseja realmente deletar esse Post?")) {
                 return true;
-            } else {
+            }else {
                 return false;
             }
         }
@@ -184,52 +187,6 @@
             document.getElementById("close").style.display = "none";
         }
 
-        // Deletar Post - alerta com swall
-       $('.btn-delete-post').click(function() {
-
-            var post_id = $(this).attr("data-post-id");
-
-            swal.fire({
-              title: 'Exclusão de Post',
-              text: "Você está prestes a excluir este post, deseja continuar?",
-              icon: 'warning',
-              showCancelButton: true,
-              cancelButtonText: "Cancelar",
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Sim',
-              reverseButtons: true
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url: "/posts/delete",
-                        type: "delete",
-                        data: {
-                            id: post_id
-                        },
-                        dataType: "html",
-                        success: function () {
-                            swal.fire(
-                              'Excluído!',
-                              'O post foi excluído com sucesso!',
-                              'success'
-                            );
-                            setTimeout(function(){
-                                location.reload();
-                            }, 1000)
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            swal.fire(
-                              'Erro!',
-                              'Não foi possível excluir o post, tente novamente mais tarde.',
-                              'error'
-                            );
-                        }
-                    });
-                }
-            });
-        });
-        
     </script>
      
 @stop

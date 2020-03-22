@@ -26,6 +26,10 @@
     <!-- Dropzone para upload de arquivo -->
     <link rel="stylesheet" href="{{ asset($path.'template-dark/assets/libs/dropzone/min/dropzone.min.css') }}" />
     
+    {{-- Swall alert --}}
+  
+    <script src="{{ asset($path.'js/sweetalert2.min.js') }}"></script>
+    
 
     <style type="text/css">
 
