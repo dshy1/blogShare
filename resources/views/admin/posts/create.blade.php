@@ -84,8 +84,7 @@
                       <div class="card">
                           <div class="card-body">
                             <h4 class="header-title">Crie Posts Incríveis para seu Blog</h4>
-                           
-                             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" >
+                             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" id="formPhoto">
                                   @csrf
                                   {{ method_field('POST') }}
 
