@@ -24,9 +24,8 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset($path.'css/select2.min.css') }}" />
     <!-- Dropzone -->
-    <script src="{{ asset($path.'js/dropzone.js') }}"></script>   
-
-    
+    <link rel="stylesheet" href="{{ asset($path.'css/dropzone.css') }}" />
+    <script src="{{ asset($path.'js/dropzone.js') }}"></script>    
     {{-- Swall alert --}}
     <script src="{{ asset($path.'js/sweetalert2.min.js') }}"></script>
     
