@@ -1,6 +1,5 @@
-
 <style type="text/css">
-  
+
   input[type='file'] {
     display: none
   }
@@ -10,13 +9,13 @@
     color: #fff;
     cursor: pointer;
     margin: 10px;
-    padding: 6px 20px; 
+    padding: 6px 20px;
     margin-bottom: 15px;
   }
   #categorias-wrapper {
     min-width: 450px;
   }
- 
+
 </style>
 
 <div class="row mg-b-10">
@@ -33,7 +32,7 @@
 
   <div class="form-group">
       <input type="hidden" class="form-control" name="slug" />
-  </div>  
+  </div>
 </div>
 
 <div class="row mg-b-10">
@@ -107,12 +106,12 @@
                 { model: 'heading3', view: 'h3', title: 'Título 3', class: 'ck-heading_heading3' }
             ]
         }
-    }) 
+    })
     .catch( error => {
           console.error( error );
     });
 
-   
+
 
  // Dropzone /////////////////////////////
   var myDropzone = new Dropzone("div#myId", { url: "/file/post"});
@@ -128,7 +127,7 @@
       }
     };
 
-  </script> 
+  </script>
 
 @stop
 
