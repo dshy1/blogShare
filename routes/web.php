@@ -18,6 +18,9 @@ use Spatie\Permission\Models\Permission;
 |
 */
 
+/** route for testing */
+Route::get('/test', 'TestController@index')->name('test');
+
 #### Redireciona /home para /login
 Route::get('/home', function() {
 	return redirect()->route('login');
@@ -38,12 +41,12 @@ Auth::routes();
 
 #### Dashboard
 Route::get('/admin', 'HomeController@index')->name('home');
-    
+
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
-    
+
 	### Categorias
 	Route::resource('/categorias', 'CategoriasController')->names('categorias');
-	
+
 	// Posts
 	Route::resource('/posts', 'PostsController')->names('posts');
 
@@ -58,7 +61,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
 
 /*
 |-------------------------------------------------
-| Rotas Avulsas para testes 
+| Rotas Avulsas para testes
 |-------------------------------------------------
 */
 
@@ -81,7 +84,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
 // 	// dd($user);
 //    	echo $user[0]->name.'<br />'.
 //    	$user[0]->roles[0]->name;
-   	
+
 // });
 
 #### Atribuir todas as permissoes para a politica de admin
@@ -92,13 +95,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
 // 	$permissions = Permission::all();
 
 // 	foreach ($permissions as $permission) {
-        
+
 //         $role->givePermissionTo($permission);
 //     }
-	
+
 // 	return "Permissões atribuídas com sucesso para: " .$role->name;
-  
-   	
+
+
 // });
 
 #### Atribuir algumas permissoes para a politica de autor
@@ -107,10 +110,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
 // 	$role = Role::where('name', 'Autor')->get()->first();
 
 //     $role->givePermissionTo(['cria-post', 'lista-post', 'atualiza-post', 'deleta-post',]);
-    
+
 // 	return "Permissões atribuídas com sucesso para: " .$role->name;
-  
-   	
+
+
 // });
 
 
