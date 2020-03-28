@@ -1,4 +1,3 @@
-
     <style type="text/css">
       
       .small {
@@ -36,13 +35,10 @@
     <script src="{{ asset($path.'template-dark/assets/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/libs/slick-slider/slick/slick.min.js') }}"></script>
-    {{--  <script src="{{ asset($path.'template-dark/assets/libs/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset($path.'template-dark/assets/libs/jqvmap/maps/jquery.vmap.usa.js') }}"></script> --}}
     <script src="{{ asset($path.'template-dark/assets/js/pages/dashboard.init.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/js/app.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/libs/dropzone/min/dropzone.min.js') }}"></script>
     <script src="{{ asset($path.'js/select2.min.js') }}"></script>
-    <script src="{{ asset($path.'js/dropzone.js') }}"></script>   
     
     {{-- CKeditor --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>

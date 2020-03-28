@@ -58,8 +58,7 @@
       @isset($detalhe)
         <p id="categorias" class="">Detalhes Categorias</p>
       @else
-        <select class="js-example-basic-multiple" multiple="multiple" name="categorias[]" id="categorias-wrapper">
-          <option value="null" selected="" disabled="">Selecione</option>
+        <select class="js-example-basic-multiple" multiple="multiple" name="categorias[]" id="categorias-wrapper" value="teste">
            @foreach($categorias as $categoria)
               <option value="{{ $categoria->id }}" {{ isset($catgs_post) && in_array($categoria->id, $catgs_post) ? 'selected="selected"' : '' }} >{{ $categoria->nome }}
               </option>
@@ -70,23 +69,12 @@
   </div>
 </div>
 
-
 <div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="custom-file">
-      <label class="form-control-label cinza-claro marginT15">Imagem: <span class="tx-danger">*</span></label>
-      <div class="dropzone-input">
-          <input id='teste' type='file' accept="image/png, image/jpeg" name="image" />
-          <label for='input-file' id="dropzone01" style="width: 100%;height: 150px;border:2px dashed #ced4da;text-align: center;">
-          <div id="content-dropzone">
-            <i class="display-4 text-muted mdi mdi-cloud-upload-outline"></i>
-            <h4>Drop files here to upload</h4>
-          </div>
-
-          <div id="content-dropzone-image" style="display: none;">
-            <img src="" alt="image-preview" />
-          </div>
-        </label>
+      <div class="dz-message needsclick">
+        <button type="button" class="dz-button">Drop files here or click to upload.</button>
+      </div>
       </div>
     </div>
   </div>
@@ -101,6 +89,7 @@
   // ### Select2 -->
    $(document).ready(function() {
       $('#categorias-wrapper').select2({
+          placeholder: "Selecione uma ou mais categorias",
           maximumSelectionLength: 3
       });
     });
@@ -115,7 +104,6 @@
                 { model: 'heading1', view: 'h1', title: 'Título 1', class: 'ck-heading_heading1' },
                 { model: 'heading2', view: 'h2', title: 'Título 2', class: 'ck-heading_heading2' },
                 { model: 'heading3', view: 'h3', title: 'Título 3', class: 'ck-heading_heading3' }
-
             ]
         }
     }) 
@@ -130,7 +118,7 @@
       autoProcessQueue: false,
       maxFilesize: 10,
       maxThumbnailFilesize: 10,
-      maxFiles: 5,
+      maxFiles: 1,
       parallelUploads: 2,
       timeout: 3600000, //1h
       addRemoveLinks: true,

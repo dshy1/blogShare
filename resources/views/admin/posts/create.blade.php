@@ -38,6 +38,9 @@
       .header-title {
         margin-bottom: 35px;
       }
+      .dropzone {
+        border:none;
+      }
       hr {
         margin-top: 130px!important;
       }
@@ -84,7 +87,7 @@
                       <div class="card">
                           <div class="card-body">
                             <h4 class="header-title">Crie Posts Incríveis para seu Blog</h4>
-                             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" id="formPhoto">
+                             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="dropzone">
                                   @csrf
                                   {{ method_field('POST') }}
 
