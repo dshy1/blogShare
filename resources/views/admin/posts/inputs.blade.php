@@ -72,9 +72,10 @@
 <div class="row mg-b-10">
   <div class="col-lg-12">
     <div class="custom-file">
-      <div class="dz-message needsclick">
-        <button type="button" class="dz-button">Drop files here or click to upload.</button>
-      </div>
+        <label class="form-control-label cinza-claro">Imagem: <span class="tx-danger">*</span></label>
+        <div class="dz-message needsclick">
+          <button type="button" class="dz-button">Drop files here or click to upload.</button>
+        </div>
       </div>
     </div>
   </div>
@@ -114,46 +115,18 @@
    
 
  // Dropzone /////////////////////////////
-   Dropzone.options.formPhoto = {
-      autoProcessQueue: false,
-      maxFilesize: 10,
-      maxThumbnailFilesize: 10,
-      maxFiles: 1,
-      parallelUploads: 2,
-      timeout: 3600000, //1h
-      addRemoveLinks: true,
-      dictRemoveFile: 'Effacer',
-      acceptedFiles: '.jpg, .jpeg, .png',
-      init: function() {
-        var submitButton = document.querySelector("#teste")
-        myDropzone = this; // closure
-        submitButton.addEventListener("click", function() {
-          myDropzone.processQueue();
-        });
-        // files are dropped here:
-        this.on("addedfile", function() {
-        });
-        this.on('error', function(file, errorMessage) {
-            if (errorMessage.indexOf('Error 404') !== -1) {
-                var errorDisplay = document.querySelectorAll('[dz-error-message]');
-                errorDisplay[errorDisplay.length - 1].innerHTML = 'Error 404: The upload page was not found on the server';
-            }
-            if (errorMessage.indexOf('File is too big') !== -1) {
-                toastr.warning("La taille de l'image ne doit pas dépasser 10MB. Format accepté .jpg, .png, .jpeg. Image non enregistré");
-                // i remove current file
-                this.removeFile(file);
-            }
-        });
-        this.on("complete", function (file, response) {
-          if(response==0){
-            toastr.warning("La taille de l'image ne doit pas dépasser 10MB. Format accepté jpg,png,jpeg. Image non enregistré");
-          }else{
-            toastr.success("Enregistrement effectué");
-            loadImg();
-          }
-        });
+  var myDropzone = new Dropzone("div#myId", { url: "/file/post"});
+
+  myDropzone.options.myAwesomeDropzone = {
+      paramName: "image", // The name that will be used to transfer the file
+      maxFilesize: 2, // MB
+      accept: function(file, done) {
+        if (file.name == "justinbieber.jpg") {
+          done("Naha, you don't.");
+        }
+        else { done(); }
       }
-    }
+    };
 
   </script> 
 

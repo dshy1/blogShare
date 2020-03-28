@@ -14,6 +14,7 @@ class Post extends Model
 	use Notifiable;
     use HasRoles;
 
+    protected $table = 'posts';
     protected $fillable = [
         'titulo', 'slug', 'texto', 'image'
     ];
