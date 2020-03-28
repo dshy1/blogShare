@@ -68,17 +68,22 @@
   </div>
 </div>
 
-<div class="row mg-b-10">
-  <div class="col-lg-12">
-    <div class="custom-file">
-        <label class="form-control-label cinza-claro">Imagem: <span class="tx-danger">*</span></label>
-        <div class="dz-message needsclick">
-          <button type="button" class="dz-button">Drop files here or click to upload.</button>
-        </div>
+<div class="row mt-20">
+  <div class="col-md-12 ">
+      <div class="fallback">
+          <input name="image" type="file" multiple />
       </div>
-    </div>
+      <span class="sbold">Drop files here or click to upload <br/>Max size: 10MB</span>
   </div>
 </div>
+<div class="row mt-20">
+  <div class="col-md-12">
+      <button id="btnUpload" class="btn waves-effect waves-light btn-outline-success"><i class="fa fa-upload"></i> Upload</button>
+      <div class="dz-error-message"></div>
+  </div>
+</div>
+
+
 
 
 @section('scripts')
@@ -114,18 +119,46 @@
 
 
  // Dropzone /////////////////////////////
-  var myDropzone = new Dropzone("div#myId", { url: "/file/post"});
+  Dropzone.options.formPhoto = {
+    autoProcessQueue: false,
+    maxFilesize: 10,
+    maxThumbnailFilesize: 10,
+    maxFiles: 1,
+    parallelUploads: 2,
+    timeout: 3600000, //1h
+    addRemoveLinks: true,
+    dictRemoveFile: 'Clear',
+    acceptedFiles: '.jpg, .jpeg, .png',
+    init: function() {
+        var submitButton = document.querySelector("#btnUpload")
+        myDropzone = this; // closure
+        submitButton.addEventListener("click", function() {
+            myDropzone.processQueue();
+        });
+        // files are dropped here:
+        this.on("addedfile", function() {
 
-  myDropzone.options.myAwesomeDropzone = {
-      paramName: "image", // The name that will be used to transfer the file
-      maxFilesize: 2, // MB
-      accept: function(file, done) {
-        if (file.name == "justinbieber.jpg") {
-          done("Naha, you don't.");
-        }
-        else { done(); }
-      }
-    };
+        });
+        this.on('error', function(file, errorMessage) {
+            if (errorMessage.indexOf('Error 404') !== -1) {
+                var errorDisplay = document.querySelectorAll('[dz-error-message]');
+                errorDisplay[errorDisplay.length - 1].innerHTML = 'Error 404: The upload page was not found on the server';
+            }
+            if (errorMessage.indexOf('File is too big') !== -1) {
+                toastr.warning("Max size 10MB");
+                // i remove current file
+                this.removeFile(file);
+            }
+        });
+        this.on("complete", function (file, response) {
+            if(response==0){
+                toastr.warning("Format accepted .jpg, .png, .jpeg");
+            }else{
+                toastr.success("Save successfull");;
+            }
+        });
+    }
+  }
 
   </script>
 
