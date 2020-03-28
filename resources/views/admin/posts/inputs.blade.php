@@ -87,7 +87,7 @@
   <!-- Script JS -->
   <script type="text/javascript">
 
-  // ### Select2 -->
+  // Select2 /////////////////////////////
    $(document).ready(function() {
       $('#categorias-wrapper').select2({
           placeholder: "Selecione uma ou mais categorias",
@@ -95,7 +95,7 @@
       });
     });
 
-    // ### Check Editor -->
+    // Check Editor /////////////////////////////
     ClassicEditor.create( document.querySelector( '#editor' ), {
         // Aqui determina o que vai aparecer na caixa de ferramentas
         toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
