@@ -14,9 +14,9 @@ class Role extends Model
 
      ### Relations ///////////////////////
     
-    // Many to Many - politicas de acesso
+    // N:N - politicas de acesso
     public function users() {
 
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany(\App\User::class);
     }
 }

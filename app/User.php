@@ -31,13 +31,13 @@ class User extends Authenticatable {
 
     // *** Relacionamentos ///////////////////////
 
-    // Many to Many - politicas de acesso ( um usuário pode ter várias politicas )
+    // N:N -  um usuário tem várias políticas de acesso, pode ser admin, author, etc...
     public function roles() {
 
         return $this->belongsToMany(\App\Models\Role::class);
     }
 
-    // One to Many - posts ( um usuário pode ter vários posts )
+    // 1:N - um usuário tem vários posts
     public function posts() {
         
         return $this->hasMany(\App\Models\Post::class, 'user_id', 'id');

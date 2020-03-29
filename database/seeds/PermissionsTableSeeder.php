@@ -14,22 +14,19 @@ class PermissionsTableSeeder extends Seeder
       
         $permissions = [
 
-        	// can: Admin && Autor
-        	// Posts
+          // O admin e o autor podem
         	'cria-post',
         	'lista-post',
         	'atualiza-post',
           'deleta-post',
 
-          // can: Admin
-          // Categorias
+          // Só o admin pode
           'cria-categoria',
           'lista-categoria',
           'atualiza-categoria',
           'deleta-categoria',
 
-          // can: Admin
-          // Autor
+          // Só o admin pode
           'cria-user',
           'lista-user',
           'atualiza-user',

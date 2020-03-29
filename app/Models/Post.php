@@ -21,14 +21,13 @@ class Post extends Model
 
     ### Relations ///////////////////////
 
-    // One to Many - autor( o post pertence a um usuário )
+    // 1:N - o post pertence a um usuário 
     public function autor() {
 
         return $this->belongsTo(\App\User::class, 'user_id', 'id');
     }
 
-    // Many to Many - categorias( um post pode ter várias categorias )
-
+    // N:N - um post pode ter várias categorias 
     public function categorias() {
 
         // belongsToMany porque tem uma pivot table categoria_post
