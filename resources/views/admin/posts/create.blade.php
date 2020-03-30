@@ -87,7 +87,7 @@
                       <div class="card">
                           <div class="card-body">
                             <h4 class="header-title">Crie Posts Incríveis para seu Blog</h4>
-                             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="dropzone dropzone-file-area" id="formPhoto">
+                             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                                   @csrf
                                   {{ method_field('POST') }}
 

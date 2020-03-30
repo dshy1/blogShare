@@ -14,7 +14,7 @@ class Categoria extends Model
 
     ### Relations ///////////////////////
 
-    // Many to Many - posts( uma categoria pode pertencer a vários posts )
+    // N:N - posts( uma categoria pode pertencer a vários posts )
     public function posts() {
 
         return $this->belongsToMany('App\Models\Post');
