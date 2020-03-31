@@ -18,24 +18,17 @@ class PostsController extends Controller
     protected $post;
 
     public function __construct(Request $request, Post $post) {
-
         $this->middleware('auth');
-
     }
 
     public function index() {
-
         $user = Auth::user();
-
         // Se o usuario for admin, trazer todos os posts
-        if ($user->roles()->first()->name == 'admin') {
-
+        if ($user->permission == 'ADMIN') {
             $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);
-           
         }
         // Senão trazer somente os posts de quem está logado
         else {
-
             $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->paginate(6);
         }
 
@@ -91,7 +84,7 @@ class PostsController extends Controller
 
             # Pega o usuario logado
             $user = Auth::user();
-            
+
             # Salva o post para esse usuario
             $user->posts()->save($post);
 
@@ -108,7 +101,7 @@ class PostsController extends Controller
         }
 
         return redirect()->route('posts.index');
-       
+
     } // end store
 
 
@@ -117,23 +110,23 @@ class PostsController extends Controller
         $post = Post::findOrFail($id)->with('categorias')->with('autor')->get()->find($id);
         $categorias = Categoria::all();
 
-        return view('admin.posts.show', compact('post', 'categorias')); 
+        return view('admin.posts.show', compact('post', 'categorias'));
 
     }
 
-  
+
     public function edit($id) {
-       
+
         $post        = Post::with('categorias')->find($id);
         $catgs_post  = $post->categorias->pluck('id', 'id')->all();
         $categorias  = Categoria::all();
 
-        return view('admin.posts.edit', compact('post', 'catgs_post', 'categorias')); 
+        return view('admin.posts.edit', compact('post', 'catgs_post', 'categorias'));
     }
 
-   
+
     public function update(Request $request, $id) {
-    
+
         // validate
         $validator = $this->validate($request, [
             'titulo'     => 'required|max:255',
@@ -176,7 +169,7 @@ class PostsController extends Controller
         return redirect()->route('posts.index');
 
 
-    } 
+    }
 
     public function destroy($id) {
 

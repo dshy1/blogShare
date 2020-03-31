@@ -48,7 +48,7 @@
         #user-image {
             width: 50px;
         }
-     
+
     </style>
 
 
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
 
                 @if(Session::has('error'))
                 <div class="alert alert-danger">
@@ -90,10 +90,10 @@
                     </ul>
                 </div>
                 @endif
-                
+
                 <div class="row">
                     <div class="col-md-12 novo-post">
-                        <a href="{{ route('user.create') }}" class="btn btn-success btn-md bt-novo" title="Criar Novo Post"><span>+</span> Novo</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-success btn-md bt-novo" title="Criar Novo Post"><span>+</span> Novo</a>
                     </div>
                 </div>
 
@@ -135,8 +135,8 @@
                                                         <img src="{{ $user->image !== null ? asset($path.'storage/images/users/'.$user->image) : asset($path.'storage/images/users/avatar01.jpg') }}" alt="user image" class="wd-32 rounded-circle rounded-header" id="user-image" />
                                                     </td>
                                                     <td class="d-flex">
-                                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-success btn-sm">Editar</a>                            
-                                                        <form action="{{route('user.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
+                                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-success btn-sm">Editar</a>
+                                                        <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST" id="form-delete-users">
                                                             @csrf
                                                             @method('DELETE')
                                                             <input type="submit" class="btn btn-outline-danger btn-sm marginLeft4" id="btn-delete" value="Deletar" onclick="return confirmDelete();" />
@@ -166,7 +166,7 @@
 
     <script type="text/javascript">
 
-        // Funçao para confirmar deletar 
+        // Funçao para confirmar deletar
         function confirmDelete() {
 
             if (confirm("Deseja realmente deletar esse Usuário?")) {

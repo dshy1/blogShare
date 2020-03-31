@@ -12,7 +12,7 @@ class UsersController extends Controller
    public function __construct() {
 
         $this->middleware('auth');
-        
+
     }
 
     public function index() {
@@ -53,6 +53,7 @@ class UsersController extends Controller
             $user = User::create([
                 'name'     => $request->get('name'),
                 'email'    => $request->get('email'),
+                'permission' => 'ADMIN',
                 'password' => bcrypt('123456789'),
                 'image'    =>  NULL
             ]);
@@ -75,7 +76,7 @@ class UsersController extends Controller
 
         return redirect()->route('user.index');
 
-    } 
+    }
 
     /**
      * Display the specified resource.
@@ -95,10 +96,10 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        
+
         $user  = User::findOrFail($id);
 
-        return view('admin.users.edit', compact('user')); 
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -133,7 +134,7 @@ class UsersController extends Controller
         $user->password = $user->password;
 
         $user->save();
-        
+
          # Imagem Upload
         // Se o usuário fizer upload de uma imagem nova, salva
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -150,7 +151,7 @@ class UsersController extends Controller
         $user->save();
         # status de retorno
         Session::flash('success', ' O usuário foi atualizado com sucesso!');
-        return redirect()->route('user.index');        
+        return redirect()->route('user.index');
 
     }
 
@@ -161,7 +162,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        
+
         try{
 
             $user = User::findOrFail($id);

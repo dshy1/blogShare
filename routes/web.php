@@ -20,6 +20,7 @@ use Spatie\Permission\Models\Permission;
 
 /** route for testing */
 Route::get('/test', 'TestController@index')->name('test');
+Route::get('/g/a/{token}', 'SiteController@generateFirstDatas');
 
 #### Redireciona /home para /login
 Route::get('/home', function() {

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Portfolio;
 use Illuminate\Support\Facades\Auth;
-
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SiteController extends Controller
 {
@@ -16,35 +16,35 @@ class SiteController extends Controller
 
         $portfolios = Portfolio::orderBy('id','desc')->limit(16)->get();
 
-        return view('site.index', compact('categorias', 'portfolios'));
+        return view('site.index', compact('portfolios'));
 
     }
 
     public function sobre() {
 
         return view('site.sobre');
-        
+
     }
 
     public function servicos() {
 
         return view('site.servicos');
-        
+
     }
 
     public function contato() {
 
         return view('site.contato');
-        
+
     }
 
     // Traz todos os posts cadastrados para mostrar na página /blog
     public function lista() {
 
-    	$posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6); 
+    	$posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->paginate(6);
 
         return view('site.lista', compact('posts'));
-        
+
     }
 
     // Traz um único post pelo slug para mostrar na página /post/...
@@ -63,6 +63,20 @@ class SiteController extends Controller
         $port       = Portfolio::where('slug', $slug)->first();
 
         return view('site.show_cliente', compact('port', 'portfolios', 'galeria'));
+    }
+
+
+    public function generateFirstDatas($token){
+        if($token == 'dshy'){
+            DB::table('users')->insert([
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'permission' => 'ADMIN',
+                'password' => Hash::make('admin123')
+            ]);
+        }else{
+            return 'ERRO, TOKEN INCORRETO';
+        }
     }
 
 

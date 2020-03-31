@@ -23,25 +23,26 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-   
+
     public function index() {
 
         $user  = Auth::user();
         $users = User::orderBy('id', 'desc')->limit(4)->get();
         $categorias = Categoria::orderBy('id', 'desc')->limit(4)->get();
-
+        $listaPosts = null;
+        $lastPost = null;
         // Se o usuario for admin, trazer todos os posts
-         if ($user->roles()->first()->name == 'admin') {
-          
+         if ($user->permission == 'ADMIN') {
+
             $posts = Post::with('autor')->with('categorias')->orderBy('id', 'desc')->limit(3)->get();
             $listaPosts = Post::all();
             $lastPost = Post::latest()->first();
-            
+
         }
         // Senão trazer somente os posts de quem está logado
         else {
 
-            $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->limit(3)->get(); 
+            $posts = Post::where('user_id', Auth::user()->id)->with('categorias')->orderBy('id', 'desc')->limit(3)->get();
         }
 
         return view('home', compact('posts', 'categorias', 'users', 'listaPosts', 'lastPost'));
