@@ -39,7 +39,7 @@ class PostsController extends Controller
 
         $categorias = Categoria::all();
 
-        return view('admin.posts.create', compact('categorias', 'catgs_post'));
+        return view('admin.posts.create', compact('categorias'));
     }
 
 
