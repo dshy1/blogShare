@@ -1,5 +1,5 @@
     <style type="text/css">
-      
+
       .small {
         font-size: 16px;
         color: #ff31ef;
@@ -38,13 +38,13 @@
     <script src="{{ asset($path.'template-dark/assets/js/pages/dashboard.init.js') }}"></script>
     <script src="{{ asset($path.'template-dark/assets/js/app.js') }}"></script>
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.js"></script>
 
 
     <script src="{{ asset($path.'js/select2.min.js') }}"></script>
-    
+
     {{-- CKeditor --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 

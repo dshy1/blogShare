@@ -1,90 +1,92 @@
 <style type="text/css">
+    label#teste {
+        background-color: #3498db;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        margin: 10px;
+        padding: 6px 20px;
+        margin-bottom: 15px;
+    }
 
-  input[type='file'] {
-    display: none
-  }
-  label#teste {
-    background-color: #3498db;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    margin: 10px;
-    padding: 6px 20px;
-    margin-bottom: 15px;
-  }
-  #categorias-wrapper {
-    min-width: 450px;
-  }
-
+    #categorias-wrapper {
+        min-width: 450px;
+    }
 </style>
 
+<link rel="stylesheet" href="{{asset('plugins/dropfy/css/dropify.min.css')}}">
+
+
 <div class="row mg-b-10">
-  <div class="col-lg-12">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <label class="form-control-label cinza-claro">Título: <span class="tx-danger">*</span></label>
+            @isset($detalhe)
+            <p id="titulo" class="">{{ $post->titulo or 'Não Informado' }}</p>
+            @else
+            <input class="form-control form-control-dark" type="text" name="titulo"
+                value="{{ $post->titulo ?? old('titulo') }}" placeholder="Título do post" />
+            @endif
+        </div>
+    </div>
+
     <div class="form-group">
-      <label class="form-control-label cinza-claro">Título: <span class="tx-danger">*</span></label>
-      @isset($detalhe)
-        <p id="titulo" class="" >{{ $post->titulo or 'Não Informado' }}</p>
-      @else
-        <input class="form-control form-control-dark" type="text" name="titulo" value="{{ $post->titulo ?? old('titulo') }}" placeholder="Título do post" />
-      @endif
+        <input type="hidden" class="form-control" name="slug" />
     </div>
-  </div>
-
-  <div class="form-group">
-      <input type="hidden" class="form-control" name="slug" />
-  </div>
 </div>
 
 <div class="row mg-b-10">
-  <div class="col-lg-12">
-    <div class="form-group">
-      <label class="form-control-label cinza-claro">Texto: <span class="tx-danger">*</span></label>
-      @isset($detalhe)
-        <p id="texto" class="">{{ $post->texto or 'Não Informado' }}</p>
-      @else
-        <main>
-            <textarea name="texto" id="editor" value="{{ $post->texto ?? old('texto') }}">{{ $post['texto'] ?? old('texto') }}</textarea>
-        </main>
-      @endif
+    <div class="col-lg-12">
+        <div class="form-group">
+            <label class="form-control-label cinza-claro">Texto: <span class="tx-danger">*</span></label>
+            @isset($detalhe)
+            <p id="texto" class="">{{ $post->texto or 'Não Informado' }}</p>
+            @else
+            <main>
+                <textarea name="texto" id="editor"
+                    value="{{ $post->texto ?? old('texto') }}">{{ $post['texto'] ?? old('texto') }}</textarea>
+            </main>
+            @endif
+        </div>
     </div>
-  </div>
- </div>
+</div>
 
 <div class="row mg-b-10">
-  <div class="col-lg-12">
-    <div class="form-group mg-b-10-force form-categorias">
-      <label class="form-control-label cinza-claro">Categorias: <span class="tx-danger">*</span></label>
-      @isset($detalhe)
-        <p id="categorias" class="">Detalhes Categorias</p>
-      @else
-        <select class="js-example-basic-multiple" multiple="multiple" name="categorias[]" id="categorias-wrapper" value="teste">
-           @foreach($categorias as $categoria)
-              <option value="{{ $categoria->id }}" {{ isset($catgs_post) && in_array($categoria->id, $catgs_post) ? 'selected="selected"' : '' }} >{{ $categoria->nome }}
-              </option>
-           @endforeach
-        </select>
-      @endif
+    <div class="col-lg-12">
+        <div class="form-group mg-b-10-force form-categorias">
+            <label class="form-control-label cinza-claro">Categorias: <span class="tx-danger">*</span></label>
+            @isset($detalhe)
+            <p id="categorias" class="">Detalhes Categorias</p>
+            @else
+            <select class="js-example-basic-multiple" multiple="multiple" name="categorias[]" id="categorias-wrapper"
+                value="teste">
+                @foreach($categorias as $categoria)
+                <option value="{{ $categoria->id }}"
+                    {{ isset($catgs_post) && in_array($categoria->id, $catgs_post) ? 'selected="selected"' : '' }}>
+                    {{ $categoria->nome }}
+                </option>
+                @endforeach
+            </select>
+            @endif
+        </div>
     </div>
-  </div>
 </div>
 
-<div class="file-upload-wrapper">
-  <input type="file" id="input-file-now" class="file-upload" />
-</div>
-
+<input type="file" id="input-file-now" class="dropify" name="file" />
 
 
 @section('scripts')
 
-  <!-- Script JS -->
-  <script type="text/javascript">
-
-  // Select2 /////////////////////////////
+<script src="{{asset('plugins/dropfy/js/dropify.min.js')}}"></script>
+<!-- Script JS -->
+<script type="text/javascript">
+    // Select2 /////////////////////////////
    $(document).ready(function() {
       $('#categorias-wrapper').select2({
           placeholder: "Selecione uma ou mais categorias",
           maximumSelectionLength: 3
       });
+      $('.dropify').dropify();
     });
 
     // Check Editor /////////////////////////////
@@ -109,8 +111,6 @@
  // Dropzone /////////////////////////////
 
 
-  </script>
+</script>
 
 @stop
-
-
