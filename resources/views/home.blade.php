@@ -8,7 +8,7 @@
 
       .large {
           font-size: 78px;
-          color: #809db1;  
+          color: #809db1;
       }
       img.rounded-top {
       	min-width: 100%;
@@ -69,7 +69,7 @@
                           </div>
                       </div>
                   </div>
-              </div> 
+              </div>
 
               <div class="row">
                   <div class="col-sm-6 col-xl-3">
@@ -86,9 +86,9 @@
                                   </div>
                               </div>
                               {{-- traz o total de posts publicados --}}
-                              <h4 class="m-0 align-self-center">{{ count($listaPosts) }}</h4>
+                              <h4 class="m-0 align-self-center">{{ isset($listaPosts) AND $listaPosts != '' ? count($listaPosts) : '0' }}</h4>
                               {{-- Mostra a data de criacao do ultimo post --}}
-                              <p class="mb-0 mt-3 text-muted">{{ \Carbon\Carbon::parse($lastPost->created_at)->diffForHumans() }}</p>                              
+                              <p class="mb-0 mt-3 text-muted">{{ isset($lastPost) ? \Carbon\Carbon::parse($lastPost->created_at)->diffForHumans() : '--'}}</p>
                           </div>
                       </div>
                   </div>
@@ -150,7 +150,7 @@
                       </div>
                   </div>
               </div>
-                
+
               <div class="row">
                   <div class="col-lg-12">
                       <div class="card">
@@ -167,7 +167,7 @@
                                                    <img class="img-fluid rounded-top" src="{{ asset($path.'storage/images/posts/'.$post->image) }}" alt="post image" />
                                                 </figure>
                                               </a>
-                                              
+
                                               {{-- Essa div com a imagem do autor do post só vai aparecer para o admin --}}
                                               @if(Auth::user()->roles()->first()->name =='admin')
                                                 <div class="media mg-b-25 media-cards">
@@ -205,12 +205,12 @@
                               </div>
                           </div>
                       </div>
-                  </div>                       
+                  </div>
               </div>
             </div>
             {{-- container --}}
         </div>
         {{-- page-content --}}
     </div>
-  	
+
 @endsection
